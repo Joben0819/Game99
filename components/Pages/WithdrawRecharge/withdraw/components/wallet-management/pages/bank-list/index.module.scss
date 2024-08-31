@@ -1,0 +1,95 @@
+.wrapper {
+  @apply w-full;
+  height: toRem(290);
+  overflow-y: auto;
+  margin-top: toRem(2);
+}
+
+.ptr {
+  :global {
+    .lds-ellipsis div {
+      height: toRem(10.4);
+      width: toRem(10.4);
+      background-color: #e9cce8;
+      display: none;
+    }
+    .ptr {
+      width: 100%;
+      overflow: hidden !important;
+    }
+    .ptr ::-webkit-scrollbar- {
+      width: 0 !important;
+      background-color: transparent; /* This is optional, and it sets the background of the scrollbar area to be transparent */
+    }
+    .ptr__children {
+      overflow-x: visible !important;
+      .old_dataWrapper__lL6FG {
+        overflow-y: visible;
+        overflow-x: hidden;
+      }
+    }
+    .ptr__pull-down {
+      .ptr__pull-down--pull-more {
+        display: none;
+      }
+    }
+  }
+}
+
+.addBankBtn {
+  @apply w-full  flex items-center px-[0.4rem] gap-x-[0.1rem] justify-center cursor-pointer;
+  font-size: toRem(12);
+  height: toRem(45);
+  border-radius: toRem(5);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.6) 0%,
+    rgba(255, 255, 255, 0.132) 69.5%,
+    rgba(255, 255, 255, 0.66) 100%
+  );
+  border: toRem(1.5) solid #ffffff66;
+  color: #1653c9;
+  text-align: center;
+  margin-top: toRem(10);
+  margin-bottom: toRem(10);
+  font-family: 'Poppins';
+
+  span {
+    font-size: toRem(20);
+    color: #1653c9;
+    font-family: Inter;
+    margin-bottom: toRem(3);
+  }
+}
+
+.bank {
+  @apply px-[0.3rem] flex items-center justify-between;
+  width: 100%;
+  height: toRem(47);
+  border-radius: toRem(5);
+  background: #4693ec;
+
+  color: #fff;
+  font-size: toRem(12);
+  font-family: 'Poppins';
+  letter-spacing: toRem(3);
+  margin-bottom: 0.2rem;
+}
+
+.titleIcon {
+  @apply flex items-center;
+  gap: toRem(5);
+
+  .icon {
+    @apply relative;
+    width: toRem(25);
+    height: toRem(25);
+    background-color: #fff;
+    border-radius: 100%;
+
+    img {
+      border-radius: 100%;
+      object-fit: contain;
+    }
+  }
+}

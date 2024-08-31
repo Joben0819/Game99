@@ -1,0 +1,153 @@
+.jackpotContainer {
+  background-image: url('/assets/commons/header/jackpot_bg.png');
+  background-size: 100% 100%;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: toRem(-2);
+  width: 100%;
+  min-width: toRem(200);
+  max-width: toRem(300);
+  padding: 0 toRem(25);
+  height: 75%;
+
+  .titleContainer {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: toRem(-5);
+    height: toRem(14);
+    width: toRem(110);
+    border-radius: toRem(60);
+    border: toRem(0.38) solid #cbff27;
+    background: linear-gradient(180deg, #1fe732 0%, #0d991d 100%);
+
+    > span {
+      font-family: 'Sansita One';
+      font-size: toRem(10);
+    }
+  }
+
+  .prize {
+    position: relative;
+    z-index: 1;
+    color: transparent;
+    top: toRem(-0.5);
+    height: toRem(21);
+    font-size: toRem(18);
+    line-height: toRem(21);
+    font-family: 'PoetsenOne';
+    font-weight: 600;
+    background: linear-gradient(180deg, #ffffff 20.69%, #fff000 81.55%);
+    -webkit-background-clip: text;
+  }
+
+  .jackpotPrizeContent {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    width: 100%;
+    min-width: toRem(100);
+  }
+
+  .platformName {
+    position: relative;
+    left: 0;
+    z-index: 1;
+    height: toRem(21);
+    font-size: toRem(17);
+    line-height: toRem(21);
+    overflow: hidden;
+
+    div {
+      display: flex;
+      flex-direction: column;
+      transition: all 1s ease-in-out;
+
+      @for $i from 0 through 20 {
+        &[data-index='#{$i}'] {
+          transform: translateY(-#{toRem(21) * $i});
+        }
+      }
+
+      span {
+        height: toRem(21);
+        font-family: 'PoetsenOne';
+        font-weight: 500;
+        background: linear-gradient(180deg, #ffffff 20.69%, #fff000 81.55%);
+        -webkit-background-clip: text;
+        margin-right: toRem(5);
+        color: transparent;
+      }
+    }
+  }
+
+  .jackpotNumWrapper {
+    position: relative;
+    z-index: 1;
+    height: toRem(21);
+    top: toRem(1);
+    width: 100%;
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+    align-items: center;
+    transition: all 1s ease-in-out;
+  }
+
+  .numItem {
+    position: relative;
+    height: toRem(21);
+    width: toRem(11.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .numImg {
+      position: relative;
+      height: toRem(21);
+      width: toRem(11.5);
+      background: url('../../../../public/assets/commons/header/numbers.webp');
+      background-repeat: repeat;
+      background-position: 0 0;
+      background-size: toRem(11.5) toRem(260);
+      overflow: hidden;
+      background-position-y: 0;
+      transition: background 1s ease-in-out;
+
+      &[data-num='0'] {
+        background-position-y: toRem(20.3);
+      }
+      &[data-num='1'] {
+        background-position-y: toRem(47);
+      }
+      &[data-num='2'] {
+        background-position-y: toRem(73);
+      }
+      &[data-num='3'] {
+        background-position-y: toRem(100);
+      }
+      &[data-num='4'] {
+        background-position-y: toRem(126.5);
+      }
+      &[data-num='5'] {
+        background-position-y: toRem(153);
+      }
+      &[data-num='6'] {
+        background-position-y: toRem(179.3);
+      }
+      &[data-num='7'] {
+        background-position-y: toRem(206);
+      }
+      &[data-num='8'] {
+        background-position-y: toRem(232);
+      }
+      &[data-num='9'] {
+        background-position-y: toRem(258.5);
+      }
+    }
+  }
+}

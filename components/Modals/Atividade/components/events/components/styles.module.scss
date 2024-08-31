@@ -1,0 +1,175 @@
+.iFrameWrapper {
+  @apply text-[0.2rem] p-[0.1rem] relative h-auto overflow-y-scroll w-full;
+  min-height: 4.45rem;
+  border-radius: toRem(12);
+}
+
+.loader {
+  @apply h-full bg-black bg-opacity-60;
+  width: 100% !important;
+}
+
+.sideBarWrapper {
+  @apply pr-[0.22rem] mt-[0.2rem] absolute;
+  width: toRem(180.52);
+  top: toRem(-20);
+  left: toRem(29);
+  height: toRem(322);
+
+  &__cloud {
+    @apply absolute;
+    height: toRem(25.05);
+    width: toRem(172.17);
+  }
+
+  .leftPanel {
+    @apply relative px-[0.46rem];
+    width: toRem(180.52);
+    height: toRem(322);
+    padding-top: toRem(40);
+    animation: fadeIn 0.5s ease-in-out forwards;
+  }
+
+  .btnWrapper {
+    @apply relative overflow-y-auto;
+    height: toRem(250);
+  }
+
+  .btnContainer {
+    @apply transition-all cursor-pointer duration-200 active:scale-95;
+
+    &.active {
+      pointer-events: none;
+    }
+
+    .btn {
+      @apply flex items-center relative w-full text-ellipsis overflow-hidden;
+      height: toRem(28);
+      border-radius: toRem(5);
+      margin-bottom: toRem(5);
+      background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.8) 0%,
+        rgba(255, 255, 255, 0.3) 69.5%,
+        rgba(255, 255, 255, 0.7) 100%
+      );
+      border: toRem(1) solid #fff;
+      color: #1653c9;
+
+      &[data-active='true'] {
+        background: linear-gradient(180deg, #ffa858 11%, #ff7a00 24%);
+        border: toRem(1) solid #ffbb7c;
+        color: #fff;
+        pointer-events: none;
+      }
+
+      span {
+        @apply absolute left-[50%] translate-x-[-50%] top-[50%] translate-y-[-50%] text-center font-bold line-clamp-2 block w-full;
+        white-space: nowrap;
+        padding: 0 0.09rem;
+        text-overflow: ellipsis;
+        font-size: toRem(9);
+        overflow: hidden;
+        font-size: auto;
+        font-family: 'Poppins';
+        font-weight: normal;
+        font-size: toRem(10);
+        line-height: 1.2;
+      }
+    }
+
+    .redDot {
+      @apply absolute right-[0] top-[0] rounded invisible;
+      background: radial-gradient(73.08% 73.08% at 46.15% 26.92%, #ff9898 0%, #ff0101 100%),
+        linear-gradient(0deg, #ffffff, #ffffff);
+      border: 0.8px solid #ffffff;
+      width: toRem(10);
+      height: toRem(10);
+
+      &--visible {
+        @apply visible;
+      }
+    }
+  }
+}
+
+.eventsContainer {
+  @apply relative cursor-pointer;
+  height: 100%;
+  overflow: auto;
+  width: 100%;
+
+  &:not(:first-child) {
+    margin-top: toRem(5);
+  }
+
+  img {
+    position: relative !important;
+    border-radius: toRem(10);
+    height: auto !important;
+    min-height: 100%;
+  }
+}
+
+.iframeContainer {
+  @apply relative cursor-pointer;
+  height: 100%;
+  width: 100%;
+
+  &:not(:first-child) {
+    margin-top: toRem(5);
+  }
+}
+
+.eventFrame {
+  @apply w-full;
+  min-height: 5rem;
+
+  body {
+    img {
+      height: auto !important;
+      max-width: 100% !important;
+      display: block;
+      margin: 0 auto;
+    }
+  }
+}
+
+.content {
+  color: #fff !important;
+  height: 100%;
+  overflow: auto;
+
+  img {
+    height: auto !important;
+    width: 100% !important;
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+.loader {
+  @apply absolute size-full z-10;
+}
+
+.noData {
+  @apply size-full bg-[#270041] flex justify-center items-center flex-col gap-1;
+  height: toRem(220);
+  color: rgba(200, 198, 255, 0.3);
+  text-align: center;
+  font-size: toRem(9);
+
+  .image {
+    @apply relative;
+    width: toRem(141);
+    height: toRem(106);
+  }
+}
+
+.refresh {
+  :global {
+    .ptr__children {
+      overflow: scroll !important;
+    }
+  }
+}

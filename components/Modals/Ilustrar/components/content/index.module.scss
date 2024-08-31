@@ -1,0 +1,19 @@
+.content {
+  @apply top-[0.33rem];
+  width: toRem(574.25);
+  height: toRem(312.5);
+}
+
+.content {
+  @apply relative;
+
+  img {
+    @apply h-full w-full absolute object-contain;
+  }
+}
+
+.announcementContent {
+  @apply max-h-[3.6rem] w-[9rem] break-words overflow-auto absolute top-[1.1rem] left-[0.8rem];
+  color: #1840a7;
+  font-size: toRem(12);
+}

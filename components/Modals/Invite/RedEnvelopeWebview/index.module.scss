@@ -1,0 +1,124 @@
+.contentInfo {
+  position: absolute;
+  top: toRem(32);
+  width: 100%;
+  transform: scale(0.96);
+
+  &__tvContainer,
+  &__modalContainer {
+    @apply absolute flex-all-center size-full;
+
+    h1 {
+      position: relative;
+      margin-top: toRem(120);
+      z-index: 1;
+      text-shadow:
+        0 2px 0 #1b98c6,
+        0 4px 4px #0008d2,
+        0 4px 4px rgba(0, 0, 0, 0.25);
+      font-family: 'PoetsenOne';
+      font-size: toRem(55);
+    }
+
+    > div,
+    canvas {
+      @apply w-full  absolute  left-0;
+      height: auto !important;
+    }
+  }
+
+  &__modalContainer {
+    text-align: center;
+
+    &--topText {
+      position: absolute;
+      top: toRem(45);
+      font-size: toRem(25);
+      font-weight: 700;
+    }
+
+    &--bottomText {
+      font-size: toRem(22);
+      margin-bottom: toRem(-40);
+    }
+
+    &--topText1 {
+      position: absolute;
+      left: 26.5%;
+      margin-top: toRem(-20);
+      font-size: toRem(30);
+      font-weight: 700;
+      color: #fff;
+    }
+
+    &--topText2 {
+      position: absolute;
+      left: 30%;
+      margin-top: toRem(-15);
+      font-size: toRem(20);
+      font-weight: 400;
+    }
+
+    &--bottomCoinText {
+      font-size: toRem(20);
+      margin-bottom: toRem(-170);
+    }
+  }
+
+  &--yellowText {
+    color: #fcff43;
+  }
+
+  &--grayText {
+    color: #a1a1a1;
+  }
+
+  &--greenText {
+    color: #36bb66;
+  }
+
+  &--redText {
+    color: #e83d38;
+  }
+
+  &--whiteText {
+    color: #fff;
+  }
+
+  &--blueText {
+    color: #00a6db;
+  }
+}
+
+.mainScreen {
+  $root: &;
+
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  height: toRem(320);
+  border-radius: toRem(20);
+  scrollbar-width: none;
+
+  &--disableScroll {
+    overflow: hidden;
+  }
+
+  &--webView {
+    height: 100dvh;
+    height: 100vh;
+
+    #{$root}__topContent {
+      height: 100vh;
+    }
+  }
+
+  &__topContent {
+    width: 100%;
+    height: toRem(320);
+    display: flex;
+    background: url(../../../../public/assets/commons/envelope/main_screen_top_bg.png) center / 100% 100% no-repeat;
+    position: relative;
+    border-radius: toRem(20);
+  }
+}

@@ -1,0 +1,198 @@
+import Image from 'next/image';
+
+import React, { useEffect, useRef, useState } from 'react';
+import InfiniteScroll from 'react-infinite-scroll-component';
+
+import { withdrawRechargeDetail } from '@/services/api';
+import { TWithdrawRecord } from '@/services/response-type';
+import classNames from 'classnames';
+import { useLocale } from 'next-intl';
+
+import TableLoader from '@/components/Customs/TableLoader';
+import NoData from '@/components/Pages/WithdrawRecharge/withdraw/components/re-useable/no-data';
+
+import iceArrow from '@/public/assets-v2/commons/withdraw_recharge_v2/ice-arrow.png';
+
+import { moneyFormat } from '@/utils/helpers';
+
+import { useCustomTranslation } from '@/hooks/useCustomTranslation';
+
+import styles from './index.module.scss';
+
+const OnlineRecharge = () => {
+  const intl = useCustomTranslation();
+  const locale = useLocale();
+  const tableRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isPulled, setIsPulled] = useState<boolean>(false);
+  const [depositRecordData, setDepositRecordData] = useState<TWithdrawRecord[]>([]);
+  const [pageNum, setPageNum] = useState(1);
+  const [hasNext, setHasNext] = useState(false);
+  const [isVisible, setIsVisible] = useState({
+    left: false,
+    right: true,
+  });
+
+  const headers = [
+    intl.recharge('columnDate'),
+    intl.recharge('columnTransNumber'),
+    intl.recharge('columnTransAmount'),
+    intl.recharge('columnTransStatus'),
+  ];
+
+  const getRechargeDetails = async (load?: string) => {
+    if (load === 'pulled') {
+      setIsPulled(true);
+    } else {
+      setIsLoading(true);
+    }
+
+    withdrawRechargeDetail({ type: 'rechargeOnline', pageNum: 1, pageSize: 20 })
+      .then((res) => {
+        if (res?.data?.code == 200) {
+          setDepositRecordData(res?.data?.data);
+          setHasNext(res?.data?.hasNext);
+        }
+      })
+      .finally(() => {
+        setIsPulled(false);
+        setIsLoading(false);
+      });
+    setPageNum(1);
+  };
+
+  const loadMoreRecharge = async () => {
+    const res = await withdrawRechargeDetail({
+      type: 'rechargeOnline',
+      pageNum: pageNum + 1,
+      pageSize: 20,
+    });
+
+    if (!res?.data) {
+      return;
+    }
+
+    const newData = res.data.data;
+    const next = res.data.hasNext;
+    setPageNum((prevPage) => prevPage + 1);
+    setHasNext(next);
+    setDepositRecordData((prevAccountData) => [...prevAccountData, ...newData]);
+    setIsLoading(false);
+  };
+
+  const TableBody = ({ withdrawData }: { withdrawData: TWithdrawRecord[] }) => (
+    <tbody>
+      {withdrawData?.map((item, index) => (
+        <tr key={index}>
+          <td>{item.requestTime}</td>
+          <td>{item.orderNo}</td>
+          <td>{item.money ? `${moneyFormat(item.money)} IDR` : '0'}</td>
+          <td style={{ color: item.color ?? '#fff' }}>
+            <span>{item.remark}</span>
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  );
+
+  const handleScroll = (direction: 'left' | 'right') => {
+    if (!tableRef.current) return;
+    const maxScroll = tableRef.current.scrollWidth - tableRef.current.clientWidth;
+    const scrollValue = direction === 'left' ? -maxScroll : maxScroll;
+    tableRef.current.scrollLeft += scrollValue;
+  };
+
+  useEffect(() => {
+    const onScroll = () => {
+      if (!tableRef.current) return;
+      const maxScroll = tableRef.current.scrollWidth - tableRef.current.clientWidth;
+      setIsVisible({
+        left: tableRef.current?.scrollLeft !== 0,
+        right: tableRef.current?.scrollLeft < maxScroll - 1,
+      });
+    };
+    const tableElement = tableRef.current;
+    if (tableElement) {
+      tableElement.addEventListener('scroll', onScroll);
+    }
+    return () => {
+      if (tableElement) {
+        tableElement.removeEventListener('scroll', onScroll);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    getRechargeDetails('initial');
+
+    document.documentElement.style.setProperty('--webkit-scrollbar-display', 'block');
+    return () => {
+      document.documentElement.style.setProperty('--webkit-scrollbar-display', 'none');
+    };
+  }, []);
+
+  return (
+    <div
+      className={classNames(
+        styles.tableWrapper,
+        { [styles.tableNoData]: depositRecordData.length <= 0 },
+        'tableWrapper',
+      )}
+      ref={tableRef}
+    >
+      <div ref={headerRef} className={styles.headerContainer} data-lang={locale}>
+        {headers?.map((q, idx) => (
+          <div key={idx} data-lang={locale}>
+            <p data-textafter={q}>{q}</p>
+          </div>
+        ))}
+      </div>
+
+      {isPulled && <TableLoader />}
+
+      <div id="scrollableDiv" className={styles.tableOverFlow}>
+        <InfiniteScroll
+          dataLength={depositRecordData?.length}
+          next={loadMoreRecharge}
+          hasMore={hasNext}
+          loader={<div className={styles.loadingFetch}>...</div>}
+          scrollableTarget="scrollableDiv"
+          refreshFunction={() => getRechargeDetails('pulled')}
+          pullDownToRefresh
+          pullDownToRefreshThreshold={50}
+          pullDownToRefreshContent={<h3 style={{ textAlign: 'center', opacity: 0 }}>&#8595;</h3>}
+          releaseToRefreshContent={<h3 style={{ textAlign: 'center', opacity: 0 }}>&#8593;</h3>}
+        >
+          <table className={styles.table}>
+            <TableBody withdrawData={depositRecordData} />
+          </table>
+        </InfiniteScroll>
+        {!!!depositRecordData?.length && (
+          <div className={styles.noDataWrapper}>
+            <NoData />
+          </div>
+        )}
+      </div>
+
+      {isVisible.left && (
+        <Image
+          src={iceArrow}
+          alt="Scroll to left"
+          className={styles.iceArrowLeft}
+          onClick={() => handleScroll('left')}
+        />
+      )}
+      {isVisible.right && depositRecordData.length > 0 && (
+        <Image
+          src={iceArrow}
+          alt="Scroll to right"
+          className={styles.iceArrowRight}
+          onClick={() => handleScroll('right')}
+        />
+      )}
+    </div>
+  );
+};
+
+export default OnlineRecharge;

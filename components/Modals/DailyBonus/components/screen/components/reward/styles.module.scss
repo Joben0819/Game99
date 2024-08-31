@@ -1,0 +1,70 @@
+.rewardIcon {
+  @apply relative my-[0.15rem];
+  width: toRem(55);
+  height: toRem(52);
+  overflow: auto;
+
+  img {
+    object-fit: contain;
+  }
+
+  &--claimable {
+    animation: wiggleIt 2s ease infinite;
+  }
+}
+
+.container {
+  @apply relative size-full flex flex-col items-center justify-center;
+  font-size: toRem(12.47);
+  font-family: 'Poppins';
+  font-weight: 700;
+}
+
+.day {
+  @include text-outline($offset: toRem(1), $color: #0f8ccd, $num-steps: 10);
+  color: #fff;
+  z-index: 1;
+  font-size: toRem(15);
+
+  &[data-claimable='1'] {
+    @include text-outline($offset: toRem(1), $color: #cd0f0f, $num-steps: 10);
+  }
+}
+
+.rewardValue {
+  @apply px-[0.05rem]   py-[0.05rem] block text-center;
+  min-width: toRem(83.19);
+  background: #ff7a00;
+  color: #fff;
+  border-radius: toRem(14.71);
+  font-weight: normal;
+  font-size: toRem(12);
+  z-index: 1;
+
+  &[data-claimable='1'] {
+    background: #ff2c0d;
+  }
+}
+
+.claimable {
+  animation: wiggleIt 2s ease infinite;
+}
+
+.collectedIcon {
+  @apply absolute left-1/2 -translate-x-1/2;
+  width: toRem(50);
+  height: toRem(50);
+
+  img {
+    @apply object-contain;
+  }
+}
+
+.collectBtn {
+  @apply absolute  z-10;
+  height: toRem(40);
+  width: toRem(150);
+  font-family: 'PoetsenOne';
+  bottom: toRem(-55);
+  animation: fadeIn 0.7s ease-in-out forwards;
+}

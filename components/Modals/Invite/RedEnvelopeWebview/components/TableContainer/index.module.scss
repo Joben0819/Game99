@@ -1,0 +1,92 @@
+.tableMain {
+  min-height: toRem(450);
+  width: 100%;
+  background: url(/assets/commons/envelope/main_screen_bottom_bg.png) center / 100% 100% no-repeat;
+  margin-top: toRem(-20);
+  padding: toRem(20) toRem(20) 0 toRem(20);
+
+  .tableContainer {
+    background: linear-gradient(180deg, #ffb26e 0%, #ff6946 100%);
+    border-radius: toRem(10);
+    min-height: toRem(390);
+    height: toRem(390);
+    margin-top: toRem(20);
+    position: relative;
+    overflow: hidden;
+
+    .tableHeader {
+      background: linear-gradient(180deg, #fff5e2 0%, rgba(255, 245, 226, 0.15) 99.99%, rgba(255, 88, 88, 0.99) 100%);
+      border-radius: toRem(10) toRem(10) 0 0;
+      display: flex;
+      gap: toRem(10);
+      align-items: center;
+      justify-content: space-evenly;
+
+      .tableHeaderBtn {
+        width: toRem(150);
+        height: 100%;
+        font-size: toRem(15);
+        color: #b50d0099;
+        text-transform: uppercase;
+        padding: toRem(14);
+        white-space: nowrap;
+        border: toRem(4) solid transparent;
+
+        &[data-lang='in'] {
+          width: toRem(140);
+          white-space: unset;
+        }
+
+        &.active {
+          color: #b50d00;
+          font-weight: 700;
+          position: relative;
+
+          &::before {
+            content: '';
+            position: absolute;
+            width: toRem(120);
+            height: toRem(4);
+            bottom: 0;
+            left: 50%;
+            transform: translate(-50%, calc(-50% + toRem(6)));
+            background: #b50d0080;
+            border-radius: toRem(3);
+          }
+        }
+
+        &.isSmallWebView {
+          width: toRem(220);
+          font-size: toRem(20);
+
+          &[data-lang='in'] {
+            width: toRem(190);
+            white-space: unset;
+          }
+
+          &.active {
+            &::before {
+              width: toRem(150);
+            }
+          }
+        }
+      }
+    }
+
+    .tableBody {
+      max-height: calc(100% - toRem(54));
+      height: 100%;
+      padding: toRem(20) toRem(20) toRem(40);
+      overflow-y: scroll;
+
+      div:last-child {
+        border: none;
+      }
+
+      .noDataImg {
+        width: toRem(181);
+        height: toRem(146);
+      }
+    }
+  }
+}

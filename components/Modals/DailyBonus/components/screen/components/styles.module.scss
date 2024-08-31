@@ -1,0 +1,83 @@
+.noteWrapper {
+  @apply w-full flex items-center px-[0.1rem] leading-normal text-center justify-center;
+  background: linear-gradient(
+    90deg,
+    rgba(71, 148, 237, 0) 0%,
+    #4794ed 5.58%,
+    #4794ed 79.5%,
+    rgba(71, 148, 237, 0) 100%
+  );
+  font-size: toRem(12);
+  font-weight: normal;
+  height: toRem(31);
+
+  &[data-lang='in'] {
+    height: toRem(35);
+    line-height: 1.2;
+  }
+  font-family: 'Poppins';
+  font-weight: normal;
+}
+
+.bonusHeader {
+  @apply relative mx-auto;
+  width: toRem(218.25);
+  height: toRem(43);
+  margin-top: toRem(-7);
+  margin-bottom: toRem(14);
+}
+
+.rewardsWrapper {
+  @apply w-full relative my-[0.15rem] justify-center;
+  gap: toRem(15);
+  height: toRem(145);
+}
+
+.rewardSwiper {
+  @apply relative w-full;
+
+  &__slide {
+    width: calc(100% / 5 - 6px);
+    height: toRem(145);
+  }
+}
+
+.rewardWrapper {
+  animation: fadeIn 0.7s ease-in-out forwards;
+  @apply relative transition-all duration-150 size-full;
+}
+
+.rewardIcon {
+  @apply relative my-[0.15rem];
+  width: toRem(55);
+  height: toRem(52);
+  overflow: auto;
+
+  img {
+    object-fit: contain;
+  }
+
+  &--claimable {
+    animation: wiggleIt 2s ease infinite;
+  }
+
+  &--notClaimable {
+    @apply grayscale;
+  }
+}
+
+.container {
+  @apply relative size-full flex flex-col items-center justify-center;
+  font-size: toRem(12.47);
+  font-family: 'Poppins';
+  font-weight: 700;
+}
+
+.collectBtn {
+  @apply absolute z-10 -translate-x-1/2 left-1/2;
+  height: toRem(40);
+  width: toRem(150);
+  font-family: 'PoetsenOne';
+  bottom: toRem(-50);
+  animation: fadeIn 0.7s ease-in-out forwards;
+}

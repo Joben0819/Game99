@@ -1,0 +1,31 @@
+.scanCode {
+  position: absolute;
+  top: 0;
+  z-index: 1;
+
+  .scanCodeContent {
+    background: url(/assets/commons/envelope/circle_scancode_en.png) center / 100% 100% no-repeat;
+    width: toRem(55) !important;
+    height: toRem(55) !important;
+    position: relative;
+
+    img {
+      position: absolute;
+      bottom: 0;
+      left: toRem(12);
+      width: toRem(31) !important;
+      height: toRem(16) !important;
+    }
+
+    &[data-lang='cn'] {
+      background: url(/assets/commons/envelope/circle_scancode_cn.png) center / 100% 100% no-repeat !important;
+    }
+  }
+
+  &.isSmallWebView {
+    .scanCodeContent {
+      height: toRem(75) !important;
+      width: toRem(75) !important;
+    }
+  }
+}

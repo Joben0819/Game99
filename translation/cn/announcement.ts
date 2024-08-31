@@ -1,0 +1,9 @@
+export const announcement = {
+  title: '维护',
+  description:
+    'APP维护公告\n\n尊敬的用户：\n为进一步优化完善系统功能，我们将对系统进行升级维护，维护时间待定，在此期间app等相关功能模块将暂停服务，给您带来的不便，敬请谅解！',
+  newVersion: '发现新版本',
+  reminder: '下次提醒',
+  upgrade: '立即升级',
+  announcement: '公告',
+};

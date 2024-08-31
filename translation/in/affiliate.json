@@ -1,0 +1,62 @@
+{
+  "invitationRules": "Proses Referral",
+  "redEnvelope": "Angpao",
+  "closeRedEnvelope": {
+    "introduction": "Angpao Pertama di 2024"
+  },
+  "open": "Buka",
+  "openRedEnvelope": {
+    "congratulation": "Selamat karena telah mendapatkan kesempatan untuk menarik ",
+    "prize": "60 Yuan"
+  },
+  "welcomeToSpinToWin": "Selamat Datang ke Putaran Kemenangan!!!",
+  "spinning": "Berputar...",
+  "disabledBtnText": "Undang Satu Orang untuk Mendapatkan { spinNumber } Putaran",
+  "lotteryLogs": "Riwayat Lotre",
+  "youGet": "Anda Mendapatkan",
+  "points": "Poin",
+  "apiError": "Telah terjadi kesalahan!",
+  "rewardLogs": "Riwayat Hadiah",
+  "altTextforRules": "Tidak ada peraturan yang tersedia saat ini",
+  "noRecordFound": "Tidak terdapat data",
+  "skipOn": {
+    "text1": "Otomatis terbuka dalam ",
+    "text2": ""
+  },
+  "invitation": "Undangan",
+  "rule": "Peraturan",
+  "quickRedEnvelopeWithdrawal": "Penarikan Angpao Kilat",
+  "luckyDrawChances": {
+    "text1": "",
+    "text2": " kesempatan lotre tersisa"
+  },
+  "cashWillExpireAfter": "Hadiah akan kadaluwarsa dalam ",
+  "inviterGameRules": "Peraturan Undangan",
+  "winningTheLottery": "Mulai Putaran",
+  "modalContent": {
+    "invitePerson": "Undang satu orang,",
+    "withdrawYuan": " bisa dapat kesempatan menarik",
+    "congratulation": "Selamat anda telah dapat hadiah sebesar....."
+  },
+  "yuan": "Yuan",
+  "myReferral": "Referral Saya",
+  "commissionDetails": "Detail Komisi",
+  "yesterdayBonus": "Hadiah kemarin",
+  "user": "Pemain",
+  "amount": "Jumlah",
+  "time": "Waktu",
+  "currency": "IDR",
+  "final1": "1. Teman Anda mengisi ulang, Anda akan menerima a",
+  "final2": "pengembalian dana 2% dari jumlah yang diisi ulang.",
+  "final3": "2. Pemain C dan D diundang oleh temannya. jika mereka mengisi ulang,",
+  "final4": "anda akan menerima keuntungan 1%.",
+  "noData": "Tidak Ada Data",
+  "referralReport": "Komisi Saya",
+  "registeredUser": "Daftar Referral",
+  "invitedFriends": "ID Referral",
+  "registrationDate": "Waktu Pendaftaran",
+  "deposited": "Sudah Top-Up",
+  "vip": "VIP",
+  "level": "Tingkat",
+  "people": "orang"
+}

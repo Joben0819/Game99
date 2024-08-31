@@ -1,0 +1,15 @@
+export const bindToastMessages = {
+  captchaFailed: '验证码失败',
+  phoneAlreadyRegistered: '手机已注册',
+  somethingWrong: '有问题',
+  incorrectCodeFormat: '代码格式不正确',
+  nowSettingPassword: '现在我们正在设置密码',
+  verificationCodeIncorrect: '使用的验证码不正确',
+  codeSentToPhoneSuccess: '代码已成功发送至电话号码',
+  codeSentToEmailSuccess: '代码已成功发送到电子邮件',
+  codeSentToPhoneError: '无法将代码发送到手机。',
+  codeSentToEmailError: '无法将代码发送到电子邮件。',
+  necessaryFields: '请填写必填字段',
+  selectVerificationMethode: '请选择如何收到验证码',
+  invalidEmail: '电子邮件格式无效',
+};

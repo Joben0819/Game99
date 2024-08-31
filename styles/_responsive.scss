@@ -1,0 +1,18 @@
+/* #region BREAKPOINT MIXINS */
+@mixin max450 {
+  @media (width <= 450px) {
+    @content;
+  }
+}
+
+@mixin max500 {
+  @media (width <= 500px) {
+    @content;
+  }
+}
+
+@mixin minH-745 {
+  @media (height >= 745px) {
+    @content;
+  }
+}

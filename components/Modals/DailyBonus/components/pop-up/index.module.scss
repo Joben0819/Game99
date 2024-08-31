@@ -1,0 +1,30 @@
+.wrapper {
+  @apply absolute w-full h-full flex justify-center items-center top-0 left-0 z-20  transition-all duration-100;
+  background: #00000080;
+}
+
+.container {
+  animation: fadeIn 0.6s ease-in-out forwards;
+  @apply flex justify-center relative;
+  width: toRem(430);
+  height: toRem(200);
+}
+
+.content {
+  @apply relative flex items-center justify-between flex-col;
+  margin-top: toRem(45);
+  width: toRem(380);
+  height: toRem(125);
+  padding: toRem(8) toRem(10);
+  font-family: 'Poppins';
+  font-weight: 700;
+  gap: toRem(5);
+
+  .text {
+    color: #4794ed;
+    text-align: center;
+    font-size: toRem(11);
+    height: toRem(60);
+    overflow: auto;
+  }
+}

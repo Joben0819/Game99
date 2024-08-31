@@ -1,0 +1,28 @@
+.layoutWrapper {
+  @apply absolute size-full top-0 left-0 flex justify-center items-center;
+  background-position: top center;
+  transform: scale(0.9);
+}
+
+.panels {
+  @apply flex absolute;
+  width: toRem(775);
+  height: toRem(335);
+  gap: toRem(20);
+
+  @media screen and (max-width: 1100px) {
+    transform: scale(1.15);
+  }
+}
+
+.rightPanel {
+  @apply absolute z-10 top-1/2 -translate-y-1/2;
+  width: toRem(497);
+  height: toRem(335);
+  right: toRem(31);
+}
+
+.rightPanelContent {
+  @apply relative z-10;
+  padding: toRem(10) toRem(16) toRem(16) toRem(16);
+}

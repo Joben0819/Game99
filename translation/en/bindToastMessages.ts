@@ -1,0 +1,15 @@
+export const bindToastMessages = {
+  captchaFailed: 'Captcha Failed!',
+  phoneAlreadyRegistered: 'Phone already registered',
+  somethingWrong: 'There is something wrong',
+  incorrectCodeFormat: 'Incorrect code format',
+  nowSettingPassword: "Now we're setting the password",
+  verificationCodeIncorrect: 'The verification code used is incorrect',
+  codeSentToPhoneSuccess: 'Code sent to phone number successfully',
+  codeSentToEmailSuccess: 'Code sent to email successfully',
+  codeSentToPhoneError: 'Failed to send code to phone.',
+  codeSentToEmailError: 'Failed to send code to email.',
+  necessaryFields: 'Please fill in the necessary fields',
+  selectVerificationMethode: 'Select how to receive the OTP',
+  invalidEmail: 'The email format is invalid',
+} as const;

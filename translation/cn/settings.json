@@ -1,0 +1,15 @@
+{
+  "title": "设置",
+  "music": "音乐",
+  "effect": "音效",
+  "on": "开",
+  "off": "关",
+  "language": "选择语言",
+  "version": "Version",
+  "english": "英语",
+  "chinese": "中国人",
+  "indonesian": "印度尼西亚",
+  "logout": "登出",
+  "lang": "中文（简体）",
+  "clearCache": "清除缓存"
+}

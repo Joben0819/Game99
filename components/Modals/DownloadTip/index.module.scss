@@ -1,0 +1,77 @@
+.VersionBackdrop {
+  position: absolute;
+  top: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include fadeIn;
+}
+
+.VersionBoard {
+  position: relative;
+  height: toRem(260);
+  width: toRem(450);
+  background: url('/assets/commons/download_app/download_app_bg.png') no-repeat;
+  background-size: contain;
+  display: grid;
+  grid-template-columns: 12% 76% 12%;
+  grid-template-rows: 18% 70% 12%;
+  font-family: 'Poppins';
+}
+
+.closeButton {
+  width: toRem(25);
+  height: toRem(25);
+  position: absolute;
+  z-index: 8;
+  right: toRem(0);
+  top: toRem(0);
+  image {
+    position: unset;
+  }
+}
+
+.downloadContent {
+  grid-column: 2/3;
+  grid-row: 2/3;
+  padding-left: toRem(1);
+  padding-right: toRem(1);
+  &[data-lang='in'] {
+    @apply gap-[.1rem];
+  }
+
+  .title {
+    font-size: toRem(15);
+    font-weight: 700;
+    line-height: toRem(20);
+    letter-spacing: 0;
+    text-align: center;
+    color: #10a7ff;
+    margin-bottom: toRem(15);
+    word-break: keep-all;
+  }
+
+  .contentTips {
+    padding: 0 toRem(15) 0 toRem(20);
+    margin-bottom: toRem(20);
+    p {
+      font-size: toRem(10);
+      font-weight: 400;
+      line-height: toRem(18);
+      letter-spacing: 0;
+      text-align: left;
+      color: #10a7ff;
+      width: max-content;
+      max-width: toRem(320);
+    }
+  }
+}
+
+.buttonContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}

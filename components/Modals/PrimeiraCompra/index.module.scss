@@ -1,0 +1,234 @@
+.primeiraBackdrop {
+  position: absolute;
+  top: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include fadeIn;
+}
+
+.primeiraContainer {
+  background: url(../../../public/assets/commons/first_purchase/first_purchase_bg.webp) center / 100% 100% no-repeat;
+  width: toRem(470);
+  height: toRem(325);
+  position: relative;
+  display: flex;
+  @include fadeIn;
+
+  &__titleText {
+    margin-inline: auto;
+    margin-top: toRem(15);
+  }
+
+  &__contentContainer {
+    @apply left-[50%] translate-x-[-50%];
+    position: absolute;
+    height: toRem(225); //use svga
+    width: toRem(396); //use svga
+    bottom: toRem(30);
+    display: flex;
+
+    & > & {
+      flex-basis: 50%;
+    }
+
+    &--oneBonus {
+      flex-direction: column;
+      align-items: center;
+      z-index: 1;
+    }
+  }
+
+  &__leftContent {
+    width: 100%;
+    position: relative;
+  }
+
+  &__svgaContainer {
+    height: toRem(280);
+    width: toRem(250);
+    position: absolute;
+    top: toRem(-25);
+    margin-left: toRem(-30);
+
+    canvas {
+      height: 100%;
+      width: 100%;
+    }
+    img {
+      position: unset;
+    }
+
+    &--oneBonus {
+      width: toRem(230);
+      height: toRem(265);
+      top: 0;
+      margin-right: toRem(-30);
+    }
+  }
+
+  &__rightContent {
+    width: 100%;
+
+    ul {
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+
+      li {
+        background: url(../../../public/assets/commons/first_purchase/list_content_bg.png) center / 100% 100% no-repeat;
+        padding: toRem(10);
+        margin-bottom: toRem(15);
+        text-align: center;
+        font-family: PoetsenOne;
+        font-size: toRem(12);
+        font-weight: 400;
+        line-height: 1.2;
+        display: flex;
+
+        img {
+          width: toRem(20);
+          height: toRem(20);
+          margin-right: toRem(5);
+          margin-top: toRem(2);
+        }
+      }
+    }
+  }
+
+  &__details {
+    position: absolute;
+    right: toRem(45);
+    bottom: toRem(5);
+    height: toRem(55);
+    width: toRem(55);
+    background: linear-gradient(180deg, #fddb1b 0%, #ff8a00 100%);
+    border: 0.9px solid rgba(255, 180, 4, 1);
+    text-align: center;
+    font-family: PoetsenOne;
+    font-size: toRem(12);
+    font-weight: 400;
+    line-height: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    text-transform: capitalize;
+  }
+
+  &__closeButton {
+    height: toRem(30);
+    width: toRem(30);
+    position: absolute;
+    z-index: 14;
+    top: toRem(17);
+    right: toRem(-40);
+    cursor: pointer;
+
+    &:active {
+      transform: scale(0.75);
+      opacity: 0.9;
+    }
+
+    img {
+      position: unset;
+      user-drag: none;
+      -webkit-user-drag: none;
+      user-select: none;
+      -moz-user-select: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+    }
+  }
+
+  &__buttonContainer {
+    @apply left-[50%] translate-x-[-50%];
+    position: absolute;
+    width: toRem(211);
+    height: toRem(50);
+    bottom: toRem(-10);
+    z-index: 9;
+
+    img {
+      position: unset;
+    }
+  }
+
+  &__rechargeWrapper {
+    width: toRem(205);
+    border-radius: toRem(20);
+    height: toRem(40);
+    @apply absolute left-[50%] translate-x-[-50%] bottom-[0];
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    span {
+      color: #fff;
+      text-align: center;
+      text-shadow: 0 toRem(2) 0 #e00000;
+      font-family: Rammetto One;
+      font-size: toRem(16);
+      font-style: normal;
+      font-weight: 400;
+      line-height: toRem(20);
+    }
+  }
+
+  &__oneBonus {
+    background: url(../../../public/assets/commons/first_purchase/first_purchase_one_bonus_bg.png) center / 100% 100%
+      no-repeat;
+    padding: toRem(10);
+    margin-top: toRem(15);
+    text-align: center;
+    font-family: PoetsenOne;
+    font-size: toRem(12);
+    font-weight: 400;
+    line-height: 1.2;
+    width: toRem(300);
+    display: flex;
+    z-index: 1;
+
+    &[data-locale='in'] {
+      white-space: nowrap;
+      width: 6.9rem;
+    }
+
+    img {
+      height: toRem(20);
+      width: toRem(20);
+      margin-left: toRem(10);
+      margin-right: toRem(5);
+    }
+
+    div {
+      margin-top: toRem(3);
+    }
+  }
+
+  &--redText {
+    color: red;
+  }
+
+  .free {
+    &[data-locale='in'],
+    &[data-locale='en'] {
+      &::after {
+        content: attr(data-sequence-text);
+        color: #fff;
+      }
+    }
+
+    &[data-locale='cn'] {
+      &::before {
+        content: ', ' attr(data-sequence-text);
+        color: #fff;
+      }
+    }
+  }
+}

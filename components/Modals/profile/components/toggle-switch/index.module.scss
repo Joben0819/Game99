@@ -1,0 +1,63 @@
+.switch {
+  width: toRem(90);
+  height: toRem(24.975);
+  font-size: 0.1923076923rem;
+  border-radius: 12rem;
+  border: toRem(0.306) solid #00e3ff;
+  background: linear-gradient(90deg, #3b1994 0%, #196f94 48.17%);
+  box-shadow: toRem(0) toRem(0) toRem(3.699) toRem(0.74) rgba(4, 46, 48, 0.4);
+  color: #eff6eb;
+  margin-bottom: toRem(10);
+
+  .switchToggle {
+    border-radius: 12rem;
+    background: linear-gradient(180deg, #00f9ff 0%, rgba(255, 0, 245, 0.42) 100%);
+    position: relative;
+    height: 100%;
+    width: 50%;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: toRem(12);
+    font-weight: 600;
+    line-height: toRem(16);
+    letter-spacing: 0;
+    text-align: center;
+    text-transform: uppercase;
+
+    .leftSpan,
+    .rightSpan {
+      position: absolute;
+    }
+
+    .leftSpan {
+      left: toRem(-28);
+    }
+
+    .rightSpan {
+      right: toRem(-28);
+    }
+
+    .toggleIcon {
+      background-size: 100%;
+      background-repeat: no-repeat;
+      height: toRem(20);
+      width: toRem(20);
+      background-position: center;
+    }
+
+    &[data-lang='in'] {
+      font-size: toRem(10);
+
+      .leftSpan {
+        left: toRem(-30);
+      }
+
+      .rightSpan {
+        right: toRem(-34);
+      }
+    }
+  }
+}

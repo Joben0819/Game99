@@ -1,0 +1,54 @@
+.tableItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #ff392780;
+
+  .tableItemInfo {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+    .tableItemProfileText {
+      font-size: toRem(15);
+      padding: toRem(10);
+
+      strong {
+        display: flex;
+        justify-content: flex-start;
+        gap: toRem(10);
+      }
+    }
+  }
+  .tableItemText {
+    font-size: toRem(15);
+  }
+
+  &.isSmallWebView {
+    padding: toRem(10) 0 !important;
+    .tableItemInfo {
+      > div:first-of-type {
+        width: 1.5rem !important;
+        height: 1.5rem !important;
+      }
+      .tableItemProfileText {
+        font-size: toRem(20) !important;
+      }
+    }
+
+    .tableItemText {
+      font-size: toRem(20) !important;
+    }
+  }
+}
+
+.noDataImg {
+  width: toRem(181);
+  height: toRem(146);
+}
+
+.noRecordFound {
+  color: #fff;
+  font-size: toRem(14);
+  text-align: center;
+}

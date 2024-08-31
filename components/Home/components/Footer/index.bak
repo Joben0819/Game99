@@ -1,0 +1,214 @@
+import { useRouter } from 'next/navigation';
+import { Router } from 'next/router';
+
+import React, { useMemo } from 'react';
+
+import { setActiveModal, setSecondModal } from '@/reducers/appData';
+import { homeLang } from '@/translation/home';
+import Adjust from '@adjustcom/adjust-web-sdk';
+import 'animate.css';
+import { motion } from 'framer-motion';
+
+import CSVGA from '@/components/Customs/CSVGA';
+import { ImgWithFallback } from '@/components/Customs/ImgWithFallback';
+// import { Game99Events } from '@/components/Customs/InitAdjustSDK';
+import { DATA_MODAL } from '@/components/Modals/ModalPortal/constants';
+
+import { useAppDispatch, useAppSelector } from '@/store';
+
+import { gamePlaceholder } from '@/utils/helpers';
+
+import styles from './index.module.scss';
+
+type Props = {};
+
+const Footer = (props: Props) => {
+  const router = useRouter();
+  const token = localStorage.getItem('token') ?? null;
+  const dispatch = useAppDispatch();
+  const { userInfo, unreadMsgs } = useAppSelector((state) => state.userData);
+  const { language } = useAppSelector((state) => state.gameData);
+
+  const memoizedList = useMemo(
+    () => [
+      {
+        text: homeLang[language]?.activity,
+        textBg: '/assets/commons/footer/atividade_bg.png',
+        svgaIcon: '/assets/commons/footer/atividade_icon.svga',
+        icon: '/assets/commons/footer/atividade.png',
+        animateClass: 'animate__animated animate__infinite animate__slower animate__heartBeat',
+        modal: DATA_MODAL.ACTIVITIES,
+      },
+      {
+        text: homeLang[language]?.vip,
+        textBg: '/assets/commons/footer/vip_bg.png',
+        svgaIcon: '/assets/commons/footer/vip_icon.svga',
+        icon: '/assets/commons/footer/vip.png',
+        animateClass: 'animate__animated animate__infinite animate__slow animate__tada',
+        modal: DATA_MODAL.VIP,
+      },
+      {
+        text: homeLang[language]?.email,
+        textBg: '/assets/commons/header/email_bg.png',
+        svgaIcon: '/assets/commons/header/email_icon.svga',
+        icon: '/assets/commons/header/mail.png',
+        animateClass: 'animate__animated animate__infinite animate__swing',
+        modal: DATA_MODAL.MAIL,
+      },
+      // {
+      //   text: homeLang[language]?.invite,
+      //   textBg: '/assets/commons/footer/afiliado_bg.png',
+      //   svgaIcon: '/assets/commons/footer/afiliado_icon.svga',
+      //   icon: '/assets/commons/footer/afiliado.png',
+      //   animateClass: 'animate__animated animate__infinite animate__fast animate__pulse',
+      //   modal: DATA_MODAL.INVITE,
+      // },
+      {
+        text: homeLang[language]?.dailyBonus,
+        textBg: '/assets/commons/footer/loja_bg.png',
+        svgaIcon: '/assets/commons/footer/loja_icon.svga',
+        icon: '/assets/commons/footer/dailyBonus.webp',
+        animateClass: 'animate__animated animate__infinite animate__slower animate__tada',
+        modal: DATA_MODAL.DAILY_BONUS,
+      },
+      {
+        text: homeLang[language]?.withdraw,
+        textBg: '/assets/commons/header/saque_bg.png',
+        svgaIcon: '/assets/commons/header/saque_icon.svga',
+        icon: '/assets/commons/header/saque.png',
+        animateClass: 'animate__animated animate__infinite animate__slow animate__tada',
+        modal: DATA_MODAL.WITHDRAW,
+      },
+      // {
+      //   text: homeLang[language]?.bank,
+      //   textBg: '/assets/commons/footer/banco_bg.png',
+      //   svgaIcon: '/assets/commons/footer/banco_icon.svga',
+      //   icon: '/assets/commons/footer/banco.png',
+      //   animateClass: 'animate__animated animate__infinite animate__slow animate__pulse',
+      //   modal: DATA_MODAL.BANCO,
+      // },
+    ],
+    [language],
+  );
+
+  const handleDispatch = (item: string) => {
+    if (userInfo?.id || token) {
+      if (item === DATA_MODAL.WITHDRAW) {
+        router.push('withdraw');
+        return;
+      }
+
+      dispatch(setActiveModal(item));
+      // if (item === DATA_MODAL.DEPOSIT) {
+      //   Adjust.trackEvent({
+      //     eventToken: Game99Events.RECHARGE_CLICK,
+      //   });
+
+      //   if (userInfo?.testMoneyStatus !== 2 && (userInfo?.rechargeCount < 1 || userInfo?.rechargeCount == null)) {
+      //     dispatch(setActiveModal(item));
+      //     // dispatch(setSecondModal(DATA_MODAL.FIRST_RECHARGE));
+
+      //     // if ((isIOSSafari() || isIOSChrome()) && isMobilePlatform()) {
+      //     //   dispatch(setFourthModal(DATA_MODAL.ADD_TO_HOME));
+      //     // }
+      //   }
+      // }
+      return;
+    }
+    dispatch(setActiveModal(DATA_MODAL.LOGIN));
+  };
+
+  const RechargeNow = () => {
+    Adjust.trackEvent({
+      eventToken: Game99Events.RECHARGE_CLICK,
+    });
+    router.push('recharge');
+  };
+
+  const notificationBubble = (item: any, modal: string, count: number) => {
+    return (
+      <>
+        {item.modal === modal && count > 0 && (
+          <div className={styles.notificationBadge}>
+            <p>{count > 9 ? '9+' : `${count}`}</p>
+          </div>
+        )}
+      </>
+    );
+  };
+
+  return (
+    <div className={styles.footerBg}>
+      <div className={styles.logo}>
+        <div className={styles.icon}>
+          <ImgWithFallback
+            sizes="(max-width: 100vw) 100vw"
+            alt="logo"
+            src={'/assets/commons/footer/Super5_logo.png' ?? gamePlaceholder}
+            fill
+            quality={100}
+            priority
+          />
+        </div>
+      </div>
+      <div className={styles.buttons}>
+        {memoizedList?.map((item, idx) => {
+          return (
+            <motion.div
+              whileTap={{ scale: 0.9 }}
+              key={idx}
+              className={styles.iconHolder}
+              onClick={() => handleDispatch(item?.modal)}
+            >
+              {/* <div className={styles.svgaIcon}>
+                <CSVGA src={item?.svgaIcon} />
+              </div> */}
+              <div className={`${styles.icon} ${item.animateClass}`}>
+                <ImgWithFallback
+                  sizes="(max-width: 100vw) 100vw"
+                  alt="logo"
+                  src={item?.icon ?? gamePlaceholder}
+                  fill
+                  quality={100}
+                  priority
+                />
+                {notificationBubble(item, DATA_MODAL.MAIL, unreadMsgs)}
+              </div>
+              <div className={styles.textBg}>
+                <ImgWithFallback
+                  sizes="(max-width: 100vw) 100vw"
+                  alt="logo"
+                  src={item?.textBg ?? gamePlaceholder}
+                  fill
+                  quality={100}
+                  priority
+                />
+              </div>
+              <span>{item?.text}</span>
+            </motion.div>
+          );
+        })}
+      </div>
+      <div className={styles.store}>
+        <motion.div whileTap={{ scale: 0.9 }} className={styles.iconHolder} onClick={RechargeNow}>
+          <div className={styles.svgaIcon}>
+            <CSVGA src={'/assets/commons/footer/money.svga'} />
+          </div>
+          <div className={styles.textBg}>
+            <ImgWithFallback
+              sizes="(max-width: 100vw) 100vw"
+              alt="logo"
+              src={'/assets/commons/footer/dailybonus_bg.png' ?? gamePlaceholder}
+              fill
+              quality={100}
+              priority
+            />
+          </div>
+          <span>{homeLang[language]?.store}</span>
+        </motion.div>
+      </div>
+    </div>
+  );
+};
+
+export default Footer;

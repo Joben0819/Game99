@@ -1,0 +1,218 @@
+.tableWrapper {
+  height: toRem(255);
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  padding-top: toRem(4);
+
+  .headerContainer {
+    display: grid;
+    grid-template-columns: 24% 34% 20% 22%;
+    position: sticky;
+    top: 0;
+    height: toRem(30);
+    align-items: center;
+    > div {
+      p {
+        position: relative;
+        font-size: toRem(13);
+        font-family: 'Poppins';
+        text-align: center;
+        font-weight: bold;
+        color: #10a7ff;
+        @include GradientTextWithOutline(
+          $offset: toRem(1),
+          $color: #ffffff,
+          $num-steps: 25,
+          $textContent: attr(data-textafter),
+          $gradient: ''
+        );
+      }
+    }
+  }
+}
+
+.tableOverFlow {
+  @apply relative;
+  overflow-y: auto;
+  touch-action: pan-x pan-y !important;
+  height: toRem(230);
+
+  :global {
+    .infinite-scroll-component {
+      height: inherit !important;
+      overflow: inherit !important;
+    }
+  }
+
+  :global {
+    .lds-ellipsis div {
+      height: toRem(10.4);
+      width: toRem(10.4);
+      background-color: #e9cce8;
+    }
+
+    .ptr__pull-down {
+      .ptr__pull-down--pull-more {
+        display: none;
+      }
+    }
+  }
+}
+
+.table {
+  @apply relative w-full;
+  overflow-y: scroll;
+
+  thead {
+    position: sticky;
+    top: -1px;
+    padding-bottom: toRem(10);
+    opacity: 1;
+    z-index: 1;
+    text-transform: capitalize;
+
+    th {
+      font-size: toRem(12);
+      font-family: PoetsenOne;
+      text-align: left;
+      padding-bottom: toRem(7);
+      width: 25%;
+      position: relative;
+
+      @include GradientTextWithOutline(
+        $offset: toRem(2),
+        $color: #ffffff,
+        $num-steps: 25,
+        $textContent: attr(data-textafter),
+        $gradient: #10a7ff
+      );
+    }
+  }
+
+  font-size: toRem(10);
+
+  tbody {
+    tr {
+      &:nth-child(odd) {
+        border-radius: toRem(2);
+        background: rgba(255, 255, 255, 0.4);
+      }
+
+      td:first-child {
+        border-top-left-radius: toRem(5);
+        border-bottom-left-radius: toRem(5);
+      }
+      td:last-child {
+        border-top-right-radius: toRem(5);
+        border-bottom-right-radius: toRem(5);
+      }
+
+      td:nth-child(1) {
+        width: 24%;
+      }
+      td:nth-child(2) {
+        position: relative;
+        font-size: toRem(11);
+        width: 34%;
+
+        & > div {
+          display: grid;
+          grid-template-columns: 90% 10%;
+          align-items: center;
+          justify-content: center;
+        }
+        input {
+          z-index: -1;
+        }
+        span {
+          width: 100%;
+          display: block;
+        }
+        .copyIcon {
+          right: 0;
+          background-size: contain;
+        }
+      }
+      td:nth-child(3) {
+        width: 20%;
+      }
+      td:nth-child(4) {
+        width: 22%;
+      }
+    }
+
+    td {
+      text-align: center;
+      color: #4794ed;
+      word-break: break-all;
+      font-size: toRem(12);
+      padding: toRem(3) toRem(5);
+    }
+
+    &:before {
+      line-height: 1em;
+      content: '\200C';
+      display: block;
+    }
+  }
+}
+
+.loadingFetch {
+  @apply absolute flex justify-center  w-full items-center;
+  margin-top: toRem(-30);
+}
+
+.iceArrowLeft {
+  width: toRem(12);
+  position: absolute;
+  top: toRem(50);
+  left: toRem(-12);
+  cursor: pointer;
+}
+
+.iceArrowRight {
+  width: toRem(12);
+  position: absolute;
+  top: toRem(50);
+  right: toRem(-12);
+  rotate: 180deg;
+  cursor: pointer;
+}
+
+.noDataWrapper {
+  @apply absolute size-full flex-all-center top-0 left-0 flex-col;
+  font-size: toRem(14);
+  font-family: PoetsenOne;
+  color: rgba(255, 255, 255, 0.5);
+
+  .image {
+    @apply absolute;
+    width: toRem(252.656);
+    height: toRem(140);
+  }
+}
+
+.tableNoData {
+  overflow: hidden;
+
+  .headerContainer {
+    justify-content: space-evenly;
+    width: auto;
+    div {
+      width: auto !important;
+    }
+  }
+
+  .tableOverFlow {
+    width: auto;
+  }
+}
+
+.copyIcon {
+  display: block;
+  width: toRem(16);
+  height: toRem(16);
+  background-repeat: no-repeat;
+  background-size: cover;
+}

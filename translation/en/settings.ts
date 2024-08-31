@@ -1,0 +1,15 @@
+export const settings = {
+  title: 'Settings',
+  music: 'MUSIC',
+  effect: 'SOUND EFFECT',
+  on: 'ON',
+  off: 'OFF',
+  language: 'CHOOSE LANGUAGE',
+  version: 'Version',
+  english: 'ENGLISH',
+  chinese: 'CHINESE',
+  indonesian: 'INDONESIAN',
+  logout: 'Log out',
+  lang: 'ENGLISH',
+  clearCache: 'Clear Cache',
+} as const;

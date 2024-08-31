@@ -1,0 +1,20 @@
+.activitiesWrapper {
+  height: 100vh;
+  height: 100%;
+  height: 100dvh;
+  @apply w-full  relative items-center portrait:h-[100vw]  flex justify-center;
+  @include fadeIn;
+}
+
+.modal {
+  width: toRem(900);
+  height: toRem(410);
+  position: relative;
+}
+.reload {
+  right: 1%;
+  bottom: 8%;
+  width: 8%;
+  height: 10%;
+  z-index: 1001;
+}

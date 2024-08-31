@@ -1,0 +1,7 @@
+.backBtn {
+  @apply absolute z-50;
+  width: toRem(44);
+  height: toRem(44);
+  right: toRem(-15);
+  top: toRem(-20);
+}

@@ -1,0 +1,12 @@
+.bonusWrapper {
+  @apply h-full;
+  width: toRem(542);
+  max-width: 85%;
+
+  h1 {
+    @apply text-center;
+    font-weight: bold;
+    margin-top: toRem(-10);
+    margin-bottom: toRem(10);
+  }
+}

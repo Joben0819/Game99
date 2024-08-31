@@ -1,0 +1,188 @@
+.tableContainer {
+  position: relative;
+  white-space: nowrap;
+  display: grid;
+  place-items: center;
+
+  .headerContiner {
+    display: flex;
+    width: calc(toRem(140) * 5);
+    position: sticky;
+    top: 0;
+    height: toRem(30);
+    padding-inline: toRem(10);
+    align-items: center;
+    > div {
+      width: toRem(140) !important;
+
+      &[data-lang='cn'] {
+        width: calc(toRem(90) * 5);
+      }
+
+      p {
+        position: relative;
+        font-size: toRem(12);
+        font-family: 'Poppins';
+        text-align: center;
+        font-weight: bold;
+        color: #10a7ff;
+        @include GradientTextWithOutline(
+          $offset: toRem(1),
+          $color: #ffffff,
+          $num-steps: 25,
+          $textContent: attr(data-textafter),
+          $gradient: ''
+        );
+      }
+
+      &:after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: toRem(1);
+        background: #7fbaff;
+        box-shadow: 0 toRem(1) 0 0 #ffffff;
+        bottom: toRem(0);
+        left: toRem(0);
+      }
+    }
+  }
+
+  .dataWrapper {
+    height: toRem(253);
+    width: calc(toRem(140) * 5);
+    overflow-y: auto;
+    margin-top: toRem(5);
+
+    .dataContainer {
+      padding-inline: toRem(10);
+      display: flex;
+      align-items: center;
+      height: toRem(25) !important;
+
+      > div {
+        width: toRem(140);
+        text-align: center;
+        font-size: toRem(10);
+        word-break: break-all;
+        color: #4794ed;
+      }
+
+      div:first-child {
+        text-align: left;
+      }
+    }
+  }
+
+  :global {
+    .lds-ellipsis div {
+      height: toRem(10.4);
+      width: toRem(10.4);
+      background-color: #e9cce8;
+      display: none;
+    }
+
+    .ptr.withdrawPtr {
+      width: fit-content;
+    }
+
+    .ptr ::-webkit-scrollbar- {
+      width: 0 !important;
+      background-color: transparent;
+      /* This is optional, and it sets the background of the scrollbar area to be transparent */
+    }
+
+    .ptr__pull-down {
+      .ptr__pull-down--pull-more {
+        display: none;
+      }
+    }
+  }
+
+  &.tableNoData {
+    overflow: hidden;
+
+    .headerContiner,
+    .dataWrapper {
+      width: 100%;
+    }
+
+    .headerContiner {
+      justify-content: space-between;
+      & > div {
+        width: auto !important;
+      }
+    }
+
+    .tableWrapper {
+      width: 100%;
+      // overflow-x: hidden;
+    }
+  }
+
+  .loaderContainer {
+    position: relative;
+    top: toRem(50);
+  }
+}
+
+.tableWrapper {
+  width: 90%;
+  overflow-x: hidden;
+  // scroll-behavior: smooth;
+}
+
+.noDataWrapper {
+  @apply absolute size-full flex-all-center top-0 left-0 flex-col;
+  font-size: toRem(14);
+  font-family: PoetsenOne;
+  color: rgba(255, 255, 255, 0.5);
+
+  .image {
+    @apply relative;
+    width: toRem(252.656);
+    height: toRem(140);
+  }
+}
+
+.transactions {
+  @apply relative flex justify-end mr-[.3rem];
+
+  > div {
+    width: toRem(210);
+  }
+
+  &[data-lang='in'] {
+    > div {
+      width: toRem(205);
+    }
+  }
+
+  &[data-lang='cn'] {
+    > div {
+      width: auto;
+    }
+  }
+}
+
+.arrowContainer {
+  position: absolute;
+  top: toRem(4);
+
+  img {
+    width: toRem(12);
+    cursor: pointer;
+  }
+
+  &.iceArrowLeft {
+    left: toRem(-5);
+  }
+
+  &.iceArrowRight {
+    right: toRem(-5);
+
+    img {
+      rotate: 180deg;
+    }
+  }
+}

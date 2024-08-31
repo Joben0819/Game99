@@ -1,0 +1,82 @@
+import { TUserDataState } from '@/services/types';
+import { createSlice } from '@reduxjs/toolkit';
+
+export const initialState: TUserDataState = {
+  userInfo: {
+    accountCharge: 0,
+    accountNow: 0,
+    bonusMoney: 0,
+    codeNow: 0,
+    codeTotal: 0,
+    codeWill: 0,
+    dob: '',
+    email: '',
+    firstRechargeShow: false,
+    hasPassword: false,
+    hasRescueBonus: false,
+    hasUsername: false,
+    hasWithdrawPass: false,
+    headImg: '',
+    headImgId: '',
+    id: '',
+    inviterCode: '',
+    isGoogleQrCodeActive: false,
+    isNewUser: false,
+    nextLevelIntegral: 0,
+    nickName: '',
+    phone: '',
+    rechargeCount: 0,
+    registerType: 0,
+    status: 0,
+    testMoneyStatus: 0,
+    token: '',
+    updateVip: false,
+    username: '',
+    vip: 0,
+  },
+  userAdid: '',
+  userBalance: { balance: 0, bonusMoney: 0 },
+  loginEmail: '',
+  profileIdToSet: null,
+  registrationData: null,
+  personalCenter: { dateFilter: 'today', activeTab: 3 },
+  referralInfo: { invites: null, commissionReceived: null },
+};
+
+const userDataSlice = createSlice({
+  name: 'userData',
+  initialState,
+  reducers: {
+    resetUserDataState: () => initialState,
+    setUserInfo: (state, action) => ({ ...state, userInfo: action.payload }),
+    setUserBonusMoney: (state, action) => ({ ...state, userInfo: { ...state.userInfo, bonusMoney: action.payload } }),
+    setInviterCode: (state, action) => ({ ...state, userInfo: { ...state.userInfo, inviterCode: action.payload } }),
+    setUserWithdrawPass: (state, action) => ({ ...state, userInfo: { ...state.userInfo, hasWithdrawPass: action.payload } }),
+    setUserAdid: (state, action) => ({ ...state, userAdid: action.payload }),
+    setUserBalance: (state, action) => ({ ...state, userBalance: action.payload }),
+    setLoginEmail: (state, action) => ({ ...state, loginEmail: action.payload }),
+    setProfileIdToSet: (state, action) => ({ ...state, profileIdToSet: action.payload }),
+    setRegistrationData: (state, action) => ({ ...state, registrationData: action.payload }),
+    setActiveTab: (state, action) => ({ ...state, personalCenter: { ...state.personalCenter, activeTab: action.payload } }),
+    setDateFilter: (state, action) => ({ ...state, personalCenter: { ...state.personalCenter, dateFilter: action.payload } }),
+    setReferralInfo: (state, action) => ({ ...state, referralInfo: action.payload }),
+  },
+});
+
+export const {
+  resetUserDataState,
+  setInviterCode,
+  setLoginEmail,
+  setProfileIdToSet,
+  setRegistrationData,
+  setUserBalance,
+  setUserBonusMoney,
+  setUserInfo,
+  setUserWithdrawPass,
+  setUserAdid,
+  setActiveTab,
+  setDateFilter,
+  setReferralInfo,
+} = userDataSlice.actions;
+
+export default userDataSlice.reducer;

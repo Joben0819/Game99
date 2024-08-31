@@ -1,0 +1,188 @@
+.prizeModalWrapper {
+  display: block;
+  opacity: 1;
+  height: toRem(320);
+  @apply w-full absolute;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: toRem(20) toRem(20) toRem(5) toRem(5);
+  z-index: 2;
+
+  &.hide {
+    display: none;
+  }
+
+  &.webView {
+    height: 100vh;
+  }
+
+  .modalContainer {
+    @apply absolute flex-all-center size-full;
+    text-align: center;
+
+    h1 {
+      position: relative;
+      margin-top: toRem(120);
+      z-index: 1;
+      text-shadow:
+        0 2px 0 #1b98c6,
+        0 4px 4px #0008d2,
+        0 4px 4px rgba(0, 0, 0, 0.25);
+      font-family: 'PoetsenOne';
+      font-size: toRem(55);
+    }
+
+    > div,
+    canvas {
+      @apply w-full  absolute  left-0;
+      height: auto !important;
+    }
+
+    .svgaImgContainer {
+      width: 100%;
+      opacity: 1;
+
+      &.hide {
+        animation: fadeOut 2s ease 6.5s 1 normal forwards;
+      }
+
+      .winningPrizeTopText {
+        width: 100%;
+        position: absolute;
+        top: toRem(-100);
+        z-index: 1;
+
+        h2 {
+          text-align: center;
+          transform: scale(0);
+          animation: scaleUp 2s ease 1.5s 1 normal forwards;
+          margin-inline: auto;
+
+          text-shadow:
+            0 2px 0 #1b98c6,
+            0 4px 4px #0008d2,
+            0 4px 4px rgba(0, 0, 0, 0.25);
+          font-family: 'PoetsenOne';
+
+          .yellowText {
+            color: #fcff43;
+          }
+
+          &:first-child {
+            font-size: toRem(13);
+            margin-bottom: toRem(15);
+          }
+
+          &:last-child {
+            font-size: toRem(18);
+            margin-bottom: toRem(15);
+          }
+
+          &[data-lang='en'] {
+            &:first-child {
+              font-size: toRem(10);
+            }
+
+            &:last-child {
+              font-size: toRem(15);
+            }
+          }
+
+          &[data-lang='in'] {
+            &:first-child {
+              font-size: clamp(toRem(8), 4vw, toRem(11));
+            }
+
+            &:last-child {
+              font-size: toRem(16);
+            }
+          }
+        }
+      }
+
+      .blueWhiteBox {
+        background: transparent;
+        background: url(../../../../../../public/assets/commons/envelope/blue_white_box.png);
+        background-size: 100% 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        max-width: toRem(100);
+        height: toRem(73);
+        margin-inline: auto;
+        position: relative;
+        text-align: center;
+        border-radius: toRem(8);
+        box-shadow:
+          0 0 40px 20px #fff,
+          0 0 100px 35px #ff0;
+        transform: scale(0);
+        animation: scaleUp 2s ease 1.5s 1 normal forwards;
+
+        span {
+          font-size: toRem(12);
+          position: absolute;
+          bottom: toRem(9);
+          display: block;
+          text-align: center;
+          width: 100%;
+        }
+
+        &.webView {
+          @include max500 {
+            max-width: toRem(250);
+            height: toRem(200);
+            margin-top: toRem(90);
+
+            span {
+              font-size: toRem(35);
+              bottom: toRem(29);
+            }
+          }
+        }
+
+        .blueCircleFlagContainer {
+          height: 60%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          img {
+            width: toRem(30) !important;
+            height: toRem(30) !important;
+          }
+
+          &.webView {
+            @include max500 {
+              img {
+                width: toRem(60) !important;
+                height: toRem(60) !important;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes scaleUp {
+  0% {
+    transform: scale(0);
+  }
+
+  100% {
+    transform: scale(1.7);
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+}

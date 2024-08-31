@@ -1,0 +1,31 @@
+.activeBtn,
+.btn {
+  @apply flex items-center justify-center relative z-[1] w-[90%] cursor-pointer;
+  height: toRem(42);
+
+  span {
+    @apply z-50 text-center w-full;
+    font-family: 'Poppins';
+    font-weight: 500;
+    font-size: toRem(14);
+    line-height: toRem(17.5);
+    display: -webkit-box;
+    line-clamp: 2;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+  }
+
+  img {
+    @apply absolute h-full w-full object-contain;
+  }
+}
+
+.activeBtn {
+  color: #7f0f0f;
+  pointer-events: none;
+}
+
+.btn {
+  color: #142b7b;
+}

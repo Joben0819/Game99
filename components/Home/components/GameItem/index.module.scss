@@ -1,0 +1,29 @@
+.gameItem {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .gameImg {
+    position: relative;
+    height: 0.85em;
+    width: 0.85em;
+
+    img {
+      object-fit: cover;
+    }
+  }
+
+  .mtImg {
+    position: absolute;
+    z-index: 1;
+    height: 70%;
+    width: 70%;
+  }
+}
+
+.isMaintenance {
+  .gameImg {
+    filter: brightness(0.4);
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "paymentChannels": "支付渠道",
+  "paymentAmount": "充值金额",
+  "chainName": "链名称 ：",
+  "rechargeAddress": "充值地址 ：",
+  "transactionId": "交易ID ：",
+  "transactionIdPlaceholder": "请输入交易ID",
+  "rechargeAmount": "充值数量 ：",
+  "rechargeAmountPlaceholder": " 请输入充值USDT数量",
+  "note": "最终充值到账金额为：",
+  "noteReceived": "{totalRecharge}（{rechargeAmount} USDT*当前汇率 {exchangeRate})",
+  "instructionHeader": "请仔细阅读充值步骤：",
+  "instructionReminder": "温馨提示：我司充值地址会不定期更新，请注意查看",
+  "button": "充值",
+  "copyRechargeAddress": "已复制地址"
+}

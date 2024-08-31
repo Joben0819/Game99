@@ -1,0 +1,255 @@
+.modal {
+  @apply absolute size-full flex-all-center;
+  top: 0;
+  z-index: 2;
+  opacity: 0;
+
+  &.isLoaded {
+    @include fadeIn;
+  }
+
+  .content {
+    @apply relative size-full flex-all-center;
+    width: toRem(644);
+    height: toRem(353);
+    color: red;
+
+    .sizeImg {
+      @apply flex justify-center absolute top-[-0.4rem];
+      width: toRem(800);
+      height: toRem(380);
+      z-index: -1;
+    }
+
+    input {
+      outline: none !important;
+    }
+
+    .header_title {
+      font-size: 0.6rem;
+      font-family: 'PoetsenOne';
+      font-weight: normal;
+      background: -webkit-linear-gradient(#ffd700, #09fec5);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      white-space: nowrap;
+    }
+
+    .sizeImg2 {
+      @apply absolute top-[-0.1rem];
+      text-align: center;
+      height: toRem(50);
+      font-size: 0.6rem;
+      left: toRem(260);
+
+      &[data-lang='in'] {
+        left: toRem(225);
+      }
+      &[data-lang='zh-tw'],
+      &[data-lang='cn'] {
+        left: toRem(290);
+      }
+    }
+
+    .Inputs {
+      position: absolute;
+      top: 1.7rem;
+      left: 3.9rem;
+      display: flex;
+      width: 50%;
+      flex-direction: column;
+      align-items: flex-start;
+
+      .sizeImg3 {
+        font-size: toRem(20);
+        font-weight: 700;
+        text-shadow:
+          -1px -1px 0 #fff,
+          2px -1px 0 #fff,
+          -1px 1px 0 #fff,
+          2px 1px 0 #fff;
+        color: #10a7ff;
+        font-family: 'Poppins';
+        &[data-lang='cn'] {
+          font-family: 'Microsoft YaHei';
+        }
+      }
+
+      .sizeImg4 {
+        position: absolute;
+        right: toRem(-120);
+        top: toRem(-60);
+        width: toRem(25);
+        height: toRem(25);
+      }
+
+      .phoneNumber {
+        @apply relative flex w-full bg-white h-[.55rem];
+        padding: toRem(6.5) toRem(2.5);
+        border-radius: 0.1rem;
+
+        &--warn {
+          border: 1px solid red;
+        }
+
+        .flagWrapper {
+          width: 11.5%;
+          .inputNumberContainer {
+            @apply flex-all-center h-[100%];
+            .flagButtonContainer {
+              @apply flex-all-center text-[.23rem];
+              gap: toRem(6);
+              height: auto;
+              padding-block-start: toRem(1.5);
+              color: #ff7a00;
+            }
+
+            .dropdownContainer {
+              width: 100%;
+              left: 0;
+              max-height: 1.8rem;
+              position: absolute;
+              background: #fff;
+              top: 0.6rem;
+              border-radius: toRem(5);
+              z-index: 8;
+              font-size: toRem(10);
+              padding: 0.1rem;
+              border: toRem(1) solid #4794ed;
+              flex-direction: column;
+              display: none;
+
+              &--show {
+                display: flex;
+              }
+
+              .dropdownItems {
+                overflow: scroll;
+
+                .dropdownItem {
+                  display: flex;
+                  justify-content: space-between;
+                  border-radius: toRem(4);
+                  height: toRem(20);
+                  padding: 0.05rem 0.17rem;
+                  align-items: center;
+                  color: #4794ed;
+                  text-transform: capitalize;
+
+                  &--active {
+                    color: '#FF7A00';
+                  }
+
+                  &:nth-child(even) {
+                    background: #edf7ff;
+                  }
+
+                  &:hover {
+                    color: #ff7a00;
+                    cursor: pointer;
+                  }
+                }
+
+                .searchInput {
+                  background-color: #fff;
+                  width: 90%;
+
+                  &::placeholder {
+                    color: #8f8d8d;
+                  }
+                }
+
+                .searchWrapper {
+                  @apply flex mb-[.1rem] gap-[.05rem];
+                  border: 0.02rem solid #4794ed;
+                  border-radius: 0.1rem;
+                  padding: 0.04rem 0.1rem;
+                  align-items: center;
+                  .searchIcon {
+                    @apply w-auto h-[0.15rem];
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .mobileNum {
+          @apply w-[85%] text-[.22rem] text-black;
+          padding: 0 0.2rem;
+          line-height: 0.22rem;
+          border-left: toRem(1.5) solid #9a9696;
+
+          &::placeholder {
+            font-size: 0.21rem;
+            font-family: 'Microsoft YaHei';
+            color: rgba(1, 1, 1, 0.35);
+          }
+        }
+      }
+
+      .otpWrapper {
+        @apply mt-[.1rem] flex-all-center relative w-full;
+        .enterOtp {
+          @apply h-[.55rem] w-[68%] rounded-[.1rem] text-[.22rem] text-black pl-[.16rem];
+
+          &--warn {
+            border: 0.01rem solid red;
+          }
+
+          &::placeholder {
+            font-size: 0.21rem;
+            font-family: 'Microsoft YaHei';
+            color: rgba(1, 1, 1, 0.35);
+          }
+        }
+
+        .btnOtp {
+          @apply relative h-[0.55rem] w-[30%] ml-[0.1rem] flex-all-center;
+
+          &--disabled {
+            filter: grayscale(1);
+          }
+
+          .seconds {
+            @apply text-[.2rem];
+            color: #fff;
+          }
+        }
+      }
+      .loginButton {
+        background-image: url('/assets/commons/login/loginBtn.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        z-index: 5;
+        padding-top: 0.2rem;
+        margin-top: 0.2rem;
+        font-size: .23rem;
+        text-shadow: -1px -1px 0 #ffa800, 2px -1px 0 #ff6836, -1px 1px 0 #ffa800, 2px 1px 0 #ff6836;
+        color: #fff;
+        font-family: "PoetsenOne";
+        width: 2.7rem;
+        height: 0.7rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        align-self: center;
+      }
+    }
+  }
+}
+
+.warnOtp {
+  @apply absolute top-[0.17rem];
+  right: toRem(108);
+  height: toRem(11);
+  width: toRem(11);
+}
+
+.warnNum {
+  @apply absolute  z-10;
+  right: toRem(8);
+  top: toRem(9);
+  height: toRem(11);
+  width: toRem(11);
+}

@@ -1,0 +1,15 @@
+export const recharge = {
+  leftPanelTitle: 'Top-Up',
+  titleBesidesCopyIcon: 'riwayat top-up',
+  onlineRecharge: 'Top-Up Online',
+  columnDate: 'Tanggal',
+  columnTransNumber: 'No. transaksi',
+  columnTransAmount: 'Jumlah',
+  columnTransStatus: 'Keterangan',
+  USDTcomment: 'Pilih Jumlah yang Akan Dibayar:',
+  status: 'Status',
+  transactionDate: 'Transaction Date',
+  copySuccess: 'Salin Sukses!',
+  copyUnsuccessful: 'Gagal menyalin!',
+  rechargeWarning: 'Anda perlu melakukan top-up sebelum Anda mendapatkan putaran gratis',
+} as const;

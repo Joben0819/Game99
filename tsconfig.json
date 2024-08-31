@@ -1,0 +1,37 @@
+{
+  "compilerOptions": {
+    "noUnusedLocals": true,
+    // "noUnusedParameters": true,
+    "target": "es6",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./*"]
+    },
+    "types": ["./node_modules/user-agent-data-types", "jest", "@testing-library/jest-dom"]
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "__tests__/OtherExample/NestedExample/page5.test.js",
+    "global.d.ts"
+  ],
+  "exclude": ["node_modules"]
+}

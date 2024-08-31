@@ -1,0 +1,10 @@
+.roulette {
+  position: relative;
+  width: calc(100% - toRem(51));
+  height: calc(100% - toRem(51));
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}

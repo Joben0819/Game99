@@ -1,0 +1,131 @@
+.tipsDialog {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background: #00000080;
+  z-index: 1001;
+
+  &__show {
+    animation: BounceInTop 0.8s ease-in-out 0s 1 normal forwards;
+  }
+}
+
+.tipsContentWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: toRem(491);
+  height: toRem(260);
+  border-radius: toRem(10);
+  background: radial-gradient(
+    97.19% 171.93% at 3.19% 0%,
+    rgba(196, 225, 255, 0.3) 0%,
+    rgba(106, 181, 255, 0.3) 46.23%,
+    rgba(66, 148, 255, 0.3) 100%
+  );
+  box-shadow: 0px 0px 20px 0px #60fcff inset;
+  opacity: 0;
+
+  &__show {
+    animation: FadeIn 1s ease-in-out 0.6s forwards;
+  }
+}
+
+.tipsContent {
+  position: relative;
+  width: toRem(479);
+  height: toRem(250);
+  background: linear-gradient(180deg, #ffffff 43.73%, #affffd 100%);
+  box-shadow: 0px -3px 4px 0px #60fcff inset;
+  border-radius: toRem(10);
+  padding: toRem(40) toRem(12) toRem(12) toRem(12);
+}
+
+.tipsCloseBtn {
+  position: absolute;
+  right: toRem(12);
+  top: toRem(8);
+  width: toRem(24);
+  height: toRem(24);
+  img {
+    position: unset;
+  }
+}
+
+.contentText {
+  position: relative;
+  top: 0;
+  height: toRem(190);
+  overflow: auto;
+
+  p {
+    font-family: 'Microsoft YaHei';
+    font-size: toRem(12);
+    font-weight: 400;
+    line-height: toRem(15.84);
+    text-align: left;
+    color: #1653c9;
+  }
+}
+
+@keyframes BounceInTop {
+  0% {
+    animation-timing-function: ease-in;
+    opacity: 0;
+    transform: translateY(-250px);
+  }
+
+  38% {
+    animation-timing-function: ease-out;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  55% {
+    animation-timing-function: ease-in;
+    transform: translateY(-65px);
+  }
+
+  72% {
+    animation-timing-function: ease-out;
+    transform: translateY(0);
+  }
+
+  81% {
+    animation-timing-function: ease-in;
+    transform: translateY(-28px);
+  }
+
+  90% {
+    animation-timing-function: ease-out;
+    transform: translateY(0);
+  }
+
+  95% {
+    animation-timing-function: ease-in;
+    transform: translateY(-8px);
+  }
+
+  100% {
+    animation-timing-function: ease-out;
+    transform: translateY(0);
+  }
+}
+
+@keyframes FadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

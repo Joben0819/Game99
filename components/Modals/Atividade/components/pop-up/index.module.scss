@@ -1,0 +1,13 @@
+.popUpWrapper {
+  @apply size-full fixed top-0 flex-all-center z-[15] left-0;
+  background: rgba(0, 0, 0, 0.16);
+  animation: fadeIn 1s ease-in-out forwards;
+}
+
+.body {
+  @apply w-full absolute flex justify-center items-center;
+  font-family: 'PoetsenOne';
+  h1 {
+    @apply absolute top-[-0.5rem] z-[3] drop-shadow-sm;
+  }
+}

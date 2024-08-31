@@ -1,0 +1,34 @@
+.dailyBonusWrapper {
+  height: 100vh;
+  height: 100%;
+  height: 100dvh;
+  @apply w-full  portrait:h-[100vw]  items-center flex justify-center bg-cover bg-center bg-no-repeat;
+  touch-action: pan-y, pan-x !important;
+  @include fadeIn;
+}
+
+.modal {
+  width: toRem(730);
+  height: toRem(330);
+  max-width: 90%;
+  position: relative;
+  touch-action: pan-y, pan-x !important;
+
+  :global {
+    .close-btn {
+      @apply absolute;
+      right: toRem(-35);
+      top: toRem(3);
+    }
+  }
+}
+
+.container {
+  @apply relative p-[0.5rem] h-full w-full flex;
+  gap: toRem(12);
+}
+
+.btnDisabled {
+  pointer-events: none;
+  opacity: 0.7;
+}

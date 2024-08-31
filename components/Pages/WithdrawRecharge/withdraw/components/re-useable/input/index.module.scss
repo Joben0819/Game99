@@ -1,0 +1,54 @@
+.wrapper {
+  position: relative;
+  height: auto;
+  width: 100%;
+}
+
+.input {
+  display: block;
+  @apply px-[0.3rem];
+  padding-bottom: toRem(4);
+  margin-top: toRem(10);
+  width: 100%;
+  height: toRem(35);
+  border-radius: toRem(8);
+  background: #ffffff;
+  color: #8f8d8d;
+  font-size: toRem(12);
+
+  ::placeholder {
+    color: #8f8d8d;
+  }
+
+  ::-webkit-inner-spin-button,
+  ::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+  }
+
+  &[type='number']::-webkit-outer-spin-button,
+  &[type='number']::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  &[type='number'][type='number'] {
+    -moz-appearance: textfield;
+  }
+
+  &[data-error='true'] {
+    @apply border-[0.01rem] border-red-600;
+  }
+}
+
+.error {
+  @apply top-1/2 -translate-y-1/2 rounded-full flex-all-center;
+  font-size: toRem(12);
+  background-color: red;
+  position: absolute;
+  right: toRem(10);
+  width: toRem(13);
+  height: toRem(13);
+}

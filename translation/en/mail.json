@@ -1,0 +1,22 @@
+{
+  "mailTitle": "E-mail",
+  "noMail": "There is no email!",
+  "second": "second",
+  "minute": "minute",
+  "hour": "hour",
+  "day": "day",
+  "week": "week",
+  "month": "month",
+  "year": "year",
+  "ago": "ago",
+  "emailOkay": "Okay",
+  "expiredMessage": "Expired after 15 days automatically deleted!",
+  "deleteNow": "Delete now",
+  "successDelete": "Successfully deleted message",
+  "selectAll": "Select All",
+  "delete": "Delete",
+  "deleteMany": "Delete selected items?",
+  "deleteNote": "This is permanent and can’t be undone",
+  "cancel": "Cancel",
+  "ok": "Okay"
+}

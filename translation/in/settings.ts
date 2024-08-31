@@ -1,0 +1,15 @@
+export const settings = {
+  title: 'Pengaturan',
+  music: 'MUSIK',
+  effect: 'EFEK SUARA',
+  on: 'BUKA',
+  off: 'TUTUP',
+  language: 'PILIH BAHASA',
+  version: 'Version',
+  english: 'INGGRIS',
+  chinese: 'CINA',
+  indonesian: 'INDONESIA',
+  logout: 'Keluar',
+  lang: 'INDONESIA',
+  clearCache: 'Hapus Cache',
+} as const;

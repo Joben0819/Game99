@@ -1,0 +1,141 @@
+.header {
+  @apply bg-[url('/assets/commons/activities/header_bg.webp')] w-full h-[27%] bg-cover bg-no-repeat relative px-[0.2rem];
+  @apply flex-all-center gap-x-[0.3rem];
+
+  font-size: toRem(20);
+}
+
+.progress {
+  @apply w-full relative;
+}
+
+.progressBar {
+  @apply w-full overflow-hidden relative;
+  border-radius: toRem(32);
+  height: toRem(9);
+  background: linear-gradient(180deg, #1cb0ff 0%, #1567ff 19.79%, #0f00ee 85.94%, #003392 100%),
+    linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+
+  .indicator {
+    @apply absolute top-0;
+    content: '';
+    background: linear-gradient(180deg, #ffef75 0%, #ffd231 6.25%, #ffeb4a 51.56%, #ffca29 54.17%, #ffae19 100%);
+
+    height: toRem(9);
+    border: 1px solid #6d081d;
+    border-radius: toRem(32);
+
+    &.noProgress {
+      border: none;
+    }
+  }
+}
+
+.coins {
+  @apply flex w-full  absolute top-[50%] translate-y-[-50%] z-10   justify-between;
+  margin-left: toRem(10);
+}
+
+.rewardIcon {
+  @apply absolute;
+  height: toRem(28);
+  width: toRem(30);
+  margin-top: toRem(4.35);
+
+  img {
+    @apply object-contain;
+  }
+}
+
+.coinContainer {
+  position: relative;
+  width: toRem(38.671);
+  height: toRem(38.671);
+  display: flex;
+  justify-content: center;
+
+  .coinValue {
+    @apply px-[0.15rem] absolute flex-all-center w-full;
+    font-size: toRem(9);
+    border-radius: toRem(30);
+    height: toRem(11);
+    bottom: toRem(-9);
+    margin-left: toRem(-2);
+
+    > div {
+      @apply text-center block px-[0.1rem];
+      background: linear-gradient(180deg, #1cb0ff 0%, #1567ff 19.79%, #0f00ee 85.94%, #003392 100%),
+        linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+
+      border-radius: toRem(30);
+      width: auto;
+    }
+
+    span {
+      background: var(
+        --Linear,
+        linear-gradient(180deg, #ffef75 0%, #ffd231 6.25%, #ffeb4a 51.56%, #ffca29 54.17%, #ffae19 100%)
+      );
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+
+  .energyValue {
+    @apply px-[0.02rem] absolute -top-[0.12rem]  flex-all-center;
+    left: toRem(-10);
+    font-size: toRem(9);
+    border-radius: toRem(30);
+    height: toRem(12);
+    min-width: toRem(30);
+    border: toRem(1.2) x solid #fff;
+    background-color: #fff;
+
+    span {
+      @apply relative flex-all-center w-full;
+      color: #4794ed;
+      line-height: normal;
+    }
+  }
+
+  img {
+    width: toRem(11);
+    height: toRem(11);
+  }
+}
+
+.gain {
+  @apply w-[25%] flex flex-col;
+
+  span {
+    @apply flex-all-center whitespace-nowrap;
+    font-size: toRem(29.11);
+    line-height: 1.1;
+    @include text-outline($offset: toRem(1), $color: #1456ff, $num-steps: 20);
+    margin-bottom: toRem(2);
+
+    img {
+      width: toRem(26);
+      height: toRem(26);
+      margin-right: toRem(5);
+    }
+
+    &:nth-child(2) {
+      font-size: toRem(12);
+
+      &[data-lang='in'],
+      &[data-lang='en'] {
+        font-size: toRem(10);
+      }
+    }
+  }
+}
+
+.loader {
+  @apply absolute size-full z-[9];
+}
+
+.claimable {
+  animation: wiggleIt 2s ease infinite;
+}

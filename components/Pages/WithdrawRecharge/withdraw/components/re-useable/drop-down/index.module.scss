@@ -1,0 +1,92 @@
+.wrapper {
+  @apply relative w-full;
+}
+
+.selected {
+  @apply px-[0.2rem] flex items-center justify-between;
+  margin-top: toRem(10);
+  width: 100%;
+  height: toRem(35);
+  border-radius: toRem(8);
+  background: #ffffff;
+  font-size: toRem(12);
+
+  ::placeholder {
+    color: #8f8d8d;
+  }
+}
+
+.placeholder {
+  color: #8f8d8d;
+}
+
+.titleIcon {
+  @apply flex items-center;
+  gap: toRem(5);
+
+  .icon {
+    @apply relative;
+    width: toRem(25);
+    height: toRem(25);
+    background-color: #fff;
+    border: toRem(1) solid #e7e7e7;
+    border-radius: toRem(50);
+
+    img {
+      border-radius: 100%;
+      object-fit: contain;
+    }
+  }
+
+  span {
+    font-family: Poppins;
+    font-size: toRem(12);
+    font-weight: 400;
+    text-align: left;
+    color: #4794ed;
+  }
+
+  .placeholder {
+    color: #9ca3af;
+    margin-left: toRem(5);
+  }
+}
+
+.arrowDown {
+  @apply relative;
+  width: toRem(8);
+  height: toRem(5);
+
+  .downImg {
+    width: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+
+    &--active {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.dropDownList {
+  @apply absolute w-full;
+  z-index: 10;
+  top: toRem(48);
+  max-height: toRem(172);
+  overflow-y: auto;
+  background-color: #ffffff;
+  border-radius: toRem(14);
+
+  .selected {
+    margin-top: toRem(0);
+
+    &:hover {
+      background-color: #edf3ff;
+      border-radius: toRem(0);
+    }
+  }
+}
+
+.selectedOne {
+  background-color: #edf3ff !important;
+}

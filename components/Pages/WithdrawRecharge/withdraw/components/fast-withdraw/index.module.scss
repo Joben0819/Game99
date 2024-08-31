@@ -1,0 +1,138 @@
+.FWrapper {
+  @apply size-full relative;
+  font-family: 'Poppins';
+
+  h3 {
+    font-family: Poppins;
+    font-size: toRem(20);
+    font-weight: 700;
+    position: relative;
+    @include GradientTextWithOutline(
+      $offset: toRem(2),
+      $color: #ffffff,
+      $num-steps: 25,
+      $textContent: attr(data-textafter),
+      $gradient: #10a7ff
+    );
+  }
+}
+
+.fInnerWrapper {
+  height: toRem(270);
+  overflow-y: auto;
+}
+
+.inputContainer {
+  @apply flex flex-col relative;
+
+  input {
+    margin-top: unset !important;
+    @apply px-[0.3rem];
+    padding-bottom: toRem(4);
+    width: 100%;
+    height: toRem(35);
+    border-radius: toRem(5);
+    background: #ffffff;
+    font-size: toRem(12);
+    outline: none;
+    padding-bottom: 0;
+    color: #8f8d8d;
+    ::placeholder {
+      color: #8f8d8d;
+    }
+  }
+}
+
+.canBeWithdrawn {
+  @apply flex justify-between items-center;
+  font-size: toRem(12);
+  font-family: Inter !important;
+  padding-top: toRem(7);
+  padding-bottom: toRem(7);
+  gap: toRem(5);
+
+  .withdrawable {
+    @apply flex flex-col items-center justify-center gap-[.01rem] p-[.15rem];
+    border-radius: toRem(8);
+    width: 50%;
+    height: toRem(60);
+    background-color: #ffffff80;
+
+    > div {
+      @apply w-full;
+
+      > p {
+        font-family: Poppins;
+        font-size: toRem(10);
+        font-weight: 400;
+        text-align: left;
+        color: #f78a0c;
+      }
+      &:first-child {
+        p {
+          font-size: toRem(20);
+          color: #10a7ff;
+        }
+      }
+    }
+  }
+
+  .codeNeed {
+    @apply flex flex-col items-center justify-center gap-[.01rem] p-[.15rem];
+    border-radius: toRem(8);
+    width: 50%;
+    height: toRem(60);
+    background-color: #ffffff80;
+
+    > div {
+      @apply w-full;
+
+      > p {
+        font-family: Poppins;
+        font-size: toRem(10);
+        font-weight: 400;
+        text-align: left;
+        color: #f78a0c;
+      }
+      &:first-child {
+        p {
+          font-size: toRem(20);
+          color: #10a7ff;
+        }
+      }
+    }
+  }
+}
+
+.banksContainer {
+  margin-top: toRem(15);
+  height: toRem(165);
+}
+
+.addBankBtn {
+  @apply w-full  flex items-center px-[0.4rem] gap-x-[0.1rem] justify-center cursor-pointer;
+  font-size: toRem(12);
+  height: toRem(40);
+  border-radius: toRem(5);
+  margin: toRem(5) toRem(0);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.6) 0%,
+    rgba(255, 255, 255, 0.132) 69.5%,
+    rgba(255, 255, 255, 0.66) 100%
+  );
+  border: toRem(1.5) solid #ffffff66;
+  color: #1653c9;
+  text-align: center;
+  font-family: Poppins;
+
+  span {
+    font-size: toRem(20);
+    color: #1653c9;
+    font-family: Poppins;
+  }
+}
+
+.buttonWrapper {
+  @apply flex justify-center items-center;
+}

@@ -1,0 +1,18 @@
+.sidebar {
+  width: toRem(188.75);
+  height: toRem(300);
+}
+
+.sidebar,
+.content {
+  @apply relative;
+
+  img {
+    @apply h-full w-full absolute object-contain;
+  }
+}
+
+.sidebarContainer {
+  @apply overflow-auto grid gap-[0.1rem] w-[80%] justify-items-center absolute top-[0.7rem] right-[0.2rem];
+  max-height: toRem(243);
+}

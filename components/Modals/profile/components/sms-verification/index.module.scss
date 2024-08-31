@@ -1,0 +1,64 @@
+@import '@/styles/_helpers.scss';
+
+.modalWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+
+  .modalContainer {
+    background-image: url('/assets/commons/profile/verification_bg.webp');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    position: relative;
+    width: toRem(471.71);
+    height: toRem(302.99);
+    margin: toRem(20) 0 0 toRem(10);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .headerTitle {
+      width: toRem(360);
+      margin-top: toRem(-25);
+      margin-left: toRem(8);
+      text-align: center;
+    }
+
+    .buttonContainer {
+      margin-top: toRem(25);
+      width: toRem(245);
+      height: toRem(97);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+
+      .buttonIcon {
+        width: toRem(95);
+        height: toRem(95);
+        position: relative;
+        img {
+          position: unset;
+          object-fit: contain;
+        }
+      }
+
+      span {
+        font-family: 'Poppins';
+        font-size: toRem(10);
+        color: #ff7a00;
+        margin-top: toRem(10);
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "modalTitle": "/assets/en/primeira_compra/primeira_title.png",
+  "firstRecharge": "First Purchase",
+  "bonus": "EXTRA",
+  "currency": "IDR",
+  "tips": {
+    "fLabel": "First Purchase",
+    "fDesc": "Purchase one of these packages and it will disappear permanently.",
+    "sLabel": "Daily Discount:",
+    "sDesc": "Purchase one of these packages and it will disappear today.",
+    "tLabel": "Valuable Gift:",
+    "tDesc": "Each package can only be purchased once!"
+  },
+  "fBottomText": "Every time you purchase any package, additional bonuses will accumulate for 3 days.",
+  "sBottomText": "After charging, you need to wait for 1 minute before entering the game.",
+  "rechargeOver": "Recharge over",
+  "rechargeOverContinuation": "",
+  "get": "get",
+  "free": "free",
+  "details": "details"
+}

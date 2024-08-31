@@ -1,0 +1,216 @@
+.leftSide {
+  position: relative;
+  aspect-ratio: 1.89 / 1;
+  width: 100%;
+  padding: toRem(10) toRem(10) 0 0;
+
+  &.isVivoBrowser {
+    height: toRem(150);
+  }
+
+  .leftSideContent {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+
+    .envelope {
+      position: relative;
+      background: url(/assets/commons/envelope/mainBgEnvelope.png) center / 100% 100% no-repeat;
+      height: 100%;
+      width: 100%;
+
+      .envelopeTopText {
+        background: linear-gradient(180deg, #fff9f3 0%, #fff4df 27%, #ffc4a0 100%);
+        border-radius: 0 0 toRem(6) toRem(6);
+        width: toRem(141);
+        height: toRem(22);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: auto;
+
+        span {
+          font-size: toRem(10);
+          color: #cd7e46;
+        }
+      }
+
+      .envelopeMiddleText {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+
+        .upContentContainer {
+          padding: toRem(22) 0 0;
+
+          h1 {
+            width: 100%;
+            font-size: toRem(39);
+            font-weight: bolder;
+            text-align: center;
+            line-height: toRem(39);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            span {
+              font-size: toRem(19);
+              text-align: center;
+              margin: 0 0 0 toRem(5);
+              transform: translateY(toRem(2));
+            }
+          }
+
+          h2 {
+            font-size: toRem(9);
+            font-weight: 700;
+            width: 100%;
+            white-space: nowrap;
+            margin: toRem(2) 0 toRem(6);
+
+            span {
+              color: #fbfe0b;
+            }
+
+            &[data-lang='en'] {
+              font-size: toRem(10);
+            }
+
+            &.webView {
+              margin: toRem(2) 0 toRem(5);
+            }
+
+            &.isSmallWebView {
+              margin: toRem(8) 0;
+            }
+          }
+
+          .progressBarContainer {
+            width: 100%;
+            height: 20%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .progressBarHolder {
+              background: url(/assets/commons/envelope/check_progressbar.png) center / 100% 100% no-repeat;
+              width: toRem(170);
+              height: toRem(15);
+              display: flex;
+              align-items: center;
+              justify-content: flex-start;
+              position: relative;
+
+              .progressBar {
+                height: toRem(7);
+                border-radius: toRem(2);
+                background-color: #fff;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                -webkit-transition: width 0.5s ease-in-out;
+                -moz-transition: width 0.5s ease-in-out;
+                -o-transition: width 0.5s ease-in-out;
+                transition: width 0.5s ease-in-out;
+              }
+
+              .progressImgContainer {
+                width: 100%;
+                position: absolute;
+                display: flex;
+
+                img {
+                  width: toRem(15) !important;
+                  height: toRem(15) !important;
+                }
+
+                img:nth-of-type(1) {
+                  margin-left: toRem(21);
+                }
+
+                img:nth-of-type(2) {
+                  margin-left: toRem(14);
+                }
+
+                img:nth-of-type(3) {
+                  margin-left: toRem(14);
+                }
+
+                img:nth-of-type(4) {
+                  margin-left: toRem(14);
+                }
+
+                img:nth-of-type(5) {
+                  margin-left: toRem(14);
+                }
+              }
+            }
+
+            .boxCheckContainer {
+              background: url(/assets/commons/envelope/blue_white_box.png) center / 100% 100% no-repeat;
+              display: grid;
+              grid-template-rows: 58% 42%;
+              height: toRem(27);
+              max-height: toRem(27);
+              min-width: toRem(48);
+              margin-left: toRem(-1);
+              z-index: 1;
+              position: relative;
+
+              img {
+                width: toRem(9) !important;
+                height: toRem(9) !important;
+                margin: auto;
+              }
+
+              span {
+                font-size: toRem(7) !important;
+                line-height: toRem(7);
+                padding: toRem(1.25) toRem(5) 0;
+              }
+            }
+          }
+        }
+
+        .envelopeBtn {
+          position: absolute;
+          width: 100%;
+          bottom: toRem(2);
+          background: linear-gradient(180deg, #fff278 0%, #ffa100 100%);
+          border: toRem(1.77) solid #fcffc5;
+          border-radius: 60px;
+          font-size: toRem(12);
+          color: #9e2615;
+          font-weight: 700;
+          padding: toRem(6) toRem(6) toRem(6) toRem(26);
+
+          &.disabled {
+            background: linear-gradient(180deg, #f3b879 0%, #ffa100 100%);
+          }
+
+          img {
+            position: absolute;
+            width: toRem(20);
+            height: toRem(20);
+            left: toRem(4);
+            top: 50%;
+            transform: translateY(-50%);
+          }
+
+          &[data-lang='in'] {
+            font-size: toRem(10);
+            white-space: nowrap;
+          }
+        }
+      }
+    }
+  }
+}

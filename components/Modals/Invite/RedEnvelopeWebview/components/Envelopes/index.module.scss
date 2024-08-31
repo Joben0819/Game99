@@ -1,0 +1,121 @@
+.rightSideContent {
+  position: relative;
+  height: 80%;
+  // background: url(/assets/commons/envelope/component_29.png) center / 100% 100% no-repeat;
+  background: #ff553a;
+  box-shadow:
+    toRem(5.28) toRem(5.28) toRem(2.47) 0 #ffd4a159 inset,
+    toRem(-4.4) toRem(-2.64) toRem(2.47) 0 #ffd4a133 inset;
+  border-radius: toRem(15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-basis: 45%;
+  margin: toRem(10) 0 0;
+
+  .slotContainer {
+    position: relative;
+    width: calc(100% - toRem(20));
+    height: calc(100% - toRem(20));
+
+    .channelCodeContainer {
+      position: absolute;
+      background: linear-gradient(90deg, #ff6443 0%, #ef13f6 43.83%, #ff9c9f 100%);
+      border: toRem(1.5) solid #ffecec;
+      width: fit-content;
+      height: toRem(24);
+      border-radius: toRem(10) toRem(10) 0 0;
+      transform: translate(-50%, toRem(-20));
+      top: 0;
+      left: 50%;
+      padding: toRem(0) toRem(20);
+      display: flex;
+      min-width: toRem(90);
+
+      span {
+        margin: toRem(2) 0 0;
+        font-size: toRem(12);
+      }
+    }
+  }
+
+  .slotWrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    margin-bottom: 0;
+    background:
+      linear-gradient(white, white) padding-box,
+      linear-gradient(43deg, #fe76ff, #f992ff, #89e3ff, #fe76ff, #f992ff) border-box;
+    border-radius: toRem(14.09);
+    border: toRem(5.28) solid transparent;
+    box-shadow: 0px -0.88px 3.52px 0px #d11d00;
+
+    .slot {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      width: 100%;
+      height: 100%;
+      gap: toRem(8);
+      padding: toRem(8);
+      border-radius: toRem(8.8);
+      background: #500080;
+      border: toRem(1) solid #ffffff;
+      position: relative;
+
+      &.selected {
+        &::after {
+          content: '';
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+          background-color: rgba(0, 0, 0, 0.7);
+          border-radius: toRem(8);
+        }
+      }
+
+      &.webView {
+        gap: toRem(10);
+        padding: toRem(10);
+      }
+
+      .slotItem {
+        background-color: #fff;
+        border-radius: toRem(5);
+        height: 100% !important;
+        width: 100% !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: inset 0 toRem(-3.52) 0 0 #fdc9ce;
+        position: relative;
+
+        img {
+          height: auto;
+          object-fit: contain;
+        }
+
+        &.selected {
+          z-index: 1;
+          background: url(/assets/commons/envelope/highlighted_slot_item_bg.png) center / 100% 100% no-repeat;
+          border-radius: toRem(7);
+          box-shadow: none;
+        }
+
+        &.webView {
+          &.selected {
+            background-size: 100% 100% !important;
+            border: none;
+          }
+        }
+
+        &.isSmallWebView {
+          box-shadow: inset 0 toRem(-6) 0 0 #fdc9ce;
+        }
+      }
+    }
+  }
+}

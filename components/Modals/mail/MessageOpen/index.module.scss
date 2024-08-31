@@ -1,0 +1,61 @@
+.main {
+  position: absolute;
+  width: toRem(561);
+  height: toRem(286);
+  background: green;
+  z-index: 10000;
+  margin: toRem(-30) 0 0 toRem(-10);
+  border-radius: toRem(10);
+  background: #fff;
+  box-shadow: 0 2px 4px 0 #00000040;
+  padding: toRem(25) toRem(50) toRem(20);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  .mailOpenTitle {
+    color: #cb3538;
+    font-size: toRem(16);
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .mailOpenContent {
+    color: #8f8d8d;
+    font-size: toRem(12);
+    width: 100%;
+    word-break: break-word;
+    margin-top: toRem(20);
+  }
+
+  .mailContent {
+    height: toRem(190);
+    overflow: scroll;
+  }
+
+  .btnSubmit {
+    background-image: url('/assets/commons/mail/message-btn.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: toRem(45);
+    width: toRem(135);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: auto;
+
+    span {
+      position: relative;
+      font-size: toRem(12);
+      font-weight: bolder;
+      line-height: toRem(14.52);
+      background: linear-gradient(180deg, #ffffff 0%, #ffdf94 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 700;
+      filter: drop-shadow(0 toRem(1) toRem(1) #cd591c);
+    }
+  }
+}

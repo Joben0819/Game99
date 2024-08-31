@@ -1,0 +1,261 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import 'animate.css';
+@import 'swiper/css';
+@import 'swiper/css/navigation';
+@import 'swiper/css/pagination';
+@import 'swiper/css/mousewheel';
+
+:root {
+  --background: #01014f;
+  --base-font-size: 12px;
+  font-size: var(--base-font-size) !important;
+  --webkit-scrollbar-display: none;
+
+  ::-webkit-scrollbar {
+    display: var(--webkit-scrollbar-display);
+    width: 0.1rem;
+    height: 0.1rem;
+    z-index: 1;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: #e1e1e3;
+    border-radius: 0.1rem;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: none;
+  }
+
+  ::-webkit-contacts-auto-fill-button {
+    visibility: hidden;
+    display: none !important;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+  }
+}
+
+*:not(.tableWrapper) {
+  scrollbar-width: none;
+  & :focus {
+    outline: none;
+  }
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    Segoe UI,
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    Fira Sans,
+    Droid Sans,
+    'Helvetica Neue',
+    Arial,
+    Helvetica,
+    sans-serif;
+  position: relative;
+  scroll-behavior: smooth;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+  -moz-user-select: -moz-none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background: #94c9fd url('../public/assets/commons/home/main_bg.webp') center / 100% 100% no-repeat;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  overflow: clip;
+  touch-action: pan-x pan-y !important;
+  font-size: 13.33333333vh;
+  font-size: 13.33333333dvh;
+  @apply transition-all duration-300;
+}
+
+#root {
+  height: 100vh;
+  width: 100vw;
+  height: 100dvh;
+  width: 100dvw;
+  position: relative;
+  background: url('/assets/commons/home/main_bg.webp');
+  background-size: 100% 100%;
+
+  @apply transition-all duration-300;
+}
+
+body {
+  &::before {
+    z-index: 0;
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-size: 100% 100%;
+    filter: brightness(0.3);
+  }
+}
+
+body {
+  > #root[data-root-height] {
+    height: attr(data-root-height) !important;
+    background-color: pink;
+  }
+}
+
+body.has-focus {
+  @apply absolute top-0;
+}
+
+.btn {
+  @apply transition-all duration-200 active:scale-95 cursor-pointer;
+}
+
+.fadeIn {
+  animation: fadeIn 1s ease-in-out 0.3s forwards;
+}
+
+.fullscreen-enabled {
+  background: inherit !important;
+  transform-origin: center center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  #root {
+    position: absolute !important;
+  }
+}
+
+img {
+  user-drag: none;
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+.fullscreen {
+  height: 100%;
+}
+
+input {
+  -webkit-text-size-adjust: none;
+}
+
+input[type='text'],
+input[type='email'],
+input[type='password'] {
+  -webkit-autofill: off !important;
+  -webkit-textfield-focus-ring-color: unset !important;
+  transition: background-color 5000s ease-in-out 0s !important;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px white inset !important;
+  -webkit-text-fill-color: #333 !important;
+}
+
+input:focus::-webkit-textfield-decoration-container {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+input[autocomplete='off']::-webkit-contacts-auto-fill-button,
+input[autocomplete='off']::-webkit-credentials-auto-fill-button {
+  visibility: hidden;
+  display: none !important;
+  pointer-events: none;
+  height: 0;
+  width: 0;
+  margin: 0;
+}
+
+input[type='number']::-webkit-inner-spin-button {
+  display: none;
+}
+
+input[type='number'] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+  -webkit-appearance: textfield;
+}
+
+.adsbox {
+  display: none !important;
+}
+
+.loader {
+  @apply size-full absolute z-[12] bg-black bg-opacity-30;
+}
+
+::backdrop {
+  background-color: rgba($color: #000000, $alpha: 0.5);
+}
+
+// Media Queries
+
+@media screen and (orientation: portrait) {
+  html {
+    font-size: 13.33333333vw;
+    font-size: 13.33333333dvw;
+  }
+
+  body {
+    &::before {
+      height: 100vw;
+      width: 100vh;
+      height: 100dvw;
+      width: 100dvh;
+      transform: rotate(90deg);
+    }
+  }
+
+  #root {
+    height: 100%;
+    width: 100%;
+    transform: rotate(90deg);
+    transform-origin: center center;
+    will-change: transform;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  @media screen and (orientation: portrait) {
+    html {
+      font-size: 30px !important;
+    }
+
+    #root {
+      height: 100dvw !important;
+      width: 100dvh !important;
+    }
+
+    #root.in-game {
+      height: 100dvh !important;
+      width: 100dvw !important;
+    }
+  }
+}
+
+@media screen and (orientation: portrait) {
+  .inverted-scroll {
+    overflow-x: auto !important;
+  }
+}

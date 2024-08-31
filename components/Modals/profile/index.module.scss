@@ -1,0 +1,325 @@
+.modalWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+
+  .modalContainer {
+    position: relative;
+    opacity: 0;
+
+    canvas {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .closeBtn {
+    position: absolute;
+    top: 18%;
+    right: 22%;
+    width: toRem(38);
+    height: toRem(38);
+    background-image: url('/assets/commons/closeBtn.webp');
+    background-size: cover;
+    background-repeat: round;
+    z-index: 1;
+    cursor: pointer;
+  }
+
+  .userProfileTitle {
+    position: absolute;
+    width: toRem(136);
+    height: toRem(49);
+    background-image: url('/assets/commons/profile/profile-title-bg.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    top: 8%;
+    left: 22%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    span {
+      font-size: toRem(22);
+      background: linear-gradient(180deg, #ffef75 0%, #ffd231 6.25%, #ffeb4a 51.56%, #ffca29 54.17%, #ffae19 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-align: center;
+      font-family: 'Orelega One';
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      z-index: 1;
+    }
+  }
+
+  .profileContents {
+    position: absolute;
+    top: 0;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .profileLeftDetails {
+    width: 22%;
+    height: 50%;
+    transform: rotate(-7.573deg);
+    z-index: 1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+
+    .profileUserIcon {
+      height: toRem(88);
+      width: toRem(95);
+      background-image: url('/assets/commons/profile/profileBgWrapper.png');
+      background-size: cover;
+      background-repeat: round;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+      align-self: center;
+      position: absolute;
+      top: 0;
+
+      img {
+        border-radius: toRem(35.57);
+        object-fit: cover;
+        height: toRem(65) !important;
+        width: toRem(65) !important;
+        top: toRem(12.8) !important;
+        left: toRem(15) !important;
+        cursor: default;
+      }
+
+      .profileEn {
+        top: 0.33rem !important;
+      }
+
+      .vipIcon {
+        height: toRem(30);
+        width: toRem(30);
+        background-image: url('/assets/commons/profile/vip-0.png');
+        background-size: cover;
+        background-repeat: round;
+        margin: 0.8rem 0.1rem 0.1rem 0;
+        z-index: 1;
+      }
+    }
+
+    .profileBg {
+      height: 30%;
+      width: 35%;
+      background-image: url('/assets/commons/profile/profileImageBg.png');
+      background-size: cover;
+      background-repeat: round;
+    }
+
+    .profileName {
+      background: #2c40f5;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      -webkit-text-stroke: toRem(1) #feb7ff;
+      max-width: 11ch;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      text-align: center;
+      font-family: 'Poppins';
+      font-size: toRem(16);
+      align-self: center;
+    }
+
+    .copyIcon {
+      height: toRem(15);
+      width: toRem(15);
+      background-image: url('/assets/commons/profile/copy-icon.png');
+      background-size: cover;
+      background-repeat: round;
+      cursor: pointer;
+    }
+
+    .profileId,
+    .profileMobileNumber,
+    .emailAdd {
+      display: flex;
+      gap: 0.05rem;
+
+      .key {
+        color: #f05606;
+        font-weight: bold;
+      }
+
+      .value {
+        color: #7b39db;
+        max-width: 9.3ch;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .key,
+      .value {
+        font-size: toRem(12);
+      }
+    }
+    .profileMobileNumber,
+    .emailAdd {
+      .value {
+        max-width: 6.3ch;
+      }
+    }
+
+    .profileId {
+      .value {
+        text-overflow: unset;
+      }
+    }
+
+    .btnLogout {
+      width: 36%;
+      height: 16%;
+      background-image: url('/assets/commons/profile/logoutBtn.png');
+      background-size: cover;
+      background-repeat: round;
+      font-size: toRem(16);
+      text-shadow: 1.277px 3.832px 12.772px rgba(255, 214, 0, 0.1);
+      font-family: 'PoetsenOne';
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      align-self: center;
+      p {
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-stroke: toRem(1.35) #ae29dd;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: toRem(5);
+      }
+    }
+  }
+
+  .profileRightDetails {
+    width: 20%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.1rem;
+
+    .title {
+      color: #392095;
+      font-size: toRem(10);
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      text-transform: uppercase;
+      width: 60%;
+    }
+
+    .bindPhone {
+      background-image: url('/assets/commons/profile/bind-phone.png');
+
+      cursor: pointer;
+    }
+
+    .bindEmail {
+      background-image: url('/assets/commons/profile/bind-email.png');
+      cursor: pointer;
+    }
+
+    .bindPhone,
+    .bindEmail {
+      width: 75% !important;
+      height: 18%;
+      background-size: cover;
+      background-repeat: round;
+      display: flex;
+      padding-left: 0.2rem;
+      font-size: 0.1923076923rem;
+      justify-content: center;
+      align-items: center;
+
+      .bindText {
+        color: #fff;
+        text-align: center;
+        text-shadow: 0 1px 1px #d73d0c;
+        font-size: toRem(10);
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        padding: 0 0.2rem;
+      }
+    }
+  }
+}
+
+.svgaContainer {
+  height: toRem(400);
+  width: toRem(800);
+  max-width: toRem(800);
+}
+
+.userDetailsWrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.bonusNoti {
+  z-index: 3;
+  position: absolute;
+  background: url('/assets/commons/header/bonus_bg_v1.png') center / 100% 100%;
+  width: toRem(35);
+  height: toRem(20);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  top: 56%;
+  left: 65%;
+
+  > span {
+    position: relative;
+    left: toRem(14.5);
+    top: toRem(-4);
+    color: #fff;
+    font-family: 'PoetsenOne';
+    font-size: toRem(8);
+    font-weight: 400;
+    line-height: toRem(10);
+    -webkit-text-stroke: 0.4px #cb3538;
+    text-shadow: -0.5px 0.5px 1px rgba(60, 15, 15, 0.25);
+  }
+
+  .coinIcon {
+    position: absolute;
+    top: toRem(2);
+    left: toRem(4);
+    width: toRem(10.5);
+    height: toRem(11);
+
+    img {
+      width: toRem(10.4) !important;
+      height: toRem(11) !important;
+    }
+  }
+}

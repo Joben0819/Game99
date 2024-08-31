@@ -1,0 +1,118 @@
+.mainContainer {
+  @apply absolute top-[1.3rem] bg-opacity-50 px-[0.2rem] left-1/2 -translate-x-1/2;
+  width: toRem(648);
+  height: auto;
+  font-size: toRem(11);
+
+  :global {
+    .close-btn {
+      right: toRem(-20);
+      top: toRem(-27);
+    }
+  }
+}
+
+.buttons {
+  @apply flex absolute right-[4%] z-[11];
+  top: toRem(6);
+  color: #fff;
+
+  > div {
+    @apply relative w-full cursor-pointer transition-all duration-200 active:scale-95 active:opacity-90;
+    width: toRem(124.61);
+    height: toRem(40);
+
+    span {
+      @apply absolute font-bold left-[50%] translate-x-[-50%] top-[0.2rem] z-[1] text-center drop-shadow-lg w-full;
+      line-height: 1;
+      font-size: toRem(10);
+      @include text-outline($offset: toRem(1), $color: #2159f7, $num-steps: 20);
+
+      &[data-lang='in'],
+      &[data-lang='en'] {
+        line-height: toRem(10);
+      }
+
+      &[data-lang='cn'] {
+        @apply w-full;
+      }
+
+      &[data-active='true'] {
+        @include text-outline($offset: toRem(1), $color: #ff0a0a, $num-steps: 20);
+      }
+    }
+  }
+}
+
+.rightPanel {
+  @apply relative ml-0 transition-all duration-300;
+  width: 100%;
+  height: toRem(305);
+  margin-left: auto;
+  margin-right: 0;
+
+  &__title {
+    @apply absolute z-[11] uppercase;
+    font-size: toRem(40);
+    top: toRem(-45);
+    left: toRem(20);
+    font-family: 'Titan One';
+    @include text-outline($offset: toRem(3), $color: #1fabfa, $num-steps: 25);
+    filter: drop-shadow(0 toRem(5) toRem(0) #1f55df);
+    animation: fadeIn 0.3s ease-in-out forwards;
+
+    &[data-lang='cn'] {
+      font-weight: bold;
+    }
+
+    &--isEvent {
+      left: -36%;
+      top: toRem(-55);
+
+      &[data-lang='cn'] {
+        left: -30%;
+      }
+    }
+  }
+
+  &--isEvent {
+    width: toRem(428);
+  }
+}
+
+.title {
+  @apply absolute z-[11];
+  height: toRem(35);
+  width: toRem(200);
+  top: toRem(-35);
+  left: toRem(10);
+}
+
+.cloud {
+  @apply absolute transition-all duration-300;
+  width: toRem(269.26);
+  height: toRem(31.92);
+  top: toRem(-11);
+  z-index: 1;
+  left: toRem(10);
+
+  &--isEvent {
+    left: -38%;
+    opacity: 0;
+  }
+}
+
+.cloudBottom {
+  @apply absolute transition-all duration-300;
+  right: toRem(11);
+  bottom: toRem(1);
+  width: toRem(129.84);
+  height: toRem(17);
+
+  &--isEvent {
+    right: toRem(11);
+    bottom: toRem(1);
+    right: toRem(-15);
+    bottom: toRem(-4);
+  }
+}

@@ -1,0 +1,96 @@
+.clWrapper {
+  @apply absolute left-1/2 -translate-x-1/2;
+
+  width: toRem(152);
+  height: toRem(50);
+  top: toRem(-40);
+
+  .currentLevel {
+    @apply whitespace-nowrap absolute left-1/2 -translate-x-1/2  leading-normal;
+    font-family: 'PoetsenOne';
+    font-size: toRem(12);
+    @include text-outline($offset: toRem(1), $color: #1456ff, $num-steps: 20);
+    margin-top: toRem(13);
+    text-transform: uppercase;
+  }
+}
+
+.vipWrapper {
+  @apply relative h-full;
+  padding-top: toRem(18);
+  padding-bottom: toRem(27);
+}
+
+.vipList {
+  @apply relative h-full  overflow-y-auto;
+  scroll-snap-type: y mandatory;
+
+  .vipLvlWrapper {
+    width: fit-content;
+    margin: 0 auto toRem(7);
+
+    &:active {
+      .lvlBtn {
+        scale: 0.9;
+      }
+    }
+
+    .lvlBtn {
+      @apply relative mx-auto flex-all-center;
+      background: linear-gradient(177.45deg, #e1fffd 1.87%, #21cde5 97.62%);
+      scroll-snap-align: start;
+      box-shadow: 0 toRem(1.51) toRem(1.51) 0 #ffffff inset;
+      width: toRem(100);
+      height: toRem(28);
+      border-radius: toRem(37.84);
+      font-size: toRem(12);
+      font-family: 'Orelega One';
+      transition: 0.1s ease;
+      gap: toRem(3);
+      cursor: pointer;
+
+      &.active {
+        background: linear-gradient(177.45deg, #ffe58d 1.87%, #ffb113 97.62%);
+      }
+
+      span {
+        color: #675dfd;
+
+        &.currentLvl {
+          color: #ff4d00;
+        }
+      }
+
+      .vipIcon {
+        position: relative;
+        height: toRem(29);
+        width: toRem(29);
+
+        img {
+          object-fit: contain;
+        }
+      }
+    }
+  }
+}
+
+.arrowContainer {
+  @apply absolute top-0 left-1/2 -translate-x-1/2 z-20 invisible cursor-pointer;
+  width: toRem(25);
+  height: toRem(25);
+
+  &[data-type='bottom'] {
+    bottom: toRem(-2);
+    top: inherit;
+  }
+
+  &[data-type='top'] {
+    @apply rotate-180;
+    bottom: inherit;
+    top: toRem(-10);
+  }
+
+  &.isVisible {
+    @apply visible;
+  }
+}

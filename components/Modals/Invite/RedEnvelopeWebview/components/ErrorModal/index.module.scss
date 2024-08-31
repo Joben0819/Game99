@@ -1,0 +1,162 @@
+.errorModal {
+  $root: &;
+  position: absolute;
+  background-color: #00000070;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  padding: toRem(70);
+  transform: translateY(-100%);
+
+  &__container {
+    position: relative;
+    background: rgba(70, 147, 236, 1);
+    border: 3px solid #9cedfd;
+    border-radius: toRem(10);
+    height: 100%;
+    padding: toRem(15);
+    border: 3px solid;
+    padding-bottom: toRem(55);
+  }
+
+  &--show {
+    z-index: 1001;
+    animation: BounceInTop 0.8s ease-in-out 0s 1 normal forwards;
+  }
+
+  &--webview {
+    #{$root}__closeButton {
+      top: toRem(-40);
+      right: toRem(-45);
+      width: 7vh;
+      height: 7vh;
+    }
+
+    #{$root}__content {
+      p {
+        font-size: 5vh;
+        margin-top: toRem(30);
+      }
+    }
+
+    #{$root}__rechargeWrapper {
+      span {
+        font-size: 5vh;
+      }
+    }
+
+    #{$root}__rechargeWrapper {
+      width: 35%;
+      height: 27%;
+    }
+  }
+
+  &--isSmallWebView {
+    #{$root}__closeButton {
+      top: toRem(-45);
+      right: toRem(-50);
+      width: 6vh;
+      height: 6vh;
+    }
+
+    #{$root}__rechargeWrapper {
+      width: 35%;
+      height: 22%;
+    }
+  }
+
+  &__content {
+    overflow-y: auto;
+    height: 100%;
+    color: #fff;
+    text-align: center;
+
+    p {
+      font-family: Poppins;
+      font-weight: 700;
+      text-align: center;
+      font-size: toRem(16);
+    }
+  }
+
+  &__closeButton {
+    position: absolute;
+    top: toRem(-32);
+    right: toRem(-32);
+    width: toRem(30);
+    height: toRem(30);
+  }
+
+  &__rechargeWrapper {
+    position: absolute;
+    width: toRem(170);
+    height: toRem(50);
+    border-radius: toRem(20);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: toRem(10);
+    left: 50%;
+    transform: translateX(-50%);
+
+    img {
+      position: absolute;
+    }
+
+    span {
+      color: #fff;
+      text-align: center;
+      text-shadow: 0 toRem(2) 0 #e00000;
+      font-family: Rammetto One;
+      font-size: toRem(16);
+      font-style: normal;
+      font-weight: 400;
+      margin-top: toRem(5);
+      z-index: 1;
+    }
+  }
+}
+
+@keyframes BounceInTop {
+  0% {
+    animation-timing-function: ease-in;
+    opacity: 0;
+    transform: translateY(-250px);
+  }
+
+  38% {
+    animation-timing-function: ease-out;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  55% {
+    animation-timing-function: ease-in;
+    transform: translateY(-65px);
+  }
+
+  72% {
+    animation-timing-function: ease-out;
+    transform: translateY(0);
+  }
+
+  81% {
+    animation-timing-function: ease-in;
+    transform: translateY(-28px);
+  }
+
+  90% {
+    animation-timing-function: ease-out;
+    transform: translateY(0);
+  }
+
+  95% {
+    animation-timing-function: ease-in;
+    transform: translateY(-8px);
+  }
+
+  100% {
+    animation-timing-function: ease-out;
+    transform: translateY(0);
+  }
+}

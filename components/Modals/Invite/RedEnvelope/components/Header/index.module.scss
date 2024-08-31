@@ -1,0 +1,49 @@
+.container {
+  position: relative;
+  height: toRem(30);
+  width: fit-content;
+  right: 0;
+  margin: 0 0 0 auto;
+  border-radius: 0px 0 toRem(10) toRem(10);
+  display: flex;
+  justify-content: space-between;
+  background: linear-gradient(180deg, #fff5e2 0%, rgba(255, 245, 226, 0.15) 99.99%, rgba(255, 88, 88, 0.99) 100%);
+  overflow: hidden;
+
+  .headerItem {
+    position: relative;
+    flex: 1;
+    display: grid;
+    place-items: center;
+    display: grid;
+    cursor: pointer;
+
+    &:not(:nth-child(1)) {
+      p {
+        border-left: 1px solid red;
+      }
+    }
+
+    p {
+      min-width: toRem(72);
+      max-width: toRem(90);
+      padding: 0 toRem(6);
+      color: #d61616;
+      font-size: toRem(10);
+      line-height: toRem(10);
+      text-align: center;
+      text-transform: uppercase;
+      height: 70%;
+      display: grid;
+      place-items: center;
+    }
+
+    &.active {
+      background: #d61616;
+
+      p {
+        color: #fff;
+      }
+    }
+  }
+}

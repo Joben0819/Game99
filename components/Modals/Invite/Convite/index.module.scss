@@ -1,0 +1,100 @@
+.contentInfo {
+  @apply absolute top-[0.9rem] left-[0.35rem];
+  background: rgba(70, 147, 236, 1);
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.25) inset;
+  width: toRem(540);
+  height: toRem(290);
+  border-radius: toRem(10);
+
+  .chestHeader {
+    @apply grid grid-cols-2 gap-1 justify-items-center m-[0.3rem];
+
+    > div {
+      @apply w-full;
+
+      height: toRem(67);
+      border-radius: toRem(10);
+      background-color: #016dec;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      font-size: toRem(12);
+
+      :nth-child(1) {
+        position: relative;
+        font-family: PoetsenOne;
+        font-size: toRem(20);
+        line-height: toRem(25);
+        @include GradientTextWithOutline(
+          $offset: toRem(2),
+          $color: #2058c1,
+          $num-steps: 25,
+          $textContent: attr(data-textafter),
+          $gradient: linear-gradient(180deg, #ffffff 0%, #faff07 100%)
+        );
+      }
+
+      :nth-child(2) {
+        font-family: 'Microsoft YaHei';
+        font-size: toRem(12);
+      }
+    }
+  }
+
+  .conviteWrapper {
+    width: 100%;
+    height: toRem(180);
+    padding-left: toRem(11);
+    padding-right: toRem(11);
+
+    .headerWrapper {
+      @apply grid grid-cols-4 gap-1 px-[0.12rem];
+      height: toRem(90);
+    }
+
+    .footerWrapper {
+      .footer {
+        grid-template-columns: 0.5fr 4fr 1.5fr;
+        @apply grid grid-rows-1 mb-[0.2rem] justify-items-center items-center;
+        font-size: toRem(12);
+
+        img {
+          height: toRem(40);
+          width: toRem(40);
+        }
+
+        div {
+          @apply justify-self-start;
+          font-size: toRem(14);
+          font-family: 'PoetsenOne';
+          line-height: toRem(14);
+
+          span:nth-of-type(1) {
+            color: white;
+            font-family: PoetsenOne;
+          }
+
+          span:nth-of-type(2) {
+            font-size: toRem(12);
+            line-height: toRem(12);
+            font-family: 'Microsoft YaHei';
+          }
+        }
+
+        .button {
+          background: linear-gradient(180deg, #ffa858 11%, #ff7a00 24%);
+          border: toRem(1.5) solid #ffbb7c;
+          border-radius: toRem(5);
+          height: toRem(32);
+          width: 90%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-family: 'Inter';
+          font-size: toRem(12);
+        }
+      }
+    }
+  }
+}

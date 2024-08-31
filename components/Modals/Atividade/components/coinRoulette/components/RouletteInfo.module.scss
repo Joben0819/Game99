@@ -1,0 +1,236 @@
+@import '@/styles/_helpers.scss';
+
+.info {
+  width: toRem(350);
+  margin-left: -5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+
+  & > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-family: 'PoetsenOne';
+    z-index: 2;
+
+    span {
+      display: block;
+      line-height: normal;
+    }
+
+    &.title,
+    &.moneyRange {
+      filter: drop-shadow(toRem(1) toRem(1) #cf3207);
+    }
+
+    &.title {
+      display: grid;
+      color: #fff;
+      background: url('/assets/commons/coin-roulette/info_title_bg.png') center / contain no-repeat;
+      font-size: toRem(15);
+      height: toRem(70);
+      width: 100%;
+      grid-template-rows: 56% 40%;
+      @include text-outline($offset: toRem(1), $color: #cf3207, $num-steps: 16);
+
+      span {
+        grid-row: 2/3;
+      }
+    }
+
+    &.details {
+      background: url('/assets/commons/coin-roulette/info_description_bg.png') center / contain no-repeat;
+      width: 100%;
+      height: toRem(50);
+      position: relative;
+
+      p {
+        line-height: 1.2;
+
+        &:nth-child(1) {
+          font-size: toRem(15);
+          position: relative;
+          filter: drop-shadow(toRem(1) toRem(1) #cf3207);
+          @include GradientTextWithOutline(
+            $color: #cf3207,
+            $offset: toRem(1),
+            $num-steps: 16,
+            $textContent: attr(data-textafter),
+            $gradient: linear-gradient(180deg, #ffffff 20%, #fffb00 100%)
+          );
+        }
+
+        &:nth-child(2) {
+          font-size: toRem(9);
+          color: #cf3207;
+        }
+      }
+    }
+
+    &.moneyRange {
+      background: url('/assets/commons/coin-roulette/info_money_bg.png') center / contain no-repeat;
+      grid-row: 6/7;
+      font-size: toRem(12);
+      height: toRem(25);
+      width: 65%;
+
+      @include text-outline($offset: toRem(1), $color: #cf3207, $num-steps: 16);
+    }
+
+    &.time {
+      background: url('/assets/commons/coin-roulette/info_time_bg.png') center / contain no-repeat;
+      margin-top: toRem(5);
+      width: 55%;
+      height: toRem(25);
+      font-size: toRem(10);
+      grid-row: 8/9;
+      transform: translateY(toRem(-1));
+      @include text-outline($offset: toRem(1), $color: #cf3207, $num-steps: 16);
+
+      &.claimed {
+        filter: grayscale(1);
+        pointer-events: none;
+      }
+    }
+
+    &.lines {
+      z-index: 1;
+
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        background: url('/assets/commons/coin-roulette/info_bg_line.png') center / cover no-repeat;
+        height: toRem(70);
+        width: toRem(5);
+        top: 30%;
+      }
+
+      &::before {
+        left: 30%;
+      }
+
+      &::after {
+        right: 30%;
+      }
+    }
+  }
+
+  .termsAndCondition {
+    font-family: 'PoetsenOne';
+    margin-top: toRem(3);
+    font-size: toRem(12);
+    text-decoration: underline;
+    color: #cf3207;
+    cursor: pointer;
+    text-underline-offset: toRem(2);
+
+    &.isWebView {
+      zoom: 1.3;
+    }
+  }
+
+  &[data-lang='in'] {
+    & > div {
+      &.details {
+        p {
+          &:nth-child(1) {
+            font-size: toRem(15);
+          }
+        }
+      }
+    }
+  }
+
+  .reload {
+    position: absolute;
+    height: toRem(22);
+    width: toRem(22);
+    right: toRem(-5);
+    bottom: toRem(-2);
+
+    img {
+      object-fit: contain;
+      height: toRem(22);
+      width: toRem(22);
+    }
+
+    &.isWebView {
+      width: toRem(50);
+      height: toRem(50);
+      right: toRem(-5);
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  &.webview {
+    margin-left: 0;
+
+    & > div {
+      &.title {
+        font-size: toRem(30);
+        height: toRem(150);
+      }
+
+      &.details {
+        height: toRem(94);
+        margin: toRem(5) 0;
+
+        p {
+          line-height: 1.2;
+
+          &:nth-child(1) {
+            font-size: toRem(35);
+          }
+
+          &:nth-child(2) {
+            font-size: toRem(20);
+          }
+        }
+      }
+
+      &.moneyRange {
+        font-size: toRem(20);
+        height: toRem(48);
+      }
+
+      &.time {
+        margin-top: toRem(10);
+        height: toRem(60);
+        font-size: toRem(20);
+
+        span {
+          margin-bottom: 0.12rem;
+        }
+      }
+
+      &.lines {
+        &::before,
+        &::after {
+          height: toRem(150);
+          width: toRem(10);
+          top: 30%;
+        }
+      }
+    }
+
+    &[data-lang='in'] {
+      & > div {
+        &.details {
+          p {
+            &:nth-child(1) {
+              font-size: toRem(30);
+            }
+          }
+        }
+      }
+    }
+  }
+}

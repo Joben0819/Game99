@@ -1,0 +1,19 @@
+.smWrapper {
+  @apply z-10 relative h-full;
+
+  background-color: #4895ee33;
+  width: toRem(122);
+  height: toRem(248);
+  border-radius: toRem(5);
+  margin-top: toRem(30);
+}
+
+.arrowContainer {
+  position: absolute;
+  bottom: toRem(60);
+  left: toRem(94);
+  img {
+    height: toRem(31);
+    width: toRem(31);
+  }
+}

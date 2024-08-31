@@ -1,0 +1,103 @@
+.VersionBackdrop {
+  position: absolute;
+  top: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  background: #000000cc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.VersionBoard {
+  position: relative;
+  height: toRem(303);
+  width: toRem(525);
+}
+
+.closeBtn {
+  width: toRem(35);
+  height: toRem(26);
+  position: absolute;
+  z-index: 8;
+  right: toRem(-25);
+  top: toRem(18);
+
+  image {
+    position: unset;
+  }
+}
+
+.versionContainer {
+  @apply pt-3 px-7 relative z-10;
+}
+
+.details {
+  @apply pl-2 flex flex-col items-start;
+
+  span {
+    font-family: 'Poppins';
+  }
+
+  span:first-of-type {
+    @apply pb-1;
+    color: #ff7b01;
+    font-size: toRem(15);
+    font-weight: 600;
+  }
+
+  span:not(:first-of-type) {
+    color: #4794ed;
+    font-size: toRem(12);
+  }
+}
+
+.title {
+  font-family: Sansita One;
+  font-size: toRem(30);
+  filter: drop-shadow(0 toRem(2) toRem(0) #005ca8);
+
+  @include GradientTextWithOutline(
+    $offset: toRem(2),
+    $color: #1099f7,
+    $num-steps: 25,
+    $textContent: attr(data-textafter),
+    $gradient: linear-gradient(180deg, #ffffff 0%, #befbfe 100%)
+  );
+}
+
+.btnContainer {
+  @apply flex-all-center pt-[0.2rem] gap-1;
+
+  div {
+    @apply relative flex flex-col items-center;
+
+    span {
+      @apply absolute top-[55%] left-1/2 transform -translate-x-1/2 -translate-y-1/2;
+      font-size: toRem(15);
+      line-height: toRem(15);
+      font-family: 'Poppins';
+
+      &[data-lang='en'] {
+        font-size: toRem(11);
+      }
+    }
+
+    &:first-of-type {
+      span:last-of-type {
+        @include text-outline($offset: toRem(1), $color: #ffa800, $num-steps: 32);
+      }
+    }
+
+    &:last-of-type {
+      span:last-of-type {
+        @include text-outline($offset: toRem(1), $color: #367cff, $num-steps: 32);
+      }
+    }
+  }
+
+  img {
+    @apply h-[0.9rem] w-[3.2rem];
+  }
+}

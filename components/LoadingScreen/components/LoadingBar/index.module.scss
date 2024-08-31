@@ -1,0 +1,56 @@
+.loadingWrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: toRem(45);
+  width: toRem(640);
+  margin-top: toRem(30);
+  gap: toRem(3);
+  span {
+    color: white;
+    text-shadow: 0 toRem(4) toRem(4) rgba(0, 0, 0, 0.25);
+    font-family: Microsoft YaHei;
+    font-size: toRem(14);
+    font-style: normal;
+    font-weight: 400;
+    line-height: toRem(14);
+    text-align: center;
+    &:nth-of-type(2) {
+      position: absolute;
+      top: toRem(5);
+      right: 0;
+    }
+  }
+
+  :global {
+    .ant-progress-line {
+      height: toRem(15);
+      margin: 0;
+      margin-inline-end: 0;
+      border: solid toRem(2) #fefeff;
+      border-radius: toRem(14);
+    }
+    .ant-progress .ant-progress-outer,
+    .ant-progress .ant-progress-inner,
+    .ant-progress .ant-progress-bg {
+      height: 100% !important;
+      display: flex;
+      align-items: center;
+    }
+    .ant-progress .ant-progress-inner {
+      padding: toRem(1);
+      background: linear-gradient(180deg, #125acc 0%, #2d81ff 100%) !important;
+    }
+    .ant-progress .ant-progress-bg {
+      background: linear-gradient(
+        180deg,
+        #8af6fe 0%,
+        #dafffd 6%,
+        #53dcff 48.5%,
+        #2dcdfa 57.5%,
+        #32c5fb 100%
+      ) !important;
+    }
+  }
+}

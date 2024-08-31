@@ -1,0 +1,13 @@
+.loaderWrapper {
+  @apply w-full absolute top-0 left-0;
+  height: 100vh;
+  height: 100dvh;
+  z-index: unset;
+  display: none;
+  background: #00000080;
+
+  &--show {
+    z-index: 9998;
+    display: block;
+  }
+}

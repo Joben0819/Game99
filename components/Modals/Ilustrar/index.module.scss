@@ -1,0 +1,19 @@
+.container {
+  @apply size-full items-center flex justify-center bg-cover bg-center bg-no-repeat absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.mainWrapper {
+  @apply relative flex-all-center;
+  transform: scale(0.95);
+  @include fadeIn;
+}
+
+.closeBtn {
+  @apply absolute z-[2] right-[-0.6rem] top-[0.1rem];
+}
+
+.title {
+  @apply absolute top-[-0.5rem] left-[0.3rem] z-10;
+}

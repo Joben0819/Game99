@@ -1,0 +1,68 @@
+.deadlineTimer {
+  height: 10%;
+  width: 100%;
+  font-size: toRem(12);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  bottom: 0;
+  left: 0;
+
+  img {
+    width: toRem(17) !important;
+    height: toRem(17) !important;
+    margin-right: toRem(5);
+    animation: myAnim 2s ease-in-out 1s infinite normal forwards;
+  }
+
+  &[data-lang='in'] {
+    font-size: toRem(11);
+  }
+
+  &.webView {
+    font-size: toRem(11);
+  }
+
+  &.isSmallWebViewOverride {
+    text-align: center;
+    font-size: toRem(20);
+
+    &[data-lang='in'] {
+      font-size: toRem(14);
+    }
+  }
+}
+
+@keyframes myAnim {
+  0%,
+  100% {
+    transform: rotate(0deg);
+    transform-origin: 50% 50%;
+  }
+
+  10% {
+    transform: rotate(8deg);
+  }
+
+  20%,
+  40%,
+  60% {
+    transform: rotate(-10deg);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: rotate(10deg);
+  }
+
+  80% {
+    transform: rotate(-8deg);
+  }
+
+  90% {
+    transform: rotate(8deg);
+  }
+}

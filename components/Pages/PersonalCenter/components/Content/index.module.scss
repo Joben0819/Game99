@@ -1,0 +1,369 @@
+.mainContentWrapper {
+  background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.6) 0%,
+      rgba(255, 255, 255, 0.132) 69.5%,
+      rgba(255, 255, 255, 0.66) 100%
+    )
+    center / 100% 100%;
+  border: toRem(1.5) solid rgba(255, 255, 255, 0.4);
+  border-radius: toRem(10) toRem(10) toRem(10) toRem(10);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: toRem(538);
+  height: toRem(297);
+
+  &[data-activetab='1'] {
+    padding: toRem(12);
+  }
+
+  .gameCategoryListWrapper {
+    position: relative;
+    width: 100%;
+    height: toRem(100);
+    display: flex;
+    align-items: center;
+    border-radius: toRem(10) toRem(10) 0 0;
+    touch-action: pan-x pan-y !important;
+
+    .gameCategoryListOverflow {
+      background-image: url('/assets/commons/personal_center/table_header_bg.png');
+      background-size: 100% 100%;
+      background-position: center;
+
+      position: relative;
+      height: toRem(40);
+      width: 96%;
+      margin-inline: auto;
+      display: flex;
+      overflow-x: scroll;
+
+      span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #1653c9;
+        text-align: center;
+        font-family: 'Inter';
+        font-size: toRem(12);
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        padding: 0 toRem(15);
+        white-space: nowrap;
+        min-width: 10ch;
+      }
+
+      .activeItem {
+        color: #ff7b01;
+        pointer-events: none;
+      }
+    }
+  }
+
+  .gameCategorySwiperWrapper {
+    position: relative;
+    width: 97%;
+    overflow: hidden;
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.6),
+      rgba(255, 255, 255, 0.3),
+      rgba(255, 255, 255, 0.66)
+    );
+    border-radius: toRem(5);
+    margin: toRem(10) toRem(5) toRem(12);
+    .tabsSwiper {
+      position: relative;
+      height: 100%;
+      padding: 0 toRem(10);
+      display: flex;
+      align-items: center;
+
+      :global {
+        .swiper-wrapper {
+          width: 100%;
+          display: flex;
+          justify-content: space-evenly;
+        }
+      }
+    }
+
+    .slide {
+      height: 100%;
+      width: auto !important;
+      margin: 0 toRem(12);
+    }
+
+    .tabItem {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #1653c9;
+      text-align: center;
+      font-family: 'Inter';
+      font-size: toRem(12);
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      min-width: toRem(15);
+      width: auto;
+      height: 100%;
+      white-space: nowrap;
+      padding: toRem(15) 0;
+      cursor: pointer;
+    }
+
+    .activeItem {
+      color: #ff7b01;
+      font-family: 'Inter';
+      font-weight: 500;
+    }
+  }
+
+  :global {
+    .lds-ellipsis div {
+      height: toRem(10.4);
+      width: toRem(10.4);
+      background-color: #e9cce8;
+      display: none;
+    }
+
+    .ptr__pull-down {
+      .ptr__pull-down--pull-more {
+        display: none;
+      }
+    }
+  }
+
+  .bankListWrapper {
+    height: 100%;
+    width: 100%;
+    padding: toRem(18.2);
+
+    &__scrollable {
+      height: 100%;
+      overflow-y: scroll;
+    }
+
+    .card {
+      align-items: center;
+      background-color: #e9f8fe;
+      box-shadow: inset 0 0 toRem(15) #b1daff;
+      color: #4794ed;
+      border-radius: toRem(10);
+      width: 100%;
+      height: toRem(42);
+      font-size: toRem(16);
+      margin-top: toRem(6);
+      display: flex;
+      justify-content: space-between;
+      padding: toRem(5) toRem(20);
+
+      p {
+        width: auto;
+      }
+
+      .setValue {
+        display: flex;
+        justify-content: flex-end;
+        gap: toRem(16);
+
+        span {
+          &:nth-child(1) {
+            font-weight: bold;
+          }
+        }
+        button {
+          background: linear-gradient(180deg, #ffa858 11%, #ff7a00 24%);
+          border: 1.5px solid #ffbb7c;
+          width: toRem(130);
+          display: flex;
+          justify-content: center;
+          border-radius: toRem(5);
+          color: white;
+
+          &:disabled {
+            filter: grayscale(100);
+            pointer-events: none;
+          }
+        }
+      }
+    }
+  }
+
+  @media only screen and (width: 667px) and (height: 375px) {
+    height: toRem(355);
+  }
+}
+
+.tableWrapper {
+  width: 100%;
+}
+
+.table {
+  @apply relative;
+  width: 95%;
+  margin: 0 auto;
+
+  thead {
+    tr {
+      display: flex;
+      th {
+        margin-bottom: toRem(15) !important;
+        font-size: toRem(12);
+        font-family: 'Poppins';
+        text-align: center;
+        height: toRem(15);
+        padding-bottom: toRem(15);
+        line-height: toRem(14);
+        color: #4794ed;
+        flex: 1 auto;
+
+        @include GradientTextWithOutline(
+          $offset: toRem(1),
+          $color: #ffffff,
+          $num-steps: 25,
+          $textContent: attr(data-textafter),
+          $gradient: #10a7ff
+        );
+
+        &:nth-child(1) {
+          width: 18%;
+        }
+
+        &:nth-child(2) {
+          width: 25%;
+        }
+
+        &:nth-child(3) {
+          width: 15%;
+        }
+
+        &:nth-child(4) {
+          width: 15%;
+        }
+
+        &:nth-child(5) {
+          width: 15%;
+        }
+      }
+
+      &[data-moduleTab='fund-details'] {
+        &:after {
+          content: '';
+          position: absolute;
+          width: 100%;
+          height: toRem(1);
+          background: #7fbaff;
+          box-shadow: 0 toRem(1) 0 0 #ffffff;
+          bottom: toRem(0);
+          left: toRem(0);
+        }
+      }
+    }
+  }
+}
+
+.tableBodyContainer {
+  position: relative;
+  height: 100%;
+  overflow: auto;
+
+  .table {
+    @apply relative;
+    overflow-y: auto;
+    border-collapse: collapse;
+    width: 95%;
+    margin: 0 auto toRem(10);
+
+    &:nth-child(1) {
+      text-align: left;
+    }
+
+    tbody {
+      tr {
+        &:nth-child(even) {
+          border-radius: toRem(20);
+          background: #edf7ff;
+
+          td:first-child {
+            border-top-left-radius: toRem(5);
+            border-bottom-left-radius: toRem(5);
+          }
+          td:last-child {
+            border-top-right-radius: toRem(5);
+            border-bottom-right-radius: toRem(5);
+          }
+        }
+
+        td {
+          height: toRem(24) !important;
+          text-align: center;
+          font-size: toRem(10);
+          width: toRem(100);
+          word-break: break-all;
+          color: #4794ed;
+
+          &:nth-child(1) {
+            width: 18%;
+          }
+
+          &:nth-child(2) {
+            width: 25%;
+            word-break: unset;
+          }
+
+          &:nth-child(3) {
+            width: 15%;
+          }
+
+          &:nth-child(4) {
+            width: 15%;
+          }
+
+          &:nth-child(5) {
+            width: 15%;
+          }
+        }
+      }
+    }
+  }
+}
+
+.bettingTableHeader {
+  table {
+    width: 95%;
+  }
+
+  th {
+    width: 25% !important;
+    text-align: center !important;
+  }
+}
+
+.bettingTable {
+  td {
+    padding-left: unset !important;
+    width: 25% !important;
+    text-align: center !important;
+    font-size: toRem(10) !important;
+  }
+}
+
+.noDataContainer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  &[data-type='betting-records'] {
+    margin-top: toRem(40);
+  }
+}
+
+.ptr_class {
+  padding-bottom: toRem(15);
+}

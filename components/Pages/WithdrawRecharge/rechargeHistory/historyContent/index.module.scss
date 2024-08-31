@@ -1,0 +1,44 @@
+.hitoryWrapper {
+  width: toRem(465);
+  height: 100%;
+  position: relative;
+
+  .backBtn {
+    @apply absolute top-[-.60rem] right-[-.5rem] z-50;
+    width: toRem(44);
+    height: toRem(44);
+  }
+
+  .header {
+    width: 100%;
+    padding: toRem(0) toRem(10) toRem(10) toRem(0);
+    position: relative;
+
+    h2 {
+      font-family: PoetsenOne;
+      font-size: toRem(30);
+      font-style: normal;
+      position: relative;
+      color: #10a7ff;
+
+      @include GradientTextWithOutline(
+        $offset: toRem(2),
+        $color: #ffffff,
+        $num-steps: 25,
+        $textContent: attr(data-textafter),
+        $gradient: ''
+      );
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: toRem(1);
+      background: #7fbaff;
+      box-shadow: 0 toRem(1) 0 0 #ffffff;
+      bottom: toRem(0);
+      left: toRem(0);
+    }
+  }
+}

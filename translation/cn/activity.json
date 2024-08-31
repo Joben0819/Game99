@@ -1,0 +1,15 @@
+{
+  "title": "/assets/cn/activities/header.png",
+  "header": "活动",
+  "mission": "任务",
+  "events": "每日活动",
+  "activeToday": "当前活跃度",
+  "go": "前往",
+  "receive": "领取",
+  "claimed": "已领取",
+  "notClaimable": "不可索赔",
+  "congrats": "恭喜!",
+  "accept": "接受",
+  "successCollect": "集",
+  "noData": "没有数据"
+}

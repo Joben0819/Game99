@@ -1,0 +1,16 @@
+.questionIcon {
+  position: absolute;
+  height: auto;
+  right: toRem(4);
+  width: toRem(16);
+  top: toRem(1);
+  img {
+    position: unset !important;
+  }
+
+  &[data-lang='in'] {
+    width: toRem(13);
+    right: toRem(1);
+    top: toRem(2);
+  }
+}

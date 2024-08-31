@@ -1,0 +1,9 @@
+export const nextLevel = {
+  title: 'Next Level',
+  level: 'Level',
+  rescue: 'Rescue',
+  upgrade: 'Upgrade',
+  everyWeek: 'Every Week',
+  everyMonth: 'Every Month',
+  bonus: 'Bonus',
+} as const;

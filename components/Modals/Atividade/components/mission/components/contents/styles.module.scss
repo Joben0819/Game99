@@ -1,0 +1,116 @@
+.contentWrapper {
+  @apply text-[0.2rem] py-[0.09rem] px-[0.15rem] relative h-[73%] overflow-y-auto;
+  background-color: #fff;
+
+  ul {
+    @apply overflow-y-scroll;
+
+    li {
+      @apply flex w-full gap-x-[0.1rem] overflow-hidden py-[0.07rem] px-[0.1rem] items-center;
+      background: linear-gradient(180deg, #ccebff 0%, #ffffff 32.72%, #ffffff 62.12%, #ccebff 100%);
+      height: toRem(52.4);
+      margin-bottom: toRem(2.9);
+      border-radius: toRem(5);
+
+      > div {
+        @apply flex justify-center items-center p-[0.1rem];
+        width: 7%;
+        border-radius: toRem(5);
+
+        &:first-child {
+          @apply relative h-full;
+
+          img {
+            width: toRem(28) !important;
+            height: toRem(28) !important;
+            object-fit: contain;
+          }
+
+          span {
+            @apply absolute z-10  text-center font-bold;
+            width: toRem(31);
+            font-size: toRem(8.78);
+            left: toRem(5);
+            bottom: toRem(6);
+            color: red;
+            @include text-outline($offset: toRem(0.6), $color: #fff, $num-steps: 10);
+          }
+        }
+
+        &:nth-child(2) {
+          @apply flex flex-col gap-0 relative;
+          font-size: toRem(11.64);
+          width: 74%;
+
+          :global {
+            .ant-progress-line {
+              margin-bottom: 0;
+              margin-inline-end: 0;
+              margin-top: toRem(-5);
+            }
+          }
+
+          .progressStatus {
+            @apply flex w-full justify-between items-center;
+            color: #60581d;
+            font-size: toRem(10);
+            line-height: normal;
+            margin-bottom: toRem(2);
+          }
+        }
+
+        &:nth-child(3) {
+          width: 16%;
+          cursor: pointer;
+          position: relative;
+          height: toRem(29.11);
+
+          img {
+            @apply active:scale-75 transition-all duration-200;
+            height: toRem(25);
+            width: 100%;
+          }
+
+          span {
+            @apply absolute top-1/2 -translate-y-1/2 z-[2];
+            font-family: 'Poppins';
+            font-weight: 500;
+          }
+        }
+      }
+    }
+  }
+}
+
+.contentBnt {
+  background: linear-gradient(180deg, #a5a5a5 76.1%, #c9c9c9 90.6%);
+  pointer-events: none;
+
+  &[data-status='FINISHED'] {
+    background: linear-gradient(180deg, #ff7a00 72.6%, #ffa858 87.1%);
+    border: toRem(1) solid #ffbb7c;
+    pointer-events: all;
+  }
+
+  &[data-status='ON_GOING'] {
+    background: linear-gradient(180deg, #18a301 76.1%, #3bd322 90.6%);
+    border: toRem(1) solid #2dc015;
+    pointer-events: all;
+  }
+}
+
+.progressBarContent {
+  @apply w-full overflow-hidden relative;
+  border-radius: toRem(32);
+  height: toRem(9);
+  background: #cfcfcf;
+
+  .indicator {
+    @apply absolute top-0 left-0;
+    content: '';
+    background: linear-gradient(180deg, #4794ed 0%, #92c4ff 6.25%, #92c4ff 51.56%, #4794ed 60.59%, #92c4ff 100%);
+
+    height: 100%;
+    border-radius: toRem(32);
+  }
+}

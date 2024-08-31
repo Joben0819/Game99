@@ -1,0 +1,18 @@
+.gamePlatform {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 90%;
+  scroll-margin: 0.20em;
+
+  .gameImg {
+    position: relative;
+    height: 100%;
+    width: 1.37em;
+
+    img {
+      object-fit: contain;
+    }
+  }
+}

@@ -1,0 +1,118 @@
+'use client';
+
+import { usePathname } from 'next/navigation';
+
+import React, { useEffect, useRef } from 'react';
+
+import { setBackGroundMusic } from '@/reducers/appData';
+
+import { useAppDispatch, useAppSelector } from '@/store';
+
+const BackroundMusicPlayer = () => {
+  const { isBackgroundMusicOn } = useAppSelector((state) => state.gameData);
+  const { userInfo } = useAppSelector((state) => state.userData);
+  const audioRef = useRef<HTMLAudioElement>(null);
+  const pathname = usePathname();
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.src = '/assets/commons/profile/music.wav';
+
+      const playAudio = () => {
+        if (!audioRef.current) return;
+        audioRef.current.loop = true;
+        audioRef.current.currentTime = 0;
+        audioRef.current.play();
+      };
+
+      const pauseAudio = () => {
+        if (!audioRef.current) return;
+        audioRef.current.loop = false;
+        audioRef.current.currentTime = 0;
+        audioRef.current.pause();
+      };
+
+      if (!isBackgroundMusicOn && localStorage.getItem('audio-played') !== '1') {
+        dispatch(setBackGroundMusic(true));
+        localStorage.setItem('audio-played', '1');
+        playAudio();
+      }
+
+      document.addEventListener('load', (event) => {
+        if (document.visibilityState !== 'visible') {
+          pauseAudio();
+        }
+
+        if (isBackgroundMusicOn) {
+          if (document.visibilityState === 'visible') {
+            playAudio();
+          }
+        } else {
+          pauseAudio();
+        }
+      });
+
+      if (audioRef.current && !!userInfo?.token?.length && isBackgroundMusicOn && !pathname.includes('/game')) {
+        playAudio();
+      } else {
+        pauseAudio();
+      }
+    }
+    const handleClick = () => {
+      if (audioRef.current) {
+        audioRef.current.src = '/assets/commons/profile/music.wav';
+
+        const playAudio = () => {
+          if (!audioRef.current) return;
+          audioRef.current.loop = true;
+          audioRef.current.currentTime = 0;
+          audioRef.current.play();
+        };
+
+        const pauseAudio = () => {
+          if (!audioRef.current) return;
+          audioRef.current.loop = false;
+          audioRef.current.currentTime = 0;
+          audioRef.current.pause();
+        };
+
+        if (!isBackgroundMusicOn && localStorage.getItem('audio-played') !== '1') {
+          dispatch(setBackGroundMusic(true));
+          localStorage.setItem('audio-played', '1');
+          playAudio();
+        }
+
+        document.addEventListener('load', (event) => {
+          if (document.visibilityState !== 'visible') {
+            pauseAudio();
+          }
+
+          if (isBackgroundMusicOn) {
+            if (document.visibilityState === 'visible') {
+              playAudio();
+            }
+          } else {
+            pauseAudio();
+          }
+        });
+
+        if (audioRef.current && !!userInfo?.token?.length && isBackgroundMusicOn && !pathname.includes('/game')) {
+          playAudio();
+        } else {
+          pauseAudio();
+        }
+      }
+    };
+
+    window.addEventListener('click', handleClick);
+
+    return () => {
+      window.removeEventListener('click', handleClick);
+    };
+  }, [userInfo?.token, isBackgroundMusicOn, pathname]);
+
+  return <audio ref={audioRef} />;
+};
+export default BackroundMusicPlayer;
+

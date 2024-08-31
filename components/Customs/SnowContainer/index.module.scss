@@ -1,0 +1,64 @@
+.snowModal {
+  @apply relative size-full flex-all-center;
+}
+
+.snowWrapper {
+  @apply items-center flex justify-center flex-col mb-2 mt-4 rounded-md relative;
+  height: toRem(315);
+  min-inline-size: toRem(550);
+  z-index: 1;
+  background: linear-gradient(
+    93.88deg,
+    #7ac7ff -0.12%,
+    #b6dcff 18.82%,
+    #d3d3ff 38.36%,
+    #cfddff 65.58%,
+    #cfddff 82.79%,
+    #b4ebfe 96.83%
+  );
+}
+
+.snowWrapper {
+  @apply items-center flex justify-center flex-col mb-2 mt-4 rounded-md relative;
+  min-inline-size: toRem(550);
+  z-index: 1;
+  background: linear-gradient(
+    93.88deg,
+    #7ac7ff -0.12%,
+    #b6dcff 18.82%,
+    #d3d3ff 38.36%,
+    #cfddff 65.58%,
+    #cfddff 82.79%,
+    #b4ebfe 96.83%
+  );
+}
+
+.title {
+  @apply absolute top-[-0.8rem] z-10;
+
+  &[data-lang='cn'] {
+    @apply top-[-0.9rem];
+  }
+}
+
+.closeBtn {
+  @apply absolute z-[3] -right-[.5rem] top-[-0.7rem];
+}
+
+.snowContainer {
+  img {
+    @apply absolute z-[2];
+  }
+
+  img:first-of-type {
+    @apply top-[-0.3rem] right-[0rem] w-[4rem];
+  }
+
+  img:nth-of-type(2) {
+    @apply top-[-0.3rem] left-[0rem] w-[4rem];
+  }
+
+  img:last-of-type {
+    @apply bottom-[-0.1rem] right-[0.3rem] w-[4rem];
+  }
+}

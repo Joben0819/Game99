@@ -1,0 +1,41 @@
+.announcementWrapper {
+  @apply size-full items-center flex justify-center bg-cover bg-center bg-no-repeat absolute;
+  @include fadeIn;
+}
+
+.maintenanceModal {
+  width: toRem(525);
+  height: toRem(303);
+  background-image: url(/assets/commons/maintenance/bg_maintenance.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.maintenanceTitle {
+  margin-top: toRem(48);
+}
+
+.maintenanceContent {
+  width: toRem(360);
+  margin-top: toRem(20);
+  font-family: Inter;
+  font-size: toRem(12);
+  color: rgba(71, 148, 237, 1);
+
+  p {
+    margin-top: toRem(20);
+  }
+}
+
+.closeMaintenanceModalBtn {
+  position: absolute;
+  top: toRem(24);
+  right: toRem(-16);
+  width: toRem(32.81);
+  cursor: pointer;
+}

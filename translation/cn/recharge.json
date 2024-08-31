@@ -1,0 +1,15 @@
+{
+  "leftPanelTitle": "充值",
+  "titleBesidesCopyIcon": "充值记录",
+  "onlineRecharge": "线上充值",
+  "columnDate": "日期",
+  "columnTransNumber": "订单号 ",
+  "columnTransAmount": "金额",
+  "columnTransStatus": "状态",
+  "USDTcomment": "选择支付金额:",
+  "status": "Status",
+  "transactionDate": "Transaction Date",
+  "copySuccess": "复制成功!",
+  "copyUnsuccessful": "复制失败!",
+  "rechargeWarning": "在获得免费次数之前，您必须先进行充值"
+}

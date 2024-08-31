@@ -1,0 +1,66 @@
+.announcementWrapper {
+  @apply absolute flex items-center flex-col gap-[.15rem];
+  width: toRem(400);
+  height: toRem(300);
+}
+
+.titleWrapper {
+  @apply relative flex  justify-center;
+  width: 100%;
+  height: auto;
+  margin-top: toRem(-15);
+
+  p {
+    width: 100%;
+    font-family: Microsoft YaHei;
+    font-size: toRem(30);
+    font-weight: 700;
+    text-align: center;
+    line-height: toRem(35);
+    word-break: break-word;
+    white-space: normal;
+    position: relative;
+    overflow: auto;
+
+    @include GradientTextWithOutline(
+      $offset: toRem(2),
+      $color: #5710a4,
+      $num-steps: 25,
+      $textContent: attr(data-textafter),
+      $gradient: linear-gradient(180deg, #ffffff 18.94%, #f6ccff 100%)
+    );
+  }
+}
+
+.innerWrapper {
+  @apply relative flex justify-center;
+  width: 100%;
+  min-height: toRem(30);
+  max-height: toRem(140);
+  overflow: auto;
+
+  p {
+    font-family: Microsoft YaHei;
+    font-size: toRem(12);
+    font-weight: 400;
+    line-height: toRem(15);
+    text-align: left;
+    color: #fff;
+  }
+}
+
+.imageWrapper {
+  @apply relative flex justify-center items-center;
+  height: 100%;
+  width: 100%;
+}
+
+.imageContainer {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  img {
+    position: unset;
+    object-fit: contain;
+  }
+}

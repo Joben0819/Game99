@@ -1,0 +1,58 @@
+.wrapper {
+  @apply absolute transition-all duration-300 z-20;
+  right: toRem(0);
+  margin-left: toRem(5);
+  top: toRem(70);
+  width: toRem(190);
+  height: toRem(60);
+  display: flex;
+  align-items: center;
+  animation: fadeInOutSlide 8s linear infinite;
+  cursor: pointer;
+
+  p {
+    font-family: 'PoetsenOne';
+    font-size: toRem(12);
+    position: absolute;
+    left: 0;
+    margin-left: toRem(65);
+    margin-bottom: toRem(2);
+    width: calc(100% - toRem(65));
+    text-align: center;
+
+    span {
+      color: #ffec00;
+    }
+  }
+}
+
+.isVisible {
+  visibility: visible;
+}
+.isExiting {
+  opacity: 0;
+}
+
+.img {
+  position: relative;
+  width: toRem(42);
+  height: toRem(42);
+  margin-left: toRem(20);
+}
+
+@keyframes fadeInOutSlide {
+  0%,
+  25% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  40%,
+  80% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}

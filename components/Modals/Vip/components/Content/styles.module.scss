@@ -1,0 +1,44 @@
+.contentContainer {
+  @apply relative bg-[url('/assets/commons/vip/bg.webp')] bg-no-repeat bg-center bg-contain pt-[0.3rem] px-[0.5rem];
+  height: toRem(219);
+  width: toRem(656);
+
+  :global {
+    .swiper {
+      .swiper-wrapper {
+        height: toRem(185);
+      }
+    }
+  }
+}
+
+.slides {
+  @apply w-fit;
+}
+
+.prevBtn,
+.nextBtn {
+  position: absolute;
+  width: toRem(42.5);
+  height: toRem(45.5);
+  background: none;
+}
+
+.prevBtn {
+  left: toRem(-20);
+  top: toRem(80);
+}
+
+.nextBtn {
+  right: toRem(-20);
+  top: toRem(80);
+}
+
+.prevBtn:disabled,
+.nextBtn:disabled {
+  opacity: 0.5;
+}
+
+.rechargeBtn {
+  @apply absolute bottom-[-0.25rem] left-[5rem];
+}

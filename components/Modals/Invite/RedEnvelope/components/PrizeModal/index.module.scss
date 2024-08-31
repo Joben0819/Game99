@@ -1,0 +1,65 @@
+.prizeModalWrapper {
+  display: block;
+  opacity: 1;
+  height: toRem(320);
+  @apply w-full absolute;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: toRem(12);
+  z-index: 2;
+
+  .modalContainer {
+    @apply absolute flex-all-center size-full;
+    text-align: center;
+
+    canvas {
+      @apply absolute w-full h-auto left-0;
+    }
+
+    .modalContent {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 20;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      h1 {
+        position: absolute;
+        font-size: toRem(45);
+        font-weight: 600;
+        line-height: toRem(50);
+        color: #fff386;
+        top: toRem(33);
+        width: toRem(400);
+
+        @include GradientTextWithOutline(
+          $offset: toRem(3),
+          $color: #db1919,
+          $num-steps: 25,
+          $textContent: attr(data-textafter),
+          $gradient: linear-gradient(180deg, #ffffff 0%, #befbfe 0)
+        );
+
+        &[data-lang='in'] {
+          width: toRem(440);
+        }
+
+        &[data-lang='cn'] {
+          top: toRem(70);
+          font-weight: 600;
+          font-size: toRem(38);
+        }
+      }
+
+      h2 {
+        position: absolute;
+        font-size: toRem(40);
+        font-weight: 800;
+        color: #ffe500;
+        bottom: toRem(47);
+      }
+    }
+  }
+}

@@ -1,0 +1,303 @@
+.paymentContainer {
+  position: absolute;
+  top: 0;
+  z-index: 13;
+  width: 100%;
+  height: 100%;
+  background: #000000b2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.paymentBoard {
+  position: relative;
+  height: toRem(386);
+  width: toRem(407);
+
+  img {
+    position: unset;
+  }
+}
+
+.closeButton {
+  height: toRem(25.727);
+  width: toRem(25.727);
+  position: absolute;
+  z-index: 8;
+  right: toRem(0);
+  top: toRem(38);
+  image {
+    position: unset;
+  }
+}
+
+.titleContainer {
+  width: toRem(250);
+  height: toRem(40);
+  position: absolute;
+  left: toRem(71);
+  top: toRem(53);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: toRem(5.5);
+}
+
+.purchaseText {
+  position: relative;
+  width: toRem(190);
+  height: toRem(40);
+
+  image {
+    position: unset;
+  }
+}
+
+.chText {
+  position: relative;
+  width: toRem(110);
+  height: toRem(40);
+
+  image {
+    position: unset;
+  }
+}
+
+.innerContainer {
+  position: absolute;
+  top: toRem(92);
+  height: toRem(210);
+  width: toRem(392);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: toRem(15);
+}
+
+.labelContainer {
+  position: relative;
+  margin-top: toRem(-40);
+}
+
+.purchaseLabel {
+  border-radius: toRem(12);
+  width: toRem(150);
+  height: toRem(25);
+  background: linear-gradient(180deg, #ffe660 0%, #e3a300 100%);
+  border: toRem(1) solid #ff9900;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  p {
+    margin-top: toRem(-2);
+    color: #fff;
+    text-shadow: toRem(1) toRem(1) toRem(1) #282bd3;
+    font-family: PoetsenOne;
+    font-size: toRem(12);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+}
+
+.bonusBanner {
+  position: absolute;
+  top: toRem(-43);
+  left: toRem(126);
+  width: toRem(41);
+  height: toRem(21.72);
+}
+
+.popular {
+  position: absolute;
+  top: toRem(-12);
+  left: toRem(-21);
+  width: toRem(55);
+  height: toRem(44);
+
+  img {
+    position: unset;
+  }
+}
+
+.rechargeTip {
+  p {
+    color: #fff;
+    text-align: center;
+    text-shadow: toRem(0) toRem(0) toRem(4.335) #2a29e5;
+    font-family: Microsoft YaHei;
+    font-size: toRem(8);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+}
+
+.rechargeButton {
+  position: absolute;
+  width: toRem(95);
+  height: toRem(35);
+  bottom: toRem(53);
+  left: toRem(146.3);
+
+  img {
+    z-index: 1;
+  }
+
+  .amountText {
+    position: absolute;
+    top: toRem(-3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    padding: toRem(0) toRem(4);
+  }
+
+  span {
+    font-family: 'PoetsenOne';
+    font-size: toRem(12);
+    font-weight: 400;
+    line-height: toRem(15);
+    letter-spacing: 0;
+    text-align: center;
+    color: #fff8b6;
+    text-shadow:
+      toRem(0) toRem(0.8702211976051331) toRem(1.7404423952102661) rgba(0, 0, 0, 0.2),
+      toRem(0) toRem(0.8702211976051331) toRem(0.8702211976051331) rgba(0, 0, 0, 0.22),
+      toRem(0) toRem(0.8702211976051331) toRem(1.7404423952102661) rgba(0, 0, 0, 0.24),
+      toRem(0.8702211976051331) toRem(0) toRem(2.610663890838623) rgba(0, 0, 0, 0.35);
+  }
+}
+
+.bankContainer {
+  position: relative;
+  width: toRem(323);
+  height: toRem(47);
+}
+
+.dropdownLabel {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  p {
+    color: #fff;
+    text-align: center;
+    text-shadow: toRem(2) toRem(1) toRem(0) #282bd3;
+    font-family: PoetsenOne;
+    font-size: toRem(12);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+}
+
+.dropdownContainer {
+  position: relative;
+  padding: toRem(0) toRem(10);
+  z-index: 4;
+  width: toRem(323);
+  height: toRem(27);
+  border-radius: toRem(47.113);
+  background: #0900cb;
+  margin-top: toRem(5);
+  padding: toRem(10);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: toRem(5);
+
+  .iconContainer {
+    position: relative;
+    width: toRem(18);
+    height: toRem(17);
+    img {
+      position: unset;
+    }
+  }
+
+  p {
+    color: #fff;
+    text-shadow: toRem(2) toRem(1) toRem(0) #282bd3;
+    font-family: PoetsenOne;
+    font-size: toRem(12);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+}
+
+.dropdownListContainer {
+  position: relative;
+  z-index: 3;
+  margin-top: toRem(-23);
+  padding-top: toRem(23);
+  width: toRem(323);
+  max-height: toRem(158);
+  min-height: toRem(50);
+  border-radius: toRem(14);
+  border: toRem(1) solid #0000da;
+  background: linear-gradient(180deg, #0000d8 0%, #0e00c1 100%);
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+
+.dropdownItem {
+  padding: toRem(0) toRem(10);
+  width: 100%;
+  height: toRem(25);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: toRem(5);
+
+  .iconContainer {
+    position: relative;
+    width: toRem(18);
+    height: toRem(17);
+    img {
+      position: unset;
+    }
+  }
+
+  p {
+    color: #fff;
+    text-shadow: toRem(2) toRem(1) toRem(0) #282bd3;
+    font-family: PoetsenOne;
+    font-size: toRem(12);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+}
+
+.dropdownItem:hover {
+  border-radius: toRem(47.113);
+  background: #366ef4;
+}
+
+.dropdownIcon {
+  position: absolute;
+  right: toRem(15);
+  top: toRem(11);
+  width: toRem(8);
+  height: toRem(5);
+
+  img {
+    position: unset;
+  }
+}
+
+.loadingContainer {
+  position: absolute;
+  z-index: 20;
+  background-color: #0000004d;
+  width: 100%;
+  height: 100%;
+}

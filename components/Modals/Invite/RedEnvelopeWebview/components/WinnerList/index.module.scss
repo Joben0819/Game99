@@ -1,0 +1,84 @@
+.winnerListContainer {
+  height: 35%;
+  width: 100%;
+  margin: 0;
+
+  background: rgba(255, 228, 228, 1);
+  border: 1px solid rgba(255, 204, 204, 1);
+  box-shadow: 0 0 10px 0 rgba(233, 0, 0, 1) inset;
+  border-radius: toRem(5);
+  padding: toRem(5);
+
+  .winnerListCarouselWrapper {
+    max-width: 100%;
+    height: 100%;
+
+    position: relative;
+    height: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+
+    .winnerListMovingRows {
+      position: relative;
+      width: 100%;
+      color: #fff;
+      white-space: nowrap;
+      font-size: 0.195rem;
+      top: 0;
+      display: flex;
+      flex-direction: column;
+
+      text-align: center;
+      color: rgba(230, 67, 67, 1);
+      padding: 0 toRem(5);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: toRem(11);
+
+      span {
+        display: inline-block;
+      }
+
+      > div:nth-of-type(even) {
+        background: rgba(255, 199, 199, 1);
+      }
+
+      .winnerListCarouselItem {
+        width: 100%;
+        text-align: center;
+        color: rgba(230, 67, 67, 1);
+        padding: toRem(5);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: toRem(11);
+
+        span {
+          display: inline-block;
+        }
+
+        .isSmallWebView {
+          font-size: toRem(22) !important;
+        }
+      }
+    }
+  }
+}
+
+.noRecordWrapper {
+  position: relative;
+  height: 100%;
+  display: grid;
+  place-items: center;
+}
+
+.noRecordFound {
+  color: #0000004b;
+  font-size: toRem(12);
+  text-align: center;
+  font-weight: 600;
+}

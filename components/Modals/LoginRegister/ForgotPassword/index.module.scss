@@ -1,0 +1,178 @@
+.modal {
+  @apply absolute size-full flex-all-center;
+  top: 0;
+  z-index: 2;
+  opacity: 0;
+
+  &.isLoaded {
+    @include fadeIn;
+  }
+
+  .content {
+    @apply relative size-full flex justify-center items-center;
+    width: toRem(644);
+    height: toRem(353);
+    color: red;
+
+    .sizeImg {
+      @apply flex justify-center absolute top-[-0.4rem] transition-all duration-300;
+      width: toRem(800);
+      height: toRem(380);
+      z-index: -1;
+    }
+
+    .Inputs {
+      @apply w-[50%] h-[60%] flex flex-col ml-[1.5rem] relative mt-[0.32rem];
+
+      .sizeImg3 {
+        @apply relative w-full text-[#10a7ff] text-left;
+        font-size: toRem(20);
+        font-weight: 700;
+        text-shadow:
+          -1px -1px 0 #fff,
+          2px -1px 0 #fff,
+          -1px 1px 0 #fff,
+          2px 1px 0 #fff;
+        font-family: 'Poppins';
+        &[data-lang='cn'] {
+          font-family: 'Microsoft YaHei';
+        }
+      }
+
+      .sizeImg3[data-state='3'] {
+        text-align: center;
+        text-wrap: wrap;
+        width: 100%;
+      }
+
+      input {
+        outline: none;
+      }
+
+      .emailWrapper {
+        @apply flex pb-[.1rem] relative flex-col;
+        input {
+          @apply h-[.55rem]  w-full px-[.1rem] rounded-[.1rem] text-[.17rem] text-black;
+        }
+        span {
+          @apply pl-[0.06rem] pt-[0.06rem] text-[#23CCFF] text-[.15rem];
+        }
+      }
+      .btnOtpWrapper {
+        @apply flex justify-center gap-[.1rem] h-[.56rem] mt-[.2rem] w-full relative;
+
+        img {
+          @apply w-[2.5rem] z-0 object-contain absolute top-[-0.16rem];
+        }
+
+        span {
+          @apply z-[5] text-[.2rem] text-white;
+          padding-top: 0.05rem;
+          text-shadow:
+            -1px -1px 0 #00aeff,
+            2px -1px 0 #3142ff,
+            -1px 1px 0 #00aeff,
+            2px 1px 0 #3142ff;
+          color: #fff;
+          font-family: 'PoetsenOne';
+          font-weight: 400;
+        }
+      }
+      .enterVerify {
+        @apply flex pb-[.1rem] relative flex-col;
+        input {
+          @apply h-[.55rem] rounded-[.1rem] text-[.17rem] px-[.1rem] w-full text-black;
+        }
+        span {
+          @apply text-[#00E0FF] text-[.15rem] ml-[0.15rem] mt-[0.03rem];
+        }
+      }
+      .btnVerifyWrapper {
+        @apply flex justify-center items-center gap-[.1rem] h-[.56rem] mt-[.2rem] relative w-[100%];
+        padding-top: 0.05rem;
+        text-shadow:
+          -1px -1px 0 #ffa800,
+          2px -1px 0 #ff6836,
+          -1px 1px 0 #ffa800,
+          2px 1px 0 #ff6836;
+        color: #fff;
+        font-family: 'PoetsenOne';
+        font-weight: 400;
+
+        img {
+          @apply w-[2.5rem] z-0 object-contain absolute top-[-0.09rem];
+        }
+
+        span {
+          @apply z-[5] relative text-[.2rem] text-white;
+        }
+      }
+      .enterPasswdWrapper {
+        @apply w-full h-[1.18rem] flex flex-col justify-between mb-[0.2rem];
+        .setPasswd {
+          @apply relative flex items-center;
+          .eyeIcon {
+            @apply absolute;
+            width: toRem(16.61);
+            height: toRem(11.58);
+            right: 0.1rem !important;
+          }
+          input {
+            @apply h-[.55rem] rounded-[.1rem] text-[.17rem] px-[.15rem]  w-full text-black;
+          }
+        }
+        .confirmPasswd {
+          @apply relative flex items-center;
+          .eyeIcon {
+            @apply absolute;
+            width: toRem(16.61);
+            height: toRem(11.58);
+            right: 0.1rem !important;
+          }
+          input {
+            @apply h-[.55rem] rounded-[.1rem] text-[.17rem] px-[.15rem]  w-full text-black;
+          }
+        }
+      }
+    }
+
+    .sizeImg5 {
+      @apply absolute top-[0.3rem] right-0;
+      width: toRem(25);
+      height: toRem(25);
+    }
+
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+      background: #fff !important;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: #9a9696;
+      transition: background-color 1000s ease-in-out 0s;
+      box-shadow: inset 0 0 20px 20px transparent;
+    }
+
+    .footer_note {
+      @apply text-[#7F7F7F] text-[.2rem] text-center whitespace-nowrap;
+    }
+  }
+
+  .warning {
+    @apply absolute z-10 right-[.1rem];
+    top: toRem(9);
+    height: toRem(11);
+    width: toRem(11);
+  }
+
+  .warning_enter {
+    @apply absolute z-10 right-[.1rem];
+    top: toRem(9);
+    height: toRem(11);
+    width: toRem(11);
+  }
+
+  .inputError {
+    @apply border-[0.01rem] border-red-600;
+  }
+}

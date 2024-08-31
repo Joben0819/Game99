@@ -1,0 +1,108 @@
+.tabsList {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: toRem(5);
+  width: 100%;
+  padding: toRem(2);
+  border-radius: toRem(6);
+  border: toRem(0.5) solid #fff;
+
+  &.noData {
+    border: none;
+  }
+
+  .tabsSwiper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .slide {
+    width: auto !important;
+
+    &:not(:first-of-type) {
+      margin-left: toRem(5);
+    }
+  }
+
+  .tabItem {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: toRem(123);
+    height: toRem(27);
+    border-radius: toRem(4);
+    background: linear-gradient(180deg, #4693ec 76.1%, #69adfb 90.6%);
+
+    padding: 0 toRem(10) !important;
+    gap: toRem(5);
+    cursor: pointer;
+
+    .tabIconImg {
+      position: relative;
+      top: toRem(-1);
+      min-width: toRem(20);
+      min-height: toRem(20);
+      img {
+        width: auto !important;
+        height: toRem(20);
+        filter: brightness(1.2) hue-rotate(280deg);
+        opacity: 0.8;
+        mix-blend-mode: luminosity;
+      }
+    }
+    span {
+      position: relative;
+      top: toRem(-1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      text-align: center;
+      font-family: 'PoetsenOne';
+      font-size: toRem(12);
+      font-style: normal;
+      font-weight: 400;
+      line-height: toRem(12);
+      white-space: nowrap;
+      opacity: 0.5;
+    }
+  }
+
+  .activeItem {
+    background: linear-gradient(180deg, #ff7a00 72.6%, #ffa858 87.1%);
+    box-shadow: 0 toRem(2) toRem(2) 0 #e785ff inset;
+    pointer-events: none;
+
+    .tabIconImg {
+      img {
+        width: auto !important;
+        height: toRem(20);
+        filter: unset;
+        opacity: unset;
+        mix-blend-mode: unset;
+      }
+    }
+
+    span {
+      opacity: 1;
+    }
+  }
+
+  .tabsOverflow {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: toRem(5);
+    height: 100%;
+    overflow-x: auto;
+    touch-action: pan-x pan-y !important;
+    .tabItem {
+      min-width: unset;
+    }
+  }
+}

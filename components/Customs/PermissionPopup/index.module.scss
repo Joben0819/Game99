@@ -1,0 +1,58 @@
+.popup {
+  position: absolute;
+  left: toRem(10);
+  bottom: toRem(10);
+  width: toRem(364);
+  height: toRem(163);
+  z-index: 999;
+  background: white;
+  padding: toRem(12);
+  font-size: toRem(15);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #6c6c6c;
+  font-family: 'Segoe UI';
+
+  .content {
+    display: flex;
+    align-items: center;
+    gap: toRem(12);
+
+    img {
+      width: toRem(66);
+      height: auto;
+    }
+
+    div {
+      h6 {
+        font-weight: 600;
+      }
+
+      span {
+        color: #a0a0a0;
+      }
+    }
+  }
+
+  .buttons {
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+    gap: toRem(12);
+
+    :nth-child(1) {
+      width: 50%;
+      height: toRem(32);
+      background: #29c1e3;
+      color: white;
+    }
+
+    :nth-child(2) {
+      width: 50%;
+      height: toRem(32);
+      color: #29c1e3;
+      border: 1px solid #29c1e3;
+    }
+  }
+}

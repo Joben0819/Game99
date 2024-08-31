@@ -1,0 +1,271 @@
+.profile {
+  height: 100%;
+  width: 100%;
+
+  &__infoContainer {
+    @apply grid;
+    grid-template-columns: 1fr 2fr;
+    height: 68%;
+
+    & > * {
+      flex-basis: 50%;
+    }
+  }
+  &__pic {
+    @apply pl-[0.5rem];
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    flex-direction: column;
+  }
+
+  &__imgContainer {
+    height: toRem(128);
+    width: toRem(146);
+    position: relative;
+    margin-bottom: toRem(25);
+    cursor: pointer;
+
+    img:first-child {
+      position: absolute;
+      z-index: 1;
+      width: 100%;
+    }
+
+    img:nth-child(2) {
+      object-fit: cover;
+      width: 100% !important;
+      height: 100% !important;
+      border-radius: toRem(20);
+      clip-path: polygon(12% 7%, 95% 7%, 81% 91%, 3% 91%);
+    }
+
+    img:last-child {
+      height: toRem(50);
+      width: toRem(50);
+      position: absolute;
+      right: toRem(-8);
+      bottom: toRem(-9);
+      z-index: 2;
+    }
+  }
+
+  &__info {
+    @apply relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  &__textContainer {
+    @apply pl-[0.5rem];
+    margin-bottom: toRem(30);
+
+    h1 {
+      text-transform: uppercase;
+      font-family: 'Sansita One';
+      line-height: normal;
+      position: relative;
+      font-size: toRem(30);
+      margin-bottom: toRem(12);
+      padding-left: toRem(5);
+
+      @include GradientTextWithOutline(
+        $offset: toRem(1),
+        $color: #ffffff,
+        $num-steps: 25,
+        $textContent: attr(data-textafter),
+        $gradient: linear-gradient(to bottom, #ffa600, #ff8032)
+      );
+
+      &::after {
+        padding-left: toRem(5);
+      }
+    }
+
+    ul {
+      padding: 0;
+      margin: 0;
+
+      li {
+        font-family: Inter;
+        font-size: toRem(13);
+        font-weight: 600;
+        line-height: normal;
+        margin: toRem(5) 0;
+        display: flex;
+        align-items: center;
+
+        span {
+          color: #1653c9;
+
+          &:first-child {
+            color: #ff8032;
+            margin-right: toRem(7);
+          }
+
+          &:nth-child(2) {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: toRem(180);
+            display: inline-block;
+          }
+
+          &:nth-child(3) {
+            height: toRem(11);
+            width: toRem(12);
+            display: inline-block;
+            margin-left: toRem(7);
+            cursor: pointer;
+          }
+        }
+
+        &:nth-child(2) {
+          @apply relative;
+        }
+      }
+    }
+  }
+
+  &__buttonContainer {
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.48) 0%,
+      rgba(255, 255, 255, 0.1056) 69.5%,
+      rgba(255, 255, 255, 0.528) 100%
+    );
+    border-top: toRem(1.5) solid rgba(255, 255, 255, 0.4);
+    border-radius: 0 0 toRem(10) toRem(10);
+    height: 32%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: toRem(5);
+    & > * {
+      flex-basis: 50%;
+    }
+  }
+  &__bindBtnContainer {
+    display: flex;
+    margin-top: toRem(16);
+    justify-content: space-evenly;
+    flex-basis: 75%;
+    gap: toRem(10);
+
+    button {
+      position: relative;
+    }
+
+    span {
+      font-family: PoetsenOne;
+      font-size: toRem(12);
+      font-weight: 400;
+      margin-top: toRem(10);
+    }
+
+    .bonusNoti {
+      position: absolute;
+      background-color: #ff0000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      top: 0;
+      right: toRem(15);
+      border-radius: toRem(25);
+      padding: toRem(1) toRem(3);
+
+      img {
+        object-fit: contain;
+        object-position: center;
+        height: toRem(10);
+        width: toRem(10);
+      }
+      span {
+        margin: 0;
+        font-size: toRem(8);
+      }
+    }
+  }
+
+  &__bindBtn {
+    background: url(/assets/commons/customs/custom-button-orange.png) center / 100% 100%;
+    width: toRem(168);
+    height: toRem(46);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &--disabled {
+      background: url(/assets/commons/personal_center/bind_btn_disabled.webp) center / 100% 100% !important;
+      pointer-events: none;
+      filter: grayscale(1);
+    }
+
+    &--hidden {
+      display: none;
+    }
+  }
+
+  &__bindBtnImgPhone {
+    background: url(/assets/commons/personal_center/cicle_phone_orange.webp) center / 100% 100%;
+    width: toRem(22);
+    height: toRem(22);
+    margin-right: toRem(10);
+
+    &--disabled {
+      background: url(/assets/commons/personal_center/circle_check_grey.webp) center / 100% 100% !important;
+    }
+
+    &--hidden {
+      display: none;
+    }
+  }
+
+  &__bindBtnImgEmail {
+    background: url(/assets/commons/personal_center/circle_email_orange.webp) center / 100% 100%;
+    width: toRem(22);
+    height: toRem(22);
+    margin-right: toRem(10);
+
+    &--disabled {
+      background: url(/assets/commons/personal_center/circle_check_grey.webp) center / 100% 100% !important;
+    }
+  }
+
+  &__logoutContainer {
+    font-family: PoetsenOne;
+    font-size: toRem(12);
+    font-weight: 400;
+    flex-basis: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    span {
+      font-family: Inter;
+      font-size: toRem(12);
+      font-weight: 400;
+      color: rgba(148, 173, 186, 1);
+    }
+
+    button {
+      background: linear-gradient(180deg, #4693ec 76.1%, #69adfb 90.6%);
+      border: 1.5px solid #93c5ff;
+      width: toRem(98);
+      height: toRem(28);
+      border-radius: toRem(5);
+    }
+  }
+
+  &__setting {
+    @apply absolute right-[0.4rem] top-[-0.5rem] grid place-content-center pb-[0.05rem] pl-[0.12rem] cursor-pointer;
+    background: url(/assets/commons/personal_center/settings.webp) center / contain no-repeat;
+    width: toRem(102);
+    height: toRem(46);
+    font-size: toRem(12);
+  }
+}

@@ -1,0 +1,15 @@
+export const recharge = {
+  leftPanelTitle: 'Recharge',
+  titleBesidesCopyIcon: 'recharge history',
+  onlineRecharge: 'Online Recharge',
+  columnDate: 'Date',
+  columnTransNumber: 'Transaction Number',
+  columnTransAmount: 'Amount',
+  columnTransStatus: 'Status ',
+  USDTcomment: 'Select Amount to Pay:',
+  status: 'Status',
+  transactionDate: 'Transaction Date',
+  copySuccess: 'Copied Successfully!',
+  copyUnsuccessful: 'Failed to copy!',
+  rechargeWarning: 'You need to recharge before you get the free spins',
+} as const;

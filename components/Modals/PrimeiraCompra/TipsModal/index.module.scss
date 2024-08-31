@@ -1,0 +1,100 @@
+%button {
+  height: toRem(25);
+  width: toRem(24);
+  position: absolute;
+  z-index: 14;
+  right: toRem(203);
+  cursor: pointer;
+
+  &:active {
+    transform: scale(0.75);
+    opacity: 0.9;
+  }
+}
+
+.tipsOuterContainer {
+  position: relative;
+  height: toRem(400);
+  width: toRem(800);
+}
+
+.primeiraTipsContainer {
+  height: toRem(160);
+  width: toRem(361);
+  position: absolute;
+  z-index: 6;
+  right: toRem(230);
+  top: toRem(75);
+  img {
+    position: unset;
+  }
+}
+
+.closeButton {
+  @extend %button;
+  top: toRem(40);
+
+  image {
+    position: unset;
+    user-drag: none;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+  }
+}
+
+.tipsButton {
+  @extend %button;
+  top: toRem(70);
+
+  img {
+    position: unset;
+  }
+}
+
+.contentWrapper {
+  position: absolute;
+  width: toRem(316);
+  height: toRem(130);
+  top: toRem(15);
+  left: toRem(15);
+}
+
+.contentContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: toRem(13);
+}
+
+.contentItem {
+  width: 100%;
+  height: toRem(40);
+  display: flex;
+  gap: toRem(2);
+  justify-content: flex-start;
+
+  p {
+    font-family: Microsoft YaHei UI;
+    font-size: toRem(12);
+    font-weight: 400;
+    line-height: toRem(14);
+    letter-spacing: 0;
+    text-align: left;
+    color: #db582a;
+  }
+}
+
+.contentItem:nth-of-type(2)[data-lang='in'] {
+  height: toRem(30);
+}
+
+.tipLabel {
+  width: toRem(280);
+}
+
+.tipDescription {
+  width: toRem(470);
+}

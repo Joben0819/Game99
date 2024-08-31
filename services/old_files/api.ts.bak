@@ -1,0 +1,1152 @@
+import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
+
+import { RewardLogsType } from '@/components/Modals/Invite/RedEnvelope/MainScreen';
+
+import { queryParams, removeDuplicates } from '@/utils/helpers';
+
+import { Domain as ServerDomain, loginGoogleURL, loginGoogleURLPrefix } from '../server/9900';
+import { CheckUserRedPacketResponseData, TradeTypesData } from './response-type';
+import {
+  AccountDetail,
+  AllData,
+  BindCard,
+  BindPhone,
+  BoundOtpSecret,
+  GetPerformace,
+  IUserToken,
+  IncomeDetailsPayload,
+  Infogame,
+  InterestStatusPayload,
+  Itransaction,
+  Joingame,
+  Login,
+  OnlineRecharge,
+  OtpSecretQrcode,
+  ResetPassword,
+  TAddSecurityQuestionAnswer,
+  TAfeedback,
+  TBindEmail,
+  TCashbackDetails,
+  TClaimMissionReward,
+  TCollectAllMissionReward,
+  TCollectBonusBonus,
+  TCollectCashback,
+  TContinueWithOtp,
+  TEventCollect,
+  TEventCollectAll,
+  TEventRecordsLog,
+  TEventTotalClaimable,
+  TEventTotalClaimed,
+  TFeesSummary,
+  TForgetPassSendVerificationCode,
+  TGameWithdrawal,
+  TGetActivity,
+  TGetAddMusic,
+  TGetBalanceByPlatform,
+  TGetBonusByType,
+  TGetDirectBetPayload,
+  TGetDirectData,
+  TGetDirectFinance,
+  TGetEventDetails, // TCashback,
+  TGetGameCashBackList,
+  TGetGameInfoGroup,
+  TGetGameList,
+  TGetMissionHistory,
+  TGetMissionRepeatList,
+  TGetNewbieMissionList,
+  TGetPlatformList,
+  TGetRepeatMissionActivityList,
+  TGetUserMusic,
+  TJumpActivity,
+  TListFeed,
+  TLoginDevice,
+  TLoginEmail,
+  TMemberBonusRewards,
+  TMessageItem,
+  TMessageOnSites,
+  TMobileBindPhone,
+  TMobileLogin,
+  TReadAllMessage,
+  TReadMessage,
+  TReceiveVipGift,
+  TReceivedVipHistory,
+  TReferralDataPayload,
+  TReferralReportPayload,
+  TRegister,
+  TRegisterCode,
+  TResetForgetLoginPassword,
+  TResetUserOtpSecret,
+  TSelectCashBackHistory,
+  TSendSMSVerifyCode,
+  TUpdateFavorite,
+  TUpdateMemberInfo,
+  TUpdateSecurityQuestionAnswer,
+  TVerifyEmailCode,
+  TVerifySecurityQuestionAnswer,
+  TescGame,
+  TforgotPasswordSetByGoogleOpt,
+  TgetCommission,
+  TunreadMessages,
+  TverifyUsername,
+  VerifyPassword,
+  WithdrawBank,
+  tPromote,
+} from './types';
+
+export const Domain = ServerDomain;
+export const gameapp = 'game99-game-app/';
+export const platform = 'game99-platform-app/';
+export const payapp = 'game99-pay-app/';
+export const lotteryapp = 'game99-lottery-app/';
+export const dev_version = '0';
+
+export const loginGoogleUrlH5Prefix = Domain + platform + loginGoogleURLPrefix;
+
+var Post = 'POST';
+var Get = 'GET';
+let userToken: string | null = '';
+let userOtp: string | null = '';
+let acceptLang: string | null;
+
+export const storeToken = (resToken: string) => {
+  if (userToken === '') {
+    userToken = resToken;
+  }
+};
+
+export const storeLang = (lang: string) => {
+  acceptLang = lang === 'cn' ? 'cn' : lang;
+};
+
+export const clearToken = () => {
+  userToken = '';
+};
+
+export const storeOtp = (otp: string) => {
+  if (userOtp === '') {
+    userOtp = otp;
+  }
+};
+
+const setCookie = (resUserId: string, resToken: string, expDays: number) => {
+  var date = new Date();
+  var token: IUserToken = { userId: resUserId, token: resToken };
+  date.setTime(date.getTime() + expDays * 24 * 60 * 60 * 1000);
+  const expires = 'expires=' + date.toUTCString();
+  document.cookie = 'token=' + JSON.stringify(token) + ';' + expires + ';path=/';
+};
+
+const axiosInstance = axios.create({
+  // withCredentials: true,
+  // maxRedirects: 10,
+});
+
+export const api = async (param: string, params2: string, method: string, data?: any): Promise<any> => {
+  const url = Domain + param + params2;
+  let Content = '';
+  let json = true;
+  let addtlHeaders = {};
+  if (data instanceof FormData) {
+    Content = 'multipart/form-data';
+    json = false;
+  } else {
+    Content = 'application/json;charset=UTF-8';
+    json = true;
+  }
+
+  if (params2.includes('inviterGame/rewardLogs')) {
+    const rewardLogsType = params2.split('?')[1].substring(5);
+    addtlHeaders = { type: rewardLogsType };
+    params2 = 'inviterGame/rewardLogs';
+  }
+  try {
+    var globalHeaders = {
+      'front-host': url,
+      dev: dev_version,
+      version: process.env.APP_VERSION,
+      'Content-Type': Content,
+    };
+    const axiosConfig: AxiosRequestConfig = {
+      method: method,
+      url: url,
+      headers: {
+        'front-host': globalHeaders['front-host'],
+        dev: globalHeaders.dev.toString(),
+        version: globalHeaders.version?.toString() ?? 2,
+        'Content-Type': globalHeaders['Content-Type'],
+        token: userToken || localStorage.getItem('token'),
+        otp: userOtp || localStorage.getItem('otp'),
+        'Accept-Language': !!acceptLang?.length ? acceptLang : localStorage.getItem('lang'),
+        ...addtlHeaders,
+      },
+      data: json === true ? JSON.stringify(data) : data,
+      // withCredentials: true,
+    };
+
+    const response: AxiosResponse = await axiosInstance(axiosConfig);
+
+    if (response.status !== 200) {
+      throw new Error('Request failed');
+    }
+
+    const loginMethods = ['login', 'loginEmail', 'email/register', 'mobile/login', 'loginDevice', 'continueWithOtp'];
+
+    if (loginMethods.includes(params2)) {
+      if (response.data.code === 200) {
+        var resToken = response.data.data.token;
+        var resUserId = response.data.data.id;
+        storeToken(resToken);
+        setCookie(resUserId, resToken, 30);
+        localStorage.setItem('token', resToken);
+        sessionStorage.removeItem('Modal');
+        storeToken(response.data.data.token);
+      } else {
+        return response;
+      }
+      return response;
+    } else if (response.data.code === 401) {
+      localStorage.removeItem('token');
+      // window.location.href = "/";
+      userToken = '';
+      window.location.href = '/?code=401';
+      return response;
+    } else {
+      return response;
+    }
+  } catch (error) {
+    return null;
+  }
+};
+
+export function mRegister(data: TRegister) {
+  return api(platform, 'email/register', Post, data);
+}
+
+export function registerCode(data: TRegisterCode) {
+  return api(platform, 'sendEmailVerificationCode', Post, data);
+}
+
+export function login(data: Login) {
+  return api(platform, 'login', Post, data);
+}
+
+export function loginEmail(data: TLoginEmail) {
+  return api(platform, 'loginEmail', Post, data);
+}
+
+export function logout() {
+  return api(platform, 'logout', Post);
+}
+
+export function getGameList(data: TGetGameList) {
+  return api(gameapp, 'getGameInfos', Post, data);
+}
+
+export function getPlatformList(data: TGetPlatformList) {
+  return api(gameapp, 'game/platform/list', Post, data);
+}
+
+export function getGameTypes() {
+  return api(gameapp, 'getGameTypes', Post);
+}
+
+export function getGameInfos(data: Infogame) {
+  return api(gameapp, 'getGameInfos', Post, data);
+}
+
+export function JoinGame(data: Joingame) {
+  return api(gameapp, 'joinGame', Post, data);
+}
+
+export function getAccountInfo() {
+  return api(platform, 'getAccountInfo', Post);
+}
+
+export function getMemberMusicListBySystem({}) {
+  return api(platform, 'getMemberMusicListBySystem', Post);
+}
+
+export function getMemberMusicList(data: TGetUserMusic) {
+  return api(platform, 'getMemberMusicList', Post, data);
+}
+
+export function addMemberMusicByUser(data: TGetAddMusic) {
+  return api(platform, 'addMemberMusicByUser', Post, data);
+}
+
+export function updateMemberMusicByUser(data: TGetAddMusic) {
+  return api(platform, 'updateMemberMusicByUser', Post, data);
+}
+
+// Interest
+export function Transaction(data: Itransaction) {
+  return api(payapp, 'interest/transaction', Post, data);
+}
+
+export function ISummary(data: TFeesSummary) {
+  return api(payapp, `interest/summary`, Post, data);
+}
+
+export function getRules() {
+  return api(payapp, `interest/getRules`, Get);
+}
+
+export function getInterestIncomeDetails(data: IncomeDetailsPayload) {
+  // Step 1: Create an object to append to the data
+  const orderBy = {
+    orderByColumn: 'time',
+    isAsc: 'desc',
+  };
+
+  // Step 2: Merge the orderBy object with the existing data object
+  const updatedData = {
+    ...data, // This spreads the properties from the original data
+    ...orderBy, // This spreads the properties from the orderBy object
+  };
+
+  // Step 3: Make the API call with the updated data
+  return api(payapp, 'interest/incomeDetails', Post, updatedData);
+}
+
+export function getInterestStatus(data: InterestStatusPayload) {
+  // Step 1: Create an object to append to the data
+  const orderBy = {
+    orderByColumn: 'time',
+    isAsc: 'desc',
+  };
+
+  // Step 2: Merge the orderBy object with the existing data object
+  const updatedData = {
+    ...data, // This spreads the properties from the original data
+    ...orderBy, // This spreads the properties from the orderBy object
+  };
+
+  // Step 3: Make the API call with the updated data
+  return api(payapp, 'interest/status', Post, updatedData);
+}
+
+export function AddFeed(data: TAfeedback) {
+  const formData = new FormData();
+  formData.append('memberId', data.memberId);
+  formData.append('currency', data.currency);
+  formData.append('feedbackAccount', data.feedbackAccount);
+  formData.append('feedbackContent', data.feedbackContent);
+  if (data.file) {
+    formData.append('file', data.file); // Append the image with its name
+  }
+  return api(platform, 'game/feedback/addFeed', Post, formData);
+}
+
+export function ListFeed(data: TListFeed) {
+  return api(platform, 'game/feedback/list', Post, data);
+}
+
+// export function getGameInfos(data: Infogame) {
+//   return api(gameapp, "getGameInfos", Post, data);
+// }
+export function getGameInfoList() {
+  //return api(gameapp, "getGameInfoList", Post, data);
+}
+
+export function getGameInfoGroup(data: TGetGameInfoGroup) {
+  return api(gameapp, 'getGameInfoGroup', Post, data);
+}
+
+export function cleanCodeDetail() {
+  //return api(gameapp, "cleanCodeDetail", Post);
+}
+
+export function toWashCode() {
+  //return api(gameapp, "toWashCode", Post);
+}
+export function getWashCodeLogs() {
+  //return api(gameapp, "getWashCodeLogs", Post, data);
+}
+export function getWashCodeRateList() {
+  //return api(gameapp, "getWashCodeRateList", Post);
+}
+export function getWashCodeDetail() {
+  //return api(gameapp, "getWashCodeDetail", Post);
+}
+export function sendSmsVerifyCode(data: TSendSMSVerifyCode) {
+  return api(platform, 'sendSmsVerifyCode', Post, data);
+}
+
+export function verifyPassword(data: VerifyPassword) {
+  return api(platform, 'verifyPassword', Post, data);
+}
+
+export function escGame(data: TescGame) {
+  return api(gameapp, 'escGame', Post, data);
+}
+
+export function getVipGiftInfo() {
+  return api(platform, 'getVipGiftInfo', Post);
+}
+
+//Get Events List
+export function getActivityInfos(data: {}) {
+  return api(platform, 'getActivityInfos', Post, data);
+}
+
+export function getActivity(data: TGetActivity) {
+  return api(platform, 'getActivity', Post, data);
+}
+
+export function getActivityQuestInfos() {
+  //return api(platform, "getActivityQuestInfos", Post, data);
+}
+
+export function getActivityTypes() {
+  return api(platform, 'getActivityTypes', Post);
+}
+
+export function getActivityQuestTypes() {
+  //return api(platform, "getActivityQuestTypes", Post, data);
+}
+export function receiveQuestReward() {
+  //return api(platform, "receiveQuestReward", Post, data);
+}
+
+export function getMessageOnSites(data: TMessageOnSites) {
+  return api(platform, 'getMessageOnSites', Post, data);
+}
+
+//Member related Interface
+export function receiveVipGift(data: TReceiveVipGift) {
+  return api(platform, 'receiveVipGift', Post, data);
+}
+
+export async function getTradeTypes() {
+  const response = await api(platform, 'getTradeTypes', Post);
+
+  return response.data as TradeTypesData;
+}
+
+export function getImToken() {
+  //return api(platform, "getImToken", Post);
+}
+
+export function getInviterGame() {
+  return api(platform, 'inviterGame', Post);
+}
+
+export function playInviterGame() {
+  return api(platform, 'inviterGame/play', Post);
+}
+
+export function getInviterGameRewardLogs(type: RewardLogsType) {
+  return api(platform, `inviterGame/rewardLogs?type=${type}`, Post);
+}
+
+// export function checkUserRedPocket() {
+//   return api(platform, 'inviterGame/isAvailable', Post);
+// }
+
+export async function checkUserRedPacket() {
+  const { data } = await api(platform, 'inviterGame/isAvailable', Post);
+
+  return data as CheckUserRedPacketResponseData;
+}
+
+//
+export type FundDetails = {
+  createTime: string;
+  des: string;
+  pay: number;
+  income: number;
+  total: number;
+  totalBefore: number;
+  type: number;
+};
+export function getFundDetails(data: any) {
+  return api(platform, 'getFundDetails', Post, data);
+}
+
+export function getCodeFlowList(data: any) {
+  return api(platform, 'getCodeFlowList', Post, data);
+}
+
+//vip section parts
+export type GameDataList = {
+  gameId: string;
+  allBet: string;
+  cellScore: string;
+  createTime: string;
+  profit: number;
+  status: number;
+  agent: string;
+  platformId: number;
+};
+
+export function getGameDataList(data: any) {
+  return api(gameapp, 'getGameDataList', Post, data);
+}
+export function getGameCategoryList() {
+  return api(gameapp, 'getGameCategoryList', Post);
+}
+export function getGameBalance() {
+  //return api(gameapp, "getGameBalance", Post);
+}
+
+export function gameWithdrawal(data: TGameWithdrawal) {
+  return api(gameapp, 'gameWithdrawal', Post, data);
+}
+//Promotion
+export function getRecommendDesc() {
+  //return api(platform, "getRecommendDesc", Post);
+}
+
+export function getRecommendRewardDetailList() {
+  //return api(platform, "getRecommendRewardDetailList", Post, data);
+}
+
+export function getRecommendDetailList() {
+  //return api(platform, "getRecommendDetailList", Post, data);
+}
+
+export function getAccountNow() {
+  return api(platform, 'getAccountNow', Post);
+}
+
+//SafeBox Related
+export function boxPassIsOpen() {
+  //return api(platform, "boxPassIsOpen", Post);
+}
+
+export function boxPassSet() {
+  //return api(platform, "boxPassSet", Post, data);
+}
+
+export function boxAccount() {
+  //return api(platform, "boxAccount", Post, data);
+}
+
+export function withdrawPassIsOpen() {
+  return api(payapp, 'withdrawPassIsOpen', Post);
+}
+
+export function withdrawPassSet(data: { boxPass: string }) {
+  return api(payapp, 'withdrawPassSet', Post, data);
+}
+
+export function withdrawPassReset(data: { oldWithdrawPassword: string; withdrawPassword: string }) {
+  return api(payapp, 'withdrawPassReset', Post, data);
+}
+
+export function forgetWithdrawPass(data: { newWithdrawPassword: string; otp: string }) {
+  return api(payapp, 'forgetWithdrawPass', Post, data);
+}
+
+export function getRecommendDetail() {
+  //return api(platform, "getRecommendDetail", Post, data);
+}
+
+//Promotional Related api
+export function receiveRecommendReward() {
+  //return api(platform, "receiveRecommendReward", Post);
+}
+
+export function rule() {
+  //return api(lotteryapp, "rule", Post, data);
+}
+
+export function lotteryInit() {
+  //return api(lotteryapp, "lotteryInit", Post, data);
+}
+
+export function betRecord() {
+  //return api(lotteryapp, "betRecord", Post, data);
+}
+
+export function bet() {
+  //return api(lotteryapp, "bet", Post, data)
+}
+
+export function issueRecord() {
+  //return api(lotteryapp, "issueRecord", Post, data);
+}
+
+export function bankList() {
+  return api(payapp, 'bankList', Post);
+}
+
+export function payTypeList() {
+  return api(payapp, 'payTypeList', Post);
+}
+export function payChannelList(data: { typeId: number }) {
+  return api(payapp, 'payChannelList', Post, data);
+}
+
+export function rechargeBankList() {
+  //return api(payapp, "rechargeBankList", Post);
+}
+
+export function rechargeUsdtList() {
+  //return api(payapp, "rechargeUsdtList", Post);
+}
+
+export function getBindCardList() {
+  return api(payapp, 'getBindCardList', Post);
+}
+
+export function setBindCard(data: BindCard) {
+  return api(payapp, 'setBindCard', Post, data);
+}
+export function setBankBindCard(data: BindCard) {
+  return api(payapp, 'bank/setBindCard', Post, data);
+}
+
+export function bankRecharge() {
+  //return api(payapp, "bankRecharge", Post, data);
+}
+
+export function onlineRecharge(data: OnlineRecharge) {
+  return api(payapp, 'onlineRecharge', Post, data);
+}
+
+export function vipPayLogin() {
+  //return api(payapp, "vipPayLogin", Post);
+}
+
+export function vipPayDeposit() {
+  //return api(payapp, "vipPayDeposit", Post, data);
+}
+
+export function withdrawRechargeDetail(data: any) {
+  return api(payapp, 'withdrawRechargeDetail', Post, data);
+}
+
+export function boxTransfer() {
+  //return api(platform, "boxTransfer", Post, data);
+}
+
+export function loginDevice(data: TLoginDevice) {
+  return api(platform, 'loginDevice', 'post', data);
+}
+
+export function resetPassword(data: ResetPassword) {
+  return api(platform, 'resetPasswd', Post, data);
+}
+
+export function BrowseInit() {
+  return api(platform, 'init', Post);
+}
+
+export function cashbackDetails(data: TCashbackDetails) {
+  return api(gameapp, 'cashbackDetails', Post, data);
+}
+
+export function getGameCashBackList(data: TGetGameCashBackList) {
+  return api(gameapp, 'getGameCashBackList', Post, data);
+}
+
+export function selectCashBackHistory(data: TSelectCashBackHistory) {
+  // Step 1: Create an object to append to the data
+  const orderBy = {
+    orderByColumn: 'collectionTime',
+    isAsc: 'desc',
+  };
+
+  // Step 2: Merge the orderBy object with the existing data object
+  const updatedData = {
+    ...data, // This spreads the properties from the original data
+    ...orderBy, // This spreads the properties from the orderBy object
+  };
+
+  // Step 3: Make the API call with the updated data
+  return api(gameapp, 'selectCashBackHistory', Post, updatedData);
+}
+
+export function collectCashBack(data: TCollectCashback) {
+  return api(gameapp, 'collectCashBack', Post, data);
+}
+
+export function getBalanceByPlatform(data: TGetBalanceByPlatform) {
+  return api(gameapp, 'getBalanceByPlatform', Post, data);
+}
+
+export function verifyUsername(data: TverifyUsername) {
+  return api(platform, 'verifyUsername', Post, data);
+}
+
+export function forgotPasswordSetByGoogleOpt(data: TforgotPasswordSetByGoogleOpt) {
+  return api(platform, 'forgotPasswordSetByGoogleOpt', Post, data);
+}
+
+export function gameWithdrawAllMoney() {
+  return api(gameapp, 'gameWithdrawAllMoney', Post);
+}
+
+export function updateFavorite(data: TUpdateFavorite) {
+  return api(gameapp, 'game/updateFavorite', Post, data);
+}
+
+export function continueWithOtp(data: TContinueWithOtp) {
+  return api(platform, 'continueWithOtp', Post, data);
+}
+
+export async function readMessageOnSites(data: TReadMessage) {
+  return await api(platform, 'readMessageOnSites', Post, data);
+}
+
+export async function readAllMessageOnSites(data: TReadAllMessage) {
+  return await api(platform, 'readAllMessageOnSites', Post, data);
+}
+
+export async function unreadMessageOnSites(data: TunreadMessages) {
+  return await api(platform, 'unreadMessageOnSiteCount', Post, data);
+}
+
+export async function getMessageHomeNotices() {
+  return await api(platform, 'getMessageHomeNotices', Post);
+}
+
+export async function getPerformance(data: GetPerformace) {
+  return await api(platform, 'getPerformance', Post, data);
+}
+
+export async function getMemberAdvertisementList() {
+  return await api(platform, 'getMemberAdvertisementListBySystem', Post);
+}
+
+export async function IP() {
+  const config: AxiosRequestConfig = {
+    url: 'https://api.ipify.org?format=json',
+    method: 'get',
+    responseType: 'json',
+  };
+
+  return await axiosInstance(config);
+}
+
+export async function getPromote(data: tPromote) {
+  return await api(platform, 'getPromote', Post, data);
+}
+
+export async function getCommission(data: TgetCommission) {
+  return await api(platform, 'getCommission', Post, data);
+}
+export async function getMemberRechargeList(data: any) {
+  return await api(platform, 'getMemberRechargeList', Post, data);
+}
+
+export async function getReferralPerformance(data: any) {
+  return await api(platform, 'getPerformance', Post, data);
+}
+
+export async function getDirectFinance(data: TGetDirectFinance) {
+  return await api(platform, 'getDirectFinance', Post, data);
+}
+
+export async function getDirectBet(data: TGetDirectBetPayload) {
+  return await api(platform, 'getDirectBet', Post, data);
+}
+
+export async function getAllData(data: AllData) {
+  return await api(platform, 'getAllData', Post, data);
+}
+
+export async function getDirectData(data: TGetDirectData) {
+  return await api(platform, 'getDirectData', Post, data);
+}
+
+export async function getWithdrawals() {
+  return await api(platform, 'getWithdrawals', Post);
+}
+
+export async function withdrawCommision() {
+  return await api(platform, 'withdrawCommision', Post);
+}
+
+export async function accountDetailList(data: AccountDetail) {
+  // Step 1: Create an object to append to the data
+  const orderBy = {
+    orderByColumn: 'time',
+    isAsc: 'desc',
+  };
+
+  // Step 2: Merge the orderBy object with the existing data object
+  const updatedData = {
+    ...data, // This spreads the properties from the original data
+    ...orderBy, // This spreads the properties from the orderBy object
+  };
+
+  // Step 3: Make the API call with the updated data
+  return await api(platform, 'account/list', Post, updatedData);
+}
+
+export async function accountSummary(data: AccountDetail) {
+  return await api(platform, `account/summary/`, Post);
+}
+
+export async function bettingList(data: AccountDetail) {
+  // Step 1: Create an object to append to the data
+  const orderBy = {
+    orderByColumn: 'time',
+    isAsc: 'desc',
+  };
+
+  // Step 2: Merge the orderBy object with the existing data object
+  const updatedData = {
+    ...data, // This spreads the properties from the original data
+    ...orderBy, // This spreads the properties from the orderBy object
+  };
+
+  // Step 3: Make the API call with the updated data
+  return await api(platform, 'bet/list', Post, updatedData);
+}
+
+export async function personalReportList(data: AccountDetail) {
+  // Step 1: Create an object to append to the data
+  const orderBy = {
+    orderByColumn: 'time',
+    isAsc: 'desc',
+  };
+
+  // Step 2: Merge the orderBy object with the existing data object
+  const updatedData = {
+    ...data, // This spreads the properties from the original data
+    ...orderBy, // This spreads the properties from the orderBy object
+  };
+
+  // Step 3: Make the API call with the updated data
+  return await api(platform, 'personal/list', Post, updatedData);
+}
+
+export async function bettingSummary(data: AccountDetail) {
+  return await api(platform, `bet/summary/`, Post);
+}
+
+export async function withdrawBank(data: WithdrawBank) {
+  return await api(payapp, 'withdraw', Post, data);
+}
+
+export async function getOtpSecretQrcode(data: OtpSecretQrcode) {
+  return await api(platform, `getOtpSecretQrcode?${queryParams(data)}`, Get);
+}
+
+export async function boundOtpSecret(data: BoundOtpSecret) {
+  return await api(platform, 'boundOtpSecret', Post, data);
+}
+
+export async function bindPhone(data: BindPhone) {
+  return await api(platform, 'bindPhone', Post, data);
+}
+
+export async function resetUserOtpSecret(data: TResetUserOtpSecret) {
+  return await api(platform, 'resetUserOtpSecret', Post, data);
+}
+
+export async function verifyWithdrawalPassword(data: { withdrawPass: string }) {
+  return await api(payapp, 'verifyWithdrawPass', Post, data);
+}
+
+export async function removeBindedCard(data: { id: number }) {
+  return await api(payapp, 'removeCard', Post, data);
+}
+
+export async function verifySecurityQuestionAnswer(data: TVerifySecurityQuestionAnswer) {
+  return await api(platform, 'verifySecurityQuestionAnswer', Post, data);
+}
+
+export async function updateSecurityQuestionAnswer(data: TUpdateSecurityQuestionAnswer) {
+  return await api(platform, 'updateSecurityQuestionAnswer', Post, data);
+}
+
+export async function addSecurityQuestionAnswer(data: TAddSecurityQuestionAnswer) {
+  return await api(platform, 'addSecurityQuestionAnswer', Post, data);
+}
+
+export function updateMemberInfo(data: TUpdateMemberInfo) {
+  return api(platform, 'updateMemberInfo', Post, data);
+}
+
+export function manualCollect() {
+  return api(platform, 'manualCollect', Post);
+}
+
+export function getAllSecurityQuestions() {
+  return api(platform, 'getAllSecurityQuestions', Post);
+}
+
+export function receivedVipHistory(data: TReceivedVipHistory) {
+  // Step 1: Create an object to append to the data
+  const orderBy = {
+    orderByColumn: 'time',
+    isAsc: 'desc',
+  };
+
+  // Step 2: Merge the orderBy object with the existing data object
+  const updatedData = {
+    ...data, // This spreads the properties from the original data
+    ...orderBy, // This spreads the properties from the orderBy object
+  };
+
+  // Step 3: Make the API call with the updated data
+  return api(platform, 'receivedVipHistory', Post, updatedData);
+}
+
+export function receivedVipCount() {
+  return api(platform, 'receivedVipCount', Post);
+}
+export function getCommissionFeeTable(data: any) {
+  return api(platform, 'getCommissionFeeTable', Post, data);
+}
+
+export function getNewbieMissionList(data: TGetNewbieMissionList) {
+  return api(platform, 'getNewbieMissionList', Post, data);
+}
+
+export function getMissionRepeatList(data: TGetMissionRepeatList) {
+  return api(platform, 'getMissionRepeatList', Post, data);
+}
+export function addInviter(data: any) {
+  return api(platform, 'addInviter', Post, data);
+}
+
+export function claimMissionReward(data: TClaimMissionReward) {
+  return api(platform, 'claimMissionReward', Post, data);
+}
+
+export function getMissionHistory(data: TGetMissionHistory) {
+  // Step 1: Create an object to append to the data
+  const orderBy = {
+    orderByColumn: 'time',
+    isAsc: 'desc',
+    pageSize: 100,
+  };
+
+  // Step 2: Merge the orderBy object with the existing data object
+  const updatedData = {
+    ...data, // This spreads the properties from the original data
+    ...orderBy, // This spreads the properties from the orderBy object
+  };
+
+  // Step 3: Make the API call with the updated data
+  return api(platform, 'getMissionHistory', Post, updatedData);
+}
+
+export function collectAllMissionReward(data: TCollectAllMissionReward) {
+  return api(platform, 'collectAllMissionReward', Post, data);
+}
+
+export function memberActivityRewardLog(data: TEventRecordsLog) {
+  return api(platform, 'memberActivityReward/log', Post, data);
+}
+
+export function memberActivityRewardCollect(data: TEventCollect) {
+  return api(platform, 'memberActivityReward/collect', Post, data);
+}
+
+export function eventGetTotalClaimed(data: TEventTotalClaimed) {
+  return api(platform, 'memberActivityReward/getTotalClaimed', Post, data);
+}
+
+export function eventGetTotalClaimable(data: TEventTotalClaimable) {
+  return api(platform, 'memberActivityReward/getTotalClaimable', Post, data);
+}
+
+export function eventCollectAll(data: TEventCollectAll) {
+  return api(platform, 'memberActivityReward/collectAll', Post, data);
+}
+
+export function getEventDetails(data: TGetEventDetails) {
+  return api(platform, 'memberActivityReward/getRewards', Post, data);
+}
+
+export function totalWithdraw() {
+  return api(payapp, 'totalWithdraw', Post);
+}
+
+export function totalDeposit() {
+  return api(payapp, 'totalRecharge', Post);
+}
+
+export function auditData(data: any) {
+  return api(platform, '/account/listWithPredefinedTypes', Post, data);
+}
+
+export function getAvailableCommission() {
+  return api(platform, 'getAvailableCommission', Post);
+}
+
+export function collectTestMoney() {
+  return api(platform, 'collectTestMoney', Post);
+}
+
+export function lojaList() {
+  return api(payapp, 'loja/list', Post);
+}
+
+export function withdrawLimit() {
+  return api(payapp, 'withdrawLimit', Post);
+}
+export function getEnumCardList() {
+  return api(payapp, 'getEnumCardList', Post);
+}
+export function getRescueBonus() {
+  return api(platform, 'getRescueBonus', Post);
+}
+export function collectRescueBonus() {
+  return api(platform, 'collectRescueBonus', Post);
+}
+export function getRepeatMissionActivityList(data: TGetRepeatMissionActivityList) {
+  return api(platform, 'getRepeatMissionActivityList', Post, data);
+}
+
+export function forgetPassMailVerificationCode(data: TForgetPassSendVerificationCode) {
+  return api(platform, 'sendForgetWithdrawPasswordMailOtp', Post, data);
+}
+
+export function forgotPassword(data: TForgetPassSendVerificationCode) {
+  return api(platform, 'forgetPassMailVerificationCode', Post, data);
+}
+
+export function sendEmailVerificationCode(data: TForgetPassSendVerificationCode) {
+  return api(platform, 'sendEmailVerificationCode', Post, data);
+}
+
+export function verifyEmailCode(data: TVerifyEmailCode) {
+  return api(platform, 'verifyEmailCode', Post, data);
+}
+
+export function resetForgetLoginPassword(data: TResetForgetLoginPassword) {
+  return api(platform, 'mobile/resetForgetLoginPassword', Post, data);
+}
+
+export function mobileLogin(data: TMobileLogin) {
+  return api(platform, 'mobile/login', Post, data);
+}
+
+export function bindMobilePhone(data: TMobileBindPhone) {
+  return api(platform, 'mobile/bindPhone', Post, data);
+}
+
+export function bindEmail(data: TBindEmail) {
+  return api(platform, 'bindEmail', Post, data);
+}
+
+export function getMemberBonusRewards(data: TMemberBonusRewards) {
+  return api(platform, 'memberVipBonusReward/getRewards', Post, data);
+}
+
+export function collectMemberBonusRewards(data: TCollectBonusBonus) {
+  return api(platform, 'memberVipBonusReward/collect', Post, data);
+}
+
+export function getJackpotPrizeList(data: {}) {
+  return api(gameapp, 'getJackpotPrizeList', Post, data);
+}
+
+export function sendForgetWithdrawPasswordMailOtp(data: { email: string }) {
+  return api(payapp, 'sendForgetWithdrawPasswordMailOtp', Post, data);
+}
+
+export function setPasswordApi(data: { password: string; confirmPassword: string }) {
+  return api(platform, 'setPassword', Post, data);
+}
+
+export function deleteMessage(data: { type: string; id: number }) {
+  return api(platform, 'deleteMessage', Post, data);
+}
+
+export function getCountryCodes() {
+  return api(platform, 'countryCodes', Post);
+}
+
+export function getInviterRules() {
+  return api(platform, 'getInviterRules', Post);
+}
+
+export function Announcement(data: {}) {
+  return api(platform, 'announcement', Post, data);
+}
+
+export function loginMethods() {
+  return api(platform, 'loginMethods', Post);
+}
+
+export function getJumpActivity(data: TJumpActivity) {
+  return api(platform, 'getJumpActivity', Post, data);
+}
+
+export function getEventBannerList(data: {}) {
+  return api(platform, 'getEventBannerList', Post, data);
+}
+
+// export function getBonusByType(data: TGetBonusByType) {
+//   return api(platform, 'bonusSettings/findByType', Post, data);
+// }
+
+export function getBonusByTypes(data: any) {
+  return api(platform, 'bonusSettings/findByTypes', Post, data);
+}
+
+export function configBonus() {
+  return api(payapp, 'configBonus', Post);
+}
+
+export const getMailMessages = async () => {
+  const messageTypes = ['NEWS', 'NOTIFICATION'];
+
+  const data = await Promise.all(
+    messageTypes.map(async (type) => {
+      const result = await getMessageOnSites({ type });
+      const filteredMessages = result?.data?.data?.filter((msg: TMessageItem) => msg.status !== 2 && msg.type === type);
+      const uniqueMessages = removeDuplicates(filteredMessages);
+      const messagesWithType = uniqueMessages?.map((msg) => ({ ...msg, type }));
+
+      return messagesWithType || [];
+    }),
+  );
+
+  return data.flat().sort((a, b) => new Date(b.createTime).getTime() - new Date(a.createTime).getTime());
+};
+
+export function getProfilePictureList() {
+  return api(platform, 'getProfilePictureList', Post);
+}
+
+export function updateProfilePicture(data: { id: number }) {
+  return api(platform, 'updateProfilePicture', Post, data);
+}
+
+export function getRegistrationData(data: {}) {
+  return api(platform, 'getRegistration', Post, data);
+}
+
+export function getReferralData(data: TReferralDataPayload) {
+  return api(platform, 'getReferralDetails', Post, data);
+}
+
+export function getReferralReport(data: TReferralReportPayload) {
+  return api(platform, 'getReferralReport', Post, data);
+}
+
+export function getReferralRegistered(data: any) {
+  return api(platform, 'getReferralRegistered', Post, data);
+}
+
+export function connectToSSE() {
+  return api('', 'game99-sse/subscribe', Get);
+}
+
+export function maintain(data: {}) {
+  return api(platform, 'announcementMaintain', Post, data);
+}
+
+export function otherAnnouncement() {
+  return api(platform, 'other/announcement', Post);
+}
+
+export function getReferralInfo() {
+  return api(platform, '/getReferralInfo', Post);
+}
+export function getDisplayBindIcon(data: {}) {
+  return api(platform, 'displayBindIcon', Post, data);
+}
+
+export function newLoginMethods() {
+  return api(platform, 'newLoginMethods', Post);
+}

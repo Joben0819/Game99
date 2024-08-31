@@ -1,0 +1,191 @@
+.footerBg {
+  width: 100%;
+  background-image: url('/assets/commons/footer/footer_bg.png');
+  background-size: toRem(550) toRem(55);
+  background-repeat: no-repeat;
+  background-position: left center;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 toRem(20) toRem(10) toRem(50);
+  position: relative;
+
+  .logo {
+    position: absolute;
+    width: toRem(200);
+    left: 2.4%;
+    top: 6%;
+    .icon {
+      position: relative;
+      width: toRem(152);
+      height: 100%;
+      top: toRem(-14);
+      left: toRem(-6);
+
+      img {
+        position: absolute;
+        height: toRem(82) !important;
+        width: toRem(150);
+      }
+    }
+  }
+
+  .right,
+  .left {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: toRem(20);
+  }
+
+  .left {
+    .iconHolder {
+      position: relative;
+      max-width: toRem(65);
+      width: toRem(60);
+      height: toRem(58);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      gap: toRem(2);
+      z-index: 2;
+      cursor: pointer;
+
+      &--indoBonus {
+        width: 2.1rem;
+      }
+
+      .icon {
+        position: relative;
+        width: toRem(60);
+        height: toRem(58);
+      }
+
+      img {
+        object-fit: contain;
+      }
+
+      span {
+        position: absolute;
+        bottom: toRem(10);
+        z-index: 2;
+        text-align: center;
+        font-family: 'Sansita One';
+        font-size: toRem(12);
+        font-style: normal;
+        font-weight: 400;
+        line-height: toRem(12);
+
+        @include GradientTextWithOutline(
+          $offset: toRem(1),
+          $color: #2058c1,
+          $num-steps: 25,
+          $textContent: attr(data-textafter),
+          $gradient: #ffffff
+        );
+      }
+    }
+  }
+
+  .right {
+    gap: toRem(5);
+    .iconHolder {
+      position: relative;
+      height: toRem(40);
+      min-width: toRem(50);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      cursor: pointer;
+
+      @include max450 {
+        flex-basis: 19%;
+      }
+
+      .notification {
+        height: toRem(9);
+        width: toRem(9);
+        background: #ff0000;
+        border-radius: 50%;
+        position: absolute;
+        top: toRem(3);
+        right: toRem(10);
+        z-index: 9;
+      }
+
+      .icon {
+        z-index: 2;
+        position: relative;
+        width: toRem(33);
+        height: toRem(24);
+        img {
+          object-fit: contain;
+        }
+        s {
+          position: absolute;
+          z-index: 3;
+          top: toRem(-3);
+          right: toRem(-1);
+          height: toRem(10);
+          width: toRem(10);
+          border-radius: toRem(10);
+          background: #ff0000;
+        }
+      }
+
+      span {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        font-family: 'Radio Canada';
+        font-size: toRem(12);
+        font-style: normal;
+        font-weight: 400;
+        line-height: toRem(13);
+        color: #fff;
+        white-space: nowrap;
+      }
+
+      &:nth-child(3) {
+        span {
+          &[data-lang='in'] {
+            letter-spacing: toRem(-1);
+          }
+        }
+      }
+    }
+  }
+}
+
+.notificationBadge {
+  display: flex;
+  position: absolute;
+  background-color: #ff0000;
+  background-repeat: no-repeat;
+  top: toRem(5);
+  right: toRem(0);
+  border-radius: 50%;
+  background-size: 100%;
+  height: toRem(10);
+  width: toRem(10);
+  z-index: 1;
+
+  justify-content: center;
+  align-items: center;
+
+  p {
+    font-size: toRem(11);
+    -webkit-text-stroke: toRem(0.01) #cb3538;
+    font-family: 'PoetsenOne';
+    font-style: normal;
+    font-weight: 700;
+    line-height: toRem(10);
+
+    background: linear-gradient(180deg, #ffefe9 20.83%, #fdb4c0 81.25%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding-bottom: 0.12rem;
+  }
+}

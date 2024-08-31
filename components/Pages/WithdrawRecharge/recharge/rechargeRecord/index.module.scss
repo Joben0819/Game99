@@ -1,0 +1,210 @@
+.recordWrapper {
+  height: 100vh;
+  height: 100%;
+  height: 100dvh;
+  @apply w-full  portrait:h-[100vw]  items-center flex justify-center bg-cover bg-center bg-no-repeat;
+  touch-action: pan-y, pan-x !important;
+}
+
+.modal {
+  width: toRem(773);
+  height: toRem(416);
+  position: relative;
+  opacity: 0;
+  touch-action: pan-y, pan-x !important;
+}
+
+.container {
+  @apply relative;
+  width: toRem(802);
+  height: toRem(340);
+  max-width: 95%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.6) 0%,
+    rgba(255, 255, 255, 0.132) 69.5%,
+    rgba(255, 255, 255, 0.66) 100%
+  );
+  border-radius: toRem(10);
+  border: toRem(1.5) solid #ffffff66;
+}
+
+.header {
+  width: 100%;
+  padding: toRem(0) toRem(10) toRem(10) toRem(0);
+  position: relative;
+
+  h2 {
+    font-family: PoetsenOne;
+    font-size: toRem(22);
+    font-style: normal;
+    position: relative;
+
+    @include GradientTextWithOutline(
+      $offset: toRem(2),
+      $color: #ffffff,
+      $num-steps: 25,
+      $textContent: attr(data-textafter),
+      $gradient: #10a7ff
+    );
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: toRem(1);
+    background: #7fbaff;
+    box-shadow: 0 toRem(1) 0 0 #ffffff;
+    bottom: toRem(0);
+    left: toRem(0);
+  }
+}
+
+.transaction {
+  margin-top: toRem(3);
+
+  > div {
+    justify-content: flex-start !important;
+  }
+}
+
+.backBtn {
+  @apply absolute top-[-.35rem] right-[-.7rem] z-50;
+  width: toRem(44);
+  height: toRem(44);
+  margin-right: toRem(20);
+}
+
+.contents {
+  @apply relative size-full;
+  padding: toRem(15);
+}
+
+.tableWrapper {
+  @apply relative;
+  width: toRem(780);
+  height: toRem(260);
+  margin: toRem(10) auto 0;
+  padding: toRem(10);
+  max-width: 95%;
+}
+
+.tableOverFlow {
+  @apply relative w-full;
+  overflow-y: auto;
+  touch-action: pan-x pan-y !important;
+  height: toRem(230);
+
+  :global {
+    .infinite-scroll-component {
+      height: inherit !important;
+      overflow: inherit !important;
+    }
+  }
+
+  :global {
+    .lds-ellipsis div {
+      height: toRem(10.4);
+      width: toRem(10.4);
+      background-color: #e9cce8;
+    }
+
+    .ptr__pull-down {
+      .ptr__pull-down--pull-more {
+        display: none;
+      }
+    }
+  }
+}
+
+.table {
+  @apply w-full relative;
+  overflow-y: scroll;
+
+  thead {
+    position: sticky;
+    top: -1px;
+    padding-bottom: toRem(10);
+    opacity: 1;
+    z-index: 1;
+    text-transform: capitalize;
+
+    th {
+      font-size: toRem(12);
+      font-family: PoetsenOne;
+      text-align: left;
+      text-align: center;
+      white-space: nowrap;
+      padding-bottom: toRem(7);
+      width: 25%;
+      position: relative;
+
+      @include GradientTextWithOutline(
+        $offset: toRem(2),
+        $color: #ffffff,
+        $num-steps: 25,
+        $textContent: attr(data-textafter),
+        $gradient: #10a7ff
+      );
+    }
+  }
+
+  font-size: toRem(10);
+
+  tbody {
+    tr {
+      &:nth-child(odd) {
+        border-radius: toRem(2);
+        background: rgba(255, 255, 255, 0.4);
+      }
+
+      td:first-child {
+        border-top-left-radius: toRem(5);
+        border-bottom-left-radius: toRem(5);
+      }
+      td:last-child {
+        border-top-right-radius: toRem(5);
+        border-bottom-right-radius: toRem(5);
+      }
+    }
+
+    td {
+      @apply whitespace-nowrap;
+
+      height: toRem(25) !important ;
+      width: 25%;
+      text-align: center;
+      font-size: toRem(12);
+      color: #4794ed;
+    }
+
+    &:before {
+      line-height: 1em;
+      content: '\200C';
+      display: block;
+    }
+  }
+}
+
+.loadingFetch {
+  @apply flex justify-center  w-full items-center;
+  margin-top: toRem(-30);
+}
+
+@media only screen and (max-width: 800px) {
+  .container {
+    width: toRem(740);
+  }
+
+  .tableWrapper {
+    width: toRem(700);
+  }
+}
+
+.loadingModal {
+  position: absolute;
+  z-index: 9999;
+  height: 100%;
+  width: 100%;
+}

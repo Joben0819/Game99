@@ -1,0 +1,14 @@
+services:
+  web:
+    image: ${ENVIRONMENT}-h5:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        ENVIRONMENT: ${ENVIRONMENT}
+    ports:
+      - '${HOST_PORT}:${CONTAINER_PORT}'
+    environment:
+      - NODE_ENV=production
+      - PORT=${HOST_PORT}
+    platform: linux/amd64

@@ -1,0 +1,33 @@
+.customButton {
+  line-height: 0;
+  position: relative;
+  width: toRem(150);
+  height: toRem(39);
+  display: block;
+  background: none;
+  button {
+    font-size: toRem(15);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    padding-left: toRem(20);
+    padding-right: toRem(20);
+    padding-top: toRem(5);
+    font-family: 'PoetsenOne';
+    height: 100%;
+    width: 100%;
+    &.orange {
+      background-image: url('/assets/commons/customs/custom-button-orange.png');
+      @include text-outline($offset: toRem(1), $color: #ffa800, $num-steps: 16);
+    }
+    &.blue {
+      background-image: url('/assets/commons/customs/custom-button-blue.png');
+      @include text-outline($offset: toRem(1), $color: #00aeff, $num-steps: 16);
+    }
+
+    &:disabled {
+      filter: grayscale(100);
+      pointer-events: none;
+    }
+  }
+}

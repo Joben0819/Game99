@@ -1,0 +1,8 @@
+.container {
+  width: 100%;
+  flex: 1;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  position: relative;
+  border-radius: toRem(20);
+}

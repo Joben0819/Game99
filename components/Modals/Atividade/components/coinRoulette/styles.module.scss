@@ -1,0 +1,152 @@
+@import '@/styles/_helpers.scss';
+
+.frameContainer {
+  background: url('/assets/commons/coin-roulette/frameBackground.png') center / cover no-repeat;
+  height: 100%;
+  width: 100%;
+  border-radius: toRem(4);
+  overflow: hidden;
+
+  .inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    padding-right: toRem(10);
+  }
+
+  .rouletteContainer {
+    height: 100%;
+    width: toRem(500);
+    max-height: toRem(457);
+    background: url('/assets/commons/coin-roulette/rouletteBackground.png') center / contain no-repeat;
+    display: grid;
+    grid-template-columns: 15% 70% 15%;
+    grid-template-rows: 16.5% 68% 16%;
+
+    .roulette {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      grid-column: 2/3;
+      grid-row: 2/3;
+
+      .rouletteOptions {
+        position: absolute;
+        top: toRem(5);
+        left: toRem(5);
+        height: calc(100% - toRem(10));
+        width: calc(100% - toRem(10));
+
+        img {
+          object-fit: contain;
+          object-position: center center;
+          width: 100%;
+          height: 100%;
+        }
+
+        span {
+          display: flex;
+          justify-content: center;
+          position: absolute;
+          height: 30%;
+
+          &:nth-child(1) {
+            top: 2%;
+            left: 48%;
+          }
+
+          &:nth-child(2) {
+            top: 12%;
+            left: 70%;
+          }
+
+          &:nth-child(3) {
+            top: 35%;
+            left: 81%;
+          }
+
+          &:nth-child(4) {
+            top: 58%;
+            left: 72%;
+          }
+
+          &:nth-child(5) {
+            top: 70%;
+            right: 48%;
+          }
+
+          &:nth-child(6) {
+            top: 58%;
+            right: 70%;
+          }
+
+          &:nth-child(7) {
+            top: 35%;
+            right: 81%;
+          }
+
+          &:nth-child(8) {
+            top: 12%;
+            right: 70%;
+          }
+        }
+      }
+
+      .roulettePointer {
+        position: absolute;
+        z-index: 5;
+        height: toRem(60);
+        width: toRem(60);
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -58%);
+
+        img {
+          height: 100%;
+          width: 100%;
+          object-fit: contain;
+        }
+
+        span {
+          position: absolute;
+          z-index: 7;
+          left: 50%;
+          transform: translateX(-50%);
+          font-size: toRem(11);
+          color: #fff;
+          font-weight: bold;
+          margin-top: toRem(-2);
+          @include GradientTextWithOutline(
+            $offset: toRem(0.1),
+            $color: #ffa334,
+            $num-steps: 25,
+            $textContent: attr(data-textafter),
+            $gradient: #ffd79e
+          );
+        }
+
+        &.isWebView {
+          span {
+            font-size: toRem(18);
+          }
+        }
+      }
+    }
+  }
+
+  .webview {
+    &.iphone {
+      scale: 1.11;
+      padding-right: toRem(50);
+    }
+
+    .rouletteContainer {
+      .roulettePointer {
+        height: toRem(120);
+        width: toRem(120);
+      }
+    }
+  }
+}

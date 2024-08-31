@@ -1,0 +1,111 @@
+.modal {
+  @apply absolute size-full flex-all-center;
+  top: 0;
+  z-index: 2;
+  opacity: 0;
+
+  &.isLoaded {
+    @include fadeIn;
+  }
+
+  .content {
+    @apply relative size-full flex justify-center items-center;
+    width: toRem(644);
+    height: toRem(353);
+    color: red;
+
+    .sizeImg {
+      @apply flex justify-center absolute top-[-0.4rem] transition-all duration-300;
+      width: toRem(800);
+      height: toRem(380);
+      z-index: -1;
+      opacity: 1;
+
+      &--loading {
+        opacity: 0;
+      }
+    }
+
+    .Inputs {
+      @apply w-[50%]  flex flex-col ml-[1.5rem] relative items-center;
+      gap: toRem(6);
+      height: 55%;
+      .sizeImg2 {
+        @apply self-start;
+        font-size: toRem(20);
+        font-weight: 700;
+        text-shadow:
+          -1px -1px 0 #fff,
+          2px -1px 0 #fff,
+          -1px 1px 0 #fff,
+          2px 1px 0 #fff;
+        color: #10a7ff;
+        font-family: 'Poppins';
+        &[data-lang='cn'] {
+          font-family: 'Microsoft YaHei';
+        }
+      }
+      .sizeImg3 {
+        position: absolute;
+        right: toRem(-120);
+        top: toRem(-60);
+        width: toRem(25);
+        height: toRem(25);
+      }
+      .forgotPasswd {
+        @apply text-red-500 text-[.21rem] leading-[.21rem] self-end;
+      }
+      .loginBtnWrapper {
+        @apply flex justify-center gap-[.1rem] h-[.6rem];
+
+        .btnWrapper,
+        .googleHref {
+          @apply text-[.2rem] text-white w-[2.2rem] bg-center bg-no-repeat bg-cover pt-[0.08rem] bg-transparent;
+          font-family: 'PoetsenOne';
+        }
+
+        .btnWrapper {
+          @apply bg-[url('/assets/commons/login/loginBtn.png')];
+          text-shadow:
+            -1px -1px 0 #ffa800,
+            2px -1px 0 #ff6836,
+            -1px 1px 0 #ffa800,
+            2px 1px 0 #ff6836;
+        }
+        .googleHref {
+          @apply bg-[url('/assets/commons/login/googleLogin.png')] grid place-content-center;
+          text-shadow:
+            -1px -1px 0 #00aeff,
+            2px -1px 0 #3142ff,
+            -1px 1px 0 #00aeff,
+            2px 1px 0 #3142ff;
+        }
+      }
+      .createAccount {
+        @apply text-[#1272E2] text-[.22rem] leading-[.22rem];
+        border-bottom: toRem(1) solid #1272e2;
+      }
+    }
+  }
+
+  input {
+    outline: none !important;
+    color: black !important;
+    padding: toRem(6) toRem(10);
+
+    &::placeholder {
+      font-size: toRem(9);
+    }
+  }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    background: #fff !important;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: #9a9696;
+    transition: background-color 1000s ease-in-out 0s;
+    box-shadow: inset 0 0 20px 20px transparent;
+  }
+}

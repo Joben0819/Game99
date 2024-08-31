@@ -1,0 +1,71 @@
+.personalCenterWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .personalCenterContent {
+    position: relative;
+    width: toRem(750);
+    height: toRem(334);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    .titleFilter {
+      position: relative;
+      width: 100%;
+      height: toRem(28);
+      display: flex;
+      justify-content: space-between;
+
+      .title {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        height: toRem(28);
+        width: fit-content;
+
+        img {
+          object-fit: contain !important;
+          object-position: left;
+        }
+      }
+
+      .filterBack {
+        position: relative;
+        width: auto;
+        height: 100%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: toRem(20);
+        z-index: 31;
+
+        .back {
+          position: relative;
+          width: toRem(40);
+          height: toRem(40);
+        }
+      }
+    }
+
+    .content {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  @media only screen and (width: 667px) and (height: 375px) {
+    .personalCenterContent {
+      height: toRem(390);
+    }
+  }
+}

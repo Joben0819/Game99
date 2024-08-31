@@ -1,0 +1,7 @@
+export const internet = {
+  tip: 'Whoops!',
+  content: 'No internet Connection found. \nCheck your connection or try again',
+  retry: 'Retry',
+  regainedConnection: 'Connection regained!',
+  support: 'Support',
+} as const;

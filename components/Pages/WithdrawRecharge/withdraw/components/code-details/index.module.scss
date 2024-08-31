@@ -1,0 +1,147 @@
+.recordWrapper {
+  height: 100vh;
+  height: 100%;
+  height: 100dvh;
+  @apply w-full  portrait:h-[100vw]  items-center flex justify-center bg-cover bg-center bg-no-repeat;
+  touch-action: pan-y, pan-x !important;
+}
+
+.modal {
+  width: toRem(773);
+  height: toRem(416);
+  position: relative;
+  opacity: 0;
+  touch-action: pan-y, pan-x !important;
+}
+
+.container {
+  @apply relative;
+  width: toRem(812);
+  height: toRem(369);
+}
+
+.header {
+  @apply flex items-center gap-2 justify-between;
+
+  h2 {
+    font-family: PoetsenOne;
+    font-size: toRem(22);
+    font-style: normal;
+    margin-left: toRem(10);
+  }
+}
+
+.filters {
+  @apply flex;
+  gap: toRem(15);
+}
+
+.transaction {
+  margin-top: toRem(3);
+
+  > div {
+    justify-content: flex-start !important;
+  }
+}
+
+.backBtn {
+  @apply relative;
+  margin-left: toRem(30);
+  width: toRem(26);
+  height: toRem(26);
+  margin-right: toRem(20);
+}
+
+.contents {
+  @apply relative size-full;
+  padding: toRem(15);
+}
+
+.tableWrapper {
+  @apply relative;
+  width: toRem(780);
+  height: toRem(292);
+  margin: toRem(10) auto 0;
+  padding: toRem(10);
+
+  :global {
+    .lds-ellipsis div {
+      height: toRem(10.4);
+      width: toRem(10.4);
+      background-color: #e9cce8;
+    }
+
+    .ptr__pull-down {
+      .ptr__pull-down--pull-more {
+        display: none;
+      }
+    }
+  }
+}
+
+.tableOverFlow {
+  @apply relative size-full;
+  overflow-y: auto;
+}
+
+.table {
+  @apply w-full relative;
+  overflow-y: scroll;
+
+  thead {
+    position: sticky;
+    top: -1px;
+    padding-bottom: toRem(10);
+    opacity: 1;
+    z-index: 1;
+    text-transform: capitalize;
+    border-bottom: toRem(1) solid #270098;
+    box-shadow: 0 toRem(0.1) 0 0 #bd0ffd;
+    background-color: #6f249f;
+
+    th {
+      font-size: toRem(12);
+      font-family: PoetsenOne;
+      text-align: left;
+      text-align: center;
+      white-space: nowrap;
+      padding-bottom: toRem(7);
+    }
+  }
+
+  font-size: toRem(10);
+
+  tbody {
+    tr {
+      &:nth-child(even) {
+        border-radius: toRem(2);
+        background: rgba(0, 0, 0, 0.2);
+      }
+    }
+
+    td {
+      @apply whitespace-nowrap;
+
+      height: toRem(25) !important ;
+      width: 25%;
+      text-align: center;
+      font-size: toRem(12);
+    }
+
+    &:before {
+      line-height: 1em;
+      content: '\200C';
+      display: block;
+    }
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .container {
+    width: toRem(740);
+  }
+
+  .tableWrapper {
+    width: toRem(700);
+  }
+}

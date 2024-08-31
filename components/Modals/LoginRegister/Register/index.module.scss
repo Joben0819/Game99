@@ -1,0 +1,221 @@
+.modal {
+  @apply absolute size-full flex-all-center;
+  top: 0;
+  z-index: 2;
+  opacity: 0;
+
+  &.isLoaded {
+    @include fadeIn;
+  }
+
+  .content {
+    @apply relative size-full flex justify-center items-center;
+    width: toRem(644);
+    height: toRem(353);
+    color: red;
+
+    .sizeImg5 {
+      @apply absolute top-[0.2rem] right-0 size-[0.5rem];
+    }
+
+    .sizeImg {
+      @apply flex justify-center absolute top-[-0.4rem] transition-all duration-300;
+      width: toRem(800);
+      height: toRem(380);
+      z-index: -1;
+    }
+    .Inputs {
+      @apply w-[50%] h-[60%] flex flex-col ml-[1.5rem] gap-[.08rem] relative;
+
+      input {
+        &::placeholder {
+          font-family: 'Cabin Condensed';
+        }
+      }
+
+      .sizeImg2 {
+        @apply relative w-[100%] h-[17%];
+      }
+      .sizeImg4 {
+        @apply relative w-[100%] h-[13%];
+      }
+      .sizeImg3 {
+        @apply relative;
+        font-size: toRem(20);
+        font-weight: 700;
+        text-shadow:
+          -1px -1px 0 #fff,
+          2px -1px 0 #fff,
+          -1px 1px 0 #fff,
+          2px 1px 0 #fff;
+        color: #10a7ff;
+        font-family: 'Poppins';
+        width: 100%;
+        margin-top: toRem(20);
+
+        &[data-lang='cn'] {
+          font-family: 'Microsoft YaHei';
+        }
+      }
+      .sizeImg3[data-lang='in'] {
+        @apply relative;
+        width: toRem(115);
+      }
+      .sizeImg3[data-lang='pt'] {
+        @apply relative;
+        max-width: toRem(100);
+        width: toRem(100);
+      }
+      .sizeImg3[data-state='1'] {
+        @apply relative;
+      }
+      .inlanguage {
+        width: 3rem !important;
+      }
+      .otpEnter {
+        @apply relative;
+        width: toRem(100.329) !important;
+        height: toRem(26.775) !important;
+      }
+
+      .verifybtn {
+        position: absolute;
+        height: toRem(28);
+        width: toRem(82);
+        display: flex;
+        align-items: center;
+        margin-top: 0.8rem;
+      }
+      .chinese_resizeTxt {
+        width: 1.6rem !important;
+        white-space: nowrap;
+      }
+
+      .wrapperEmail {
+        @apply relative flex;
+        .enterEmail {
+          @apply h-[.55rem] rounded-[.1rem] text-[.18rem] px-[.1rem] w-full text-black;
+        }
+      }
+      .emailMessage {
+        @apply relative pl-[0.06rem] text-[#23CCFF] text-[.15rem] whitespace-nowrap;
+      }
+      .requestOtp {
+        @apply flex justify-center gap-[.1rem] h-[.6rem] relative w-[100%] items-center mt-[0.2rem] bg-transparent;
+
+        img {
+          @apply w-[2.5rem] z-0 object-contain absolute top-[-0.06rem];
+        }
+
+        span {
+          @apply z-[5] relative text-[.2rem] text-white;
+          text-shadow:
+            -1px -1px 0 #00aeff,
+            2px -1px 0 #3142ff,
+            -1px 1px 0 #00aeff,
+            2px 1px 0 #3142ff;
+          color: #fff;
+          font-family: 'PoetsenOne';
+          font-weight: 400;
+        }
+      }
+      .code {
+        @apply relative h-[17%] flex flex-col w-full justify-between;
+        .enterCode {
+          @apply h-[.55rem] rounded-[.1rem] px-[.1rem]  text-black text-[.17rem];
+        }
+        .codeMessage {
+          @apply relative pl-[0.06rem] pt-[0.06rem] text-[#23CCFF] text-[.137rem] whitespace-nowrap;
+        }
+      }
+      .verifyBtn {
+        @apply flex justify-center gap-[.1rem] h-[.6rem] relative w-[100%] items-center mt-[0.2rem];
+
+        img {
+          @apply w-[2.5rem] z-0 object-contain absolute;
+        }
+
+        .verifyTxt {
+          @apply z-[5] text-[.2rem] text-white pt-[0.1rem];
+          text-shadow:
+            -1px -1px 0 #ffa800,
+            2px -1px 0 #ff6836,
+            -1px 1px 0 #ffa800,
+            2px 1px 0 #ff6836;
+          color: #fff;
+          font-family: 'PoetsenOne';
+          font-weight: 400;
+        }
+      }
+      .passWdWrapper {
+        @apply relative justify-between h-[30%] flex flex-col;
+        .setPassWd {
+          @extend .wrapperEmail;
+          align-items: center;
+          .eyeIcon {
+            @apply absolute;
+            width: toRem(16.61);
+            height: toRem(11.58);
+            right: 0.1rem !important;
+          }
+          .enterSetPasswd {
+            @apply h-[.55rem] rounded-[.1rem] text-[.17rem] px-[.1rem] w-full text-[#9A9696];
+          }
+        }
+        .confirmPasswd {
+          @extend .wrapperEmail;
+          align-items: center;
+          .eyeIcon {
+            @apply absolute;
+            width: toRem(16.61);
+            height: toRem(11.58);
+            right: 0.1rem !important;
+          }
+          .confirmPass {
+            @apply h-[.55rem] rounded-[.1rem] text-[.17rem] pl-[.1rem] w-full text-[#9A9696];
+          }
+        }
+      }
+      .confirmBtn {
+        @apply flex justify-center items-center gap-[.1rem] h-[.6rem] relative;
+
+        img {
+          @apply w-[2.5rem] z-0 object-contain absolute;
+        }
+
+        .confirmTxt {
+          @apply z-[5] relative text-[.2rem] text-white top-[0.05rem];
+          text-shadow:
+            -1px -1px 0 #ffa800,
+            2px -1px 0 #ff6836,
+            -1px 1px 0 #ffa800,
+            2px 1px 0 #ff6836;
+          color: #fff;
+          font-family: 'PoetsenOne';
+          font-weight: 400;
+        }
+      }
+    }
+  }
+  input {
+    outline: none !important;
+  }
+}
+
+.inputError {
+  @apply border-[0.01rem] border-red-600;
+}
+
+.warning {
+  @apply absolute z-10 right-[.1rem];
+  top: toRem(8);
+  height: toRem(11);
+  width: toRem(11);
+}
+
+.warning_input {
+  @apply absolute z-10 right-[.1rem];
+  top: toRem(7);
+  height: toRem(11);
+  width: toRem(11);
+}

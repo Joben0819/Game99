@@ -1,0 +1,22 @@
+{
+  "mailTitle": "E-mail",
+  "noMail": "Tidak ada email!",
+  "second": "detik",
+  "minute": "menit",
+  "hour": "jam",
+  "day": "hari",
+  "week": "minggu",
+  "month": "bulan",
+  "year": "tahun",
+  "ago": "yang lalu",
+  "emailOkay": "Oke",
+  "expiredMessage": "Kadaluarsa setelah 15 hari otomatis dihapus!",
+  "deleteNow": "Hapus sekarang",
+  "successDelete": "Pesan berhasil dihapus",
+  "selectAll": "Pilih Semua",
+  "delete": "Hapus",
+  "deleteMany": "Hapus item yang dipilih?",
+  "deleteNote": "Tindakan ini bersifat permanen dan tidak dapat diurungkan",
+  "cancel": "Batalkan",
+  "ok": "Oke"
+}

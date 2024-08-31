@@ -1,0 +1,110 @@
+.transactionDateDropdown {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: auto;
+  height: toRem(20);
+  z-index: 10;
+  color: #fff;
+
+  .dropdownHead {
+    height: 100%;
+    width: toRem(110);
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 toRem(5);
+    border-radius: toRem(5);
+    background-color: #fff;
+    cursor: pointer;
+  }
+
+  span {
+    display: inline-block;
+    align-items: center;
+    font-family: 'Inter';
+    font-size: toRem(12);
+    font-weight: 400;
+    line-height: toRem(20);
+    vertical-align: middle;
+    white-space: nowrap;
+    height: 100%;
+    width: toRem(110);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #10a7ff;
+  }
+
+  .label {
+    position: relative;
+    top: toRem(-1.5);
+    width: unset;
+    margin-right: toRem(10);
+    line-height: toRem(21.5);
+    color: #1653c9;
+  }
+
+  .arrow {
+    position: relative;
+    transition: transform 0.3s ease-in-out;
+    transform: rotate(0deg);
+    line-height: 0;
+
+    span {
+      height: max-content;
+      width: auto;
+    }
+  }
+  .arrowDown {
+    transform: rotate(180deg);
+  }
+}
+
+.dropdownContainer {
+  position: absolute;
+  top: toRem(21);
+  right: toRem(0);
+  max-height: toRem(200) !important;
+  width: toRem(110);
+  border-radius: toRem(5);
+  background-color: #fff;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  overflow: auto;
+
+  .list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    span {
+      display: inline-block;
+      position: relative;
+      height: auto;
+      text-align: left;
+      vertical-align: middle;
+      font-size: toRem(12);
+      line-height: toRem(15);
+      white-space: inherit !important;
+      padding: toRem(5) toRem(5);
+      text-overflow: inherit !important;
+      color: #10a7ff;
+      cursor: pointer;
+
+      &:not(:last-child) {
+        border-bottom: 0.5px solid #d2efff;
+      }
+    }
+
+    .isSelected {
+      color: #ff7a00;
+    }
+  }
+}

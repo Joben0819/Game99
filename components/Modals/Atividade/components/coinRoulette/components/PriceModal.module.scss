@@ -1,0 +1,148 @@
+@import '@/styles/_helpers.scss';
+
+.priceModal {
+  position: absolute;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(toRem(2));
+  background: rgba(0, 0, 0, 0.6);
+
+  .priceModalWrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-family: 'PoetsenOne';
+    overflow: hidden;
+
+    p,
+    span {
+      @include text-outline($offset: toRem(1), $color: #cf3207, $num-steps: 16);
+      filter: drop-shadow(toRem(1) toRem(1) #cf3207);
+    }
+
+    .title {
+      position: relative;
+      font-size: toRem(20);
+      @include GradientTextWithOutline($color: #cf3207,
+        $offset: toRem(1),
+        $num-steps: 16,
+        $textContent: attr(data-textafter),
+        $gradient: linear-gradient(180deg, #ffffff 20%, #fffb00 100%));
+    }
+
+    .details {
+      font-size: toRem(18);
+    }
+
+    .priceContainer {
+      position: relative;
+      background: url('/assets/commons/coin-roulette/priceContainer.png') center / contain no-repeat;
+      display: grid;
+      grid-template-rows: 70% 20% 10%;
+      grid-template-columns: 18% 64% 18%;
+      height: toRem(150);
+      width: toRem(150);
+      margin-top: toRem(-15);
+
+      span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: toRem(15);
+        grid-row: 2/3;
+        grid-column: 2/3;
+      }
+    }
+
+    .sparkles {
+      position: absolute;
+      object-fit: contain;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+    }
+
+    .rays {
+      position: absolute;
+      object-fit: contain;
+      object-position: center center;
+      width: 100%;
+      height: 100%;
+    }
+
+    .priceIcon {
+      position: absolute;
+      height: toRem(40);
+      width: toRem(40);
+      top: 30%;
+      left: 50%;
+      transform: translateX(-50%);
+
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: contain;
+      }
+    }
+
+    .closeModal {
+      position: absolute;
+      background: url('/assets/commons/coin-roulette/close.png') center / contain no-repeat;
+      z-index: 7;
+      top: toRem(0);
+      right: toRem(-30);
+      height: toRem(20);
+      width: toRem(20);
+    }
+  }
+
+  &.webview {
+    &.isiphone {
+      scale: 1.3;
+    }
+
+    .priceModalWrapper {
+      p,
+      span {
+        @include text-outline($offset: toRem(2), $color: #cf3207, $num-steps: 16);
+        filter: drop-shadow(toRem(2) toRem(2) #cf3207);
+      }
+      .title {
+        font-size: toRem(40);
+      }
+      .details {
+        font-size: toRem(25);
+      }
+
+      .priceContainer {
+        height: toRem(300);
+        width: toRem(300);
+        margin-top: toRem(-15);
+  
+        span {
+          font-size: toRem(25);
+        }
+      }
+
+      .priceIcon {
+        height: toRem(80);
+        width: toRem(80);
+        top: 30%;
+      }
+  
+      .closeModal {
+        top: toRem(0);
+        right: toRem(-30);
+        height: toRem(40);
+        width: toRem(40);
+      }
+    }
+  }
+}

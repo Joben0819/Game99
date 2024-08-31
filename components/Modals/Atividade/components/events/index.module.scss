@@ -1,0 +1,27 @@
+.screen {
+  @apply w-full  overflow-y-auto h-[100%] rounded-[0.15rem]   z-10 absolute;
+  top: toRem(51);
+  height: 74.5%;
+  width: 60.5%;
+  right: toRem(28.5);
+}
+
+.sideBar {
+  @apply w-[21%] bg-opacity-50;
+}
+
+.screen {
+  :global {
+    .lds-ellipsis div {
+      height: toRem(10.4);
+      width: toRem(10.4);
+      background-color: #e9cce8;
+    }
+
+    .ptr__pull-down {
+      .ptr__pull-down--pull-more {
+        display: none;
+      }
+    }
+  }
+}

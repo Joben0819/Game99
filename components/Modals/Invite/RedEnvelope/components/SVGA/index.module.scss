@@ -1,0 +1,70 @@
+.svgaWrapper {
+  display: block;
+  opacity: 1;
+  height: toRem(320);
+  @apply w-full absolute;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.25);
+  border-radius: toRem(20) toRem(20) toRem(5) toRem(5);
+  z-index: 3;
+
+  .tvContainer {
+    @apply absolute flex-all-center size-full;
+
+    h1 {
+      position: relative;
+      margin-top: toRem(120);
+      z-index: 1;
+      text-shadow:
+        0 2px 0 #1b98c6,
+        0 4px 4px #0008d2,
+        0 4px 4px rgba(0, 0, 0, 0.25);
+      font-family: 'PoetsenOne';
+      font-size: toRem(55);
+    }
+
+    > div,
+    canvas {
+      @apply w-full  absolute  left-0;
+      height: auto !important;
+    }
+
+    .svgaTextContainer {
+      position: absolute;
+      margin-top: toRem(-120);
+
+      &.topText {
+        margin-top: toRem(-300);
+        margin-left: toRem(-40);
+
+        h1 {
+          color: gold;
+          text-align: center;
+          text-transform: uppercase;
+        }
+      }
+
+      h1 {
+        font-size: toRem(30);
+        text-transform: uppercase;
+        text-align: center;
+      }
+
+      &.webView {
+        @include max500 {
+          h1 {
+            font-size: toRem(70) !important;
+          }
+        }
+      }
+    }
+  }
+
+  &.hide {
+    display: none;
+  }
+
+  &.webView {
+    height: 100vh;
+  }
+}

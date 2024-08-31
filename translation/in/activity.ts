@@ -1,0 +1,15 @@
+export const activity = {
+  title: '/assets/in/activities/header.png',
+  header: 'Aktivitas',
+  mission: 'TUGAS',
+  events: 'AKTIVITAS HARIAN',
+  activeToday: 'Aktivitas Sekarang',
+  go: 'Pergi',
+  receive: 'Klaim',
+  claimed: 'Diklaim',
+  notClaimable: 'Tidak dibutuhkan',
+  congrats: 'Selamat!',
+  accept: 'Klaim',
+  successCollect: 'Dikumpulkan',
+  noData: 'Tidak ada data',
+} as const;

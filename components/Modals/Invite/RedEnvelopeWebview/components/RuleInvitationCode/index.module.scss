@@ -1,0 +1,78 @@
+.ruleInvitationCode {
+  position: absolute;
+  right: 0;
+  top: toRem(24);
+  z-index: 1;
+
+  .ruleInvitationCodeContent {
+    background: linear-gradient(180deg, rgba(255, 242, 120, 0.7) 0%, rgba(255, 161, 0, 0.7) 100%);
+    border-radius: 50px 0 0 50px;
+    width: toRem(65) !important;
+    height: toRem(35) !important;
+    opacity: 0.9;
+
+    &[data-lang='cn'] {
+      width: toRem(45) !important;
+    }
+
+    &[data-lang='in'] {
+      width: toRem(75) !important;
+    }
+
+    .ruleInvitationCodeText {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: toRem(16);
+      position: absolute;
+      right: toRem(2.5);
+      top: 0;
+      color: #9e2615;
+      text-transform: capitalize;
+
+      span {
+        display: block;
+        width: 100%;
+        text-align: center;
+        font-size: toRem(9);
+        font-family: arboria;
+      }
+
+      span:first-child {
+        border-bottom: 0.5px solid #efeff036;
+      }
+
+      &[data-lang='cn'] {
+        font-weight: 600;
+      }
+    }
+  }
+
+  &.webView {
+    @include max500 {
+      &[data-lang='cn'] {
+        width: toRem(135) !important;
+      }
+    }
+  }
+
+  &.isSmallWebView {
+    .ruleInvitationCodeContent {
+      width: toRem(85) !important;
+      height: toRem(50) !important;
+
+      &[data-lang='cn'] {
+        width: toRem(90) !important;
+      }
+
+      .ruleInvitationCodeText {
+        span {
+          font-size: toRem(12) !important;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,52 @@
+.announcementWrapper {
+  @apply absolute bg-[url('/assets/commons/announcement/bgwtEffect.webp')] bg-no-repeat bg-contain;
+  top: 0;
+  width: 10.8rem;
+  height: 6.9rem;
+}
+
+.announcementContainer {
+  @apply absolute flex flex-col gap-[.2rem];
+  height: toRem(295);
+  width: toRem(375);
+  top: toRem(60);
+  left: toRem(115);
+  padding-bottom: toRem(11);
+}
+
+.titleWrapper {
+  @apply flex justify-center relative;
+  overflow: auto;
+  height: auto;
+  max-height: toRem(95);
+  width: 100%;
+  padding: toRem(0) toRem(20);
+
+  p {
+    font-family: Microsoft YaHei;
+    font-size: toRem(30);
+    font-weight: 700;
+    text-align: center;
+    line-height: toRem(33);
+    word-break: break-word;
+    white-space: normal;
+    overflow: auto;
+    position: relative;
+
+    @include GradientTextWithOutline(
+      $offset: toRem(2),
+      $color: #5710a4,
+      $num-steps: 25,
+      $textContent: attr(data-textafter),
+      $gradient: linear-gradient(180deg, #ffffff 18.94%, #f6ccff 100%)
+    );
+  }
+}
+
+.innerWrapper {
+  position: relative;
+  width: 100%;
+  height: toRem(200);
+  padding: toRem(10) toRem(20);
+  overflow: auto;
+}

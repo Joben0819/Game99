@@ -1,0 +1,201 @@
+.mainContainer {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  .backButton {
+    position: absolute;
+    right: toRem(30);
+    top: toRem(25);
+    width: toRem(40.5);
+    height: toRem(40.5);
+    z-index: 20;
+  }
+
+  .wrapperContainer {
+    width: toRem(645);
+    transform: scale(.9);
+    margin: 0 auto;
+    position: relative;
+    background-image: url('/assets/commons/home/rechargeBonusBG.png');
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: toRem(350);
+    @include fadeIn;
+
+    .titleWrapper {
+      position: absolute;
+      width: 100%;
+      top: toRem(-25);
+
+      .title {
+        @apply relative;
+        z-index: 1;
+        font-family: 'Inter-Black';
+        text-align: center;
+        font-size: toRem(50);
+        text-transform: uppercase;
+        filter: drop-shadow(0 toRem(4) toRem(0) #00155f);
+
+        @include GradientTextWithOutline(
+          $offset: toRem(1),
+          $color: #327ae6,
+          $num-steps: 25,
+          $textContent: attr(data-textafter),
+          $gradient: linear-gradient(180deg, #7994ca 0%, #e0f4f4 41.46%, #686b87 67.12%)
+        );
+      }
+    }
+
+    .bgImage {
+      width: toRem(645);
+      height: toRem(380);
+
+      .rechargeBg {
+        height: toRem(380);
+        width: toRem(645);
+      }
+    }
+
+    .countdownWrapper {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      top: toRem(40);
+      height: toRem(70);
+      width: toRem(150);
+      right: toRem(10);
+
+      .countdownFrame {
+        position: absolute;
+        height: toRem(70);
+        width: toRem(150);
+      }
+
+      .timerTitle {
+        font-weight: 700;
+        font-size: toRem(15);
+        text-align: center;
+        z-index: 2;
+      }
+      .content {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        z-index: 2;
+        gap: toRem(5);
+
+        .clockTime {
+          font-weight: 700;
+          font-size: toRem(17);
+
+          @include GradientTextWithOutline(
+            $offset: toRem(1),
+            $color: #000aff,
+            $num-steps: 25,
+            $textContent: attr(data-textafter),
+            $gradient: linear-gradient(180deg, #7994ca 0%, #e0f4f4 41.46%, #686b87 67.12%)
+          );
+        }
+      }
+    }
+    .bottomContainer {
+      position: absolute;
+      bottom: 0;
+      display: flex;
+      width: 100%;
+      align-items: center;
+      justify-content: center;
+      flex-direction: row;
+      flex-direction: column;
+
+      .topContent {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .rechargeBg {
+          width: auto !important;
+          height: toRem(100);
+        }
+
+        span {
+          font-weight: 700;
+          font-size: toRem(80);
+          position: relative;
+          line-height: 2rem;
+          @include GradientTextWithOutline(
+            $offset: toRem(1),
+            $color: #9d3800,
+            $num-steps: 12,
+            $textContent: attr(data-textafter),
+            $gradient: linear-gradient(180deg, #ce6f00 25.17%, #ffeb34 41.17%, #cd620b 82.17%)
+          );
+        }
+      }
+      .bottomContent {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .bottomWrapper {
+          background: url('/assets/commons/home/buttonRecharge.png');
+          background-size: 100% 100%;
+          background-position: center;
+          background-repeat: no-repeat;
+          width: toRem(213);
+          height: toRem(50);
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          gap: toRem(8);
+          position: relative;
+
+          .discounted {
+            color: #00246b;
+            font-size: toRem(12);
+
+            position: relative;
+            display: inline-block;
+
+            &::after {
+              content: '';
+              position: absolute;
+              top: toRem(-9);
+              bottom: 0;
+              left: 50%;
+              width: toRem(2);
+              height: toRem(35);
+              background-color: #ff0000;
+              transform: rotate(80deg);
+            }
+          }
+
+          .rechargeBtn {
+            font-size: toRem(20);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            line-height: 0;
+            font-weight: 800;
+            color: #00246b;
+            @include GradientTextWithOutline(
+              $offset: toRem(2),
+              $color: #fff500,
+              $num-steps: 12,
+              $textContent: attr(data-textafter),
+              $gradient: #00246b
+            );
+          }
+        }
+      }
+    }
+  }
+}

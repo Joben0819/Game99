@@ -1,0 +1,124 @@
+.contentInfo {
+  @apply absolute top-[0.9rem] left-[0.35rem];
+  background: rgba(70, 147, 236, 1);
+  box-shadow: 0 0 toRem(10) 0 rgba(0, 0, 0, 0.25) inset;
+  width: toRem(540);
+  height: toRem(290);
+  border-radius: toRem(10);
+
+  .reimbulsoWrapper {
+    border-radius: toRem(5);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    span {
+      font-size: toRem(12);
+      padding-block: toRem(10);
+    }
+  }
+}
+
+.extraTable {
+  @apply overflow-hidden;
+  block-size: toRem(300);
+
+  :global {
+    .lds-ellipsis div {
+      height: toRem(12) !important;
+      width: toRem(12) !important;
+      background-color: #ffffff;
+    }
+
+    .ptr {
+      height: 100% !important;
+      overflow: visible;
+    }
+
+    .ptr__pull-down--pull-more {
+      display: none !important;
+    }
+  }
+
+  .headers,
+  .dataContainer {
+    grid-template-columns: 1fr 1.5fr 1fr 0.5fr;
+  }
+
+  .headers {
+    display: grid;
+    width: 92%;
+    text-align: center;
+    font-family: 'PoetsenOne';
+    margin: 0 auto;
+    line-height: toRem(13);
+  }
+
+  .body {
+    text-align: center;
+    color: #2058c1;
+    width: 92%;
+    margin: 0 auto;
+    overflow-y: auto;
+    height: toRem(256);
+
+    .dataContainer {
+      display: grid;
+      align-items: center;
+      justify-items: center;
+      border-radius: toRem(5);
+      background: linear-gradient(180deg, #e9f8fe 0%, #eaf8ff 100%);
+      box-shadow:
+        0 2px 4px 0 #d2ecff inset,
+        0 -4px 10px 0 #b1daff inset;
+      font-size: toRem(12) !important;
+      margin-block-end: toRem(8);
+
+      :nth-child(1) {
+        gap: toRem(10);
+
+        .imageContainer {
+          @apply relative;
+
+          img {
+            @apply rounded-full;
+            width: toRem(20);
+            height: toRem(20);
+            object-fit: cover;
+          }
+
+          &::after {
+            @apply absolute top-[-0.14rem] left-[-0.15rem];
+            content: '';
+            background: url('/assets/commons/profile/profileBgWrapper2.png') no-repeat center/contain;
+            height: toRem(35);
+            width: toRem(35);
+          }
+        }
+      }
+
+      :nth-child(3) {
+        img {
+          width: toRem(15);
+          height: toRem(15);
+        }
+      }
+
+      :nth-child(4) {
+        img {
+          width: toRem(25) !important;
+          height: toRem(25) !important;
+        }
+      }
+    }
+
+    .noDataWrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: toRem(256);
+      width: 100%;
+    }
+  }
+}

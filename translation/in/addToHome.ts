@@ -1,0 +1,5 @@
+export const addToHome = {
+  toAddThis: 'Untuk menambahkan aplikasi web ini ke Home Screen ketuk',
+  then: 'lalu',
+  addToHome: 'Tambahkan ke layar beranda',
+} as const;

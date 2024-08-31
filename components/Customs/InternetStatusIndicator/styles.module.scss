@@ -1,0 +1,138 @@
+.modalWrapper {
+  @apply size-full absolute top-0 left-0 z-[9999] flex justify-center;
+
+  .modal {
+    @apply size-full;
+  }
+  .backDrop {
+    @apply size-full;
+  }
+}
+
+.modalInnerWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.7);
+
+  .indicatorContainer {
+    width: toRem(400);
+    height: toRem(250);
+    background-image: url('/assets/commons/no-connection/background.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .contents {
+    position: absolute;
+    width: toRem(281);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.2rem;
+
+    img {
+      object-fit: contain;
+      height: toRem(40);
+    }
+    .details {
+      font-weight: 400;
+      font-size: toRem(12);
+      line-height: toRem(14.52);
+      text-align: center;
+      width: 80%;
+    }
+  }
+  .iconHolder {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: toRem(70);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    cursor: pointer;
+
+    .icon {
+      z-index: 1;
+      width: toRem(45);
+      height: toRem(60);
+      position: relative;
+      top: toRem(0);
+      img {
+        object-fit: contain;
+      }
+    }
+
+    span {
+      position: absolute;
+      bottom: toRem(2);
+      z-index: 2;
+      text-align: center;
+      font-family: 'Sansita One';
+      font-size: toRem(12);
+      font-style: normal;
+      font-weight: 400;
+      line-height: toRem(10);
+
+      @include GradientTextWithOutline(
+        $offset: toRem(1),
+        $color: #2058c1,
+        $num-steps: 25,
+        $textContent: attr(data-textafter),
+        $gradient: #ffffff
+      );
+    }
+
+    .bonusNoti {
+      z-index: 3;
+      position: absolute;
+      background: url('/assets/commons/header/icon_ribbon.png') center / 100% 100%;
+      width: toRem(35);
+      height: toRem(20);
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      top: toRem(15);
+      right: toRem(0);
+
+      > span {
+        position: relative;
+        left: toRem(11);
+        top: toRem(-0.5);
+        color: #fff;
+        font-family: 'Sansita One';
+        font-size: toRem(8) !important;
+        font-weight: 400;
+        transform: rotate(-5.5deg);
+        text-shadow: unset;
+      }
+    }
+  }
+}
+
+.hiddenLoader {
+  visibility: hidden;
+}
+
+.loadingWrapper {
+  position: relative;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+
+  .loadingIcon {
+    position: relative;
+    height: toRem(60);
+    width: toRem(60);
+  }
+}

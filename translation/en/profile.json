@@ -1,0 +1,22 @@
+{
+  "modalTitle": "User Info",
+  "contact": "Contact",
+  "music": "MUSIC",
+  "soundEffect": "SOUND EFFECT",
+  "logOut": "Log out",
+  "bindPhone": "Link Phone",
+  "bindEmail": "Link Email",
+  "bindGoogle": "Link Google",
+  "yes": "Yes",
+  "no": "No",
+  "copyEmail": "Email Copied to Clipboard!",
+  "copyContact": "Contact Copied to Clipboard!",
+  "copyId": "ID Copied to Clipboard!",
+  "on": "On",
+  "off": "Off",
+  "unableToCopy": "Unable to copy text to clipboard",
+  "notLoggedIn": "Not Logged In",
+  "email": "Email",
+  "tooltip": "After recharging, any unused points will be credited to the balance.",
+  "settings": "Settings"
+}

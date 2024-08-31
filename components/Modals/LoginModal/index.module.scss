@@ -1,0 +1,252 @@
+.modalWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+
+  .modalContainer {
+    position: absolute;
+    opacity: 0;
+
+    &.isLoaded {
+      @include fadeIn;
+    }
+
+    @media (max-width: 768px) {
+      transform: scale(0.85);
+    }
+  }
+
+  .bgContainer {
+    width: toRem(685);
+    height: toRem(385);
+
+    .closeBtn {
+      position: absolute;
+      right: 0.1rem;
+      top: 0.8rem;
+      z-index: 9;
+    }
+  }
+
+  .contents {
+    position: absolute;
+    top: 0;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+
+    .languageDropdown {
+      cursor: pointer;
+      position: absolute;
+      top: toRem(28);
+      right: 2rem;
+      font-size: toRem(14);
+      font-family: 'Poppins';
+      display: flex;
+      gap: 0.2rem;
+      height: toRem(20.08);
+      align-items: center;
+      z-index: 999;
+
+      .dropdown {
+        display: flex;
+        align-items: center;
+        gap: 0.2rem;
+        height: toRem(20.08);
+
+        .language {
+          font-size: toRem(12);
+          font-weight: 400;
+          line-height: toRem(15.84);
+          min-width: 8ch;
+        }
+
+        .dropdownIcon {
+          height: toRem(8.13);
+          width: toRem(10);
+          background-image: url('/assets/commons/login/dropdownIcon.png');
+          background-size: cover;
+          background-repeat: no-repeat;
+        }
+      }
+    }
+
+    .dropdownContainer {
+      position: absolute;
+      top: toRem(55);
+      right: toRem(100);
+      z-index: 999;
+      overflow: hidden;
+      .dropdownList {
+        width: toRem(125);
+        height: fit-content;
+        font-size: toRem(12);
+        display: flex;
+        flex-direction: column;
+        padding: toRem(5) 0;
+        background: #fff;
+        border-radius: toRem(5);
+        cursor: pointer;
+        backdrop-filter: blur(3px);
+
+        .dropdownItem {
+          z-index: 999;
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          padding: toRem(5) toRem(10);
+
+          .flag {
+            margin: 0 10px 0 0;
+          }
+
+          .locale {
+            color: rgb(39, 151, 243);
+          }
+
+          &.active {
+            background: #add3fe4d;
+          }
+        }
+      }
+    }
+
+    .buttonGroup {
+      position: absolute;
+      top: toRem(30);
+      display: flex;
+      flex-direction: column;
+      z-index: 9;
+      font-family: 'PoetsenOne';
+      font-size: toRem(17.2);
+      font-weight: 400;
+      line-height: toRem(20);
+      letter-spacing: 0;
+      gap: 0.1rem;
+      width: 11rem;
+      height: toRem(303);
+      align-items: flex-end;
+      justify-content: center;
+
+      &.noLoginMethods {
+        align-items: center;
+      }
+
+      .btn {
+        cursor: pointer;
+        position: relative;
+        height: toRem(75.58);
+        width: toRem(206.46);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        gap: 0.2rem;
+        padding: 0 0.5rem;
+
+        &--indexOne {
+          margin: 0 1rem;
+        }
+        &--in {
+          padding: 0 0.45rem;
+        }
+        &--cn {
+          gap: 0.1rem;
+          padding: 0 0.8rem 0 0.5rem;
+        }
+
+        .btnIcon {
+          height: toRem(20);
+          width: toRem(20);
+          background-size: cover;
+          background-repeat: no-repeat;
+        }
+
+        .btnText {
+          text-align: center;
+          padding-left: 0.8rem;
+
+          &--cnEn {
+            flex: 1;
+          }
+
+          &[data-control-name='BIND_DEVICE_BONUS'] {
+            @include text-outline($offset: toRem(2), $color: #6612de, $num-steps: 25);
+          }
+          &[data-control-name='BIND_PHONE_BONUS'] {
+            @include text-outline($offset: toRem(2), $color: #dd5d13, $num-steps: 25);
+          }
+          &[data-control-name='BIND_GOOGLE_BONUS'],
+          &[data-control-name='BIND_EMAIL_BONUS'],
+          &[data-control-name='BIND_GOOGLE_EMAIL_BONUS'] {
+            @include text-outline($offset: toRem(2), $color: #de0404, $num-steps: 25);
+          }
+        }
+      }
+
+      .appVersion {
+        position: absolute;
+        font-size: toRem(12);
+        font-family: 'Inter';
+        bottom: toRem(-10);
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+  }
+
+  .flag {
+    height: toRem(20);
+    width: toRem(20);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+
+.bonusNoti {
+  z-index: 3;
+  position: absolute;
+  background: #ff0000;
+  border-radius: toRem(60);
+  width: toRem(38);
+  height: toRem(14);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  top: toRem(0);
+  right: toRem(0);
+
+  > span {
+    position: relative;
+    left: toRem(13);
+    color: #fff;
+    font-family: 'PoetsenOne';
+    font-size: toRem(9);
+    font-weight: 400;
+    line-height: toRem(10);
+  }
+
+  .coinIcon {
+    position: absolute;
+    top: toRem(2);
+    left: toRem(3);
+    width: toRem(10.5);
+    height: toRem(11);
+
+    img {
+      width: toRem(10.4) !important;
+      height: toRem(11) !important;
+    }
+  }
+}

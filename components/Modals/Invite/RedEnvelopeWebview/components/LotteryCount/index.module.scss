@@ -1,0 +1,49 @@
+.leftSpin {
+  width: fit-content;
+  background: #d61616;
+  box-shadow: 0px 2px 2px 0px #8100001a inset;
+  border-radius: toRem(200);
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: toRem(4) toRem(5) toRem(4) toRem(15);
+  margin: toRem(10) auto;
+
+  span {
+    white-space: nowrap;
+    font-size: toRem(10);
+    color: #fff;
+
+    &.roundSpan {
+      border: 1px solid #ffffff99;
+      border-radius: toRem(50);
+      padding: toRem(2) toRem(4) toRem(2) toRem(8);
+      margin: 0 0 0 toRem(6);
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &[data-lang='en'],
+  &[data-lang='in'] {
+    scale: 0.8;
+  }
+
+  &.webView {
+    &[data-lang='en'],
+    &[data-lang='in'] {
+      padding: toRem(6) toRem(6) toRem(6) toRem(15);
+
+      span {
+        &.roundSpan {
+          padding: toRem(4) toRem(6) toRem(4) toRem(10);
+        }
+      }
+    }
+  }
+
+  &.isSmallWebView {
+    scale: 1.3;
+    margin-top: toRem(20);
+  }
+}

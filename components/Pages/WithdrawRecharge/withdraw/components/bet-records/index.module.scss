@@ -1,0 +1,301 @@
+.mainContentWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-size: 100% 100%;
+  background-position: center center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  .gameCategoryListWrapper {
+    position: relative;
+    width: 100%;
+    height: toRem(31);
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.32);
+    overflow-x: auto;
+    touch-action: pan-x pan-y !important;
+
+    .gameCategoryListOverflow {
+      position: relative;
+      height: toRem(31);
+      width: auto;
+      display: flex;
+
+      span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #1653c9;
+        text-align: center;
+        font-family: 'Inter';
+        font-size: toRem(12);
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        padding: 0 toRem(15);
+        white-space: nowrap;
+        min-width: 8ch;
+      }
+
+      .activeItem {
+        color: #ff7b01;
+      }
+    }
+  }
+
+  .gameCategorySwiperWrapper {
+    position: relative;
+    width: 100%;
+    border-radius: 4px;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.6) 0%,
+      rgba(255, 255, 255, 0.132) 69.5%,
+      rgba(255, 255, 255, 0.66) 100%
+    );
+    overflow: hidden;
+
+    .tabsSwiper {
+      position: relative;
+      height: 100%;
+      padding: 0 toRem(10);
+      display: flex;
+      align-items: center;
+
+      :global {
+        .swiper-wrapper {
+          display: flex;
+          width: 100%;
+          & > div {
+            flex: 1;
+          }
+        }
+      }
+    }
+
+    .slide {
+      width: auto !important;
+      padding: toRem(10) toRem(10);
+      position: relative;
+    }
+
+    .tabItem {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #1653c9;
+      text-align: center;
+      font-family: 'Inter';
+      font-size: toRem(12);
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      min-width: toRem(15);
+      width: auto;
+      height: 100%;
+      white-space: nowrap;
+    }
+
+    .activeItem {
+      color: #ff7b01;
+      font-family: 'Inter';
+    }
+  }
+
+  :global {
+    .lds-ellipsis div {
+      height: toRem(10.4);
+      width: toRem(10.4);
+      background-color: #e9cce8;
+    }
+
+    .ptr__pull-down {
+      .ptr__pull-down--pull-more {
+        display: none;
+      }
+    }
+  }
+
+  .bankListWrapper {
+    height: 100%;
+    width: 100%;
+    padding: toRem(18.2) 0;
+    overflow-y: scroll;
+    touch-action: pan-x pan-y !important;
+
+    .card {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      height: toRem(42);
+      color: black;
+      font-size: toRem(16);
+      background-size: 95% 100%;
+      background-position: center;
+      justify-content: center;
+      background-repeat: no-repeat;
+      margin-top: toRem(6);
+
+      p {
+        width: 45%;
+      }
+
+      .setValue {
+        width: 45%;
+        display: flex;
+        justify-content: flex-end;
+        gap: toRem(16);
+
+        span {
+          &:nth-child(1) {
+            color: #e131f7;
+            font-weight: bold;
+          }
+
+          &:nth-child(2) {
+            background: linear-gradient(180deg, #ffdc0c 0%, #ff3d00 100%);
+            width: toRem(130);
+            display: flex;
+            justify-content: center;
+            border-radius: toRem(260);
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}
+
+.tableWrapper {
+  width: 100%;
+  margin-top: toRem(15);
+}
+
+.table {
+  @apply relative;
+  width: 100%;
+  margin: 0 auto;
+
+  thead {
+    position: sticky;
+    top: -1px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100%;
+
+    tr {
+      th {
+        margin-bottom: toRem(15) !important;
+        height: toRem(15);
+        width: toRem(100);
+        padding-top: toRem(8);
+        padding-bottom: toRem(10);
+        width: 20%;
+
+        p {
+          position: relative;
+          font-size: toRem(12);
+          font-family: 'Poppins';
+          @include GradientTextWithOutline(
+            $offset: toRem(1),
+            $color: #ffffff,
+            $num-steps: 25,
+            $textContent: attr(data-textafter),
+            $gradient: #10a7ff
+          );
+        }
+      }
+    }
+  }
+
+  .createTime {
+    word-spacing: 1rem;
+  }
+}
+
+.tableBodyContainer {
+  position: relative;
+  height: toRem(190);
+  overflow: auto;
+  margin-top: toRem(10);
+  width: 100%;
+  touch-action: pan-x pan-y !important;
+
+  :global {
+    .infinite-scroll-component {
+      height: inherit !important;
+      overflow: inherit !important;
+    }
+  }
+
+  .table {
+    @apply relative;
+    overflow-y: auto;
+    border-collapse: collapse;
+    width: 100%;
+    margin: 0 auto toRem(10);
+    touch-action: pan-x pan-y !important;
+
+    tbody {
+      tr {
+        &:nth-child(even) {
+          background: #edf7ff;
+        }
+
+        td {
+          height: toRem(24) !important;
+          text-align: center;
+          font-size: toRem(10);
+          width: toRem(100);
+          width: 20%;
+          color: #4794ed;
+
+          &:first-child {
+            border-radius: toRem(4) toRem(0) toRem(0) toRem(4);
+          }
+          &:last-child {
+            border-radius: toRem(0) toRem(4) toRem(4) toRem(0);
+          }
+
+          &:nth-of-type(4) {
+            color: #62ff01;
+          }
+          &:nth-of-type(2) {
+            white-space: wrap;
+            word-break: break-all;
+            font-size: toRem(9.5);
+          }
+        }
+      }
+    }
+  }
+}
+
+.noDataContainer {
+  position: absolute;
+  top: toRem(0);
+  left: toRem(-2);
+  height: 90%;
+  width: 100%;
+}
+
+.transactions {
+  width: 100%;
+  padding: 0 0.3rem 0.1rem;
+  display: flex;
+  justify-content: flex-end;
+
+  > div {
+    width: auto;
+  }
+}
+
+.loadingFetch {
+  @apply flex justify-center  w-full items-center;
+  margin-top: toRem(-30);
+}

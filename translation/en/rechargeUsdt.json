@@ -1,0 +1,16 @@
+{
+  "paymentChannels": "Payment Channels",
+  "paymentAmount": "Payment Amount",
+  "chainName": "Chain Name:",
+  "rechargeAddress": "Recharge Address:",
+  "transactionId": "Transaction ID:",
+  "transactionIdPlaceholder": "Please enter the Transaction ID",
+  "rechargeAmount": "Recharge Amount:",
+  "rechargeAmountPlaceholder": "Please enter the number of USDT recharges",
+  "note": "Recharge Amount to be received:",
+  "noteReceived": " {totalRecharge} ({rechargeAmount} USDT * current rate {exchangeRate})",
+  "instructionHeader": "Please read recharge instructions below:",
+  "instructionReminder": "Reminder : Our recharge address may be updated at any time, kindly notice.",
+  "button": "Recharge",
+  "copyRechargeAddress": "Copied recharge address."
+}

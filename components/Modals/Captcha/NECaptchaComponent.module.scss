@@ -1,0 +1,33 @@
+.captchaWrapper {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 11;
+
+  :global {
+    #captchaContainer {
+      position: relative;
+      z-index: 11;
+    }
+  }
+}
+
+.backdrop {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.472);
+}
+
+.rotated {
+  @media screen and (orientation: portrait) {
+    transform: rotate(-90deg);
+  }
+}

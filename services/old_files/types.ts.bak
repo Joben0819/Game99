@@ -1,0 +1,746 @@
+//Request Payload Types
+import { NoticeType } from 'antd/es/message/interface';
+
+import { TEnergyItem } from './response-type';
+
+export type Header = {
+  'frond-host': string;
+  dev: number;
+  version: number;
+  'Content-Type': string;
+  token: string;
+};
+
+export type Login = {
+  username: string;
+  passwd: string;
+  token: string;
+};
+
+export type TLoginEmail = {
+  email: string;
+  passwd: string;
+  token: string;
+  validate?: string;
+};
+export type Infogame = {
+  id: number;
+  pid?: number;
+  pageSize?: number;
+  pageNum?: number;
+};
+export type TGroupgame = {
+  id: number;
+  // pid: number
+};
+
+export type List = {};
+
+export type Joingame = {
+  id: string;
+};
+
+export type Message = {
+  type: string;
+};
+
+export type TRegister = {
+  email: string;
+  passwd: string;
+  confirmPasswd: string;
+  code: number | string;
+  deviceId?: string;
+  inviterCode?: string;
+  channelCode?: string;
+  token?: string;
+};
+
+export type TGetGameInfoGroup = {
+  id: number;
+  pageSize?: number;
+  pageNum?: number;
+};
+
+export type TSendSMSVerifyCode = {
+  phone: string;
+  validate?: string;
+};
+
+export type TGetGameList = {
+  id?: number;
+  memberId?: string;
+  category?: number;
+  typeId?: number;
+  platformId?: number;
+  pageSize?: number;
+  pageNum?: number;
+  name?: string;
+};
+
+export type TGetPlatformList = {
+  typeId: number;
+  pageSize?: number;
+  pageNum?: number;
+};
+
+export type TCashbackDetails = {
+  typeId: number;
+  platformId?: number;
+};
+
+export type TGetGameCashBackList = {
+  typeId: number;
+  platformId?: number;
+};
+
+export type TSelectCashBackHistory = {
+  typeId?: number;
+  platformId?: number;
+  collectionDateTime?: string;
+  collectionDay?: string;
+  isAsc?: string;
+  orderByColumn?: string;
+};
+
+export type TCollectCashback = {
+  typeId?: number;
+  platformId?: number;
+};
+
+export type TGetAddMusic = {
+  id: string;
+  status: string;
+};
+
+export type TGetUserMusic = {};
+
+export type TGetBalanceByPlatform = {
+  memberId: string;
+  typeId?: number;
+};
+
+export type TUpdateFavorite = {
+  memberId: string;
+  gameId?: number;
+};
+
+export type TMessageOnSites = {
+  type: string;
+};
+
+export type TReadMessageOnSites = {
+  type: string;
+  id: string;
+};
+
+export type OnlineRecharge = {
+  channelId: number;
+  money: number | string;
+  realIp?: string;
+  rechargeType?: string;
+};
+
+export type ThirdParty = {
+  createdBy: string;
+  createTime: string;
+  deviceType: string;
+  effect: boolean;
+  iconUrl: string;
+  id: number;
+  name: string;
+  openLevelMax: number;
+  openLevelMin: number;
+  recommend: boolean;
+  selected: boolean;
+  sort: number;
+  text1: string;
+  text2: string;
+  text3: string;
+  text4: string;
+  text5: string;
+  type: number;
+  updatedBy: string;
+  updateTime: string;
+};
+
+export type tOnlineRecharge = {
+  channelId: string | null;
+  money: string;
+  realIp: string;
+};
+
+export type TContinueWithOtp = {
+  inviterCode?: string;
+  channelCode?: string;
+  deviceId?: string;
+  ip?: string;
+  phoneModel?: string;
+  token?: string;
+};
+
+export type Itransaction = {
+  // memberId: string;
+  type: string;
+  amount: number | string;
+  days?: number | null;
+};
+
+export type IncomeDetailsPayload = {
+  memberId: string;
+  days?: number;
+  pageNum?: number;
+  pageSize?: number;
+  isAsc?: string;
+  orderByColumn?: string;
+};
+
+export type InterestStatusPayload = {
+  memberId: string;
+  type?: string;
+  days?: number | string;
+  pageNum?: number;
+  pageSize?: number;
+  isAsc?: string;
+  orderByColumn?: string;
+};
+
+export type TAfeedback = {
+  memberId: string;
+  currency: string;
+  feedbackAccount: string;
+  file: File | null;
+  feedbackContent: string;
+};
+
+export type DepositData = {
+  bankAccount: string;
+  bankName?: string;
+  color: string;
+  money: number;
+  orderNo: string;
+  remark: string;
+  requestTime: string;
+  status: number;
+};
+
+export interface AccountDetail {
+  memberId: string;
+  days?: number | null;
+  transactionType?: number | null;
+  typeDetails?: number;
+  state?: number | null;
+  typeId?: number | null;
+  platformId?: number | null;
+  gameId?: number | null;
+  pageNum?: number;
+  pageSize?: number;
+  isAsc?: string;
+  orderByColumn?: string;
+}
+
+export type TGetDirectData = {
+  userName?: string;
+  countCharge?: string;
+  pageNum?: number;
+  pageSize?: number;
+};
+
+export type TReceiveVipGift = {
+  type: number;
+};
+
+export type TReadMessage = {
+  id: number | null;
+  type: string;
+};
+
+export type TReadAllMessage = {
+  type: string;
+};
+
+export type TunreadMessages = {
+  type: string;
+};
+
+export type TSecurityMenuItem = {
+  id: number;
+  menuIcon: string;
+  alt: string;
+  title: string;
+  value: string;
+  hasForwardButton: boolean;
+  destination?: string;
+};
+export interface BindCard {
+  realName: string;
+  bankAccount?: string;
+  bankAddress?: string;
+  bankId?: number;
+  type?: string;
+  account?: string;
+  cpfAccount?: string;
+}
+
+export interface WithdrawBank {
+  memberCardId: number;
+  withdrawMoney: number;
+  withdrawalPass: string;
+}
+
+export interface TGameWithdrawal {
+  id: number;
+}
+
+export type TListFeed = {
+  memberId: string;
+};
+
+export interface StatusMessage {
+  type: NoticeType | undefined;
+  content: string;
+}
+
+export interface TFeesSummary {
+  memberId: string;
+}
+
+export interface OtpSecretQrcode {
+  name: string;
+}
+
+export type TGetDirectFinance = {
+  username: string;
+  startTime: string;
+  endTime: string;
+  pageNum?: number;
+  pageSize?: number;
+};
+
+export type TGetDirectBetPayload = {
+  username: string;
+  startTime: string;
+  endTime: string;
+  pageNum?: number;
+  pageSize?: number;
+};
+
+export type VerifyPassword = {
+  password: string;
+};
+
+export type TescGame = {
+  id: number;
+};
+export type TgetCommission = {
+  startTime?: string;
+  endTime?: string;
+  account?: string;
+};
+
+export type AllData = {
+  startTime: string;
+  endTime: string;
+  username: string;
+  pageSize?: number;
+  pageNum?: number;
+};
+
+export type GetPerformace = {
+  startTime: string;
+  endTime: string;
+  account?: string;
+  username?: string;
+};
+
+export type BoundOtpSecret = {
+  otpAuthCode: number;
+  otpAuthKey: string | undefined;
+};
+
+export type BindPhone = {
+  mobile: string;
+  passwd: string;
+};
+
+export type TResetUserOtpSecret = {
+  password: string;
+};
+
+export interface ResetPassword {
+  oldPasswd: string;
+  newPasswd: string;
+}
+
+export interface TradeType {
+  des?: string;
+  name: string;
+  type: number | null;
+}
+
+export interface GameType {
+  id: number | null;
+  name: string;
+  icon?: string;
+  type?: number;
+}
+
+export interface Platform {
+  id: number | null;
+  name: string;
+  icon?: string;
+  cardIcon: string;
+}
+
+export interface GameList {
+  id: number | null;
+  name?: string;
+  isFavorite?: boolean;
+  icon?: string;
+}
+
+export interface AccountDetailData {
+  time?: string;
+  type: string;
+  des: string;
+  amount: number;
+}
+
+export interface AccountDetailSummary {
+  totalDeposit: number;
+  accumulatedWithdrawals: number;
+}
+
+export interface BettingDetailsData {
+  time?: string;
+  gameType?: number | null;
+  platformName?: string;
+  game?: string | null;
+  bet: number;
+  changeInMoney: number;
+  noteNumber?: string;
+}
+
+export interface BettingSummary {
+  totalBetCount: number;
+  totalValidBet: number;
+  totalChangeInMoney: number;
+}
+
+export interface PersonalReport {
+  time?: string;
+  gameType?: string | null;
+  platformName?: string;
+  game?: string | null;
+  betCount: number;
+  totalBet: number;
+  totalChangeInMoney: number;
+}
+export type tPromote = {};
+export type TverifyUsername = {
+  username: string;
+};
+
+export type TforgotPasswordSetByGoogleOpt = {
+  username: string | null;
+  newPasswd: string;
+  googleAuthCode: number;
+};
+
+export type TSecurityQuestion = {
+  id: string;
+  question: string;
+};
+
+export type TVerifySecurityQuestionAnswer = {
+  id: string;
+  answer: string;
+};
+
+export type TUpdateSecurityQuestionAnswer = {
+  id: string;
+  answer: string;
+};
+
+export type TAddSecurityQuestionAnswer = {
+  securityQuestionId: string;
+  answer: string;
+};
+
+export type TUpdateMemberInfo = {
+  username?: string;
+  password?: string;
+  dob?: string; //YYYY-MM-DD format
+};
+
+export type TFeedback = {
+  adoptionBonus: any | null;
+  attachmentsIcon: string;
+  currency: string;
+  feedbackAccount: string;
+  feedbackContent: string;
+  feedbackTime: string; //"2023-10-02T10:18:07"
+  id: number;
+  importance: any | null;
+  memberId: string;
+  operatingTime: string; //"2023-10-02T10:18:07"
+  operator: any | null;
+  replyContent: string;
+  sourceGroup: string;
+  sourcePage: any | null;
+  sourceSite: string;
+  states: string;
+};
+
+export type TReceivedVipHistory = {
+  pageNum: number;
+  pageSize: number;
+  time: string;
+  isAsc?: string;
+  orderByColumn?: string;
+};
+
+export type TGetNewbieMissionList = {
+  homePagePromptSwitch: number;
+  missionRepeatType: string;
+  missionType: string;
+  ip: string;
+  deviceId?: string;
+};
+
+export type TGetMissionRepeatList = {
+  homePagePromptSwitch: number;
+  missionRepeatType: string;
+  ip: string;
+  deviceId?: string;
+};
+
+export interface BankData {
+  id: number;
+  bankName?: string;
+  bankIcon?: string;
+  sort?: number;
+}
+
+export type TClaimMissionReward = {
+  id: string;
+  deviceId?: string;
+  ip: string;
+};
+
+export type TCollectAllMissionReward = {
+  deviceId?: string;
+  ip: string;
+};
+
+export type TGetActivity = {
+  id: string;
+};
+
+export type TGetMissionHistory = {
+  startDateTime: string;
+  endDateTime: string;
+  isAsc?: string;
+  orderByColumn?: string;
+};
+
+export type TEventRecordsLog = {
+  memberId: string;
+  day: number;
+  pageNum: number;
+  pageSize: number;
+};
+
+export type TEventCollect = {
+  memberId: string;
+  activityInfoId: number;
+  customKey: number;
+};
+
+export type TEventTotalClaimed = {
+  activityInfoId: string;
+};
+
+export type TEventTotalClaimable = {
+  activityInfoId: string;
+};
+
+export type TGetEventDetails = {
+  activityInfoId: string;
+};
+
+export type TEventCollectAll = {
+  memberId: string;
+  activityInfoId: string;
+};
+
+export type TGetRepeatMissionActivityList = {
+  missionRepeatType: string;
+};
+
+export type TRegisterCode = {
+  email: string;
+  validate?: string;
+};
+
+export type TForgetPassSendVerificationCode = {
+  email: string;
+  validate?: string;
+};
+
+export type TVerifyEmailCode = {
+  email: string;
+  code: string;
+};
+
+export type TResetForgetLoginPassword = {
+  email: string;
+  code: string;
+  newPassword: string;
+  confirmPassword: string;
+};
+
+export type TMobileLogin = {
+  mobile: string;
+  code: string;
+  token: string;
+  channelCode?: string;
+};
+
+export type TActivityType = {
+  id: string;
+  name: string;
+  url: string;
+  isUrl: boolean;
+  activityList?: TEvents[];
+};
+
+export type TEvents = {
+  id: number;
+  type: number;
+  icon: string;
+  title: string;
+  typeId: number;
+  url: string;
+  content: string;
+  eventJumpStatus: boolean;
+  eventJumpType: string;
+};
+
+export type TMemberBonusRewards = {
+  vipBonusInfoId?: number;
+  vipLevel: number;
+  customKey?: string;
+  memberId?: string;
+  customKeys?: string[];
+};
+
+export type TCollectBonusBonus = {
+  vipBonusInfoId?: number;
+  customKey: number;
+  memberId: string;
+};
+
+export type TMemberBonusRewardsConfig = {
+  day: number;
+  rewardIcon: string;
+  rewardType: string;
+  rewardAmount: {
+    max: string | null;
+    min: string | null;
+  };
+  topUpRequirement: string | null;
+  codingRequirement: string | null;
+  status: {
+    code: number;
+    icon: string;
+  };
+};
+
+export type TMessageItem = {
+  content: string;
+  createTime: string;
+  id: number | null;
+  status: number | null;
+  title: string;
+  type: string;
+};
+
+export type TJackpotPrize = {
+  money: number;
+  platformId: number;
+  platformName: string;
+  icon: string;
+};
+
+export type TLoginDevice = {
+  username?: string;
+  mobile?: string;
+  code?: string;
+  passwd?: string;
+  email?: string;
+  inviterCode?: string;
+  channelCode?: string;
+  deviceId?: string;
+  ip?: string;
+  phoneModel?: string;
+  validate?: string;
+  token?: string;
+  accessToken?: string;
+};
+
+export type TMissionActivities = {
+  activityMissionList: TEnergyItem[];
+  activityProgressCompleteCount: number;
+  activityProgressCounter: number;
+  activityProgressPercentage: number;
+  repeatMissionList: TEnergyItem[];
+};
+
+export type TMobileBindPhone = {
+  mobile: string;
+  code: string;
+};
+
+export type TBindEmail = {
+  email: string;
+  code: string;
+  password: string;
+  confirmPassword: string;
+};
+
+export type TJumpActivity = {
+  activityId: string;
+  memberId: string;
+};
+
+export type TGetBonusByType = {
+  type: string;
+};
+
+export type TReferralDataPayload = { pageNum: number; pageSize: number; startDate: string };
+
+export type TReferralReportPayload = { pageNum: number; pageSize: number; startDate: string; endDate: string };
+
+export type TFindByTypeItem = {
+  money: number;
+  description: string;
+  destination: string;
+  multiplier: number;
+  count: number;
+  effectiveTime: string;
+  inviterCode: string;
+  device: number;
+  type: string;
+  displayIcon: boolean;
+};
+
+export enum BIND_BONUS {
+  PHONE = "BIND_PHONE_BONUS",
+  EMAIL = "BIND_EMAIL_BONUS",
+  GOOGLE = "BIND_GOOGLE_BONUS"
+}
+
+export interface IUserToken {
+  userId: string;
+  token: string;
+}

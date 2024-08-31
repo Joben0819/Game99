@@ -1,0 +1,237 @@
+.bonusWrapper {
+  z-index: 1;
+  position: relative;
+  width: toRem(140);
+  height: toRem(165);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: toRem(3);
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: toRem(18);
+    border: toRem(3) solid transparent;
+    background: linear-gradient(180deg, #eefdff 0%, #6dd3ff 55.04%, #ffffff 100%);
+    mask:
+      linear-gradient(#fff 0 0) padding-box,
+      linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    z-index: -1;
+  }
+
+  .header {
+    @apply w-full flex-all-center;
+    border-top-left-radius: toRem(15);
+    border-top-right-radius: toRem(15);
+    height: toRem(35);
+    background: linear-gradient(180deg, #79e9ff 2.5%, rgba(68, 112, 250, 0.66) 41%, #3f7aff 100%);
+
+    h1 {
+      color: #fff;
+      text-align: center;
+      font-size: toRem(12);
+      font-style: normal;
+      font-weight: 700;
+      line-height: toRem(12);
+      width: toRem(100);
+      white-space: wrap;
+    }
+    &[data-lang='in'] {
+      width: toRem(110);
+    }
+  }
+
+  .iconHolder {
+    @apply h-[2.4rem] w-full relative flex-all-center;
+    border-bottom-left-radius: toRem(15);
+    border-bottom-right-radius: toRem(15);
+    background: linear-gradient(180deg, #ffffff 23.28%, #bcfffc 100%);
+
+    .coinImg {
+      @apply bg-[url("/assets/commons/vip/rescueImg.webp")] bg-no-repeat bg-center bg-contain h-[2.2rem] w-[2.2rem] flex flex-col items-center justify-center;
+
+      > :first-child {
+        @apply h-[1.4rem] w-auto object-contain;
+      }
+
+      > :last-child {
+        font-family: 'Arboria';
+        font-size: toRem(12);
+        line-height: toRem(12);
+      }
+    }
+  }
+
+  .details {
+    position: absolute;
+    margin-bottom: toRem(-15);
+    width: toRem(113);
+    bottom: 0;
+    height: toRem(36);
+    gap: toRem(10);
+    border-radius: toRem(8);
+    background: rgba(0, 0, 255, 0.5);
+    font-size: toRem(12);
+    font-family: 'Arboria';
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 0;
+    > span {
+      color: #fff;
+      text-align: center;
+      font-style: normal;
+      font-weight: 400;
+      line-height: toRem(12);
+      &:nth-of-type(1) {
+      }
+
+      &:nth-of-type(2) {
+        position: absolute;
+        top: 56%;
+        left: 50%;
+        transform: translate3d(-50%, -50%, 0);
+      }
+
+      &:nth-of-type(3) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: toRem(5);
+        color: #fff;
+        text-align: center;
+
+        svg {
+          position: relative;
+          height: auto;
+          width: toRem(34);
+        }
+
+        .nextBenefit {
+          position: relative;
+          top: toRem(-0.5);
+          line-height: toRem(12);
+          background: rgba(138, 246, 254, 1);
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+      }
+    }
+
+    .claimed {
+      position: absolute;
+      top: -135%;
+      left: 50%;
+      transform: translate3d(-50%, -50%, 0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: toRem(88.22);
+      height: toRem(77);
+      background-image: url('/assets/commons/vip/claimed_stamp_v1.png');
+      background-size: 100% 100%;
+      > span {
+        color: #00952a;
+        text-align: center;
+        font-family: 'Oleo Regular';
+        font-size: toRem(16);
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        transform: rotate(-26deg);
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  .subdetails {
+    position: relative;
+    width: toRem(135);
+    height: toRem(36);
+  }
+
+  .maxClaimed {
+    @apply absolute bottom-[-0.36rem];
+    height: 100%;
+    width: 100%;
+    border-radius: toRem(21);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .iconContainer {
+      position: relative;
+      width: toRem(86);
+      height: toRem(86);
+
+      img {
+        position: unset;
+      }
+    }
+
+    span {
+      position: absolute;
+      font-family: Arboria;
+      font-size: toRem(12);
+      font-weight: 400;
+      line-height: toRem(12);
+      letter-spacing: 0;
+      text-align: center;
+      color: #fff;
+      bottom: toRem(20);
+    }
+  }
+
+  &[data-vip='50'] {
+    height: toRem(165);
+
+    .subdetails {
+      @apply hidden;
+    }
+  }
+}
+
+.claimBtn {
+  @apply absolute bottom-[0.01rem] flex-all-center;
+  width: toRem(112.5);
+  height: toRem(35);
+  background-image: url('/assets/commons/vip/claim-btn.png');
+  background-size: 100% 100%;
+
+  > span {
+    @apply relative top-[-0.05rem] text-center;
+    font-size: toRem(12);
+    line-height: toRem(12);
+    font-weight: 700;
+    @include text-outline($offset: toRem(1), $color: #1c68de, $num-steps: 32);
+  }
+
+  &.claimed {
+    background-image: url('/assets/commons/vip/claimed-btn.png');
+
+    span {
+      @apply top-[0.17rem];
+      @include text-outline($offset: toRem(1), $color: #6e6c6c, $num-steps: 32);
+    }
+  }
+}
+
+.collectBtn {
+  @apply absolute bottom-[-0.26rem] flex-all-center bg-[url('/assets/commons/vip/claim-btn.png')] bg-contain bg-no-repeat cursor-pointer;
+  width: toRem(112.5);
+  height: toRem(35);
+
+  > span {
+    @apply relative top-[-0.03rem] text-center;
+    @include text-outline($offset: toRem(1), $color: #1c68de, $num-steps: 32);
+    font-size: toRem(12);
+    line-height: toRem(12);
+    font-weight: 700;
+  }
+}

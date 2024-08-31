@@ -1,0 +1,196 @@
+import { useEffect, useState } from 'react';
+import InfiniteScroll from 'react-infinite-scroll-component';
+import PullToRefresh from 'react-simple-pull-to-refresh';
+
+import { getCodeFlowList } from '@/services/api';
+import { TCodeFlow } from '@/services/response-type';
+import { withdrawV2 } from '@/translation/withdraw-v2';
+
+import { useAppSelector } from '@/store';
+
+import { moneyFormat } from '@/utils/helpers';
+
+import Loader from '../../re-useable/loader';
+import NoData from '../../re-useable/no-data';
+import styles from './index.module.scss';
+
+const CodeDetails = () => {
+  const { language } = useAppSelector((state) => state.gameData);
+  const [flowList, setFlowList] = useState<TCodeFlow[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
+
+  const getCodeFlow = async () => {
+    setIsLoading(true);
+    const res = await getCodeFlowList({});
+    if (res?.data?.code === 200) {
+      setFlowList(res?.data?.data);
+    }
+    setIsLoading(false);
+  };
+
+  useEffect(() => {
+    getCodeFlow();
+  }, []);
+
+
+  return (
+    <>
+      {isLoading && <Loader />}
+
+      {/* <table className={styles.table}>
+        <thead>
+          <tr>
+            <th>{withdrawV2[language].flowTime}</th>
+            <th>{withdrawV2[language].demandCode}</th>
+            <th>{withdrawV2[language].actual}</th>
+            <th>{withdrawV2[language].condition}</th>
+          </tr>
+        </thead>
+      </table>
+
+      <div className={styles.tableWrapper}>
+        <PullToRefresh onRefresh={getCodeFlow}>
+          <table className={styles.table}>
+            <tbody>
+              {flowList?.map((item, index) => (
+                <tr key={index}>
+                  <td>{item?.createTime}</td>
+                  <td>{moneyFormat(item?.income)}</td>
+                  <td>{moneyFormat(item?.cur)}</td>
+                  <td
+                    style={{
+                      color: item.status === 0 ? '#FFEA00' : item.status === 1 ? '#24FF00' : '#fff',
+                    }}
+                  >
+                    {item?.status === 0
+                      ? withdrawV2[language].statusUnsuccessful
+                      : withdrawV2[language].statusSuccessful}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </PullToRefresh>
+        {!!!flowList.length && <NoData />}
+      </div> */}
+
+   
+    </>
+  );
+};
+
+export default CodeDetails;
+
+
+
+
+styles
+
+// .table {
+//   @apply w-full relative;
+//   overflow-y: scroll;
+//   touch-action: pan-x pan-y !important;
+
+//   thead {
+//     position: sticky;
+//     top: -1px;
+//     padding-bottom: toRem(10);
+//     // background-image: url('/assets/commons/withdraw_recharge/thead.webp');
+//     background-size: contain;
+//     background-repeat: no-repeat;
+//     background-position: center center;
+//     font-size: toRem(10);
+//     th {
+//       font-size: toRem(12);
+//       font-family: PoetsenOne;
+//       text-align: left;
+//       text-align: center;
+//     }
+//   }
+
+//   tbody {
+//     tr {
+//       &:nth-child(even) {
+//         border-radius: toRem(2);
+//         background: rgba(0, 0, 0, 0.2);
+//       }
+//     }
+
+//     td {
+//       height: toRem(25) !important ;
+//       width: 25%;
+//       text-align: center;
+//     }
+
+//     &:before {
+//       line-height: 1em;
+//       content: '\200C';
+//       display: block;
+//     }
+//   }
+// }
+
+// .tableWrapper {
+//   height: toRem(290);
+//   overflow-y: auto;
+//   touch-action: pan-x pan-y !important;
+
+//   :global {
+//     .lds-ellipsis div {
+//       height: toRem(10.4);
+//       width: toRem(10.4);
+//       background-color: #e9cce8;
+//     }
+
+//     .ptr__pull-down {
+//       .ptr__pull-down--pull-more {
+//         display: none;
+//       }
+//     }
+//   }
+
+//   .table {
+//     @apply relative;
+//     overflow-y: auto;
+//     border-collapse: collapse;
+//     width: 100%;
+//     margin: 0 auto;
+//     margin-bottom: toRem(10);
+//     touch-action: pan-x pan-y !important;
+
+//     tbody {
+//       tr {
+//         &:nth-child(even) {
+//           border-radius: toRem(20);
+//           background: rgba(0, 0, 0, 0.2);
+//         }
+
+//         td {
+//           height: toRem(24) !important;
+//           text-align: center;
+//           font-size: toRem(10);
+//           width: toRem(100);
+//           width: 25%;
+
+//           &:nth-of-type(4) {
+//             color: #62ff01;
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+
+// .noDataWrapper {
+//   @apply absolute size-full flex-all-center top-0 left-0 flex-col;
+//   font-size: toRem(14);
+//   font-family: PoetsenOne;
+//   color: rgba(255, 255, 255, 0.5);
+
+//   .image {
+//     @apply relative;
+//     width: toRem(252.656);
+//     height: toRem(110);
+//   }
+// }

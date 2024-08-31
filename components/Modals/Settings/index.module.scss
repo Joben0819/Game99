@@ -1,0 +1,275 @@
+.backdrop {
+  position: absolute;
+  top: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include fadeIn;
+}
+
+.wrapper {
+  position: relative;
+  background: linear-gradient(320deg, rgba(42, 100, 201, 0.8) 0%, rgba(109, 254, 249, 0.3) 100%);
+  padding: toRem(16);
+  border-radius: toRem(24);
+  border: 1px solid rgb(115, 160, 160);
+}
+
+.settingsModal {
+  background: linear-gradient(0deg, rgba(109, 253, 254, 1) 0%, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 1) 100%);
+  border-radius: toRem(20);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: toRem(12);
+  color: rgba(22, 83, 201, 1);
+  border: 1px solid rgba(109, 253, 254, 1);
+  border-top: none;
+  position: relative;
+  width: toRem(401);
+  height: toRem(292);
+}
+
+.settingsTitle {
+  align-self: self-start;
+  margin: toRem(8) 0 0 toRem(26);
+}
+
+.settingsControls {
+  width: toRem(276);
+  margin-top: 21px;
+  align-self: center;
+}
+
+.bgmControls {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: toRem(25);
+}
+
+.togglerComponent {
+  width: 100%;
+  background: rgba(161, 162, 163, 1);
+  border: toRem(2) solid rgba(157, 233, 255, 1);
+  border-radius: toRem(999);
+  padding: toRem(8) toRem(16);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+
+  .togglerBg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(70, 147, 236, 1);
+    left: 0;
+  }
+
+  span {
+    position: relative;
+    font-weight: 700;
+
+    &.on {
+      color: #3cf7ff;
+    }
+
+    &.off {
+      color: #ffffff;
+    }
+  }
+
+  &[data-lang='en'] {
+    padding: toRem(8) toRem(22);
+  }
+
+  &[data-lang='in'] {
+    padding: toRem(8) toRem(12) toRem(8) toRem(16);
+  }
+
+  &[data-lang='cn'] {
+    padding: toRem(8) toRem(20) toRem(8) toRem(26);
+  }
+}
+
+.togglerBtn {
+  width: 50%;
+  height: 100%;
+  border-radius: toRem(999);
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: linear-gradient(0deg, rgba(0, 166, 252, 1) 0%, rgba(166, 217, 255, 1) 100%);
+  border: toRem(2) solid rgba(255, 255, 255, 0.5);
+  border-top: toRem(2) solid rgba(255, 255, 255, 1);
+  border-bottom: none;
+}
+
+.togglerBtnIcon {
+  width: toRem(20);
+
+  img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+  }
+}
+
+.languageControls {
+  margin-top: 16px;
+}
+
+.languageSelection {
+  position: relative;
+  width: 100%;
+}
+
+.languageSelectionInput {
+  width: 100%;
+  border: toRem(2) solid rgba(254, 215, 170, 1);
+  border-radius: toRem(10);
+  padding: toRem(8) toRem(16);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(255, 255, 255, 1);
+  color: rgba(39, 151, 243, 1);
+  cursor: pointer;
+}
+
+.languageSelectionDefaultContents {
+  display: flex;
+  align-items: center;
+  gap: toRem(8);
+}
+
+.languageSelectionDefaultFlag {
+  width: toRem(20);
+  height: toRem(20);
+  border: toRem(1) solid rgba(253, 186, 116, 1);
+  border-radius: toRem(50);
+  overflow: hidden;
+
+  img {
+    height: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
+}
+
+.languageSelectionChevron {
+  width: toRem(12);
+
+  img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+  }
+}
+
+.dropdownCon {
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  top: calc(100% + toRem(4));
+  left: 0;
+  border: toRem(2) solid rgba(254, 215, 170, 1);
+  border-radius: toRem(8);
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.dropdown {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: toRem(4) toRem(2) toRem(8);
+  margin-top: toRem(4);
+  gap: toRem(8);
+  z-index: 50;
+}
+
+.dropdownSelections {
+  display: flex;
+  align-items: center;
+  gap: toRem(8);
+  padding: toRem(4) toRem(14);
+  cursor: pointer;
+  color: rgba(39, 151, 243, 1);
+
+  &--selected {
+    background: rgba(237, 247, 255, 1),
+  }
+}
+
+.divider {
+  width: toRem(346);
+  height: toRem(2);
+  background-color: rgba(71, 148, 237, 0.2);
+  align-self: center;
+  margin: toRem(16) 0 toRem(9);
+}
+
+.gameVersion {
+  font-family: Inter;
+  align-self: center;
+}
+
+.userSettingsBtn {
+  width: toRem(108);
+  height: toRem(28);
+  border-radius: toRem(8);
+  background: linear-gradient(to bottom, #69adfb 10%, #4693ec 30%);
+  color: white;
+  font-family: 'Poppins';
+  font-weight: 400;
+  align-self: center;
+  margin-top: toRem(2);
+  border: toRem(2) solid rgba(147, 197, 255, 1);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: toRem(3);
+
+  img {
+    width: toRem(12);
+    height: toRem(12);
+    object-fit: contain;
+  }
+
+  &--clearCache {
+    background: linear-gradient(180deg, #FE8A36 60.26%, #FFCA68 88.26%, #FF9637 100%);
+    border: toRem(2) solid rgba(255, 186, 116, 1);
+    color: rgba(255, 255, 255, 1);
+  }
+
+  &--disabled {
+    background: rgba(161, 162, 163, 1);
+    border: toRem(2) solid rgba(157, 233, 255, 1);
+    cursor: not-allowed;
+  }
+}
+
+.closeSettingsModalBtn {
+  width: toRem(28);
+  position: absolute;
+  top: 0;
+  right: toRem(-48);
+  cursor: pointer;
+}
+
+.settingsButtonContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: toRem(10);
+}

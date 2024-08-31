@@ -1,0 +1,22 @@
+{
+  "modalTitle": "用户信息",
+  "contact": "联系方式",
+  "music": "音乐",
+  "soundEffect": "音效",
+  "logOut": "退出",
+  "bindPhone": "绑定手机号",
+  "bindEmail": "绑定邮箱",
+  "bindGoogle": "绑定谷歌",
+  "yes": "是的",
+  "no": "不",
+  "copyEmail": "邮箱已复制到剪贴板",
+  "copyContact": "联系方式已复制到剪贴板",
+  "copyId": "ID已复制到剪贴板",
+  "on": "开",
+  "off": "关",
+  "unableToCopy": "无法将文本复制到剪贴板",
+  "notLoggedIn": "未登录",
+  "email": "邮箱",
+  "tooltip": "充值后，未使用的积分将计入余额。",
+  "settings": "设置"
+}

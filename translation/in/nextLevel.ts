@@ -1,0 +1,9 @@
+export const nextLevel = {
+  title: 'Fasilitas VIP',
+  level: 'Level',
+  rescue: 'Bonus Kekalahan',
+  upgrade: 'Hadiah Promosi',
+  everyWeek: 'Hadiah Mingguan',
+  everyMonth: 'Hadiah Bulanan',
+  bonus: 'Bonus',
+} as const;

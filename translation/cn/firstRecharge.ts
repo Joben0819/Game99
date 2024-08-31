@@ -1,0 +1,21 @@
+export const firstRecharge = {
+  modalTitle: '/assets/cn/primeira_compra/primeira_title.png',
+  firstRecharge: '首次购买',
+  bonus: '额外的',
+  currency: 'IDR',
+  tips: {
+    fLabel: '首次购买 :',
+    fDesc: '购买这些套餐中的任何一个，它们将会永久消失。',
+    sLabel: '每日优惠 : ',
+    sDesc: '购买这些套餐中的任何一个，它们将于今天消失。',
+    tLabel: '丰富的礼物 ：',
+    tDesc: '每个套餐只能购买一次！',
+  },
+  fBottomText: '每次购买任何套餐，额外奖金将累积3天。充值后，',
+  sBottomText: '需要等待1分钟后才能进入游戏。',
+  rechargeOver: '新会员首存',
+  rechargeOverContinuation: '起，赠送彩金',
+  get: '起',
+  free: '赠送彩金',
+  details: '更多详情',
+};

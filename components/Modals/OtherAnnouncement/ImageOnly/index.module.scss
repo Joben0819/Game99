@@ -1,0 +1,52 @@
+.announcementWrapper {
+  @apply relative;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  padding-top: toRem(20);
+}
+
+.titleWrapper {
+  @apply relative;
+  width: toRem(500);
+  min-height: toRem(35);
+  overflow: hidden;
+  p {
+    font-family: Microsoft YaHei;
+    font-size: toRem(30);
+    font-weight: 700;
+    text-align: center;
+    word-break: break-word;
+    white-space: normal;
+    line-height: toRem(30);
+    padding: toRem(0) toRem(10);
+    position: relative;
+
+    @include GradientTextWithOutline(
+      $offset: toRem(2),
+      $color: #5710a4,
+      $num-steps: 25,
+      $textContent: attr(data-textafter),
+      $gradient: linear-gradient(180deg, #ffffff 18.94%, #f6ccff 100%)
+    );
+  }
+}
+
+.imageWrapper {
+  @apply relative;
+  height: toRem(250);
+  width: toRem(450);
+
+  &--noTitle {
+    height: toRem(320);
+    width: toRem(450);
+  }
+
+  img {
+    position: unset;
+    object-fit: contain;
+  }
+}

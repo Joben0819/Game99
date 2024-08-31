@@ -1,0 +1,164 @@
+.loadingWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.gameListParent {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.gameListParentMobile {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  overflow: auto;
+  touch-action: pan-x pan-y !important;
+  display: flex;
+  align-items: center;
+}
+
+.gameListSwiper {
+  position: relative;
+  height: 100%;
+  margin-left: unset;
+  margin-right: unset;
+}
+
+.slide {
+  height: 100%;
+  width: auto !important;
+}
+
+.backToLobby {
+  position: absolute !important;
+  z-index: 5;
+  top: toRem(82);
+  right: toRem(10);
+  height: toRem(25);
+  width: toRem(65);
+  img {
+    height: toRem(25) !important;
+    width: toRem(65) !important;
+  }
+
+  span {
+    @apply absolute;
+    font-size: toRem(11);
+    left: toRem(25);
+    font-family: 'PoetsenOne';
+    line-height: normal;
+    top: toRem(3.3);
+
+    &[data-lang='in'] {
+      font-size: toRem(9);
+      left: toRem(23);
+    }
+  }
+}
+
+.gameListWrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  overflow-y: hidden;
+
+  .topRow {
+    margin-left: toRem(20);
+    position: relative;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: toRem(20);
+    font-size: inherit;
+
+    &--h100 {
+      height: 100%;
+    }
+  }
+
+  .platformOverride {
+    height: 100%;
+    gap: toRem(0);
+  }
+
+  .bottomRow {
+    margin-left: toRem(20);
+    position: relative;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: toRem(20);
+    font-size: inherit;
+  }
+}
+
+.gameListWrapperPC {
+  margin-right: toRem(15);
+  height: calc(100vh - (toRem(79) + toRem(70)));
+  font-size: calc((100vh - (toRem(79) + toRem(70))) / 2);
+  height: calc(100dvh - (toRem(79) + toRem(70)));
+  font-size: calc((100dvh - (toRem(79) + toRem(70))) / 2);
+}
+
+.gameListWrapperHuaweiBrowser {
+  margin-right: toRem(15);
+}
+
+.gameLoader {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.623);
+  z-index: 10;
+  top: 0;
+  left: 0;
+}
+
+@media screen and (orientation: portrait) {
+  .gameListWrapper {
+    overflow-y: auto;
+  }
+
+  .gameListWrapperPC {
+    margin-right: toRem(15);
+    height: calc(100vw - (toRem(85) + toRem(70)));
+    font-size: calc((100vw - (toRem(85) + toRem(70))) / 2);
+    height: calc(100dvw - (toRem(85) + toRem(70)));
+    font-size: calc((100dvw - (toRem(85) + toRem(70))) / 2);
+  }
+
+  .gameListWrapperHuaweiBrowser {
+    margin-right: toRem(15);
+  }
+}
+
+.errorContainer {
+  @apply flex justify-center items-center;
+  width: 100%;
+
+  &__content {
+    @apply flex items-center justify-center flex-col gap-1 font-normal;
+    background: #00000080;
+    height: toRem(150);
+    border-radius: toRem(10);
+    width: toRem(260);
+    font-family: Poppins;
+    font-size: toRem(16);
+    color: #ffffffd1;
+
+    .btnContainer {
+      @apply active:scale-95 transition-all duration-150;
+      @apply relative;
+      width: toRem(55);
+      height: toRem(55);
+    }
+  }
+}

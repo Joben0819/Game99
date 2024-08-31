@@ -1,0 +1,15 @@
+{
+  "captchaFailed": "CAPTCHA gagal!",
+  "phoneAlreadyRegistered": "Telepon sudah terdaftar",
+  "somethingWrong": "Ada sesuatu yang salah",
+  "incorrectCodeFormat": "Format kode salah",
+  "nowSettingPassword": "Sekarang kami sedang mengatur kata sandi",
+  "verificationCodeIncorrect": "Kode verifikasi yang digunakan salah",
+  "codeSentToPhoneSuccess": "Kode berhasil dikirim ke nomor telepon",
+  "codeSentToEmailSuccess": "Kode berhasil dikirim ke email",
+  "codeSentToPhoneError": "Gagal mengirim kode ke telepon.",
+  "codeSentToEmailError": "Gagal mengirim kode ke email.",
+  "necessaryFields": "Silakan isi kolom yang diperlukan",
+  "selectVerificationMethode": "Silakan pilih metode terima OTP",
+  "invalidEmail": "Format email tidak valid"
+}

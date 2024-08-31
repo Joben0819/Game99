@@ -1,0 +1,34 @@
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  padding-bottom: toRem(6);
+  border-bottom: toRem(1) solid rgba(127, 186, 255, 1);
+
+  p {
+    color: #fff;
+    font-family: Poppins;
+    font-weight: 700;
+    font-size: toRem(22);
+    font-style: normal;
+    line-height: toRem(22);
+    position: relative;
+    @include GradientTextWithOutline(
+      $offset: toRem(2),
+      $color: #ffffff,
+      $num-steps: 25,
+      $textContent: attr(data-textafter),
+      $gradient: #10a7ff
+    );
+  }
+
+  .IconContainer {
+    position: relative;
+    width: toRem(26);
+    height: toRem(26);
+
+    img {
+      position: unset;
+    }
+  }
+}

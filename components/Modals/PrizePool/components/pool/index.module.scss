@@ -1,0 +1,74 @@
+.poolWrapper {
+  @apply absolute w-full top-[0.1rem] left-0  overflow-y-auto px-[0.5rem] border-hidden;
+  height: toRem(162);
+}
+
+.poolContainer {
+  @apply grid gap-[0.25rem];
+  grid-template-columns: 1fr 1fr;
+
+  &--oneColumn {
+    grid-template-columns: 1fr;
+  }
+
+  > div {
+    @apply border-[1px] flex overflow-hidden relative h-full;
+    height: toRem(44);
+    border-radius: toRem(12);
+    background-clip: padding-box;
+    border: solid toRem(1) transparent;
+    padding: toRem(1);
+
+    z-index: 1;
+
+    &:before {
+      content: '';
+      background: linear-gradient(to bottom, #4b69ec, #f72db4);
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: -1;
+    }
+  }
+}
+
+.platformIcon {
+  @apply relative h-full flex-all-center;
+  background: linear-gradient(to bottom, #53a6eb, #1275d0);
+  width: toRem(50);
+  border-radius: toRem(9) toRem(0) toRem(0) toRem(9);
+
+  .icon {
+    @apply relative;
+    width: toRem(30);
+    height: toRem(30);
+    object-fit: contain;
+
+    img {
+      @apply w-full h-auto;
+      object-fit: contain;
+    }
+  }
+}
+
+.platformMoney {
+  @apply w-full flex-1 flex px-1 items-center text-[#f5ff40] font-bold;
+  background: linear-gradient(to bottom, #15008d, #8726d1);
+  border-radius: toRem(0) toRem(9) toRem(9) toRem(0);
+
+  > div {
+    @apply overflow-x-auto whitespace-nowrap;
+    width: toRem(130);
+    display: flex;
+    justify-content: center;
+  }
+
+  span {
+    font-size: toRem(23);
+    -webkit-text-stroke: 1px #e95b2a;
+    -moz-text-stroke: 1px #e95b2a;
+    -ms-text-stroke: 1px #e95b2a;
+  }
+}

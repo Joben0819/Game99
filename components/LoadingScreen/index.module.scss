@@ -1,0 +1,94 @@
+.loadingScreenWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  gap: toRem(20);
+  padding: toRem(20);
+
+  .bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+  }
+
+  .supportImg {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top: toRem(10);
+    right: toRem(15);
+    position: absolute;
+    width: toRem(44.6);
+    height: toRem(44.7);
+
+    > img {
+      object-fit: contain;
+    }
+
+    > span {
+      font-size: toRem(12);
+      white-space: nowrap;
+      font-family: 'Radio Canada';
+    }
+  }
+
+  .logoImg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -60%, 0) !important;
+    width: toRem(477);
+    height: toRem(302);
+
+    img {
+      object-fit: contain;
+    }
+  }
+
+  .appVersion {
+    position: absolute;
+    left: toRem(20);
+    bottom: toRem(5);
+    font-size: toRem(12);
+    color: #fff;
+    font-family: 'PoetsenOne';
+  }
+}
+
+.languageHolder {
+  position: absolute;
+  top: toRem(10);
+  right: toRem(10);
+  position: absolute;
+  width: toRem(44.6);
+  height: toRem(44.7);
+
+  :global {
+    .dropdown {
+      right: 0 !important;
+    }
+  }
+}
+
+.loader {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 9;
+  background-color: #000000a1;
+}
+
+@media only screen and (max-width: 900px) {
+  .loadingScreenWrapper {
+    .appVersion {
+      left: toRem(40);
+    }
+  }
+}

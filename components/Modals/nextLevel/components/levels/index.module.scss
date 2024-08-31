@@ -1,0 +1,67 @@
+.levelsWrapper {
+  inline-size: toRem(525);
+  block-size: toRem(295);
+  position: relative;
+  padding: toRem(8) toRem(16);
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: toRem(8);
+    border: toRem(2) solid transparent;
+    background: linear-gradient(180deg, #ffffff 0%, #d3ffd5 100%);
+    mask:
+      linear-gradient(#fff 0 0) padding-box,
+      linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    z-index: -1;
+  }
+}
+
+.headers,
+.dataContainer {
+  @apply grid grid-cols-5 text-black items-center justify-items-center px-[0.2rem];
+  font-size: toRem(12);
+  line-height: toRem(12);
+}
+
+.headers {
+  @apply text-center py-[0.09rem];
+  background: linear-gradient(180deg, #ffffff 0%, #bcfffe 100%);
+  border-top-left-radius: toRem(8);
+  border-top-right-radius: toRem(8);
+  color: rgba(32, 88, 193, 1);
+  font-weight: 600;
+  height: toRem(40);
+}
+
+.body {
+  height: calc(100% - toRem(52));
+  overflow-y: auto;
+}
+
+.dataContainer {
+  height: toRem(30);
+  color: white;
+
+  &:nth-child(odd) {
+    background: #7096ea;
+  }
+  &:nth-child(even) {
+    background: #91a8ee;
+  }
+
+  &.isMatched {
+    color: #00ffb3;
+  }
+}
+
+.noDataContainer {
+  position: absolute;
+  top: 0;
+  left: toRem(-2);
+  height: 100%;
+  width: 100%;
+}

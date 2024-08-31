@@ -1,0 +1,124 @@
+.withdrawLimitWrapper {
+  z-index: 1;
+  position: relative;
+  width: toRem(157.5);
+  height: toRem(162.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: toRem(10);
+  background-image: url('/assets/commons/vip/item_bg.png');
+  background-size: 100% 100%;
+  padding-top: toRem(4);
+
+  h1 {
+    color: #fff;
+    text-align: center;
+    font-family: 'Arboria';
+    font-size: toRem(12);
+    font-style: normal;
+    font-weight: 400;
+    line-height: toRem(12);
+    width: toRem(100);
+    white-space: wrap;
+  }
+
+  .details {
+    position: relative;
+    margin-bottom: toRem(4);
+    width: 100%;
+    font-size: toRem(11);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: toRem(10);
+    .dailyNumber,
+    .dailyQuota {
+      position: relative;
+      width: toRem(128);
+      height: toRem(30);
+      border-radius: toRem(6);
+      background: rgba(0, 0, 0, 0.64);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+
+      > span {
+        color: #fff;
+        text-align: center;
+        font-style: normal;
+        font-weight: 400;
+        line-height: toRem(15);
+        &:nth-of-type(1) {
+          width: 100%;
+          height: toRem(16);
+          border-radius: toRem(6) toRem(6) 0 0;
+          background: rgba(235, 63, 152, 0.8);
+        }
+
+        &:nth-of-type(2) {
+          flex: 1;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: toRem(5);
+          color: #fff;
+          text-align: center;
+          font-family: 'Arboria';
+
+          svg {
+            height: toRem(6);
+            width: toRem(25);
+          }
+
+          .nextBenefit {
+            position: relative;
+            top: toRem(-0.5);
+            line-height: toRem(12);
+            background: linear-gradient(90deg, #ff00b8 4.76%, #4bdfe8 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+          }
+        }
+      }
+    }
+  }
+
+  .detailsBtn {
+    width: toRem(112.5);
+    height: toRem(35);
+    background-image: url('/assets/commons/vip/items_btn.png');
+    background-size: 100% 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    > span {
+      position: relative;
+      top: toRem(-2);
+      text-align: center;
+      font-family: 'Arboria';
+      font-size: toRem(14);
+      font-style: normal;
+      font-weight: 400;
+      line-height: toRem(14);
+      background: linear-gradient(90deg, #b90972 0%, #48106f 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+
+  &[data-lang='cn'] {
+    padding-top: toRem(10);
+  }
+
+  &[data-lang='zh-tw'] {
+    padding-top: toRem(10);
+  }
+}

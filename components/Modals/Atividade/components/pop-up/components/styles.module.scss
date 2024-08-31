@@ -1,0 +1,65 @@
+.bgImage {
+  @apply relative;
+  width: toRem(352);
+  height: toRem(274);
+}
+
+.spinnerImage {
+  @apply absolute z-[1];
+  width: toRem(320);
+  height: toRem(320);
+  animation: spin 4s linear infinite;
+}
+
+.chargeImage {
+  @apply absolute z-[6] mt-[-1rem];
+  width: toRem(207.12);
+  height: toRem(165.57);
+  animation: pulse 1.5s infinite;
+  margin-right: toRem(20);
+}
+
+.button {
+  @apply absolute z-[3] bottom-[-0.3rem] transition-all duration-200 active:scale-90 flex-all-center cursor-pointer;
+  width: toRem(165);
+  height: toRem(48);
+  line-height: normal;
+
+  span {
+    @apply absolute z-[1];
+    font-size: toRem(18);
+    @include text-outline($offset: toRem(1), $color: #ffa800, $num-steps: 25);
+  }
+}
+
+.amount {
+  @apply absolute z-[3] bottom-[0.8rem];
+  font-size: toRem(26);
+  color: #ffed76;
+  @include text-outline($offset: toRem(2), $color: #009eff, $num-steps: 25);
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+
+  50% {
+    transform: rotate(180deg) scale(0.8);
+  }
+
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+}

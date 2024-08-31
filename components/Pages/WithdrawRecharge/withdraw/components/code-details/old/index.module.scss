@@ -1,0 +1,120 @@
+.table {
+  @apply relative;
+  width: 100%;
+  margin: 0 auto;
+
+  thead {
+    position: sticky;
+    top: -1px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100%;
+
+    tr {
+      th {
+        margin-bottom: toRem(15) !important;
+        height: toRem(15);
+        width: toRem(100);
+        padding-top: toRem(8);
+        padding-bottom: toRem(10);
+        line-height: toRem(14);
+        width: 25%;
+
+        p {
+          font-family: Poppins;
+          text-align: center;
+          position: relative;
+          font-size: toRem(12);
+          font-weight: bold;
+
+          @include GradientTextWithOutline(
+            $offset: toRem(1),
+            $color: #ffffff,
+            $num-steps: 25,
+            $textContent: attr(data-textafter),
+            $gradient: #10a7ff
+          );
+        }
+
+        &:before {
+          content: '';
+          position: absolute;
+          width: 100%;
+          height: toRem(1);
+          background: #10a7ff;
+          box-shadow: 0 1px 0 0 #ffffff;
+          bottom: toRem(0);
+          left: toRem(0);
+        }
+      }
+    }
+  }
+}
+
+.tableBodyContainer {
+  position: relative;
+  height: toRem(255);
+  overflow: auto;
+  margin-top: toRem(10);
+  width: 100%;
+
+  touch-action: pan-x pan-y !important;
+
+  :global {
+    .infinite-scroll-component {
+      height: inherit !important;
+      overflow: inherit !important;
+    }
+  }
+
+  .table {
+    @apply relative;
+    overflow-y: auto;
+    border-collapse: collapse;
+    width: 100%;
+    margin: 0 auto toRem(10);
+    touch-action: pan-x pan-y !important;
+
+    tbody {
+      tr {
+        &:nth-child(even) {
+          background: #ffffff;
+        }
+
+        td:first-child {
+          border-top-left-radius: toRem(5);
+          border-bottom-left-radius: toRem(5);
+        }
+        td:last-child {
+          border-top-right-radius: toRem(5);
+          border-bottom-right-radius: toRem(5);
+        }
+
+        td {
+          height: toRem(24) !important;
+          text-align: center;
+          font-size: toRem(10);
+          width: toRem(100);
+          width: 25%;
+          color: #4794ed;
+          &:nth-of-type(4) {
+            color: #00ad27;
+          }
+        }
+      }
+    }
+  }
+}
+
+.noDataContainer {
+  position: absolute;
+  top: toRem(0);
+  left: toRem(-2);
+  height: 90%;
+  width: 100%;
+}
+
+.loadingFetch {
+  @apply flex justify-center  w-full items-center;
+  margin-top: toRem(-30);
+}

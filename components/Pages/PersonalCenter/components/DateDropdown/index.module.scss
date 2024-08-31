@@ -1,0 +1,103 @@
+.transactionDateDropdown {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: auto;
+  height: toRem(20);
+  z-index: 10;
+  color: #fff;
+
+  .dropdownHead {
+    height: 100%;
+    width: toRem(100);
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 toRem(7);
+    border-radius: toRem(5);
+    background: #fff;
+    cursor: pointer;
+  }
+
+  span {
+    display: flex;
+    align-items: center;
+    font-family: 'Inter';
+    color: #10a7ff;
+    font-size: toRem(12);
+    font-weight: 400;
+    line-height: toRem(12);
+    vertical-align: middle;
+    white-space: nowrap;
+    height: 100%;
+    width: toRem(75);
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .label {
+    position: relative;
+    top: toRem(0);
+    width: unset;
+    margin-right: toRem(10);
+    line-height: toRem(12);
+    color: #1653c9;
+    font-size: toRem(12);
+    font-weight: 400;
+    text-align: left;
+  }
+
+  .arrow {
+    position: relative;
+    height: max-content;
+    transition: transform 0.3s ease-in-out;
+    transform: rotate(0deg);
+
+    span {
+      width: auto;
+    }
+  }
+  .arrowDown {
+    transform: rotate(180deg);
+  }
+}
+
+.dropdownContainer {
+  position: absolute;
+  top: toRem(21);
+  right: 0;
+  height: auto;
+  width: toRem(100);
+  border-radius: toRem(5);
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  span {
+    position: relative;
+    height: toRem(20);
+    text-align: left;
+    vertical-align: middle;
+    font-size: toRem(12);
+    height: auto;
+    line-height: toRem(20);
+    white-space: nowrap;
+    width: toRem(100);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #10a7ff;
+    padding: toRem(5);
+    cursor: pointer;
+    &:not(:last-child) {
+      border-bottom: 0.5px solid #d2efff;
+    }
+  }
+
+  .isSelected {
+    color: #ff7a00;
+  }
+}

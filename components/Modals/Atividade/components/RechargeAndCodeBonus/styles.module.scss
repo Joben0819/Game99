@@ -1,0 +1,543 @@
+.rechargeBonus {
+  background: url('/assets/commons/bonusRecharge/recharge_bonus_bg.webp') no-repeat center/cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-right: toRem(4);
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+
+  > span {
+    position: relative;
+    display: block;
+    font-family: 'Titan One';
+    font-size: toRem(18);
+    text-transform: uppercase;
+    padding: toRem(5) toRem(10) 0;
+    filter: drop-shadow(toRem(0) toRem(1.63) #a2121c);
+    @include GradientTextWithOutline(
+      $color: #cf3207,
+      $offset: toRem(1),
+      $num-steps: 16,
+      $textContent: attr(data-textafter),
+      $gradient: linear-gradient(to bottom, #ffca06 30%, #faff07 50%, #ffffb3 80%)
+    );
+
+    &::after {
+      top: toRem(5);
+      left: toRem(10);
+    }
+  }
+
+  &__content {
+    padding-top: 2vh;
+    width: 55%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 15% 30% 27% 20%;
+    align-items: center;
+    align-self: flex-end;
+
+    > span {
+      font-family: 'PoetsenOne';
+      text-align: center;
+      font-size: toRem(13);
+      color: #fff;
+      filter: drop-shadow(toRem(0) toRem(0.81) #7000ff);
+    }
+
+    > span:last-child {
+      font-family: 'Inter';
+      text-decoration: underline;
+      text-align: center;
+      font-size: toRem(9);
+      line-height: toRem(10);
+      color: #fff;
+    }
+  }
+
+  &[data-lang='in'] {
+    .subHeading {
+      position: relative;
+      top: toRem(-7);
+      right: toRem(10);
+      font-size: toRem(9.6);
+      white-space: nowrap;
+    }
+  }
+
+  .subHeading {
+    filter: drop-shadow(toRem(0) toRem(1.63) #7000ff);
+    @include GradientTextWithOutline(
+      $color: #ff001f,
+      $offset: toRem(1),
+      $num-steps: 25,
+      $textContent: attr(data-textafter),
+      $gradient: #fff
+    );
+  }
+
+  &__countdown {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: toRem(10);
+    background: rgba(112, 0, 0, 0.4);
+    border-radius: 50px;
+    height: toRem(16.5);
+    width: toRem(80);
+
+    > span {
+      font-size: toRem(8);
+    }
+  }
+
+  &__clock {
+    margin-top: toRem(1);
+    position: relative;
+    width: toRem(18);
+    height: toRem(15);
+  }
+
+  &__frozenBonus {
+    width: 100%;
+    > span {
+      font-family: 'PoetsenOne';
+      font-size: toRem(10);
+      position: relative;
+      text-transform: uppercase;
+      @include GradientTextWithOutline(
+        $offset: toRem(1),
+        $color: #4b008d,
+        $num-steps: 25,
+        $textContent: attr(data-textafter),
+        $gradient: #fff
+      );
+    }
+
+    > div {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: toRem(34);
+      width: toRem(210);
+      background: url('/assets/commons/bonusRecharge/bonus_amt_bg.png') no-repeat center/cover;
+      background-size: 100% 100%;
+
+      > span {
+        position: relative;
+        font-family: 'PoetsenOne';
+        font-size: toRem(21);
+        color: #6a159e;
+        @include GradientTextWithOutline(
+          $offset: toRem(1.5),
+          $color: #6a159e,
+          $num-steps: 25,
+          $textContent: attr(data-textafter),
+          $gradient: linear-gradient(180deg, #ffca06 21.94%, #faff07 61.81%, #ffffb3 99.36%)
+        );
+
+        &::after {
+          position: absolute;
+          top: toRem(-1.5);
+        }
+      }
+    }
+  }
+
+  &__rpLogo {
+    position: absolute;
+    left: toRem(18);
+    top: toRem(5);
+    width: toRem(21);
+    height: toRem(21);
+  }
+
+  &__validBet {
+    width: 100%;
+
+    > span {
+      font-family: 'PoetsenOne';
+      font-size: toRem(10);
+      position: relative;
+      text-transform: uppercase;
+      @include GradientTextWithOutline(
+        $offset: toRem(1),
+        $color: #4b008d,
+        $num-steps: 25,
+        $textContent: attr(data-textafter),
+        $gradient: #fff
+      );
+    }
+
+    > div {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: toRem(13);
+      width: toRem(210);
+      border: toRem(1) solid rgba(252, 250, 251, 1);
+      border-radius: 50px;
+      background: linear-gradient(180deg, #29025e 0%, #7e02ed 87.5%, #3c0080 100%);
+
+      .progressBar {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        left: -100%;
+      }
+      > span {
+        z-index: 2;
+        position: relative;
+        color: #fff;
+        font-size: toRem(8);
+        font-weight: 600;
+        text-align: left;
+        top: toRem(0.2);
+
+        @include GradientTextWithOutline(
+          $offset: toRem(1),
+          $color: #ff4e00,
+          $num-steps: 25,
+          $textContent: attr(data-textafter),
+          $gradient: #fff
+        );
+      }
+    }
+  }
+
+  &__collectButton {
+    margin: toRem(5) auto 0;
+    width: toRem(105);
+    height: toRem(28);
+    background: url('/assets/commons/bonusRecharge/btn_inactive.png') center / 100% 100% no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    position: relative;
+
+    p {
+      font-family: 'PoetsenOne';
+      text-transform: uppercase;
+      font-size: toRem(12);
+      line-height: toRem(14);
+      text-shadow: 0 toRem(1.63) 0 rgba(130, 130, 130, 1);
+      margin-top: toRem(-2);
+    }
+
+    &--active {
+      @apply transition-all duration-150 active:scale-95;
+      background: url('/assets/commons/bonusRecharge/btn_active.png') no-repeat center/cover;
+      background-size: 100% 100%;
+    }
+  }
+
+  &[data-lang='in'] {
+    > span {
+      font-size: toRem(14);
+    }
+  }
+
+  .reload {
+    position: absolute;
+    right: toRem(18);
+    bottom: toRem(28);
+    width: toRem(28);
+    height: toRem(28);
+    z-index: 1000;
+
+    img {
+      width: toRem(50);
+      height: toRem(50);
+      object-fit: contain;
+    }
+
+    &.isWebView {
+      width: toRem(70);
+      height: toRem(70);
+      bottom: toRem(50);
+      right: toRem(20);
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}
+
+.termsAndCondition {
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 1000;
+  padding: toRem(15);
+  transform: translateY(-100%);
+
+  &__modalContainer {
+    background: #370065;
+    border: 3px solid #9a5eee;
+    border-radius: toRem(10);
+    height: 100%;
+    padding: toRem(10);
+    position: relative;
+  }
+
+  &--show {
+    z-index: 1001;
+    animation: BounceInTop 0.8s ease-in-out 0s 1 normal forwards;
+  }
+
+  &__modalContent {
+    font-family: 'Microsoft YaHei';
+    font-size: toRem(15);
+    overflow-y: auto;
+    height: 100%;
+
+    h1 {
+      margin-bottom: toRem(10);
+      text-align: center;
+      font-size: toRem(25);
+    }
+  }
+
+  &__modalCloseButton {
+    position: absolute;
+    top: toRem(-8);
+    right: toRem(-12);
+
+    img {
+      width: toRem(30);
+      height: toRem(30);
+      object-fit: contain;
+    }
+  }
+
+  &__linkContainer {
+    width: 55%;
+    height: 15vh;
+    margin-left: auto;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    gap: toRem(10);
+  }
+
+  &__link {
+    font-size: toRem(10);
+    font-weight: 600;
+    white-space: nowrap;
+    font-family: 'Inter';
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    color: #fff;
+    filter: drop-shadow(0rem 0.155769231rem 0.3557rem #000);
+  }
+
+  &__paragraph {
+    margin-bottom: toRem(20);
+    text-align: justify;
+  }
+}
+
+@keyframes BounceInTop {
+  0% {
+    animation-timing-function: ease-in;
+    opacity: 0;
+    transform: translateY(-250px);
+  }
+
+  38% {
+    animation-timing-function: ease-out;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  55% {
+    animation-timing-function: ease-in;
+    transform: translateY(-65px);
+  }
+
+  72% {
+    animation-timing-function: ease-out;
+    transform: translateY(0);
+  }
+
+  81% {
+    animation-timing-function: ease-in;
+    transform: translateY(-28px);
+  }
+
+  90% {
+    animation-timing-function: ease-out;
+    transform: translateY(0);
+  }
+
+  95% {
+    animation-timing-function: ease-in;
+    transform: translateY(-8px);
+  }
+
+  100% {
+    animation-timing-function: ease-out;
+    transform: translateY(0);
+  }
+}
+
+.isWebView {
+  background-size: 100% 100%;
+
+  > span {
+    height: 15vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #a2121c;
+    font-size: 6.7vh;
+    padding: 2.5vh 2.2vh;
+    filter: drop-shadow(toRem(0) 0.7vh #a2121c);
+    white-space: nowrap;
+
+    &::after {
+      top: 2.65vh;
+    }
+  }
+
+  &[data-lang='in'] {
+    > span {
+      font-size: 6.6vh;
+    }
+  }
+
+  .rechargeBonus__content {
+    position: relative;
+    height: 85vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 2vh;
+
+    > span {
+      white-space: nowrap;
+      margin-top: 2vh;
+      font-size: 3.2vh;
+    }
+
+    .rechargeBonus__countdown {
+      height: 8vh;
+      width: auto;
+      padding: 0 2vh;
+      gap: toRem(5);
+
+      .rechargeBonus__clock {
+        height: 6vh;
+        width: 6.5vh;
+      }
+
+      > span {
+        line-height: 1;
+        font-size: 4vh;
+      }
+    }
+
+    .rechargeBonus__frozenBonus {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-right: 2vw;
+      > span {
+        font-size: 4vh;
+      }
+
+      > div {
+        height: 15vh;
+        width: 100%;
+
+        > img {
+          top: 3vh;
+          left: 5vw;
+          width: 8vh;
+          height: 8vh;
+        }
+
+        > span {
+          font-size: toRem(50);
+        }
+      }
+    }
+
+    .rechargeBonus__validBet {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-top: 2vh;
+      padding-right: 2vw;
+      gap: 1vh;
+      > span {
+        font-size: 4vh;
+      }
+      > div {
+        width: 100%;
+        height: 5vh;
+        border: toRem(3) solid rgba(252, 250, 251, 1);
+
+        > span {
+          font-size: 3vh;
+        }
+      }
+    }
+
+    .rechargeBonus__collectButton {
+      margin: 2vh 0 0 0;
+      width: 23vw;
+      height: 10vh;
+
+      > p {
+        font-size: 5vh;
+        margin-top: -1.2vh;
+        text-shadow: 0 0.5vh 0 rgb(130, 130, 130);
+      }
+    }
+  }
+
+  .termsAndCondition {
+    padding: toRem(30);
+
+    &__modalContainer {
+      border: 3px solid #9a5eee;
+      padding: toRem(25);
+    }
+    &__modalContent {
+      font-size: 5vh;
+
+      h1 {
+        margin-bottom: toRem(20);
+        font-size: 6vh;
+      }
+    }
+    &__linkContainer {
+      height: 18vh;
+    }
+    &__link {
+      font-size: 4.3vh;
+    }
+
+    &__modalCloseButton {
+      top: toRem(-15);
+      right: toRem(-20);
+      img {
+        width: toRem(50);
+        height: toRem(50);
+      }
+    }
+  }
+}

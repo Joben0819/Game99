@@ -1,0 +1,130 @@
+.iconHolder {
+  position: relative;
+  width: toRem(65);
+  min-width: toRem(65);
+  height: toRem(44);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  cursor: pointer;
+  margin-bottom: toRem(4);
+  padding-top: toRem(4);
+
+  .notification {
+    height: toRem(9);
+    width: toRem(9);
+    background: #ff0000;
+    border-radius: 50%;
+    position: absolute;
+    top: toRem(7);
+    right: toRem(11.7);
+    z-index: 9;
+  }
+
+  .icon {
+    z-index: 1;
+    width: toRem(34);
+    height: toRem(34);
+    position: relative;
+    margin: toRem(0) 0 auto;
+
+    img {
+      object-fit: contain;
+    }
+  }
+
+  .stage {
+    position: absolute;
+    bottom: toRem(-2) !important;
+    width: toRem(43) !important;
+    height: toRem(24) !important;
+  }
+
+  span {
+    position: absolute;
+    bottom: toRem(2);
+    z-index: 2;
+    text-align: center;
+    font-family: 'Sansita One';
+    font-size: toRem(10);
+    line-height: toRem(10);
+    font-style: normal;
+    font-weight: 400;
+
+    &.title {
+      position: absolute;
+      z-index: 1;
+      bottom: 0;
+      font-size: toRem(10);
+      line-height: toRem(10);
+      width: 12ch;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      text-align: center;
+      font-family: 'Sansita One';
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+
+    @include GradientTextWithOutline(
+      $offset: toRem(1),
+      $color: #2058c1,
+      $num-steps: 25,
+      $textContent: attr(data-textafter),
+      $gradient: #ffffff
+    );
+  }
+
+  .bonusNoti {
+    z-index: 3;
+    position: absolute;
+    background: url('/assets/commons/header/icon_ribbon.png') center / 100% 100%;
+    width: toRem(37);
+    height: toRem(18);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    top: toRem(4);
+    right: 0;
+
+    .coinIcon {
+      position: absolute;
+      top: toRem(5.9);
+      left: toRem(3.2);
+      width: toRem(8);
+      height: toRem(8);
+      img {
+        position: unset;
+      }
+    }
+
+    > span {
+      position: relative;
+      left: toRem(11);
+      top: toRem(0);
+      color: #fff;
+      font-family: 'Sansita One';
+      font-size: toRem(8) !important;
+      font-weight: 400;
+      transform: rotate(-5.5deg);
+      text-shadow: unset;
+    }
+  }
+
+  &.isAuthen {
+    width: toRem(70);
+    min-width: toRem(70);
+    &[data-lang='en'] {
+      width: toRem(80);
+      min-width: toRem(80);
+    }
+  }
+
+  &[data-lang='cn'],
+  &[data-lang='en'] {
+    width: toRem(62);
+    min-width: toRem(62);
+  }
+}

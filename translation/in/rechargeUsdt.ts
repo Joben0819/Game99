@@ -1,0 +1,16 @@
+export const rechargeUsdt = {
+  paymentChannels: 'Saluran Pembayaran',
+  paymentAmount: 'Nominal Top-Up',
+  chainName: 'Nama Chain:',
+  rechargeAddress: 'Alamat Top-Up:',
+  transactionId: 'ID Transaksi:',
+  transactionIdPlaceholder: 'Silakan input ID Transaksi',
+  rechargeAmount: 'Jumlah Top-Up:',
+  rechargeAmountPlaceholder: 'Silakan input jumlah top-up USDT',
+  note: 'Nominal yang akan diterima:',
+  noteReceived: ' {totalRecharge} ({rechargeAmount} USDT*rate saat ini {exchangeRate})',
+  instructionHeader: 'Silakan baca instruksi top-up di bawah ini:',
+  instructionReminder: 'Reminder: Alamat top-up dapat berubah sewaktu-waktu, mohon untuk diperhatikan.',
+  button: 'Top-Up',
+  copyRechargeAddress: 'Berhasil menyalin alamat.',
+} as const;

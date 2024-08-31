@@ -1,0 +1,12 @@
+.btnWrapper {
+  @apply uppercase relative z-0 flex-all-center mx-auto;
+  font-size: toRem(15);
+  width: toRem(145);
+  height: toRem(40);
+  -webkit-text-stroke-width: toRem(0.8);
+  -webkit-text-stroke-color: #006f3b;
+
+  span {
+    @apply relative z-[1];
+  }
+}

@@ -1,0 +1,154 @@
+.modalWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+
+  .modalContainer {
+    position: absolute;
+  }
+
+  .bgContainer {
+    width: toRem(680);
+    height: toRem(300);
+
+    .closeBtn {
+      background-image: url('/assets/commons/partners/close-btn.png');
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: toRem(24);
+      width: toRem(25);
+      position: absolute;
+      right: 0.1rem;
+      top: 0.3rem;
+      z-index: 9;
+    }
+
+    .partnersWrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .partnersBg {
+        height: toRem(248);
+        width: toRem(680);
+        background-image: url('/assets/commons/partners/partners-bg.webp');
+        background-repeat: no-repeat;
+        background-size: contain;
+
+        .partnersDetailsWrapper {
+          @apply flex justify-center items-center flex-col absolute gap-[.08rem];
+          top: toRem(100);
+          left: toRem(45);
+          width: toRem(230);
+          height: toRem(95);
+
+          .partnersDescription {
+            @apply flex-all-center pl-[0.5rem];
+            height: toRem(200);
+
+            p {
+              font-family: Rammetto One;
+              font-size: toRem(14);
+              font-weight: 400;
+              line-height: toRem(20);
+              text-align: center;
+              color: #ffd611;
+              @include text-outline($offset: toRem(1), $color: #066cb3, $num-steps: 32);
+
+              &[data-lang='in'] {
+                line-height: toRem(15);
+                font-size: toRem(12);
+              }
+              &[data-lang='cn'] {
+                font-size: toRem(17);
+              }
+            }
+          }
+
+          .partnersDetails {
+            @apply flex justify-center items-center flex-col pl-[0.2rem] ml-[0.3rem];
+            width: toRem(240);
+            height: toRem(50);
+            background-color: #ffffff;
+            border: toRem(0.71) solid #02b6d4;
+            box-shadow: torem(0) toRem(4) toRem(4) toRem(0) #00000040;
+            border-radius: toRem(8);
+            white-space: nowrap;
+
+            hr {
+              border: none;
+              border-bottom: toRem(2) dotted #5fe8ff;
+              margin-left: toRem(-10);
+              width: 90%;
+            }
+
+            div {
+              @apply flex items-center;
+              padding: toRem(5);
+              width: 100%;
+
+              span:first-of-type {
+                @apply pr-[0.1rem];
+                font-family: Arial;
+                font-size: toRem(12);
+                font-weight: 400;
+                line-height: toRem(14.24);
+                text-align: left;
+                color: #1099f7;
+                white-space: none;
+
+                &[data-lang='cn'] {
+                  @apply mr-0;
+                }
+              }
+
+              span:last-of-type {
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: toRem(12);
+                font-weight: 700;
+                line-height: toRem(14.24);
+                color: #ff0000;
+                text-transform: capitalize;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .inviteNowBtn {
+      min-height: toRem(49);
+      min-width: toRem(159);
+      background-image: url('/assets/commons/partners/invite-now-btn.png');
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      position: relative;
+      top: toRem(-35);
+
+      p {
+        @apply relative left-[-0.01rem] w-full;
+        padding: 0 toRem(20);
+        white-space: nowrap;
+        font-family: Rammetto One;
+        font-size: toRem(15);
+        font-weight: 400;
+        line-height: toRem(35);
+        text-shadow: toRem(0) toRem(2) toRem(0) #e00000;
+        text-align: center;
+      }
+
+      &[data-lang='in'] {
+        p {
+          @apply left-[-0.03rem];
+        }
+      }
+    }
+  }
+}

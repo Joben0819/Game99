@@ -1,0 +1,212 @@
+import Image from 'next/image';
+
+import { FC, useEffect, useMemo, useState } from 'react';
+import PullToRefresh from 'react-simple-pull-to-refresh';
+
+import { setActiveModal } from '@/reducers/appData';
+import { withdrawRechargeDetail } from '@/services/api';
+import { TWithdrawRecord } from '@/services/response-type';
+import { personalT } from '@/translation/personalCenter';
+import { PAYMENTV2 } from '@/translation/recharge';
+import { withdrawV2 } from '@/translation/withdraw-v2';
+
+import { DATA_MODAL } from '@/components/Modals/ModalPortal/constants';
+import DateDropdown from '@/components/Pages/PersonalCenter/components/DateDropdown';
+import Loader from '@/components/Pages/WithdrawRecharge/withdraw/components/re-useable/loader';
+import NoData from '@/components/Pages/WithdrawRecharge/withdraw/components/re-useable/no-data';
+
+import { BACK_BTN, INSIDE_BOX, RECORDS_BG } from '@/public/assets/commons/withdraw_recharge';
+
+import { useAppDispatch, useAppSelector } from '@/store';
+
+import { dateFormatter, moneyFormat } from '@/utils/helpers';
+
+import styles from './index.module.scss';
+
+type RechargeRecordProps = {};
+
+const RechargeRecordV2: FC<RechargeRecordProps> = () => {
+  const dispatch = useAppDispatch();
+  const { language } = useAppSelector((state) => state.gameData);
+  const [depositRecordData, setDepositRecordData] = useState<TWithdrawRecord[]>([]);
+  const [depositRecordDataFixed, setDepositRecordDataFixed] = useState<TWithdrawRecord[]>([]);
+  const [dateFilter, setDateFilter] = useState(personalT[language]?.today);
+  const [statusFilter, setStatusFilter] = useState(withdrawV2[language]?.allStatus);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+
+  const dateItems = useMemo(
+    () => [
+      { label: personalT[language]?.today, filter: 'today', key: 0 },
+      { label: personalT[language]?.yesterday, filter: 'yesterday', key: 1 },
+      { label: personalT[language]?.oneMonth, filter: 'month', key: 2 },
+    ],
+    [language],
+  );
+
+  const statusItems = useMemo(
+    () => [
+      { label: withdrawV2[language]?.allStatus, filter: 'all', key: 0 },
+      { label: withdrawV2[language]?.successStatus, filter: '1', key: 1 },
+      { label: withdrawV2[language]?.failedStatus, filter: '0', key: 2 },
+    ],
+    [language],
+  );
+
+  const setFilterDate = (filter: string) => {
+    setDateFilter(filter);
+  };
+
+  const setFilterStatus = (filter: string) => {
+    setStatusFilter(filter);
+  };
+
+  const getRechargeDetails = async () => {
+    withdrawRechargeDetail({ type: 'rechargeOnline' }).then((res) => {
+      if (res?.data?.code == 200) {
+        setDepositRecordData(
+          res?.data?.data.filter((item: TWithdrawRecord) => item.requestTime.startsWith(dateFormatter(new Date()))),
+        );
+        setDepositRecordDataFixed(res?.data?.data);
+      }
+      setIsLoading(false);
+    });
+  };
+
+  const TableBody = ({ withdrawData }: { withdrawData: TWithdrawRecord[] }) => (
+    <tbody>
+      {withdrawData?.map((item, index) => (
+        <tr key={index}>
+          <td>{item.requestTime}</td>
+          <td>{item.orderNo}</td>
+          <td>{item.money ? `${moneyFormat(item.money)} IDR` : '0'}</td>
+          <td style={{ color: item.color ?? '#fff' }}>
+            <span className={styles.remarks}>{item.remark}</span>
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  );
+
+  useEffect(() => {
+    const today = new Date();
+    const tempRecords = [...depositRecordDataFixed];
+
+    const isStatusAll = () => {
+      if (statusFilter === 'all') return true;
+      return false;
+    };
+
+    if (dateFilter === 'today') {
+      if (!isStatusAll()) {
+        setDepositRecordData(
+          tempRecords.filter(
+            (item) => item.requestTime.startsWith(dateFormatter(new Date())) && item.status === +statusFilter,
+          ),
+        );
+      } else {
+        setDepositRecordData(tempRecords.filter((item) => item.requestTime.startsWith(dateFormatter(new Date()))));
+      }
+    }
+
+    if (dateFilter === 'yesterday') {
+      const yesterday = new Date();
+      yesterday.setDate(today.getDate() - 1);
+
+      if (!isStatusAll()) {
+        setDepositRecordData(
+          tempRecords.filter(
+            (item) => item.requestTime.startsWith(dateFormatter(yesterday)) && item.status === +statusFilter,
+          ),
+        );
+      } else {
+        setDepositRecordData(tempRecords.filter((item) => item.requestTime.startsWith(dateFormatter(yesterday))));
+      }
+    }
+
+    if (dateFilter === 'month') {
+      const oneMonthAgo = new Date();
+      oneMonthAgo.setMonth(today.getMonth() - 2);
+
+      setDepositRecordData(
+        tempRecords.filter((item) => {
+          const requestDate = new Date(item.requestTime);
+
+          if (!isStatusAll()) {
+            return requestDate >= oneMonthAgo && requestDate <= today && item.status === +statusFilter;
+          } else {
+            return requestDate >= oneMonthAgo && requestDate <= today;
+          }
+        }),
+      );
+    }
+  }, [dateFilter, statusFilter, depositRecordDataFixed]);
+
+  useEffect(() => {
+    setFilterDate('today');
+    setStatusFilter('all');
+    getRechargeDetails();
+  }, []);
+
+  return (
+    <div className={styles.recordWrapper}>
+      <div className={styles.container}>
+        <Image src={RECORDS_BG} alt="" sizes="100%" fill />
+
+        <div className={styles.contents}>
+          <div className={styles.header}>
+            <h2> {PAYMENTV2[language].onlineRecharge}</h2>
+            <div className={styles.filters}>
+              <div className={styles.transaction}>
+                <DateDropdown
+                  activeTab={1}
+                  label={`${personalT[language]?.status}:`}
+                  items={statusItems}
+                  handleSelectFilter={setFilterStatus}
+                />
+              </div>
+              <div className={styles.transaction}>
+                <DateDropdown
+                  activeTab={1}
+                  label={`${personalT[language]?.transactionTime}:`}
+                  items={dateItems}
+                  handleSelectFilter={setFilterDate}
+                />
+              </div>
+              <div className={`${styles.backBtn} btn`} onClick={() => dispatch(setActiveModal(DATA_MODAL.CLOSE))}>
+                <Image src={BACK_BTN} alt="back-btn" fill sizes="100%" />
+              </div>
+            </div>
+          </div>
+
+          <div className={styles.tableWrapper}>
+            {isLoading && <Loader />}
+            <Image src={INSIDE_BOX} alt="" sizes="100%" fill />
+
+            <div className={styles.tableOverFlow}>
+              <PullToRefresh onRefresh={getRechargeDetails}>
+                <table className={styles.table}>
+                  <thead>
+                    <tr>
+                      <th>{PAYMENTV2[language].columnDate}</th>
+                      <th>{PAYMENTV2[language].columnTransNumber}</th>
+                      <th>{PAYMENTV2[language].columnTransAmount}</th>
+                      <th>{PAYMENTV2[language].columnTransStatus}</th>
+                    </tr>
+                  </thead>
+                  <TableBody withdrawData={depositRecordData} />
+                </table>
+              </PullToRefresh>
+              {!!!depositRecordData?.length && (
+                <div className={styles.noDataWrapper}>
+                  <NoData />
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default RechargeRecordV2;

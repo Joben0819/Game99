@@ -1,0 +1,41 @@
+.container {
+  width: toRem(295);
+  height: toRem(204);
+  border: toRem(1) solid rgba(255, 255, 255, 0.3);
+  border-radius: toRem(10);
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(toRem(6));
+  display: grid;
+  place-items: center;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 60%;
+
+    div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: toRem(10);
+
+      p {
+        font-family: PoppinsLight;
+        font-size: toRem(14);
+        line-height: toRem(21);
+      }
+    }
+
+    img {
+      width: toRem(45);
+      height: auto;
+      cursor: pointer;
+
+      &.spin {
+        @apply animate-spin;
+      }
+    }
+  }
+}

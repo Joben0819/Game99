@@ -1,0 +1,550 @@
+//Response Types
+
+export type sidebarItem = {
+  id: number;
+  name: string;
+  icon: string;
+  type: number;
+};
+
+export type TUserInfo = {
+  token: string;
+  id: string;
+  username: string;
+  nickName: string;
+  vip: number;
+  headImg: string;
+  headImgId: string;
+  accountNow: number;
+  accountCharge: number;
+  codeNow: number;
+  codeWill: number;
+  codeTotal: number;
+  nextLevelIntegral: number;
+  status: number;
+  inviterCode: string;
+  registerType: number;
+  phone: string;
+  isGoogleQrCodeActive: boolean;
+  hasPassword: boolean;
+  hasUsername: boolean;
+  dob: string;
+  rechargeCount: number;
+  testMoneyStatus: number;
+  bonusMoney: number;
+  interestDepositedMoney: number;
+  email: string;
+  hasWithdrawPass: boolean;
+  isNewUser: boolean;
+  firstRechargeShow: boolean;
+  hasRescueBonus: boolean;
+  updateVip: boolean;
+};
+
+export type TGameTypeList = {
+  cardIcon: string;
+  icon: string;
+  id: number;
+  name: string;
+}[];
+
+export type TGamePlatform = {
+  cardIcon: string;
+  icon: string;
+  id: number;
+  name: string;
+};
+
+export type TGameItem = {
+  icon: string;
+  id: number;
+  isFavorite: boolean;
+  name: string;
+  gameCategory?: string;
+  kindId?: number;
+  largeIcon?: boolean;
+  lotteryId?: number;
+  maintain?: boolean;
+  platformId?: number;
+  recommend?: boolean;
+};
+
+export type TCashbackItem = {
+  level: number;
+  platformBet: number;
+  platformIcon: string;
+  platformId: number;
+  platformName: string;
+  rebate: number;
+  rebateRate: number;
+  rebateRateNext: number;
+  typeId: number;
+};
+
+export type TGameCashBackList = {
+  rspGameCashBackTotalList: TCashbackItem[];
+  totalBet: number;
+  totalRebate: number;
+};
+
+export type TCashbackDetailsItem = {
+  current: number;
+  level: number;
+  platformBet: number;
+  platformIcon: string;
+  platformId: number;
+  platformName: string;
+  rebate: number;
+  rebateRate: number;
+  rebateRateNext: number;
+  typeIcon: string;
+  typeId: number;
+  typeName: string;
+};
+
+export type TCashbackHistoryItem = {
+  collectionTime: string;
+  gamePlatformId: number;
+  gameTypeId: number;
+  id: number;
+  memberId: string;
+  rebate: number;
+  rebatePercentage: number;
+  validBets: number;
+};
+
+export type TSystemMusic = {
+  artist: string;
+  createTime: string;
+  effect: number;
+  id: string;
+  status: string;
+  title: string;
+  updateTime: string;
+  url: string;
+  downloadCount: number;
+};
+
+export type TMyMusic = {
+  artist: string;
+  id: string;
+  musicId: string;
+  status: string;
+  title: string;
+  url: string;
+  downloadCount: number;
+};
+
+export type languageItems = {
+  name: string;
+  text: string;
+  code: string;
+  is_default: boolean;
+}[];
+
+export type TVipGiftInfoItem = {
+  level: number;
+  levelBonus: number;
+  weekBonus: number;
+  monthBonus: number;
+  bcode: number;
+  rescueBonusRate: number;
+};
+
+export type TVipGiftInfo = {
+  vipSetList: TVipGiftInfoItem[];
+  levelBonusStatus: number;
+  weekBonusStatus: number;
+  monthBonusStatus: number;
+};
+
+export type TPlatformBalanceItem = {
+  money: number;
+  platformId: number;
+  platformName: string;
+  icon: string;
+};
+
+// export type Language = {
+//   name: string;
+//   text?: number;
+//   code: string;
+//   is_default: boolean
+// };
+
+export type InterestSummary = {
+  currentDeposit: number;
+  currentIncome: number;
+  rate: number;
+  totalIncome: number;
+};
+
+export type InterestRules = {
+  rules: TrustedHTML | string;
+  calculation: string;
+};
+
+export type IncomeDetailsList = {
+  amount: number;
+  time: string;
+  type: string;
+};
+
+export type InterestStatusList = {
+  time: string;
+  type: string;
+  amount: number;
+};
+
+export type TGetDirectDataItem = {
+  inviterId: string;
+  memberId: string;
+  level: number;
+  chargeCount: number;
+  registerTime: string;
+  lastLoginTime: string;
+  loginCount: number;
+  loginNum: number;
+  status: number;
+  userName: string;
+  isLoggedIn: boolean;
+};
+
+export type PerformanceDataList = {
+  commission: number;
+  joinTime: string;
+  memberId: string;
+  username: string;
+  performance: number;
+};
+
+export type AllDataList = {
+  joinTime: string;
+  memberId: string;
+  username: string;
+  deposit?: number;
+  validBet: number;
+  profitLoss: number;
+};
+
+export type TGetDirectFinanceItem = {
+  account: string;
+  username: string;
+  statisticalDate: string;
+  depositCount?: number;
+  withdrawalCount: number;
+  billDifference: number;
+};
+
+export type TMessageItem = {
+  content: string;
+  createTime: string;
+  id: number;
+  status: number;
+  title: string;
+  type: string;
+};
+
+export type DropDownItems = {
+  label: string;
+  filter: string;
+  key: string;
+};
+
+export type TGetDirectBet = {
+  account: string;
+  username: string;
+  joinTime: string;
+  loss?: number;
+  validBets: string | number;
+  wins?: number;
+  winLoss?: string;
+};
+
+export type TReceivedVipHistoryItem = {
+  time: string;
+  id: number;
+  userId: string;
+  vipType: string;
+  reward: number;
+};
+
+export type TCommissionItem = {
+  commissionTime: string;
+  gameTypeId: string;
+  gameTypeName: string;
+  gameTypeIcon: string;
+  performance: null | string;
+  numberOfPlayers: number;
+  commission: number;
+};
+
+export type TMissionItem = {
+  complete: boolean;
+  completionCount: number;
+  description: string;
+  icon: string;
+  id: string;
+  instructions: string;
+  memberId: string;
+  missionTypeId: number;
+  progressCounter: number;
+  rewards: number;
+  status: string;
+  cantClaimReason: string;
+};
+
+export type TMissionHistoryItem = {
+  endDatetime: string;
+  icon: string;
+  id: string;
+  missionRepeatType: string;
+  missionType: string;
+  reward: number;
+};
+
+export type TEventHistoryItem = {
+  title: string;
+  createTime: string;
+  amount: number;
+};
+
+export type TLojaList = {
+  id: number;
+  amount: number;
+  bonus: number;
+  type: number;
+  image: string;
+};
+
+export type TWithdrawLimit = {
+  id: number;
+  vipLevel: number;
+  dailyWithdrawLimitTimes: number;
+  withdrawLimitAmount: number;
+  exceedWithdrawalFee: number;
+  status: number;
+};
+
+export type TEnergyItem = {
+  id: string;
+  memberId: string;
+  progressCounter: number;
+  completionCount: number;
+  progressPercentage: number;
+  groupProgressPercentage: number;
+  missionTypeId: number;
+  complete: true;
+  status: string;
+  icon: string;
+  description: string;
+  cantClaimReason: string;
+  rewards: number;
+  rewardActivity: number;
+};
+
+export type TRepeatMissionItem = {
+  id: string;
+  memberId: string;
+  progressCounter: number;
+  completionCount: number;
+  progressPercentage: number;
+  groupProgressPercentage: number;
+  missionTypeId: number;
+  complete: true;
+  status: string;
+  icon: string;
+  description: string;
+  cantClaimReason: string;
+  rewards: number;
+  rewardActivity: number;
+};
+
+export type TGetAccountNow = {
+  balance: number;
+  interestDepositedMoney: number;
+  bonusMoney: number;
+};
+
+export type TGetRescueBonusItem = {
+  vip: number;
+  loss: number;
+  rescueBonusRate: number;
+  rescueBonus: number;
+  date: string;
+  collected: number;
+};
+
+export type TCountryCodes = {
+  country: string;
+  countryCode: string;
+  icon: string;
+};
+
+export type TAnnouncements = {
+  id: number;
+  title: string;
+  content: string;
+  homePrompt: number;
+  displayTime: string;
+};
+
+export type TPayTypeList = {
+  createBy?: string;
+  createTime?: string;
+  deviceType?: string;
+  effect?: boolean;
+  iconUrl?: string;
+  id?: number;
+  name?: string;
+  openLevelMax?: number;
+  openLevelMin?: number;
+  recommend?: boolean;
+  sort?: number;
+  tex1?: string;
+  tex2?: string;
+  tex3?: string;
+  tex4?: string;
+  tex5?: string;
+  type?: number;
+  updateBy?: string;
+  updateTime?: string;
+  rate?: number;
+};
+
+export type TChannelList = {
+  id: number;
+  name: string;
+  rechargeMin: number;
+  rechargeMax: number;
+  quickAmount: string;
+  openLevelMin: number;
+  openLevelMax: number;
+  remark: string;
+};
+
+export type TBankList = {
+  bankIcon: string;
+  bankName: string;
+  id: number;
+  sort?: number | string;
+  type: string;
+};
+
+export type TCodeFlow = {
+  charge: number;
+  createTime: string;
+  cur: number;
+  des: string;
+  income: number;
+  status: number;
+};
+
+export type TWithdrawRecord = {
+  color: string | null;
+  fee: number;
+  money: number;
+  name: string | null;
+  orderNo: string;
+  remark: string;
+  requestTime: string;
+  status: number;
+};
+
+export type TEventBanner = {
+  id: number;
+  eventBanner: string;
+  typeId: number;
+};
+
+export type TconfigBonus = {
+  minAmount: number;
+  bonus: number;
+};
+
+export type TBonusByType = {
+  money: number;
+  description: string;
+  destination: string;
+  multiplier: number;
+};
+
+export type TGameCategoryList = {
+  des: string;
+  name: string;
+  platforms: any;
+};
+
+export type TTradeTypes = {
+  des: string;
+  name: string | null;
+  type: number | null;
+};
+
+export type TAvatar = Pick<TGameItem, 'id' | 'icon'> & {
+  title: string;
+};
+
+export type TRegistrationData = {
+  id: string;
+  inviterCode: string;
+  todayRegistered: number;
+  totalRegistered: number;
+  referralBonusToday: number;
+  referralBonusTotal: number;
+  baseUrl: string;
+};
+
+export type TReferralData = {
+  inviterId: string;
+  level: number;
+  bonus: number;
+  time: string;
+  bet: number;
+};
+
+export type TRegisteredData = {
+  headImg: string;
+  recharged: boolean;
+  inviterId: string;
+  registerTime: string;
+  vip: number;
+};
+
+export type TInviterRules = {
+  headRule: string;
+  tier1: string;
+  tier2: string;
+  tier3: string;
+  tierN: string;
+};
+
+export type announcementTypes = {
+  id: number;
+  title: string;
+  image: string | null;
+  content: string | null;
+  jumpType: string | null;
+};
+
+export type referralInfoTypes = {
+  invites: number | null;
+  commissionReceived: number | null;
+};
+
+export type TradeTypesData = {
+  code: number;
+  data: TTradeTypes[];
+};
+
+export interface CheckUserRedPacketResponseData {
+  code: number;
+  data: boolean;
+  hasNext: boolean;
+  msg: string;
+}
+
+export type TNewLoginMethodResponse = {
+  dataList: { money: number; description: string; type: string }[];
+  displayIcon: { money: number; description: string; type: string };
+};

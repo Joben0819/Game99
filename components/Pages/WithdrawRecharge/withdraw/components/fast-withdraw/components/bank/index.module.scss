@@ -1,0 +1,36 @@
+.bank {
+  @apply w-full  flex items-center px-[0.4rem] justify-between;
+  font-size: toRem(12);
+  height: toRem(40);
+  border-radius: toRem(5);
+  margin: toRem(5) toRem(0);
+  background-color: #4693ec;
+}
+
+.titleIcon {
+  @apply flex  items-center;
+  gap: toRem(10);
+
+  .icon {
+    @apply relative;
+    width: toRem(30);
+    height: toRem(30);
+    background-color: #fff;
+    border-radius: 100%;
+
+    img {
+      border-radius: 100%;
+      object-fit: contain;
+    }
+  }
+
+  span {
+    letter-spacing: toRem(3);
+  }
+}
+
+.status {
+  @apply relative;
+  width: toRem(23);
+  height: toRem(23);
+}

@@ -1,0 +1,49 @@
+.inputContainer {
+  width: 100%;
+  display: grid;
+  align-items: center;
+  position: relative;
+  font-size: toRem(12);
+
+  &[data-withlabel='true'] {
+    grid-template-columns: toRem(120) 1fr;
+  }
+
+  .inputLabel {
+    color: rgba(18, 114, 226, 1);
+  }
+
+  input {
+    width: 100%;
+    color: black;
+    border-radius: toRem(5);
+    padding: toRem(10);
+    background: white;
+    border: toRem(1) solid white;
+
+    ::placeholder {
+      color: rgba(143, 141, 141, 1);
+    }
+
+    &.invalid {
+      border: toRem(1) solid red;
+    }
+  }
+
+  .iconContainer {
+    position: absolute;
+    top: 50%;
+    right: toRem(10);
+    transform: translateY(-50%);
+    width: toRem(20);
+    height: toRem(20);
+
+    &[data-icon='warning'] {
+      pointer-events: none;
+    }
+
+    &:not([data-icon='warning']) {
+      cursor: pointer;
+    }
+  }
+}

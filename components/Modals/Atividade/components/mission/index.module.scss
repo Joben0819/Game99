@@ -1,0 +1,19 @@
+.screen {
+  @apply top-0 h-[101%] rounded-[0.15rem]   z-10 overflow-hidden absolute w-full transition-all duration-300;
+  top: toRem(44);
+  height: 76.6%;
+  width: 91.1%;
+  right: toRem(29);
+  animation: fadeIn 0.5s ease-in-out forwards;
+  padding-top: toRem(2);
+}
+
+.sideBar {
+  @apply w-[21%] bg-opacity-60;
+}
+
+@media only screen and (max-width: 750px) {
+  .modal {
+    transform: scale(0.9);
+  }
+}

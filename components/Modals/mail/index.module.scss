@@ -1,0 +1,320 @@
+.modalWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+
+  .modalContainer {
+    position: absolute;
+    @include fadeIn;
+  }
+
+  .bgContainer {
+    height: toRem(324);
+    width: toRem(642);
+
+    .closeBtn {
+      position: absolute;
+      top: toRem(15);
+      right: toRem(-40);
+      background-image: url('/assets/commons/mail/close.png');
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: toRem(27);
+      width: toRem(27);
+    }
+
+    .mailBg {
+      background-image: url('/assets/commons/mail/mail-bg.png');
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: toRem(326);
+      width: toRem(642);
+    }
+  }
+
+  .contents {
+    position: absolute;
+    top: 0;
+    left: toRem(55);
+    height: toRem(324);
+    width: fit-content;
+
+    .topContainer {
+      position: relative;
+      top: 0.5rem;
+      width: toRem(547.52);
+      height: toRem(30);
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+
+      .topRight {
+        font-size: toRem(12);
+        display: flex;
+        gap: 0.2rem;
+
+        .radioSelect {
+          color: #94474f;
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+          gap: 0.1rem;
+
+          .select {
+            background-repeat: no-repeat;
+            background-size: contain;
+            width: toRem(9.17);
+            height: toRem(9.17);
+          }
+        }
+
+        .deleteBtn {
+          display: flex;
+          align-items: baseline;
+          gap: 0.1rem;
+          cursor: pointer;
+          color: #fc0005;
+
+          .delete {
+            background-image: url('/assets/commons/mail/trash.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: toRem(8);
+            height: toRem(10);
+          }
+        }
+
+        .isSelectedMsg {
+          color: #A4A4A4;
+          
+          .delete {
+            background-image: url('/assets/commons/mail/trash-gray.png');
+            pointer-events: none;
+          }
+        }
+      }
+    }
+
+    .pullContainer {
+      position: absolute;
+      top: 1.2rem;
+      overflow: hidden;
+
+      .messageListContainer {
+        cursor: pointer;
+        min-height: toRem(223.39);
+        max-height: toRem(223.39);
+        width: toRem(547.52);
+        font-size: toRem(12);
+        position: relative;
+        top: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.1rem;
+        overflow-y: scroll;
+        overflow: scroll;
+
+        .message {
+          display: flex;
+          background: #ffffff;
+          border-radius: toRem(5);
+          height: toRem(40.98);
+          width: 100%;
+          padding: 0.2rem;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          .messageLeft {
+            display: flex;
+            align-items: center;
+            gap: 0.2rem;
+            width: 60%;
+
+            .mailStatusIcon {
+              background-repeat: no-repeat;
+              background-size: cover;
+              background-position: center;
+              width: toRem(24);
+              height: toRem(20);
+
+              &::before {
+                content: '';
+                height: toRem(6.83);
+                width: toRem(6.83);
+                background: #ff0000;
+                position: relative;
+                left: toRem(18);
+                top: toRem(2);
+                border-radius: toRem(5);
+              }
+            }
+
+            .visible::before {
+              display: block;
+            }
+
+            .title {
+              color: #94474f;
+              max-width: 20ch;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              overflow: hidden;
+            }
+          }
+
+          .messageRight {
+            display: flex;
+            align-items: center;
+            gap: 0.1rem;
+
+            .msgClockIcon {
+              background-image: url('/assets/commons/mail/mail-clock.svg');
+              background-repeat: no-repeat;
+              background-size: cover;
+              background-position: center;
+              width: 0.3rem;
+              height: 0.3rem;
+            }
+
+            .time {
+              color: #a5a5a5;
+              font-size: toRem(12);
+            }
+
+            .checkbox {
+              margin-left: toRem(30);
+              background-repeat: no-repeat;
+              background-size: cover;
+              background-position: center;
+              width: toRem(21.22);
+              height: toRem(20);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.emptyMail {
+  height: toRem(200);
+
+  .emptyContent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: toRem(223.39);
+
+    .emailBg {
+      background-image: url('/assets/commons/mail/noData.png');
+      background-size: 100%;
+      background-repeat: no-repeat;
+      height: toRem(113.63);
+      width: toRem(148);
+    }
+
+    span {
+      color: #8f8d8d;
+      text-align: right;
+      font-family: 'Poppins';
+      font-size: toRem(12);
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      margin: toRem(12) 0 0;
+    }
+  }
+}
+
+.pullContainer,
+.emptyMail {
+  height: toRem(223.39);
+  position: relative;
+  top: 0.5rem;
+
+  :global {
+    .lds-ellipsis div {
+      height: toRem(10.4);
+      width: toRem(10.4);
+      background-color: #c5cacd;
+    }
+    .ptr {
+      .ptr__pull-down {
+        .ptr__pull-down--pull-more {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+.mailOpenBg {
+  background-image: url('/assets/commons/mail/mailOpenBg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: toRem(324);
+  width: toRem(642);
+}
+
+.mailOpenContents {
+  position: absolute;
+  top: 0;
+  left: toRem(55);
+  height: toRem(285);
+  width: toRem(561);
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Poppins';
+  align-items: center;
+
+  .mailOpenTitle {
+    color: #cb3538;
+    font-size: toRem(16);
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: toRem(12);
+  }
+
+  .mailOpenContent {
+    color: #8f8d8d;
+    font-size: toRem(12);
+    width: toRem(498.29);
+    word-break: break-word;
+    max-height: 23ch;
+    overflow: scroll;
+  }
+
+  .btnSubmit {
+    background-image: url('/assets/commons/mail/message-btn.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: toRem(45);
+    width: toRem(135);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: auto;
+
+    span {
+      position: relative;
+      font-size: toRem(12);
+      font-weight: bolder;
+      line-height: toRem(14.52);
+      background: linear-gradient(180deg, #ffffff 0%, #ffdf94 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 700;
+      filter: drop-shadow(0 toRem(1) toRem(1) #cd591c);
+    }
+  }
+}

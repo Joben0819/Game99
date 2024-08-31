@@ -1,0 +1,31 @@
+.modalWrapper {
+  @apply size-full absolute top-0 left-0 flex justify-center;
+  z-index: 99;
+  pointer-events: none;
+  transition: 0.3s 0.3s;
+  backdrop-filter: blur(0);
+
+  &--show {
+    background: #000000cc;
+    transition: 0.3s;
+    pointer-events: auto;
+  }
+
+  &--blurred {
+    backdrop-filter: blur(toRem(10));
+  }
+
+  .modal {
+    position: absolute;
+    @apply size-full;
+  }
+  .backDrop {
+    @apply size-full;
+  }
+}
+
+.loaderWrapper {
+  @apply w-full absolute top-0 left-0;
+  height: 100vh;
+  height: 100dvh;
+}

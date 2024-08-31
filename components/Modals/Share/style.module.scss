@@ -1,0 +1,59 @@
+.wrapper {
+  @apply fixed top-0 left-0 size-full flex justify-center items-center z-20 text-black;
+  background-color: rgba(0.5, 0.5, 0.5, 0.5);
+  .mainWrapper {
+    background: url('/assets/commons/invite/qr/share-bg.png') center / contain no-repeat;
+    width: toRem(560);
+    height: toRem(300);
+    display: grid;
+    grid-template-columns: 15% 70% 15%;
+    grid-template-rows: 15% 70% 15%;
+
+    .shareContainer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      grid-column: 2/3;
+      grid-row: 2/3;
+      padding: toRem(20);
+    }
+
+    .inputUrl {
+      position: relative;
+      display: flex;
+      align-items: stretch;
+      justify-content: space-between;
+      width: 100%;
+
+      input {
+        width: 92%;
+        text-align: center;
+        border: toRem(1.5) solid #10a7ff;
+        background: transparent;
+        color: #10a7ff;
+        font-size: toRem(10);
+        border-radius: toRem(5);
+        padding: toRem(5);
+      }
+      .copy {
+        width: toRem(25);
+        height: toRem(25);
+        background-image: url('/assets/commons/invite/qr/copyIcon.svg');
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+      }
+    }
+    .socialsContainer {
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: toRem(10);
+    }
+    .exitModal {
+      color: #fff;
+    }
+  }
+}

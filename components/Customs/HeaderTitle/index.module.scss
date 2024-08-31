@@ -1,0 +1,24 @@
+.header {
+  @apply relative;
+  z-index: 1;
+  font-family: 'Sansita One';
+  font-size: toRem(20);
+  color: #befbfe;
+  filter: drop-shadow(0 toRem(4) toRem(0) #005ca8);
+
+  @include GradientTextWithOutline(
+    $offset: toRem(2),
+    $color: #1099f7,
+    $num-steps: 25,
+    $textContent: attr(data-textafter),
+    $gradient: linear-gradient(180deg, #ffffff 0%, #befbfe 100%)
+  );
+
+  &[data-size] {
+    font-size: calc((var(--fSize) / 52) * 1rem);
+  }
+
+  &[data-lang='cn'] {
+    font-weight: bold;
+  }
+}

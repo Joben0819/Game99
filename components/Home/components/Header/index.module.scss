@@ -1,0 +1,323 @@
+.headerWrapper {
+  position: relative;
+  width: 100%;
+  height: toRem(85);
+  padding-left: toRem(245);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  .buttonIconGroup {
+    position: relative;
+    width: 100%;
+    display: flex;
+    padding-right: toRem(10);
+    justify-content: space-between;
+
+    .left {
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      width: 50%;
+      min-width: 45%;
+      max-width: 50%;
+      padding-right: toRem(5);
+    }
+
+    .slide {
+      width: auto !important;
+
+      &:not(:first-of-type) {
+        margin-left: toRem(5);
+      }
+    }
+
+    .rightOverflow,
+    .rightSwiper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: toRem(0);
+      max-width: 50%;
+      overflow-x: auto;
+      padding: 0 0 0 0.1rem;
+
+      .iconHolder {
+        position: relative;
+        width: toRem(65);
+        min-width: toRem(65);
+        height: 96%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        cursor: pointer;
+
+        .notification {
+          height: toRem(9);
+          width: toRem(9);
+          background: #ff0000;
+          border-radius: 50%;
+          position: absolute;
+          top: toRem(7);
+          right: toRem(11.7);
+          z-index: 9;
+        }
+
+        .icon {
+          z-index: 1;
+          width: toRem(45);
+          height: toRem(45);
+          position: relative;
+          top: toRem(0);
+          img {
+            object-fit: contain;
+          }
+        }
+
+        span {
+          position: absolute;
+          bottom: toRem(2);
+          z-index: 2;
+          text-align: center;
+          font-family: 'Sansita One';
+          font-size: toRem(10);
+          line-height: toRem(10);
+          font-style: normal;
+          font-weight: 400;
+
+          @include GradientTextWithOutline(
+            $offset: toRem(1),
+            $color: #2058c1,
+            $num-steps: 25,
+            $textContent: attr(data-textafter),
+            $gradient: #ffffff
+          );
+        }
+
+        .bonusNoti {
+          z-index: 3;
+          position: absolute;
+          background: url('/assets/commons/header/icon_ribbon.png') center / 100% 100%;
+          width: toRem(37);
+          height: toRem(18);
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          top: toRem(4);
+          right: toRem(-1);
+
+          .coinIcon {
+            position: absolute;
+            top: toRem(5.9);
+            left: toRem(3.2);
+            width: toRem(8);
+            height: toRem(8);
+            img {
+              position: unset;
+            }
+          }
+
+          > span {
+            position: relative;
+            left: toRem(11);
+            top: toRem(0);
+            color: #fff;
+            font-family: 'Sansita One';
+            font-size: toRem(8) !important;
+            font-weight: 400;
+            transform: rotate(-5.5deg);
+            text-shadow: unset;
+          }
+        }
+
+        &[data-lang='cn'],
+        &[data-lang='en'] {
+          width: toRem(62);
+          min-width: toRem(62);
+        }
+      }
+
+      .isAuthen {
+        width: toRem(70);
+        min-width: toRem(70);
+        &[data-lang='en'] {
+          width: toRem(80);
+          min-width: toRem(80);
+        }
+      }
+
+      .announcementBtnIcon {
+        position: relative;
+        height: 92%;
+        min-width: toRem(65);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .icon {
+          position: relative !important;
+          z-index: 1;
+          top: toRem(-1);
+          width: toRem(30);
+          height: toRem(30);
+
+          > img {
+            object-fit: contain;
+          }
+        }
+
+        .stage {
+          position: absolute;
+          bottom: 0 !important;
+          width: toRem(44) !important;
+          height: toRem(22) !important;
+        }
+
+        .title {
+          position: absolute;
+          z-index: 1;
+          bottom: 0;
+          font-size: toRem(10);
+          line-height: 0.24rem;
+          width: 12ch;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          text-align: center;
+          font-family: 'Sansita One';
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+
+          @include GradientTextWithOutline(
+            $offset: toRem(1),
+            $color: #2058c1,
+            $num-steps: 25,
+            $textContent: attr(data-textafter),
+            $gradient: #ffffff
+          );
+        }
+      }
+    }
+
+    .rightSwiper {
+      overflow-x: unset;
+      margin-left: unset;
+      margin-right: unset;
+    }
+
+    // .right {
+    //   display: flex;
+    //   align-items: center;
+    //   justify-content: flex-end;
+    //   gap: toRem(5);
+    //   width: 100%;
+
+    //   .iconHolder {
+    //     position: relative;
+    //     height: toRem(40);
+    //     min-width: toRem(50);
+    //     display: flex;
+    //     flex-direction: column;
+    //     align-items: center;
+    //     justify-content: flex-end;
+    //     cursor: pointer;
+
+    //     @include max450 {
+    //       flex-basis: 19%;
+    //     }
+
+    //     .notification {
+    //       height: toRem(9);
+    //       width: toRem(9);
+    //       background: #ff0000;
+    //       border-radius: 50%;
+    //       position: absolute;
+    //       top: toRem(6);
+    //       right: toRem(7);
+    //       z-index: 9;
+    //     }
+
+    //     .icon {
+    //       z-index: 2;
+    //       position: relative;
+    //       width: toRem(33);
+    //       height: toRem(24);
+    //       img {
+    //         object-fit: contain;
+    //       }
+    //       s {
+    //         position: absolute;
+    //         z-index: 3;
+    //         top: toRem(-3);
+    //         right: toRem(-1);
+    //         height: toRem(10);
+    //         width: toRem(10);
+    //         border-radius: toRem(10);
+    //         background: #ff0000;
+    //       }
+    //     }
+
+    //     span {
+    //       position: relative;
+    //       z-index: 2;
+    //       text-align: center;
+    //       font-family: 'Radio Canada';
+    //       font-size: toRem(12);
+    //       font-style: normal;
+    //       font-weight: 400;
+    //       line-height: toRem(13);
+    //       color: #fff;
+    //       white-space: nowrap;
+    //     }
+
+    //     &:nth-child(3) {
+    //       span {
+    //         &[data-lang='in'] {
+    //           letter-spacing: toRem(-1);
+    //         }
+    //       }
+    //     }
+    //   }
+    // }
+  }
+
+  .tabs {
+    position: relative;
+    max-width: 100%;
+    min-height: toRem(32);
+    margin-right: toRem(10);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+}
+
+.notificationBadge {
+  position: absolute;
+  top: toRem(-1);
+  right: toRem(-5);
+  background-image: url('/assets/commons/header/notification-bubble.png');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  height: toRem(15);
+  width: toRem(12);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  p {
+    font-size: toRem(8);
+    -webkit-text-stroke: toRem(0.1) #cb3538;
+    font-family: 'PoetsenOne';
+    font-style: normal;
+    font-weight: 700;
+    line-height: toRem(10);
+    background: linear-gradient(180deg, #ffefe9 20.83%, #fdb4c0 81.25%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding-bottom: 0.03rem;
+  }
+}

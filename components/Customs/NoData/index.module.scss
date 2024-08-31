@@ -1,0 +1,18 @@
+.noDataWrapper {
+  @apply absolute size-full flex-all-center top-0 left-0 flex-col;
+  font-size: toRem(14);
+  font-family: PoetsenOne;
+  color: rgba(255, 255, 255, 0.5);
+
+  .image {
+    @apply relative;
+    width: toRem(252.656);
+    height: toRem(110);
+    margin-left: toRem(-15);
+  }
+
+  .leftStyle {
+    width: toRem(140.656) !important;
+    height: toRem(70) !important;
+  }
+}

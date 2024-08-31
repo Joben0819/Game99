@@ -1,0 +1,108 @@
+.prizePoolWrapper {
+  height: 100vh;
+  height: 100%;
+  height: 100dvh;
+  @apply w-full portrait:h-[100vw] bg-[url('/assets/commons/prize_pool/backdrop.webp')] items-center flex justify-center bg-cover bg-center bg-no-repeat bg-black bg-opacity-60;
+}
+
+.modal {
+  width: toRem(564);
+  height: toRem(356.664);
+  position: relative;
+
+  .poolContainer {
+    @apply absolute top-0 left-0 size-full opacity-0 z-[2];
+
+    canvas,
+    svg {
+      @apply absolute size-full;
+    }
+  }
+}
+
+.closeBtn {
+  @apply absolute z-[3] top-[0.6rem];
+  width: toRem(33);
+  height: toRem(33);
+  right: toRem(6);
+}
+
+.headerTitle {
+  @apply absolute z-[2] left-1/2 -translate-x-1/2 top-[0.35rem];
+  width: toRem(430.611);
+  height: toRem(64.473);
+
+  &[data-lang='en'] {
+    width: toRem(230);
+    height: toRem(45);
+    margin-top: toRem(10);
+  }
+
+  &[data-lang='zh-tw'] {
+    width: toRem(150);
+    height: toRem(55);
+    top: toRem(21);
+  }
+
+  &[data-lang='cn'] {
+    width: toRem(90);
+    height: toRem(55);
+    top: toRem(21);
+  }
+
+  &[data-lang='in'] {
+    width: toRem(200);
+    height: toRem(55);
+  }
+}
+
+.poolList {
+  @apply z-[1] absolute   left-1/2 -translate-x-1/2 top-[1.75rem] rounded-sm py-[0.1rem] px-2;
+  font-size: toRem(20);
+  width: toRem(480.611);
+  height: toRem(228.664);
+}
+
+.girlContainer {
+  @apply absolute z-[0] -bottom-[0.5rem] -right-[3rem];
+  width: toRem(740);
+  height: toRem(298);
+
+  svg {
+    @apply size-full;
+  }
+}
+
+.placeholder {
+  @apply relative z-[1];
+  width: toRem(880);
+  height: toRem(298);
+
+  img {
+    @apply object-contain;
+  }
+}
+
+.cassinoImage {
+  @apply absolute z-[-1] bottom-[1rem] -left-[1.5rem];
+  width: toRem(259.855);
+  height: toRem(169.875);
+}
+
+.fallingStarImage {
+  @apply absolute z-[-1] top-[0.1rem] -left-[1rem];
+  width: toRem(83);
+  height: toRem(87);
+}
+
+.startsImage {
+  @apply absolute z-[-1] top-[1rem] -right-[1.2rem];
+  width: toRem(85);
+  height: toRem(72);
+}
+
+.starImage {
+  @apply absolute z-[-1] bottom-[0.2rem] -left-[0.6rem];
+  width: toRem(50);
+  height: toRem(50);
+}

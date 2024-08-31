@@ -1,0 +1,83 @@
+.headerContainer {
+  position: absolute;
+  top: toRem(-65);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  left: toRem(0);
+  padding: toRem(0) toRem(10) toRem(0) toRem(10);
+  height: toRem(55);
+
+  .historyWrapper {
+    width: toRem(180);
+    display: flex;
+    align-items: center;
+    .textWrapper {
+      gap: toRem(2);
+      height: toRem(23.5);
+      border-bottom: toRem(2) solid #7fbaff;
+      position: relative;
+      .border {
+        position: absolute;
+        bottom: toRem(-3);
+        width: 100%;
+        height: toRem(10);
+        border-bottom: toRem(2) solid #fff;
+      }
+
+      &[data-lang='cn'] {
+        top: toRem(-1.2);
+        height: toRem(30);
+        p {
+          font-family: YouSheBiaoTiHei;
+          font-size: toRem(25);
+        }
+      }
+
+      p {
+        position: relative;
+        font-family: Sansita One;
+        font-size: toRem(18);
+        font-weight: 400;
+        line-height: normal;
+
+        text-transform: capitalize;
+        @include GradientTextWithOutline(
+          $offset: toRem(1),
+          $color: #2058c1,
+          $num-steps: 25,
+          $textContent: attr(data-textafter),
+          $gradient: #ffffff
+        );
+      }
+    }
+
+    .recordIcon {
+      position: relative;
+      width: toRem(15);
+      height: toRem(19);
+      margin-left: toRem(3);
+
+      img {
+        position: unset;
+      }
+    }
+  }
+
+  .IconContainer {
+    position: relative;
+    width: toRem(44);
+    height: toRem(44);
+
+    img {
+      position: unset;
+    }
+  }
+}
+.headerWrapper {
+  position: absolute;
+  left: toRem(-8);
+  width: toRem(505);
+  height: toRem(55);
+}

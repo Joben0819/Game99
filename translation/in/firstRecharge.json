@@ -1,0 +1,21 @@
+{
+  "modalTitle": "/assets/in/primeira_compra/primeira_title.png",
+  "firstRecharge": "Pembelian Pertama",
+  "bonus": "Tambahan",
+  "currency": "IDR",
+  "tips": {
+    "fLabel": "Pembelian Pertama",
+    "fDesc": "Beli salah satu paket ini dan paket itu akan hilang secara permanen.",
+    "sLabel": "Diskon Harian:",
+    "sDesc": "Beli salah satu paket ini dan paket itu akan hilang hari ini.",
+    "tLabel": "Hadiah Berharga:",
+    "tDesc": "Setiap paket hanya dapat dibeli satu kali!"
+  },
+  "fBottomText": "Setiap kali Anda membeli paket apapun, bonus tambahan akan diakumulasikan 3 hari. Setelah ",
+  "sBottomText": "mengisi ulang, Anda perlu menunggu selama 1 menit sebelum memasuki permainan. ",
+  "rechargeOver": "Isi ulang lebih dari",
+  "rechargeOverContinuation": "",
+  "get": " dapatkan",
+  "free": "gratis",
+  "details": "Rincian"
+}

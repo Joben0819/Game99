@@ -1,0 +1,205 @@
+.LeftWrapper {
+  @apply absolute z-[10] top-1/2 -translate-y-1/2;
+  width: toRem(205);
+  height: toRem(335);
+  left: toRem(34);
+}
+
+.bgContainer {
+  @apply relative size-full z-0;
+}
+
+.header {
+  @apply absolute;
+  top: toRem(20);
+  width: toRem(180);
+  left: toRem(14);
+
+  &[data-lang='cn'] {
+    top: toRem(15);
+    p {
+      font-family: YouSheBiaoTiHei;
+      font-size: toRem(40);
+    }
+  }
+
+  p {
+    font-family: Sansita One;
+    font-size: toRem(30);
+    font-weight: 400;
+    text-align: center;
+    text-transform: uppercase;
+    text-shadow: toRem(-1) toRem(1) toRem(3) #1456cc;
+  }
+}
+
+.btnContainer {
+  @apply flex flex-col;
+}
+
+.buttons {
+  @apply absolute;
+  padding-top: 0.05rem;
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+  top: toRem(75);
+  width: toRem(205.757);
+  height: toRem(240);
+  overflow: auto !important;
+
+  .button {
+    @apply relative flex self-center items-center justify-center active:scale-90 transition-all duration-150 cursor-pointer;
+    width: toRem(155);
+    height: toRem(40);
+    margin: 0 auto toRem(6);
+    border-radius: toRem(5);
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.8) 0%,
+      rgba(255, 255, 255, 0.3) 69.5%,
+      rgba(255, 255, 255, 0.7) 100%
+    );
+    font-family: 'Inter';
+    border: toRem(1.5) solid #ffffff66;
+
+    .rate {
+      position: absolute;
+      top: toRem(-3);
+      left: toRem(-12);
+      z-index: 2;
+      width: toRem(28);
+      height: toRem(31);
+
+      span {
+        @apply flex justify-center items-center absolute;
+        width: toRem(21);
+        top: toRem(11);
+        left: toRem(3);
+        font-size: toRem(8);
+        z-index: 3;
+        transform: rotate(14deg);
+      }
+
+      img {
+        position: unset;
+      }
+    }
+  }
+
+  .inactiveMenu {
+    background: linear-gradient(180deg, #ffa858 11%, #ff7a00 24%);
+    border: toRem(1.5) solid #ffbb7c;
+    pointer-events: none;
+  }
+}
+
+.btnContent {
+  @apply flex w-full  h-full z-10 py-[0.2rem] items-center justify-center;
+  gap: toRem(10);
+  .icon {
+    position: relative;
+    width: toRem(25);
+    height: toRem(25);
+    border-radius: toRem(30);
+    background-color: red;
+    margin-left: toRem(8);
+    margin-top: toRem(1);
+    margin-right: toRem(5);
+
+    img {
+      position: unset;
+      border-radius: toRem(30);
+    }
+  }
+
+  span {
+    text-align: center;
+    width: 100%;
+    font-size: toRem(14);
+    font-family: Inter-500;
+    font-weight: 500;
+
+    &.hasIcon {
+      margin-left: toRem(-25);
+    }
+  }
+}
+
+.btnContentIcon {
+  @apply relative w-full  h-full  py-[0.2rem];
+  z-index: 1;
+  overflow: hidden;
+  .icon {
+    position: absolute;
+    width: toRem(25);
+    height: toRem(25);
+    border-radius: toRem(30);
+    left: toRem(10);
+    top: toRem(6);
+    background-color: #fff;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+
+    img {
+      position: unset;
+      border-radius: toRem(30);
+      object-fit: contain;
+    }
+  }
+
+  span {
+    @apply top-1/2 -translate-y-1/2;
+    position: absolute;
+    left: toRem(40);
+    text-align: center;
+    width: calc(100% - toRem(55));
+    font-size: toRem(14);
+    font-family: Inter;
+    font-weight: 500;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    line-height: toRem(16) !important;
+  }
+}
+
+.spanInactive {
+  color: #1653c9;
+}
+
+.spanActive {
+  color: #ffffff;
+}
+
+.isChinese {
+  font-weight: 500;
+  font-size: toRem(16) !important;
+  -webkit-text-stroke-width: unset !important;
+}
+
+.recommendedContainer {
+  position: absolute;
+  width: toRem(18);
+  height: toRem(20);
+  top: toRem(-1);
+  right: toRem(10);
+  img {
+    position: unset;
+  }
+}
+
+.scrollIndicator {
+  @apply left-1/2 -translate-x-1/2 transition-all duration-1000;
+  bottom: toRem(-10);
+  position: absolute;
+  width: toRem(36);
+  height: toRem(30);
+
+  img {
+    position: unset;
+  }
+}
+
+.rotated-arrow {
+  @apply rotate-180;
+}
